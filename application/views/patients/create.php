@@ -1,0 +1,87 @@
+<br>
+<?php echo validation_errors(); ?>
+<div class="row justify-content-center">
+	<div class="col-md-6">
+		<div class="card">
+			<header class="card-header">
+				<h4 class="card-title mt-2">
+					<u>
+						<?php echo strtoupper('register form') ?></u>
+				</h4>
+			</header>
+			<article class="card-body">
+				<h5>
+					<?php echo strtoupper('description') ?>
+				</h5>
+				<p style='border-left: solid 4px #1b1f22;padding: 0.5rem 0.5rem 0.5rem 0.5rem;'>Please
+					do read the instructions carefully and do fill up the registration form with
+					answer to best of your knowledge.</p>
+			</article>
+			<article class="card-body">
+				<?php echo form_open('patients/create'); ?>
+				<div class="form-row">
+					<div class="col form-group">
+						<label>First name </label>
+						<input type="text" class="form-control" placeholder="" name='first_name' required>
+					</div> <!-- form-group end.// -->
+					<div class="col form-group">
+						<label>Last name</label>
+						<input type="text" class="form-control" placeholder=" " name='last_name' required>
+					</div> <!-- form-group end.// -->
+				</div> <!-- form-row end.// -->
+				<div class="form-group">
+					<label>Email address</label>
+					<input type="email" class="form-control" placeholder="" name='email' required>
+				</div> <!-- form-group end.// -->
+				<div class="form-group">
+					<label class="form-check form-check-inline">
+						<input class="form-check-input" type="radio" name="gender" value="option1">
+						<span class="form-check-label"> Male </span>
+					</label>
+					<label class="form-check form-check-inline">
+						<input class="form-check-input" type="radio" name="gender" value="option2">
+						<span class="form-check-label"> Female</span>
+					</label>
+				</div> <!-- form-group end.// -->
+				<div class="form-row">
+					<div class="form-group col-md-6">
+						<label>Date of Birth</label>
+						<input type="date" class="form-control" name='dob' required>
+					</div> <!-- form-group end.// -->
+					<div class="form-group col-md-6">
+					</div> <!-- form-group end.// -->
+				</div> <!-- form-row.// -->
+				<div class="form-group">
+					<label>Address</label>
+					<textarea class="form-control" name='address'></textarea>
+				</div> <!-- form-group end.// -->
+				<div class="form-group">
+					<div class="col-md-12" style='border: 1px solid #00070e;'></div>
+				</div> <!-- form-group end.// -->
+				<div class="form-group">
+					<h6><u> DISCLAIMER: </u></h6>
+					<p>The LycaHealth Ultra Health Assessment report is based wholly on the information provided by the cli-ent/patient in their responses to the questions and from the results of tests undertaken.</p>
+					<p>The LycaHealth Ultra Health Assessment is not a replacement for formal medical diagnosis, however it will provide an indication of any abnormalities evidenced through the tests conducted.</p>
+					<p>LycaHealth, its staff or affiliates accept no liability or responsibility for;</p>
+					<ul>
+						<li>Any Decisions, Acts or Omissions that the client/patient takes in reliance upon the information con-tained or provided through the LycaHealth Ultra Health Assessment,</li>
+						<li>Claims arising out of or related to the LycaHealth Ultra Health Assessment,</li>
+						<li>Clients use of the LycaHealth Ultra Health Assessment tool,</li>
+						<li>For any incidental, indirect, special, consequential or punitive damages, including but not limited to, possible health side effects.</li>
+					</ul>
+					<p>The LycaHealth Ultra Health Assessment report makes no warranties or guarantees of any kind and ex-pressly disclaims any and all warranties of any kind or nature.</p>
+				</div> <!-- form-group end.// -->
+				<div class="form-group">
+					<div class="col-md-12" style='border: 1px solid #00070e;'></div>
+				</div> <!-- form-group end.// -->
+				<div class="form-row">
+					<!-- form-group end.// -->
+					<div class="form-group">
+						<button type="submit" class="btn btn-primary btn-block"> Save & Register </button>
+					</div> <!-- form-group// -->
+				</div>
+				</form>
+			</article> <!-- card-body end .// -->
+		</div> <!-- card.// -->
+	</div> <!-- col.//-->
+</div> <!-- row.//-->
