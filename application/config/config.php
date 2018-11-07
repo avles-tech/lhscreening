@@ -23,8 +23,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-//$config['base_url'] = 'https://stormy-mesa-5521.herokuapp.com';
-$config['base_url'] = 'http://lyca.com';
+$config['base_url'] = 'https://stormy-mesa-5521.herokuapp.com';
+//$config['base_url'] = 'http://lyca.com';
 
 /*
 |--------------------------------------------------------------------------
