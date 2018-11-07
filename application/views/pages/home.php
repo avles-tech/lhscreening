@@ -32,8 +32,8 @@
 						<nav>
 							<ul>
 								<li><a target="_blank" href="<?php echo base_url(); ?>index.php/patients/create">Patients registrations</a></li>
-								<li><a target="_blank" href="https://pms.lhscreening.com">Nurse Diagnostics</a></li>
-								<li><a target="_blank" href="https://admin.lhscreening.com">Administration</a></li>
+								<li><a target="_blank" href="<?php echo base_url(); ?>index.php/auth">Nurse Diagnostics</a></li>
+								<li><a target="_blank" href="<?php echo base_url(); ?>index.php/auth">Administration</a></li>
 							</ul>
 						</nav>
 					</header>

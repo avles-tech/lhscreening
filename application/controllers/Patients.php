@@ -70,7 +70,7 @@ class Patients extends CI_Controller {
                 $data['patients'] = $this->patients_model->get_patients();
                 $data['title'] = 'patients archive';
 
-                $this->load->view('templates/header', $data);
+                $this->load->view('templates/header');
                 $this->load->view('patients/index', $data);
                 $this->load->view('templates/footer');
         }
@@ -124,7 +124,7 @@ class Patients extends CI_Controller {
                 else
                 {
                         $this->patients_model->set_patients();
-                        $this->load->view('patients/success');
+                        $this->load->view('patients/registration.success');
                 }
 
                 //echo "test";
@@ -146,6 +146,7 @@ class Patients extends CI_Controller {
                 {
                         $form_data = $this->input->post();
                         $data['patient'] = $form_data;
+
                         $this->load->view('templates/header');
                         $this->load->view('patients/view',$data);
                         $this->load->view('templates/footer');
@@ -155,11 +156,20 @@ class Patients extends CI_Controller {
                 {
                         $id = $this->input->post('id');
                         $form_data = $this->input->post();
-                        //echo $form_data;
+
                         $this->patients_model->update_patients($id,$form_data);
-                        //$this->load->view('patients/success');
+                        
+                        $data['patient'] = $form_data;
+
+                        $this->load->view('templates/header');
+                        $this->load->view('patients/view',$data);
+                        $this->load->view('templates/footer');
                 }
 
                 //echo "test";
         }
+
+        // public function success(){
+        //         $this->load->view('patients/registration_success');
+        // }
 }
