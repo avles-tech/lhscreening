@@ -5,6 +5,9 @@ class Patients extends CI_Controller {
         {
                 parent::__construct();
                 $this->load->model('patients_model');
+                $this->load->model('patient_reports_model');
+                $this->load->model('phq_model');
+                $this->load->model('gad_model');
                 $this->load->helper('url_helper');
                 $this->load->library('ion_auth');
         }
@@ -13,7 +16,6 @@ class Patients extends CI_Controller {
         {
                 $output = '';
                 $query = '';
-                $this->load->model('patients_model');
                 if($this->input->post('query'))
                 {
                         $query = $this->input->post('query');
@@ -82,6 +84,9 @@ class Patients extends CI_Controller {
                 $this->load->library('form_validation');
                 
                 $data['patient'] = $this->patients_model->get_patients($id);
+                $data['phq_list'] = $this->phq_model->get_phq_list();
+                $data['gad_list'] = $this->gad_model->get_gad_list();
+                $data['patient_reports'] = $this->patient_reports_model->get_patient_reports($id);
 
                 if (empty($data['patient']))
                 {
@@ -100,21 +105,11 @@ class Patients extends CI_Controller {
 
                 $this->form_validation->set_rules('first_name', 'First Name', 'required');
                 $this->form_validation->set_rules('last_name', 'Last Name', 'required');
-                $this->form_validation->set_rules('email', 'Email', 'required');
-                $this->form_validation->set_rules('dob', 'Date of Birth', 'required');
-                $this->form_validation->set_rules('gender', 'Gender', 'required');
-                $this->form_validation->set_rules('address', 'Address', 'required');
                 
                 if ($this->form_validation->run() === FALSE)
                 {
                         $data['patient'] = array(
-                                'first_name'=>'' 
-                                ,'last_name'=>''
-                                ,'gender'=>''
-                                ,'dob'=>''
-                                ,'address'=>''
-                                ,'email'=>''
-                                ,'id'=>''
+                                
                         );
                         $this->load->view('templates/header');
                         $this->load->view('patients/create',$data);
@@ -124,7 +119,7 @@ class Patients extends CI_Controller {
                 else
                 {
                         $this->patients_model->set_patients();
-                        $this->load->view('patients/registration.success');
+                        $this->load->view('patients/registration_success');
                 }
 
                 //echo "test";
@@ -137,15 +132,13 @@ class Patients extends CI_Controller {
 
                 $this->form_validation->set_rules('first_name', 'First Name', 'required');
                 $this->form_validation->set_rules('last_name', 'Last Name', 'required');
-                $this->form_validation->set_rules('email', 'Email', 'required');
-                $this->form_validation->set_rules('dob', 'Date of Birth', 'required');
-                $this->form_validation->set_rules('gender', 'Gender', 'required');
-                $this->form_validation->set_rules('address', 'Address', 'required');
-                
+        
                 if ($this->form_validation->run() === FALSE)
                 {
                         $form_data = $this->input->post();
                         $data['patient'] = $form_data;
+
+                        //echo $form_data['first_name'];
 
                         $this->load->view('templates/header');
                         $this->load->view('patients/view',$data);
@@ -159,7 +152,9 @@ class Patients extends CI_Controller {
 
                         $this->patients_model->update_patients($id,$form_data);
                         
-                        $data['patient'] = $form_data;
+                        $data['patient'] = $this->patients_model->get_patients($id);
+                        $data['phq_list'] = $this->phq_model->get_phq_list();
+                        $data['gad_list'] = $this->gad_model->get_gad_list();
 
                         $this->load->view('templates/header');
                         $this->load->view('patients/view',$data);
