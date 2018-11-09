@@ -14,10 +14,9 @@ class Patients_model extends CI_Model {
                 {
                         $this->db->like('first_name', $query);
                         $this->db->or_like('last_name', $query);
-                        $this->db->or_like('email', $query);
-                        $this->db->or_like('address', $query);
                 }
-                $this->db->order_by('id', 'ASC');
+                $this->db->order_by('id', 'DESC');
+                $this->db->limit('10');
                 return $this->db->get();
         }
 
