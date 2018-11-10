@@ -1,8 +1,9 @@
 <div class="form-group">
 	<br /><br />
 	<?php 
+			$patient_reports = $this->patient_reports_model->get_patient_reports($patient_id);
 			echo form_open_multipart('upload/do_upload');
-			echo form_hidden('id',$patient['id']); 
+			echo form_hidden('patient_id',$patient_id); 
 			echo form_hidden('report','blood'); 
 		?>
 	<input type="file" name="userfile" size="20" />
@@ -16,7 +17,7 @@
 	<br /><br />
 	<?php 
 			echo form_open_multipart('upload/do_upload');
-			echo form_hidden('id',$patient['id']); 
+			echo form_hidden('patient_id',$patient_id); 
 			echo form_hidden('report','mri'); 
 		?>
 	<input type="file" name="userfile" size="20" />
@@ -29,7 +30,7 @@
 	<br /><br />
 	<?php 
 			echo form_open_multipart('upload/do_upload');
-			echo form_hidden('id',$patient['id']); 
+			echo form_hidden('patient_id',$patient_id); 
 			echo form_hidden('report','xray'); 
 		?>
 	<input type="file" name="userfile" size="20" />

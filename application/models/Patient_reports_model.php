@@ -7,34 +7,34 @@ class Patient_reports_model extends CI_Model {
         }
 
 
-        public function get_patient_reports($id = FALSE)
+        public function get_patient_reports($patient_id = FALSE)
         {
-                $query = $this->db->get_where('patient_reports', array('id' => $id));
+                $query = $this->db->get_where('patient_reports', array('patient_id' => $patient_id));
                 return $query->row_array();
         }
 
         public function set_patient_reports($path)
         {
             $this->load->helper('url');
-            $id = $this->input->post('id');
+            $patient_id = $this->input->post('patient_id');
 
-            $query = $this->db->get_where('patient_reports', array('id' => $id));
+            $query = $this->db->get_where('patient_reports', array('patient_id' => $patient_id));
             $result = $query->result_array();
             $count = count($result);
 
             if (empty($count)){
                 $data = array(
-                        'id' => $this->input->post('id')
+                        'patient_id' => $this->input->post('patient_id')
                         ,$this->input->post('report') => $path
                 );
                 return $this->db->insert('patient_reports', $data);
             }
             else{
                 $data = array(
-                        'id' => $this->input->post('id')
+                        'patient_id' => $this->input->post('patient_id')
                         ,$this->input->post('report') => $path
                 );
-                $this->db->where('id', $id);
+                $this->db->where('patient_id', $patient_id);
 
                 return $this->db->update('patient_reports', $data);
             }

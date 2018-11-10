@@ -15,20 +15,20 @@ class Patients_model extends CI_Model {
                         $this->db->like('first_name', $query);
                         $this->db->or_like('last_name', $query);
                 }
-                $this->db->order_by('id', 'DESC');
+                $this->db->order_by('patient_id', 'DESC');
                 $this->db->limit('10');
                 return $this->db->get();
         }
 
-        public function get_patients($id = FALSE)
+        public function get_patients($patient_id = FALSE)
         {
-                if ($id === FALSE)
+                if ($patient_id === FALSE)
                 {
                         $query = $this->db->get('patients');
                         return $query->result_array();
                 }
 
-                $query = $this->db->get_where('patients', array('id' => $id));
+                $query = $this->db->get_where('patients', array('patient_id' => $patient_id));
                 return $query->row_array();
         }
 
@@ -48,10 +48,10 @@ class Patients_model extends CI_Model {
             return $this->db->insert('patients', $data);
         }
 
-        public function update_patients($id,$form_data)
+        public function update_patients($patient_id,$form_data)
         {
-            $this->db->where('id', $id);
+            $this->db->where('patient_id', $patient_id);
 
-            $this->db->update('patients', $form_data);
+            return $this->db->update('patients', $form_data);
         }
 }
