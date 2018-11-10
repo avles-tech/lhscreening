@@ -10,8 +10,9 @@
 
 	<input type="submit" value="upload" />
 	</form>
-	
+	<?php if (!empty($patient_reports['blood'])) : ?>
 	<a href = "<?php echo base_url().'index.php/upload/download/'.$patient_reports['blood'] ?>" > download</a>
+	<?php endif?>
 </div> <!-- form-group end.// -->
 <div class="form-group">
 	<br /><br />
@@ -24,7 +25,9 @@
 
 	<input type="submit" value="upload" />
 	</form>
+	<?php if (!empty($patient_reports['mri'])) : ?>
 	<a href = "<?php echo base_url().'index.php/upload/download/'.$patient_reports['mri'] ?>" > download</a>
+	<?php endif?>
 </div> <!-- form-group end.// -->
 <div class="form-group">
 	<br /><br />
@@ -37,5 +40,7 @@
 
 	<input type="submit" value="upload" />
 	</form>
+	<?php if (!empty($patient_reports['xray'])) : ?>
 	<a href = "<?php echo base_url().'index.php/upload/download/'.$patient_reports['xray'] ?>" > download</a>
+	<?php endif?>
 </div> <!-- form-group end.// -->

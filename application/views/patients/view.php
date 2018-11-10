@@ -24,9 +24,11 @@ echo '<h2>'.$patient_details['first_name'].' '.$patient_details['last_name'].'</
 	<li class="nav-item">
 		<a class="nav-link" id="upload_report-tab" data-toggle="tab" href="#upload_report" role="tab" aria-controls="upload_report" aria-selected="false">Upload reports</a>
 	</li>
+	<?php if ($this->ion_auth->in_group('gp')): ?>
 	<li class="nav-item">
 		<a class="nav-link" id="gp-tab" data-toggle="tab" href="#gp" role="tab" aria-controls="gp" aria-selected="false">GP summary & recommendation</a>
 	</li>
+	<?php endif ?>
 </ul>
 <div class="tab-content" id="myTabContent">
 	<div class="tab-pane active" id="basic_details" role="tabpanel" aria-labelledby="basic_details-tab">

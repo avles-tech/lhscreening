@@ -48,8 +48,8 @@ class Auth extends CI_Controller
 				$this->data['users'][$k]->groups = $this->ion_auth->get_users_groups($user->id)->result();
 			}
 
-			//$this->_render_page('patients' . DIRECTORY_SEPARATOR . 'index', $this->data);
-			redirect('/Patients', 'refresh');
+			$this->_render_page('auth' . DIRECTORY_SEPARATOR . 'index', $this->data);
+			//redirect('/Patients', 'refresh');
 		}
 	}
 
@@ -171,7 +171,10 @@ class Auth extends CI_Controller
 			);
 
 			// render
-			$this->_render_page('auth' . DIRECTORY_SEPARATOR . 'change_password', $this->data);
+			//$this->_render_page('auth' . DIRECTORY_SEPARATOR . 'change_password', $this->data);
+			$this->load->view('templates/header');
+			$this->load->view('auth/change_password', $this->data);
+			$this->load->view('templates/footer');
 		}
 		else
 		{
@@ -188,7 +191,10 @@ class Auth extends CI_Controller
 			else
 			{
 				$this->session->set_flashdata('message', $this->ion_auth->errors());
-				redirect('auth/change_password', 'refresh');
+				//redirect('auth/change_password', 'refresh');
+				$this->load->view('templates/header');
+				$this->load->view('auth/change_password', $this->data);
+				$this->load->view('templates/footer');
 			}
 		}
 	}

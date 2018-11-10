@@ -25,6 +25,7 @@
 					My Account <b class="caret"></b>
 				</a>
 				<ul class="dropdown-menu">
+					<li><a href="<?php echo site_url('auth/change_password'); ?>">change password</a></li>
 					<li><a href="<?php echo site_url('auth/logout'); ?>">Logout</a></li>
 				</ul>
 			</li>
