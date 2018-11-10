@@ -30,22 +30,23 @@ class Patients extends CI_Controller {
                 <th>Email</th>
                 <th>Gender</th>
                 <th>Date of Birth</th>
-                <th>Address</th>
+                <th>Phone Mobile</th>
                 <th></th>
                 </tr>
                 ';
                 if($data->num_rows() > 0)
                 {
                         foreach($data->result() as $row)
-                        {
+                        {       
+                                $gender = $row->gender == 1 ? 'Male' : 'Female';
                                 $output .= '
                                 <tr>
                                 <td>'.$row->first_name.'</td>
                                 <td>'.$row->last_name.'</td>
                                 <td>'.$row->email.'</td>
-                                <td>'.$row->gender.'</td>
+                                <td>'.$gender.'</td>
                                 <td>'.$row->dob.'</td>
-                                <td>'.$row->address.'</td>
+                                <td>'.$row->phone_mobile.'</td>
                                 <td> <a href="'.base_url().'index.php/patients/view/'.$row->patient_id.'"> view patient </a></td>
                                 </tr>
                                 ';
@@ -108,8 +109,12 @@ class Patients extends CI_Controller {
                 }
                 else
                 {
-                        $this->patients_model->set_patients();
+                        $insert_id = $this->patients_model->set_patients();
+                        $this->patient_phq_model->get_patient_phq($insert_id);
+                        $this->patient_gad_model->get_patient_gad($insert_id);
+                        $this->load->view('templates/header');
                         $this->load->view('patients/registration_success');
+                        $this->load->view('templates/footer');
                 }
                 //echo "test";
         }

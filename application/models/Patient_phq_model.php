@@ -6,7 +6,6 @@ class Patient_phq_model extends CI_Model {
                 $this->load->database();
         }
 
-
         public function get_patient_phq($patient_id)
         {
                 $this->db->select('p.phq_id,l.question,p.value,p.id');
