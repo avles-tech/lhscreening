@@ -1,5 +1,7 @@
 <?php
-echo '<h2>'.$patient['first_name'].' '.$patient['last_name'].'</h2>';
+//echo $patient_id;
+$patient_details = $this->patients_model->get_patients($patient_id);
+echo '<h2>'.$patient_details['first_name'].' '.$patient_details['last_name'].'</h2>';
 //echo $phq_list[0]['question'];
 ?>
 <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -30,13 +32,12 @@ echo '<h2>'.$patient['first_name'].' '.$patient['last_name'].'</h2>';
 	<div class="tab-pane active" id="basic_details" role="tabpanel" aria-labelledby="basic_details-tab">
 		<div class="card">
 			<article class="card-body">
-				<?php echo validation_errors(); ?>
-				<?php echo form_open('patients/update'); ?>
 				<?php 
-					$data['patient'] = $patient; 
-					echo form_hidden('id',$patient['id']);
-					$this->load->view('patients/patient_basic_details',$patient); 
-					?>
+					echo validation_errors();  
+					echo form_open('patients/update');  
+					echo form_hidden('patient_id',$patient_id);
+					$this->load->view('patients/patient_basic_details', array( 'patient_id' => $patient_id)); 
+				?>
 				<div class="form-row">
 					<!-- form-group end.// -->
 					<div class="form-group">
@@ -48,55 +49,21 @@ echo '<h2>'.$patient['first_name'].' '.$patient['last_name'].'</h2>';
 		</div>
 	</div>
 	<div class="tab-pane" id="phq" role="tabpanel" aria-labelledby="phq-tab">
-		<div class="card">
-			<article class="card-body">
-				<?php 
-					echo validation_errors();  
-					echo form_open('patients/update_phq');
-					$this->load->view('patients/patient_phq',$phq_list); 
-				?>
-				<div class="form-row">
-					<!-- form-group end.// -->
-					<div class="form-group">
-						<button type="submit" class="btn btn-primary btn-block"> Save </button>
-					</div> <!-- form-group// -->
-				</div>
-				</form>
-			</article>
-		</div>
+		<?php
+			$this->load->view('patients/patient_phq',array( 'patient_id' => $patient_id));
+		?>
 	</div>
 	<div class="tab-pane" id="gad" role="tabpanel" aria-labelledby="gad-tab">
-	<div class="card">
-			<article class="card-body">
-				<?php 
-					echo validation_errors();  
-					echo form_open('patients/update_gad'); 
-					$this->load->view('patients/patient_gad',$gad_list); 
-				?>
-				<div class="form-row">
-					<!-- form-group end.// -->
-					<div class="form-group">
-						<button type="submit" class="btn btn-primary btn-block"> Save </button>
-					</div> <!-- form-group// -->
-				</div>
-				</form>
-			</article>
-		</div>
+		<?php 
+			$this->load->view('patients/patient_gad',array( 'patient_id' => $patient_id)); 
+		?>
 	</div>
 	<div class="tab-pane" id="medical_history" role="tabpanel" aria-labelledby="gad-tab">medical history</div>
 	<div class="tab-pane" id="lab_test" role="tabpanel" aria-labelledby="gad-tab">lap_test</div>
 	<div class="tab-pane" id="upload_report" role="tabpanel" aria-labelledby="gad-tab">
 	<?php 
-		$this->load->view('patients/patient_upload',$patient_reports); 
+		$this->load->view('patients/patient_upload', array( 'patient_id' => $patient_id)); 
 	?>
 	</div>
 	<div class="tab-pane" id="gp" role="tabpanel" aria-labelledby="gad-tab">gp_recommend</div>
 </div>
-<script>
-	$(document).on('click', '#refresh', function () {
-    var $link = $('li.active a[data-toggle="tab"]');
-    $link.parent().removeClass('active');
-    var tabLink = $link.attr('href');
-    $('#mainTabs a[href="' + tabLink + '"]').tab('show');
-});
-</script>

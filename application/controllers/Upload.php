@@ -7,6 +7,8 @@ class Upload extends CI_Controller {
                 parent::__construct();
                 $this->load->model('patients_model');
                 $this->load->model('patient_reports_model');
+                $this->load->model('patient_phq_model');
+                $this->load->model('patient_gad_model');
                 $this->load->model('phq_model');
                 $this->load->model('gad_model');
                 $this->load->library('ion_auth');
@@ -31,12 +33,13 @@ class Upload extends CI_Controller {
         public function do_upload()
         {
                 $form_data = $this->input->post();
+                $patient_id = $form_data['patient_id'];
                 $config['upload_path']          = './uploads/';
                 $config['allowed_types']        = 'pdf|jpg|jpeg';
                 $config['max_size']             = 100;
                 $config['max_width']            = 1024;
                 $config['max_height']           = 768;
-                $config['file_name'] = $form_data['id'].'_'.$form_data['report']; 
+                $config['file_name'] = $patient_id.'_'.$form_data['report']; 
                 $config['overwrite'] = true;
 
                 $this->load->library('upload', $config);
@@ -53,13 +56,9 @@ class Upload extends CI_Controller {
 
                         $this->patient_reports_model->set_patient_reports($this->upload->data('file_name'));
 
-                        $data['patient'] = $this->patients_model->get_patients($form_data['id']);
-                        $data['patient_reports'] = $this->patient_reports_model->get_patient_reports($form_data['id']);
-                        $data['phq_list'] = $this->phq_model->get_phq_list();
-                        $data['gad_list'] = $this->gad_model->get_gad_list();
 
                         $this->load->view('templates/header');
-                        $this->load->view('patients/view',$data);
+                        $this->load->view('patients/view',array('patient_id' => $patient_id));
                         $this->load->view('templates/footer');
                 }
         }
