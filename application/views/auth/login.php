@@ -1,3 +1,9 @@
+<br>
+<div class="float-right">
+<a href="<?php echo base_url().'index.php/patients/create' ?>" > Register Patient</a>
+</div>
+<br>
+<br>
 <h1><?php echo lang('login_heading');?></h1>
 <p><?php echo lang('login_subheading');?></p>
 

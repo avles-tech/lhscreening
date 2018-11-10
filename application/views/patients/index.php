@@ -1,5 +1,9 @@
-<br />
-<br />
+<br>
+<div class="float-right">
+<a href="<?php echo base_url().'index.php/patients/create' ?>" > Register Patient</a>
+</div>
+<br>
+<br>
 <div class="input-group mb-3">
 	<div class="input-group-prepend">
 		<span class="input-group-text">Search</span>
@@ -40,7 +44,7 @@
 					<?php echo $patient_item['dob']; ?>
 				</td>
 				<td>
-					<?php echo $patient_item['gender']; ?>
+					<?php echo $patient_item['gender'] == '1' ? 'Male' : 'Female'; ?>
 				</td>
 				<td>
 					<?php echo $patient_item['address']; ?>

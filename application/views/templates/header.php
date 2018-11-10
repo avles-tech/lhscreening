@@ -12,7 +12,7 @@
 	<script src="<?php echo base_url(); ?>assets/jquery-3.3.1/jquery-3.3.1.min.js"></script>
 	<script src="<?php echo base_url(); ?>assets/bootstrap-4.1.3-dist/js/bootstrap.min.js"></script>
 	<nav class="navbar navbar-light bg-light">
-		<a class="navbar-brand" href="#">
+		<a class="navbar-brand" href="<?php echo base_url(); ?>index.php/patients">
 			<img src="<?php echo base_url(); ?>assets/lyca/images/logo.png" height='35px' alt="">
 		</a>
 		<ul class="nav navbar-nav pull-right">

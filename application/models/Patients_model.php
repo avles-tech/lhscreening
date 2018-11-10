@@ -14,6 +14,8 @@ class Patients_model extends CI_Model {
                 {
                         $this->db->like('first_name', $query);
                         $this->db->or_like('last_name', $query);
+                        $this->db->or_like('email', $query);
+                        $this->db->or_like('phone_mobile', $query);
                 }
                 $this->db->order_by('patient_id', 'DESC');
                 $this->db->limit('10');
@@ -45,7 +47,9 @@ class Patients_model extends CI_Model {
                     ,'address' => $this->input->post('address')
             );
 
-            return $this->db->insert('patients', $data);
+            $this->db->insert('patients', $data);
+            $insert_id = $this->db->insert_id();
+            return $insert_id;
         }
 
         public function update_patients($patient_id,$form_data)
