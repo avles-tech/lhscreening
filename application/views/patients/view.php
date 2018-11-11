@@ -29,6 +29,9 @@ echo '<h2>'.$patient_details['first_name'].' '.$patient_details['last_name'].'</
 		<a class="nav-link" id="gp-tab" data-toggle="tab" href="#gp" role="tab" aria-controls="gp" aria-selected="false">GP summary & recommendation</a>
 	</li>
 	<?php endif ?>
+	<li class="nav-item">
+		<a class="nav-link" id="generate_report-tab" data-toggle="tab" href="#generate_report" role="tab" aria-controls="generate_report" aria-selected="false">Generate report</a>
+	</li>
 </ul>
 <div class="tab-content" id="myTabContent">
 	<div class="tab-pane active" id="basic_details" role="tabpanel" aria-labelledby="basic_details-tab">
@@ -68,4 +71,9 @@ echo '<h2>'.$patient_details['first_name'].' '.$patient_details['last_name'].'</
 	?>
 	</div>
 	<div class="tab-pane" id="gp" role="tabpanel" aria-labelledby="gad-tab">gp_recommend</div>
+	<div class="tab-pane" id="generate_report" role="tabpanel" aria-labelledby="generate_report-tab">
+	<?php 
+		$this->load->view('patients/patient_report', array( 'patient_id' => $patient_id)); 
+	?>
+	</div>
 </div>
