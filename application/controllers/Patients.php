@@ -11,6 +11,7 @@ class Patients extends CI_Controller {
                 $this->load->model('gad_model');
                 $this->load->helper('url_helper');
                 $this->load->library('ion_auth');
+                $this->load->library('Tcpdflib');
         }
         function search()
         {
@@ -157,5 +158,10 @@ class Patients extends CI_Controller {
                 $this->load->view('templates/header');
                 $this->load->view('patients/view', array( 'patient_id' => $patient_id) );
                 $this->load->view('templates/footer');
+        }
+
+        public function patient_generate_report($patient_id)
+	{
+                $this->load->view('patients/patient_generate_report',array('patient_id'=>$patient_id));
         }
 }
