@@ -22,9 +22,12 @@
 			<?php else: ?>
 			<li class="dropdown">
 				<a class="dropdown-toggle" data-toggle="dropdown" href="#">
-					My Account <b class="caret"></b>
+				<?php $user = $this->ion_auth->user()->row(); echo $user->first_name ?> <b class="caret"></b> <b class="caret"></b>
 				</a>
 				<ul class="dropdown-menu">
+					<?php if($this->ion_auth->is_admin()) :?>
+					<li><a href="<?php echo site_url('auth/index'); ?>">User Management</a></li>
+					<?php endif?>
 					<li><a href="<?php echo site_url('auth/change_password'); ?>">change password</a></li>
 					<li><a href="<?php echo site_url('auth/logout'); ?>">Logout</a></li>
 				</ul>
