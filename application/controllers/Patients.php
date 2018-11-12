@@ -12,6 +12,7 @@ class Patients extends CI_Controller {
                 $this->load->helper('url_helper');
                 $this->load->library('ion_auth');
                 $this->load->library('Tcpdflib');
+                $this->load->library('Fpdilib');
         }
         function search()
         {

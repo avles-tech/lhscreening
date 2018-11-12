@@ -4,7 +4,7 @@
     $patient_phq = $this->patient_phq_model->get_patient_phq($patient_id);
     $patient_reports = $this->patient_reports_model->get_patient_reports($patient_id);
 
-    $tcpdflib = new Tcpdflib('P', 'mm', 'A4', true, 'UTF-8', false);
+    $tcpdflib = new Fpdilib();
     $tcpdflib->SetTitle($patient_details['first_name'].'_Report');
     $tcpdflib->SetHeaderMargin(30);
     //$tcpdflib->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, PDF_HEADER_TITLE.'', PDF_HEADER_STRING, array(0,64,255), array(0,64,128));
@@ -54,27 +54,85 @@
     $tcpdflib->writeHTML($html, true, 0, true, 0);
 
     if(!empty($patient_reports['blood'])){
-        $tcpdflib->AddPage();
-        $html = "<br><h1>Patient Blood Report</h1><br>";
-        $tcpdflib->writeHTML($html, true, 0, true, 0);
-        $tcpdflib->setImageScale('1.5');
-        $tcpdflib->Image('./uploads/'.$patient_reports['blood'],0,$tcpdflib->GetY());
+        $str = explode('.', $patient_reports['blood']);
+        if($str[1]=='pdf'){
+            $pageCount = $tcpdflib->setSourceFile('./uploads/'.$patient_reports['blood']);
+
+            for ($pageNo = 1; $pageNo <= $pageCount; $pageNo++) {
+                // import a page
+                $templateId = $tcpdflib->importPage($pageNo);
+            
+                $tcpdflib->AddPage();
+                // use the imported page and adjust the page size
+                $tcpdflib->useTemplate($templateId, array('adjustPageSize' => true));
+            
+                $tcpdflib->SetFont('Helvetica');
+                $tcpdflib->SetXY(5, 5);
+                $tcpdflib->Write(8, 'Blood report');
+            }
+        }
+        else{
+            $tcpdflib->AddPage();
+            $html = "<br><h1>Patient Blood Report</h1><br>";
+            $tcpdflib->writeHTML($html, true, 0, true, 0);
+            $tcpdflib->setImageScale('1.5');
+            $tcpdflib->Image('./uploads/'.$patient_reports['blood'],0,$tcpdflib->GetY());
+        }
+        
     }
 
     if(!empty($patient_reports['mri'])){
-        $tcpdflib->AddPage();
-        $html = "<br><h1>Patient MRI Report</h1><br>";
-        $tcpdflib->writeHTML($html, true, 0, true, 0);
-        $tcpdflib->setImageScale('1.5');
-        $tcpdflib->Image('./uploads/'.$patient_reports['mri'],0,$tcpdflib->GetY());
+        $str = explode('.', $patient_reports['mri']);
+        if($str[1]=='pdf'){
+            $pageCount = $tcpdflib->setSourceFile('./uploads/'.$patient_reports['mri']);
+
+            for ($pageNo = 1; $pageNo <= $pageCount; $pageNo++) {
+                // import a page
+                $templateId = $tcpdflib->importPage($pageNo);
+            
+                $tcpdflib->AddPage();
+                // use the imported page and adjust the page size
+                $tcpdflib->useTemplate($templateId, array('adjustPageSize' => true));
+            
+                $tcpdflib->SetFont('Helvetica');
+                $tcpdflib->SetXY(5, 5);
+                $tcpdflib->Write(8, 'MRI report');
+            }
+        }
+        else{
+            $tcpdflib->AddPage();
+            $html = "<br><h1>Patient MRI Report</h1><br>";
+            $tcpdflib->writeHTML($html, true, 0, true, 0);
+            $tcpdflib->setImageScale('1.5');
+            $tcpdflib->Image('./uploads/'.$patient_reports['mri'],0,$tcpdflib->GetY());
+        }
     }
 
     if(!empty($patient_reports['xray'])){
-        $tcpdflib->AddPage();
-        $html = "<br><h1>Patient Xray Report</h1><br>";
-        $tcpdflib->writeHTML($html, true, 0, true, 0);
-        $tcpdflib->setImageScale('1.5');
-        $tcpdflib->Image('./uploads/'.$patient_reports['xray'],0,$tcpdflib->GetY());
+        $str = explode('.', $patient_reports['xray']);
+        if($str[1]=='pdf'){
+            $pageCount = $tcpdflib->setSourceFile('./uploads/'.$patient_reports['xray']);
+
+            for ($pageNo = 1; $pageNo <= $pageCount; $pageNo++) {
+                // import a page
+                $templateId = $tcpdflib->importPage($pageNo);
+            
+                $tcpdflib->AddPage();
+                // use the imported page and adjust the page size
+                $tcpdflib->useTemplate($templateId, array('adjustPageSize' => true));
+            
+                $tcpdflib->SetFont('Helvetica');
+                $tcpdflib->SetXY(5, 5);
+                $tcpdflib->Write(8, 'Xray report');
+            }
+        }
+        else{
+            $tcpdflib->AddPage();
+            $html = "<br><h1>Patient Xray Report</h1><br>";
+            $tcpdflib->writeHTML($html, true, 0, true, 0);
+            $tcpdflib->setImageScale('1.5');
+            $tcpdflib->Image('./uploads/'.$patient_reports['xray'],0,$tcpdflib->GetY());
+        }
     }
 
     $tcpdflib->Output($patient_details['first_name'].'_Report', 'I');
