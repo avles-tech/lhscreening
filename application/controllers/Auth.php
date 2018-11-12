@@ -48,8 +48,10 @@ class Auth extends CI_Controller
 				$this->data['users'][$k]->groups = $this->ion_auth->get_users_groups($user->id)->result();
 			}
 
-			$this->_render_page('auth' . DIRECTORY_SEPARATOR . 'index', $this->data);
-			//redirect('/Patients', 'refresh');
+			//$this->_render_page('auth' . DIRECTORY_SEPARATOR . 'index', $this->data);
+				$this->load->view('templates/header');
+				$this->load->view('auth/index', $this->data);
+				$this->load->view('templates/footer');
 		}
 	}
 
@@ -234,7 +236,10 @@ class Auth extends CI_Controller
 
 			// set any errors and display the form
 			$this->data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
-			$this->_render_page('auth' . DIRECTORY_SEPARATOR . 'forgot_password', $this->data);
+			//$this->_render_page('auth' . DIRECTORY_SEPARATOR . 'forgot_password', $this->data);
+			$this->load->view('templates/header');
+			$this->load->view('auth/forgot_password', $this->data);
+			$this->load->view('templates/footer');
 		}
 		else
 		{
@@ -325,7 +330,10 @@ class Auth extends CI_Controller
 				$this->data['code'] = $code;
 
 				// render
-				$this->_render_page('auth' . DIRECTORY_SEPARATOR . 'reset_password', $this->data);
+				//$this->_render_page('auth' . DIRECTORY_SEPARATOR . 'reset_password', $this->data);
+				$this->load->view('templates/header');
+				$this->load->view('auth/reset_password', $this->data);
+				$this->load->view('templates/footer');
 			}
 			else
 			{
@@ -424,7 +432,10 @@ class Auth extends CI_Controller
 			$this->data['csrf'] = $this->_get_csrf_nonce();
 			$this->data['user'] = $this->ion_auth->user($id)->row();
 
-			$this->_render_page('auth' . DIRECTORY_SEPARATOR . 'deactivate_user', $this->data);
+			//$this->_render_page('auth' . DIRECTORY_SEPARATOR . 'deactivate_user', $this->data);
+			$this->load->view('templates/header');
+			$this->load->view('auth/deactivate_user', $this->data);
+			$this->load->view('templates/footer');
 		}
 		else
 		{
@@ -557,7 +568,10 @@ class Auth extends CI_Controller
 				'value' => $this->form_validation->set_value('password_confirm'),
 			);
 
-			$this->_render_page('auth' . DIRECTORY_SEPARATOR . 'create_user', $this->data);
+			//$this->_render_page('auth' . DIRECTORY_SEPARATOR . 'create_user', $this->data);
+			$this->load->view('templates/header');
+			$this->load->view('auth/create_user', $this->data);
+			$this->load->view('templates/footer');
 		}
 	}
 	/**
@@ -708,7 +722,10 @@ class Auth extends CI_Controller
 			'type' => 'password'
 		);
 
-		$this->_render_page('auth' . DIRECTORY_SEPARATOR . 'edit_user', $this->data);
+		//$this->_render_page('auth' . DIRECTORY_SEPARATOR . 'edit_user', $this->data);
+		$this->load->view('templates/header');
+		$this->load->view('auth/edit_user', $this->data);
+		$this->load->view('templates/footer');
 	}
 
 	/**
@@ -756,7 +773,10 @@ class Auth extends CI_Controller
 				'value' => $this->form_validation->set_value('description'),
 			);
 
-			$this->_render_page('auth' . DIRECTORY_SEPARATOR . 'create_group', $this->data);
+			//$this->_render_page('auth' . DIRECTORY_SEPARATOR . 'create_group', $this->data);
+			$this->load->view('templates/header');
+			$this->load->view('auth/create_group', $this->data);
+			$this->load->view('templates/footer');
 		}
 	}
 
@@ -825,7 +845,10 @@ class Auth extends CI_Controller
 			'value' => $this->form_validation->set_value('group_description', $group->description),
 		);
 
-		$this->_render_page('auth' . DIRECTORY_SEPARATOR . 'edit_group', $this->data);
+		//$this->_render_page('auth' . DIRECTORY_SEPARATOR . 'edit_group', $this->data);
+		$this->load->view('templates/header');
+		$this->load->view('auth/edit_group', $this->data);
+		$this->load->view('templates/footer');
 	}
 
 	/**

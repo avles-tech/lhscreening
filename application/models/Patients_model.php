@@ -38,14 +38,7 @@ class Patients_model extends CI_Model {
         {
             $this->load->helper('url');
 
-            $data = array(
-                    'first_name' => $this->input->post('first_name')
-                    ,'last_name' => $this->input->post('last_name')
-                    ,'email' => $this->input->post('email')
-                    ,'dob' => $this->input->post('dob')
-                    ,'gender' => $this->input->post('gender')
-                    ,'address' => $this->input->post('address')
-            );
+            $data = $this->input->post();
 
             $this->db->insert('patients', $data);
             $insert_id = $this->db->insert_id();

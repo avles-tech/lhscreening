@@ -44,3 +44,7 @@
 	<a href = "<?php echo base_url().'index.php/upload/download/'.$patient_reports['xray'] ?>" > download</a>
 	<?php endif?>
 </div> <!-- form-group end.// -->
+
+<?php 
+$this->load->view('patients/patient_report',array( 'patient_id' => $patient_id)); 
+?>
