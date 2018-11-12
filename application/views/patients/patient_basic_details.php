@@ -28,17 +28,17 @@ else{
 <div class="form-row">
 	<div class="form-group col-md-6">
 		<label>Phone home</label>
-		<input class='form-control' name='phone_home' value="<?php echo array_key_exists('phone_home', $patient_details) ? $patient_details['phone_home'] : '';?>"/>
+		<input class='form-control' name='phone_home' type='tel' pattern='/((?:\+|00)[17](?: |\-)?|(?:\+|00)[1-9]\d{0,2}(?: |\-)?|(?:\+|00)1\-\d{3}(?: |\-)?)?(0\d|\([0-9]{3}\)|[1-9]{0,3})(?:((?: |\-)[0-9]{2}){4}|((?:[0-9]{2}){4})|((?: |\-)[0-9]{3}(?: |\-)[0-9]{4})|([0-9]{7}))/g' value="<?php echo array_key_exists('phone_home', $patient_details) ? $patient_details['phone_home'] : '';?>"/>
 	</div> <!-- form-group end.// -->
 	<div class="form-group col-md-6">
 		<label>Phone mobile</label>
-		<input class='form-control' name='phone_mobile' value="<?php echo array_key_exists('phone_mobile', $patient_details) ? $patient_details['phone_mobile'] : '';?>"/>
+		<input class='form-control' name='phone_mobile' type='tel' value="<?php echo array_key_exists('phone_mobile', $patient_details) ? $patient_details['phone_mobile'] : '';?>"/>
 	</div> <!-- form-group end.// -->
 </div> <!-- form-row.// -->
 <div class="form-row">
 	<div class="form-group col-md-6">
 		<label>Phone work</label>
-		<input class='form-control' name='phone_work' value="<?php echo array_key_exists('phone_work', $patient_details) ? $patient_details['phone_work'] : '';?>" />
+		<input class='form-control' name='phone_work' type='tel' value="<?php echo array_key_exists('phone_work', $patient_details) ? $patient_details['phone_work'] : '';?>" />
 	</div> <!-- form-group end.// -->
 	<div class="form-group col-md-6">
 
@@ -47,24 +47,24 @@ else{
 <div class="form-group">
 	<label class="form-check form-check-inline">
 		<input class="form-check-input" type="radio" name="gender" value="1" <?php echo array_key_exists('gender',
-		 $patient_details) ? $patient_details['gender']=='1' ? 'checked' : '' : '' ; ?>>
+		 $patient_details) ? $patient_details['gender']=='1' ? 'checked' : '' : '' ; ?> required>
 		<span class="form-check-label"> Male </span>
 	</label>
 	<label class="form-check form-check-inline">
 		<input class="form-check-input" type="radio" name="gender" value="0" <?php echo array_key_exists('gender',
-		 $patient_details) ? $patient_details['gender']=='0' ? 'checked' : '' : '' ; ?>>
+		 $patient_details) ? $patient_details['gender']=='0' ? 'checked' : '' : '' ; ?> required>
 		<span class="form-check-label"> Female</span>
 	</label>
 </div> <!-- form-group end.// -->
 <div class="form-row">
 	<div class="form-group col-md-6">
 		<label>Date of Birth</label>
-		<input type="date" class="form-control" name='dob' value="<?php echo array_key_exists('dob', $patient_details) ? nice_date($patient_details['dob'], 'Y-m-d') : '';?>"
+		<input type="date" min="1900-01-01" max="2100-12-31" class="form-control" name='dob' value="<?php echo array_key_exists('dob', $patient_details) ? nice_date($patient_details['dob'], 'Y-m-d') : '';?>"
 		 required>
 	</div> <!-- form-group end.// -->
 	<div class="form-group col-md-6">
 		<label>Age</label>
-		<input class='form-control' name='age' />
+		<input class='form-control' name='age' value="<?php echo array_key_exists('age', $patient_details) ? $patient_details['age']:'';?>"/>
 	</div> <!-- form-group end.// -->
 </div> <!-- form-row.// -->
 <div class="form-group">
