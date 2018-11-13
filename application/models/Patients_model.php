@@ -36,9 +36,23 @@ class Patients_model extends CI_Model {
 
         public function set_patients()
         {
-            $this->load->helper('url');
+                $this->load->helper('url');
 
-            $data = $this->input->post();
+                $data = $this->input->post();
+                if(!array_key_exists('allergy_milk',$data))
+                        $data['allergy_milk'] = '0';
+                if(!array_key_exists('allergy_eggs',$data))
+                        $data['allergy_eggs'] = '0';
+                if(!array_key_exists('allergy_peanuts',$data))
+                        $data['allergy_peanuts'] = '0';
+                if(!array_key_exists('allergy_shellfish',$data))
+                        $data['allergy_shellfish'] = '0';
+                if(!array_key_exists('allergy_iodine',$data))
+                        $data['allergy_iodine'] = '0';
+                if(!array_key_exists('allergy_pencillin',$data))
+                        $data['allergy_pencillin'] = '0';
+                if(!array_key_exists('allergy_treenuts',$data))
+                        $data['allergy_treenuts'] = '0';
 
             $this->db->insert('patients', $data);
             $insert_id = $this->db->insert_id();
@@ -47,8 +61,23 @@ class Patients_model extends CI_Model {
 
         public function update_patients($patient_id,$form_data)
         {
-            $this->db->where('patient_id', $patient_id);
+                if(!array_key_exists('allergy_milk',$form_data))
+                        $form_data['allergy_milk'] = '0';
+                if(!array_key_exists('allergy_eggs',$form_data))
+                        $form_data['allergy_eggs'] = '0';
+                if(!array_key_exists('allergy_peanuts',$form_data))
+                        $form_data['allergy_peanuts'] = '0';
+                if(!array_key_exists('allergy_shellfish',$form_data))
+                        $form_data['allergy_shellfish'] = '0';
+                if(!array_key_exists('allergy_iodine',$form_data))
+                        $form_data['allergy_iodine'] = '0';
+                if(!array_key_exists('allergy_pencillin',$form_data))
+                        $form_data['allergy_pencillin'] = '0';
+                if(!array_key_exists('allergy_treenuts',$form_data))
+                        $data['allergy_treenuts'] = '0';
 
-            return $this->db->update('patients', $form_data);
+                $this->db->where('patient_id', $patient_id);
+
+                return $this->db->update('patients', $form_data);
         }
 }
