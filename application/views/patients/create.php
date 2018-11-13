@@ -27,7 +27,7 @@
 				<div class="form-group">
 					<h6><u> DISCLAIMER: </u></h6>
 					<p>The LycaHealth Ultra Health Assessment report is based wholly on the information provided by the
-						cli-ent/patient in their responses to the questions and from the results of tests undertaken.</p>
+						client/patient in their responses to the questions and from the results of tests undertaken.</p>
 					<p>The LycaHealth Ultra Health Assessment is not a replacement for formal medical diagnosis, however it will
 						provide an indication of any abnormalities evidenced through the tests conducted.</p>
 					<p>LycaHealth, its staff or affiliates accept no liability or responsibility for;</p>
