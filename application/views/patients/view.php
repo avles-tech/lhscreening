@@ -73,25 +73,3 @@ echo '<h2>'.$patient_details['first_name'].' '.$patient_details['last_name'].'</
 	</div>
 	<div class="tab-pane" id="gp" role="tabpanel" aria-labelledby="gad-tab">gp_recommend</div>
 </div>
-<script>
-	$('#other_allergy_yes').click(function(){
-		this.checked?$('#if_allergy_details_div').show(800):$('#if_allergy_details_div').hide(800); //time for show
-	});
-	$('#other_allergy_no').click(function(){
-		this.checked?$('#if_allergy_details_div').hide(800):$('#if_allergy_details_div').show(800); //time for show
-	});
-
-	//Age
-	function getAge(birthDate) {
-		var birth_date = new Date(birthDate);
-		var currentDate = new Date();
-
-		var years = (currentDate.getFullYear() - birth_date.getFullYear());
-
-		if (currentDate.getMonth() < birth_date.getMonth() ||
-				currentDate.getMonth() == birth_date.getMonth() && currentDate.getDate() < birth_date.getDate()) {
-			years--;
-		}
-		$('input[name=age]').val(years);
-	}
-</script>
