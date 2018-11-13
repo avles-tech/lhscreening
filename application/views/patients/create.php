@@ -22,9 +22,6 @@
 				<?php echo form_open('patients/create'); ?>
 				<?php $this->load->view('patients/patient_basic_details'); ?>
 				<div class="form-group">
-					<h6>Contact details</h6>
-				</div> <!-- form-group end.// -->
-				<div class="form-group">
 					<div class="col-md-12" style='border: 1px solid #00070e;'></div>
 				</div> <!-- form-group end.// -->
 				<div class="form-group">

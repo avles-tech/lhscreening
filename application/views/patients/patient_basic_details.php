@@ -105,20 +105,142 @@ else{
 	</div> <!-- form-group end.// -->
 </div> <!-- form-row end.// -->
 <div class="form-group">
-	<label >Relationship</label>
+	<label>Relationship</label>
 	<input class="form-control" type="text" name="next_of_kin_relationship" value="" />
 </div> <!-- form-group end.// -->
 <div class="form-group">
-	<label > In case of emergency if you are uncontactable, do you provide consent for your next of kin to be contacted
-and for relevant clinical information to be divulged? </label>
+	<label> In case of emergency if you are uncontactable, do you provide consent for your next of kin to be contacted
+		and for relevant clinical information to be divulged? </label>
 	<label class="form-check form-check-inline">
-		<input class="form-check-input" type="radio" name="next_of_kin_contact" value="1" <?php echo array_key_exists('next_of_kin_contact',
-		 $patient_details) ? $patient_details['next_of_kin_contact']=='1' ? 'checked' : '' : '' ; ?> >
+		<input class="form-check-input" type="radio" name="next_of_kin_contact" value="1" <?php echo
+		 array_key_exists('next_of_kin_contact', $patient_details) ? $patient_details['next_of_kin_contact']=='1' ? 'checked'
+		 : '' : '' ; ?> >
 		<span class="form-check-label"> yes </span>
 	</label>
 	<label class="form-check form-check-inline">
-		<input class="form-check-input" type="radio" name="next_of_kin_contact" value="0" <?php echo array_key_exists('next_of_kin_contact',
-		 $patient_details) ? $patient_details['next_of_kin_contact']=='0' ? 'checked' : '' : '' ; ?> >
+		<input class="form-check-input" type="radio" name="next_of_kin_contact" value="0" <?php echo
+		 array_key_exists('next_of_kin_contact', $patient_details) ? $patient_details['next_of_kin_contact']=='0' ? 'checked'
+		 : '' : '' ; ?> >
+		<span class="form-check-label"> No</span>
+	</label>
+</div> <!-- form-group end.// -->
+<br>
+<h4>NHS / Alternative GP</h4>
+<div class="form-group">
+	<label>Name of NHS / Alternative GP</label>
+	<input type="text" class="form-control" name="alternative_gp" value="" placeholder="If applicable" />
+</div> <!-- form-group end.// -->
+<div class="form-group">
+	<label>I consent to my medical information being shared with my regular GP if I am not contactable.</label>
+	<br>
+	<label class="form-check form-check-inline">
+		<input class="form-check-input" type="radio" name="gp_contact_agree" value="1" <?php echo
+		 array_key_exists('gp_contact_agree', $patient_details) ? $patient_details['gp_contact_agree']=='1' ? 'checked' : ''
+		 : '' ; ?> >
+		<span class="form-check-label"> Agree </span>
+	</label>
+	<label class="form-check form-check-inline">
+		<input class="form-check-input" type="radio" name="gp_contact_agree" value="0" <?php echo
+		 array_key_exists('gp_contact_agree', $patient_details) ? $patient_details['gp_contact_agree']=='0' ? 'checked' : ''
+		 : '' ; ?> >
+		<span class="form-check-label"> Disagree</span>
+	</label>
+</div> <!-- form-group end.// -->
+<br>
+<h4>Health</h4>
+<div class="form-group">
+	<label>How is your health at present? Is there anything in particular you would like to discuss with
+		the Doctor
+		today?</label>
+	<textarea class="form-control" name="your_health" placeholder="Enter your details here" rows="6"></textarea>
+</div> <!-- form-group end.// -->
+<div class="form-group">
+	<label>Are you taking any medications at present Kindly list the medications as well as
+		doses?</label>
+	<textarea class="form-control" name="current_medication" placeholder="Enter your details here" rows="6"></textarea>
+</div> <!-- form-group end.// -->
+<div class="form-group">
+	<label>Are you aware of any allergies to the following?</label>
+	<br>
+	<div class="form-check form-check-inline">
+		<input type="checkbox" value="1" name="milk_allergy">
+		<label>Milk</label>
+	</div>
+	<div class="form-check form-check-inline">
+		<input type="checkbox" value="1" name="eggs_allergy">
+		<label>Eggs</label>
+	</div>
+	<div class="form-check form-check-inline">
+		<input type="checkbox" id="peanuts_allergy" value="1" name="peanuts_allergy">
+		<label for="peanuts_allergy">Peanuts</label>
+	</div>
+	<div class="form-check form-check-inline">
+		<input type="checkbox" id="shellfish_allergy" value="1" name="shellfish_allergy">
+		<label for="shellfish_allergy">Shellfish</label>
+	</div>
+	<div class="form-check form-check-inline">
+		<input type="checkbox" id="iodine_allergy" value="1" name="iodine_allergy">
+		<label for="iodine_allergy">Iodine</label>
+	</div>
+	<div class="form-check form-check-inline">
+		<input type="checkbox" id="penicillin_allergy" value="1" name="penicillin_allergy">
+		<label for="penicillin_allergy">Penicillin</label>
+	</div>
+	<div class="form-check form-check-inline">
+		<input type="checkbox" id="nuts_allergy" value="1" name="nuts_allergy">
+		<label for="nuts_allergy">Tree nuts(walnuts/almonds/pecan)</label>
+	</div>
+</div> <!-- form-group end.// -->
+<div class="form-group">
+	<label>Other Allergies</label>
+	<div class="form-check form-check-inline">
+		<input type="radio" id="other_allergy_yes" value="1" name="other_allergy">
+		<label for="other_allergy_yes">Yes</label>
+	</div>
+	<div class="form-check form-check-inline">
+		<input type="radio" id="other_allergy_no" value="0" name="other_allergy" checked>
+		<label for="other_allergy_no">No</label>
+	</div>
+</div> <!-- form-group end.// -->
+<div class="form-group">
+	<label>Do you suffer from Hayfever?</label>
+	<label class="form-check form-check-inline">
+		<input class="form-check-input" type="radio" name="hay_fever" value="1" <?php echo array_key_exists('hay_fever',
+		 $patient_details) ? $patient_details['hay_fever']=='1' ? 'checked' : '' : '' ; ?> required>
+		<span class="form-check-label"> Yes </span>
+	</label>
+	<label class="form-check form-check-inline">
+		<input class="form-check-input" type="radio" name="hay_fever" value="0" <?php echo array_key_exists('hay_fever',
+		 $patient_details) ? $patient_details['hay_fever']=='0' ? 'checked' : '' : '' ; ?> required>
+		<span class="form-check-label"> No</span>
+	</label>
+</div> <!-- form-group end.// -->
+<div class="form-group">
+	<label>Do you have Asthma?</label>
+	<label class="form-check form-check-inline">
+		<input class="form-check-input" type="radio" name="asthma" value="1" <?php echo array_key_exists('asthma',
+		 $patient_details) ? $patient_details['asthma']=='1' ? 'checked' : '' : '' ; ?> required>
+		<span class="form-check-label"> Yes </span>
+	</label>
+	<label class="form-check form-check-inline">
+		<input class="form-check-input" type="radio" name="asthma" value="0" <?php echo array_key_exists('asthma',
+		 $patient_details) ? $patient_details['asthma']=='0' ? 'checked' : '' : '' ; ?> required>
+		<span class="form-check-label"> No</span>
+	</label>
+</div> <!-- form-group end.// -->
+<h4>CHAPERONE</h4>
+<div class="form-group">
+	<label>Please advise us before any consultations whether you wish to have a chaperone.</label>
+	<label>Do you require a chaperone before this consultation?</label>
+	<br>
+	<label class="form-check form-check-inline">
+		<input class="form-check-input" type="radio" name="if_chaperone" value="1" <?php echo array_key_exists('if_chaperone',
+		 $patient_details) ? $patient_details['if_chaperone']=='1' ? 'checked' : '' : '' ; ?> required>
+		<span class="form-check-label"> Yes </span>
+	</label>
+	<label class="form-check form-check-inline">
+		<input class="form-check-input" type="radio" name="if_chaperone" value="0" <?php echo array_key_exists('if_chaperone',
+		 $patient_details) ? $patient_details['if_chaperone']=='0' ? 'checked' : '' : '' ; ?> required>
 		<span class="form-check-label"> No</span>
 	</label>
 </div> <!-- form-group end.// -->
