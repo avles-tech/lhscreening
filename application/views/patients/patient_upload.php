@@ -46,5 +46,5 @@
 </div> <!-- form-group end.// -->
 
 <?php 
-$this->load->view('patients/patient_report',array( 'patient_id' => $patient_id)); 
+//$this->load->view('patients/patient_report',array( 'patient_id' => $patient_id)); 
 ?>
