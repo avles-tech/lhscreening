@@ -10,7 +10,7 @@ class Patients extends CI_Controller {
                 $this->load->model('patient_phq_model');
                 $this->load->model('patient_gad_model');
                 $this->load->model('patient_lab_test_model');
-                $this->load->model('User_activity_model');
+                $this->load->model('user_activity_model');
                 $this->load->model('patient_medical_history_model');
                 $this->load->model('patient_gp_model');
 
