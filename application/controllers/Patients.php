@@ -3,6 +3,7 @@ class Patients extends CI_Controller {
         public function __construct()
         {
                 parent::__construct();
+                
                 $this->load->model('patients_model');
                 $this->load->model('patient_reports_model');
                 $this->load->model('phq_model');
@@ -10,6 +11,9 @@ class Patients extends CI_Controller {
                 $this->load->model('patient_gad_model');
                 $this->load->model('patient_lab_test_model');
                 $this->load->model('User_activity_model');
+                $this->load->model('patient_medical_history_model');
+                $this->load->model('patient_gp_model');
+
                 $this->load->model('gad_model');
                 $this->load->helper('url_helper');
                 $this->load->library('ion_auth');
@@ -92,6 +96,7 @@ class Patients extends CI_Controller {
                 }
                 $data['patients'] = $this->patients_model->get_patients();
                 $data['title'] = 'patients archive';
+                
                 $this->load->view('templates/header');
                 $this->load->view('patients/index', $data);
                 $this->load->view('templates/footer');
@@ -112,6 +117,7 @@ class Patients extends CI_Controller {
                 {
                         show_404();
                 }
+
                 $this->load->view('templates/header');
                 $this->load->view('patients/view',$data);
                 $this->load->view('templates/footer');
@@ -189,6 +195,26 @@ class Patients extends CI_Controller {
                 $patient_id = $this->input->post('patient_id');
                 $form_data = $this->input->post();
                 $this->patient_lab_test_model->set_patient_lab_test($patient_id,$form_data);
+                $this->load->view('templates/header');
+                $this->load->view('patients/view', array( 'patient_id' => $patient_id) );
+                $this->load->view('templates/footer');
+        }
+
+        public function update_gp(){
+                $this->load->library('form_validation');
+                $patient_id = $this->input->post('patient_id');
+                $form_data = $this->input->post();
+                $this->patient_gp_model->set($patient_id,$form_data);
+                $this->load->view('templates/header');
+                $this->load->view('patients/view', array( 'patient_id' => $patient_id) );
+                $this->load->view('templates/footer');
+        }
+
+        public function update_medical_history(){
+                $this->load->library('form_validation');
+                $patient_id = $this->input->post('patient_id');
+                $form_data = $this->input->post();
+                $this->patient_medical_history_model->set($patient_id,$form_data);
                 $this->load->view('templates/header');
                 $this->load->view('patients/view', array( 'patient_id' => $patient_id) );
                 $this->load->view('templates/footer');

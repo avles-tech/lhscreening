@@ -17,10 +17,10 @@ $this->User_activity_model->set('selected '.$patient_details['first_name'].'(pat
 		<a class="nav-link" id="gad-tab" data-toggle="tab" href="#gad" role="tab" aria-controls="gad" aria-selected="false">GAD-7</a>
 	</li>
 	<li class="nav-item" onclick="setActivity('<?php echo 'opened Medical history results of '.$patient_details['first_name'].' (Patient ID:'.$patient_id.')' ?>')">
-		<a class="nav-link" id="medical_history-tab" data-toggle="tab" href="#medical_history" role="tab" aria-controls="medical_history" aria-selected="false">Medical history</a>
+		<a class="nav-link" id="medical_history-tab" data-toggle="tab" href="#medical_history" role="tab" aria-controls="medical_history" aria-selected="false">Medical History</a>
 	</li>
 	<li class="nav-item" onclick="setActivity('<?php echo 'opened Laboratory test results of '.$patient_details['first_name'].' (Patient ID:'.$patient_id.')' ?>')">
-		<a class="nav-link" id="lab_test-tab" data-toggle="tab" href="#lab_test" role="tab" aria-controls="lab_test" aria-selected="false">Laboratory test</a>
+		<a class="nav-link" id="lab_test-tab" data-toggle="tab" href="#lab_test" role="tab" aria-controls="lab_test" aria-selected="false">Laboratory Test</a>
 	</li>
 	<li class="nav-item" onclick="setActivity('<?php echo 'opened uploads of '.$patient_details['first_name'].' (Patient ID:'.$patient_id.')' ?>')">
 		<a class="nav-link" id="upload_report-tab" data-toggle="tab" href="#upload_report" role="tab" aria-controls="upload_report" aria-selected="false">Reports</a>
@@ -28,6 +28,9 @@ $this->User_activity_model->set('selected '.$patient_details['first_name'].'(pat
 	<?php if ($this->ion_auth->in_group('gp')): ?>
 	<li class="nav-item" onclick="setActivity('<?php echo 'opened GP Summary and Recommendations of '.$patient_details['first_name'].' (Patient ID:'.$patient_id.')' ?>')">
 		<a class="nav-link" id="gp-tab" data-toggle="tab" href="#gp" role="tab" aria-controls="gp" aria-selected="false">GP summary & recommendation</a>
+	</li>
+	<li class="nav-item" >
+		<a class="nav-link" id="generate_report-tab" data-toggle="tab" href="#generate_report" role="tab" aria-controls="generate_report" aria-selected="false">Generate Reports</a>
 	</li>
 	<?php endif ?>
 </ul>
@@ -61,10 +64,14 @@ $this->User_activity_model->set('selected '.$patient_details['first_name'].'(pat
 			$this->load->view('patients/patient_gad',array( 'patient_id' => $patient_id)); 
 		?>
 	</div>
-	<div class="tab-pane" id="medical_history" role="tabpanel" aria-labelledby="gad-tab">medical history</div>
+	<div class="tab-pane" id="medical_history" role="tabpanel" aria-labelledby="gad-tab">
+	<?php 
+			$this->load->view('patients/patient_medical_history',array( 'patient_id' => $patient_id)); 
+		?>
+	</div>
 	<div class="tab-pane" id="lab_test" role="tabpanel" aria-labelledby="gad-tab">
 	<?php 
-			$this->load->view('patients/patient_lab_test',array( 'patient_id' => $patient_id , 'patient_first_name'=>$patient_details['first_name'])); 
+			$this->load->view('patients/patient_lab_test',array( 'patient_id' => $patient_id)); 
 		?>
 	</div>
 	<div class="tab-pane" id="upload_report" role="tabpanel" aria-labelledby="gad-tab">
@@ -72,7 +79,16 @@ $this->User_activity_model->set('selected '.$patient_details['first_name'].'(pat
 		$this->load->view('patients/patient_upload', array( 'patient_id' => $patient_id)); 
 	?>
 	</div>
-	<div class="tab-pane" id="gp" role="tabpanel" aria-labelledby="gad-tab">gp_recommend</div>
+	<div class="tab-pane" id="gp" role="tabpanel" aria-labelledby="gad-tab">
+	<?php 
+		$this->load->view('patients/patient_gp', array( 'patient_id' => $patient_id)); 
+	?>
+	</div>
+	<div class="tab-pane" id="generate_report" role="tabpanel" aria-labelledby="generate_report-tab">
+	<?php 
+		$this->load->view('patients/patient_report', array( 'patient_id' => $patient_id)); 
+	?>
+	</div>
 </div>
 <Script>
 	function setActivity(activity)
