@@ -5,12 +5,16 @@ class Upload extends CI_Controller {
         public function __construct()
         {
                 parent::__construct();
+
                 $this->load->model('patients_model');
                 $this->load->model('patient_reports_model');
+                $this->load->model('patient_lab_test_model');
                 $this->load->model('patient_phq_model');
                 $this->load->model('patient_gad_model');
                 $this->load->model('phq_model');
                 $this->load->model('gad_model');
+                $this->load->model('User_activity_model');
+
                 $this->load->library('ion_auth');
 
                 $this->load->helper(array('form', 'url'));
