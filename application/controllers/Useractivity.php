@@ -4,12 +4,12 @@ class Useractivity extends CI_Controller {
         {
             parent::__construct();
             $this->load->helper('url_helper');
-            $this->load->model('User_activity_model');
+            $this->load->model('user_activity_model');
         }
         
         public function set_activity(){
             $activity = $this->input->post('activity');
-            $this->User_activity_model->set($activity);
+            $this->user_activity_model->set($activity);
         }
 
         function search()
@@ -20,7 +20,7 @@ class Useractivity extends CI_Controller {
                 {
                         $query = $this->input->post('query');
                 }
-                $data = $this->User_activity_model->search($query);
+                $data = $this->user_activity_model->search($query);
                 $output .= '
                 <div class="table-responsive">
                 <table class="table table-bordered ">

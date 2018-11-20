@@ -3,7 +3,7 @@
 $patient_details = $this->patients_model->get_patients($patient_id);
 echo '<h2>'.$patient_details['first_name'].' '.$patient_details['last_name'].'</h2>';
 //echo $phq_list[0]['question'];
-$this->User_activity_model->set('selected '.$patient_details['first_name'].'(patient ID:'.$patient_details['patient_id'].') for update');
+$this->user_activity_model->set('selected '.$patient_details['first_name'].'(patient ID:'.$patient_details['patient_id'].') for update');
 ?>
 <ul class="nav nav-tabs" id="myTab" role="tablist">
 	<li class="nav-item" >

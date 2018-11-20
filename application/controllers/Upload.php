@@ -13,7 +13,7 @@ class Upload extends CI_Controller {
                 $this->load->model('patient_gad_model');
                 $this->load->model('phq_model');
                 $this->load->model('gad_model');
-                $this->load->model('User_activity_model');
+                $this->load->model('user_activity_model');
 
                 $this->load->library('ion_auth');
 
