@@ -1,14 +1,10 @@
 <br>
-<div class="float-right">
-<a href="<?php echo base_url().'index.php/patients/create' ?>" > Register Patient</a>
-</div>
-<br>
 <br>
 <div class="input-group mb-3">
 	<div class="input-group-prepend">
 		<span class="input-group-text">Search</span>
 	</div>
-	<input type="text" name="search_text" id="search_text" placeholder="Search by Patient Details" class="form-control" />
+	<input type="text" name="search_text" id="search_text" placeholder="Search by User Details" class="form-control" />
 </div>
 <br />
 <div id="result">
@@ -66,7 +62,7 @@
 
 		function load_data(query) {
 			$.ajax({
-				url: "<?php echo base_url(); ?>index.php/patients/search",
+				url: "<?php echo base_url(); ?>index.php/useractivity/search",
 				method: "POST",
 				data: {
 					query: query
