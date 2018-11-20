@@ -66,7 +66,7 @@ $this->user_activity_model->set('selected '.$patient_details['first_name'].'(pat
 	</div>
 	<div class="tab-pane" id="medical_history" role="tabpanel" aria-labelledby="gad-tab">
 	<?php 
-			$this->load->view('patients/patient_medical_history',array( 'patient_id' => $patient_id)); 
+			//$this->load->view('patients/patient_medical_history',array( 'patient_id' => $patient_id)); 
 		?>
 	</div>
 	<div class="tab-pane" id="lab_test" role="tabpanel" aria-labelledby="gad-tab">
