@@ -9,6 +9,7 @@ class Patients extends CI_Controller {
                 $this->load->model('patient_phq_model');
                 $this->load->model('patient_gad_model');
                 $this->load->model('patient_lab_test_model');
+                $this->load->model('User_activity_model');
                 $this->load->model('gad_model');
                 $this->load->helper('url_helper');
                 $this->load->library('ion_auth');
@@ -62,8 +63,26 @@ class Patients extends CI_Controller {
                         </tr>';
                 }
                 $output .= '</table>';
+
+                $this->User_activity_model->set('have searched for a registered patient');
+
                 echo $output;
         }
+
+        public function set_activity($activity)
+        {
+                if (!$this->ion_auth->logged_in())
+		{
+			// redirect them to the login page
+			redirect('auth/login', 'refresh');
+                }
+                $data['patients'] = $this->patients_model->get_patients();
+                $data['title'] = 'patients archive';
+                $this->load->view('templates/header');
+                $this->load->view('patients/index', $data);
+                $this->load->view('templates/footer');
+        }
+
         public function index()
         {
                 if (!$this->ion_auth->logged_in())
