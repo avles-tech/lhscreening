@@ -32,14 +32,14 @@
 						provide an indication of any abnormalities evidenced through the tests conducted.</p>
 					<p>LycaHealth, its staff or affiliates accept no liability or responsibility for;</p>
 					<ul>
-						<li>Any Decisions, Acts or Omissions that the client/patient takes in reliance upon the information con-tained or
+						<li>Any Decisions, Acts or Omissions that the client/patient takes in reliance upon the information contained or
 							provided through the LycaHealth Ultra Health Assessment,</li>
 						<li>Claims arising out of or related to the LycaHealth Ultra Health Assessment,</li>
 						<li>Clients use of the LycaHealth Ultra Health Assessment tool,</li>
 						<li>For any incidental, indirect, special, consequential or punitive damages, including but not limited to,
 							possible health side effects.</li>
 					</ul>
-					<p>The LycaHealth Ultra Health Assessment report makes no warranties or guarantees of any kind and ex-pressly
+					<p>The LycaHealth Ultra Health Assessment report makes no warranties or guarantees of any kind and expressly
 						disclaims any and all warranties of any kind or nature.</p>
 				</div> <!-- form-group end.// -->
 				<div class="form-group">
