@@ -16,30 +16,35 @@
 			}
 			$uniqueCategories = array_unique($categories);
 			?>
-			<?php	
+		<?php	
             echo validation_errors();  
 			echo form_open('patients/update_patient_lab_test');
 			echo form_hidden('patient_id',$patient_id);
 			?>
-			<?php
+		<?php
 				foreach ($uniqueCategories as $cat):
 					echo '<h3>'.$cat.'</h3>';
 					foreach ($patient_lab_test as $item): 
 						if($item['category']==$cat):	
 				?>
-				<div class="form-group row">
-					<label class="col-sm-2 col-form-label"><?php echo $item['test_name'] ?></label>
-					<div class="col-sm-4">
-					<input class="form-control" name='<?php echo $item['id'] ?>' value="<?php echo array_key_exists('test_name', $item) ? $item['value'] : '';?>" >
-					</div>
-				</div> <!-- form-group end.// -->
-					<?php  endif; endforeach; endforeach; ?>
-			<div class="form-row">
-				<!-- form-group end.// -->
-				<div class="form-group">
-					<button type="submit" class="btn btn-primary btn-block"> Save </button>
-				</div> <!-- form-group// -->
+		<div class="form-group row">
+			<label class="col-sm-2 col-form-label">
+				<?php echo $item['test_name'] ?></label>
+			<div class="col-sm-4">
+				<input class="form-control" name='<?php echo $item[' id'] ?>' value="
+				<?php echo array_key_exists('value', $item) ? $item['value'] : '';?>" >
 			</div>
-			</form>
+			<div class="small-3 columns">
+				<span class="postfix"><?php echo array_key_exists('unit', $item) ? $item['unit'] : '';?></span>
+			</div>
+		</div> <!-- form-group end.// -->
+		<?php  endif; endforeach; endforeach; ?>
+		<div class="form-row">
+			<!-- form-group end.// -->
+			<div class="form-group">
+				<button type="submit" class="btn btn-primary btn-block"> Save </button>
+			</div> <!-- form-group// -->
+		</div>
+		</form>
 	</article>
 </div>
