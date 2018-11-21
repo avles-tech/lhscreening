@@ -28,6 +28,64 @@
 			<textarea class="form-control" name='family_history'><?php echo !empty($patient_medical_history_details) ? $patient_medical_history_details['family_history'] : '';?> </textarea>
 		</div>
 		<!-- form-group end.// -->
+		<h3>Travel & Vaccination History</h3>
+		<div class="form-group">
+			<label class="control-label col-md-3 col-sm-3 col-xs-12">Travel &amp; Vaccination History</label>
+			<div class="col-md-6 col-sm-6 col-xs-12" id="travel-history-block">
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th>Destination</th>
+							<th>Date</th>
+							<th>Duration in days</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class="hidden">
+							<td>
+								<input type="text" name="travel_destination[]" class="form-control" placeholder="Destination" data-parsley-id="47">
+							</td>
+							<td>
+								<input type="date" name="travel_date[]" class="form-control" placeholder="Date" data-parsley-id="49">
+							</td>
+							<td class="col-xs-3" style="padding-left:0">
+								<input type="number" name="travel_duration[]" class="form-control" placeholder="Duration in days"
+								 data-parsley-id="51">
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<input type="text" name="travel_destination[]" class="form-control" placeholder="Destination" data-parsley-id="53">
+							</td>
+							<td>
+								<input type="date" name="travel_date[]" class="form-control" placeholder="Date" data-parsley-id="55">
+							</td>
+							<td class="col-xs-3" style="padding-left:0">
+								<input type="number" name="travel_duration[]" class="form-control" placeholder="Duration in days"
+								 data-parsley-id="57">
+							</td>
+						</tr>
+						<tr class="validate_this" style="display: table-row;">
+							<td>
+								<input type="text" name="travel_destination[]" class="form-control" placeholder="Destination" data-parsley-id="47">
+							</td>
+							<td>
+								<input type="date" name="travel_date[]" class="form-control" placeholder="Date" data-parsley-id="49">
+							</td>
+							<td class="col-xs-3" style="padding-left:0">
+								<input type="number" name="travel_duration[]" class="form-control" placeholder="Duration in days"
+								 data-parsley-id="51">
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<br>
+				<blockquote>Travel date is important, if accurate date is unknown please select rough date.</blockquote>
+			</div>
+			<div class="col-md-1 col-sm-1 col-xs-12">
+				<a id="travel-add" class="btn btn-success" type="button">Add <span class="fa fa-plus"></span></a>
+			</div>
+		</div>
 		<h3>Vaccinations</h3>
 		<div class="form-group">
 			<div class="form-check form-check-inline">
@@ -81,6 +139,110 @@
 				<label>Yellow Fever</label>
 			</div>
 		</div> <!-- form-group end.// -->
+		<h3>Lifestyle</h3>
+		<div class="form-group">
+			<label>Smoking</label>
+			<label class="form-check form-check-inline">
+				<input class="form-check-input" type="radio" name="smoking" value="Non-smoker" <?php echo
+				 !empty($patient_medical_history_details) ? $patient_medical_history_details['smoking']=='Non-smoker' ? 'checked' :
+				 '' : '' ; ?> >
+				<span class="form-check-label"> Non-smoker </span>
+			</label>
+			<label class="form-check form-check-inline">
+				<input class="form-check-input" type="radio" name="smoking" value="Social" <?php echo
+				 !empty($patient_medical_history_details) ? $patient_medical_history_details['smoking']=='Social' ? 'checked' : ''
+				 : '' ; ?> >
+				<span class="form-check-label"> Social </span>
+			</label>
+			<label class="form-check form-check-inline">
+				<input class="form-check-input" type="radio" name="smoking" value="Frequent" <?php echo
+				 !empty($patient_medical_history_details) ? $patient_medical_history_details['smoking']=='Frequent' ? 'checked' :
+				 '' : '' ; ?> >
+				<span class="form-check-label"> Frequent </span>
+			</label>
+			<label class="form-check form-check-inline">
+				<input class="form-check-input" type="radio" name="smoking" value="Moderate" <?php echo
+				 !empty($patient_medical_history_details) ? $patient_medical_history_details['smoking']=='Moderate' ? 'checked' :
+				 '' : '' ; ?> >
+				<span class="form-check-label"> Moderate </span>
+			</label>
+			<label class="form-check form-check-inline">
+				<input class="form-check-input" type="radio" name="smoking" value="Chronic" <?php echo
+				 !empty($patient_medical_history_details) ? $patient_medical_history_details['smoking']=='Chronic' ? 'checked' : ''
+				 : '' ; ?> >
+				<span class="form-check-label"> Chronic </span>
+			</label>
+		</div> <!-- form-group end.// -->
+		<div class="form-group">
+			<label>Sleep</label>
+			<label class="form-check form-check-inline">
+				<input class="form-check-input" type="radio" name="sleep" value="4-5 Hours" <?php echo
+				 !empty($patient_medical_history_details) ? $patient_medical_history_details['sleep']=='4-5 Hours' ? 'checked' : ''
+				 : '' ; ?> >
+				<span class="form-check-label"> 4-5 Hours </span>
+			</label>
+			<label class="form-check form-check-inline">
+				<input class="form-check-input" type="radio" name="sleep" value="6-8 Hours" <?php echo
+				 !empty($patient_medical_history_details) ? $patient_medical_history_details['sleep']=='6-8 Hours' ? 'checked' : ''
+				 : '' ; ?> >
+				<span class="form-check-label"> 6-8 Hours </span>
+			</label>
+			<label class="form-check form-check-inline">
+				<input class="form-check-input" type="radio" name="sleep" value="8-10 Hours" <?php echo
+				 !empty($patient_medical_history_details) ? $patient_medical_history_details['sleep']=='8-10 Hours' ? 'checked' :
+				 '' : '' ; ?> >
+				<span class="form-check-label"> 8-10 Hours </span>
+			</label>
+			<label class="form-check form-check-inline">
+				<input class="form-check-input" type="radio" name="sleep" value=">10 Hours" <?php echo
+				 !empty($patient_medical_history_details) ? $patient_medical_history_details['sleep']=='>10 Hours' ? 'checked' : ''
+				 : '' ; ?> >
+				<span class="form-check-label"> >10 Hours </span>
+			</label>
+		</div> <!-- form-group end.// -->
+		<div class="col form-group">
+			<label>Sleep comments</label>
+			<textarea class="form-control" name='sleep_comments'><?php echo !empty($patient_medical_history_details) ? $patient_medical_history_details['sleep_comments'] : '';?> </textarea>
+		</div>
+		<div class="col form-group">
+			<label>Alcohol Consumption</label>
+			<textarea class="form-control" name='alcohol_consumption'><?php echo !empty($patient_medical_history_details) ? $patient_medical_history_details['alcohol_consumption'] : '';?> </textarea>
+		</div>
+		<div class="col form-group">
+			<label>Diet</label>
+			<textarea class="form-control" name='diet'><?php echo !empty($patient_medical_history_details) ? $patient_medical_history_details['diet'] : '';?> </textarea>
+		</div>
+		<div class="form-group">
+			<label>Exercise</label>
+			<label class="form-check form-check-inline">
+				<input class="form-check-input" type="radio" name="exercise" value="None" <?php echo
+				 !empty($patient_medical_history_details) ? $patient_medical_history_details['exercise']=='None' ? 'checked' : '' :
+				 '' ; ?> >
+				<span class="form-check-label"> None </span>
+			</label>
+			<label class="form-check form-check-inline">
+				<input class="form-check-input" type="radio" name="exercise" value="Low" <?php echo
+				 !empty($patient_medical_history_details) ? $patient_medical_history_details['exercise']=='Low' ? 'checked' : '' :
+				 '' ; ?> >
+				<span class="form-check-label"> Low </span>
+			</label>
+			<label class="form-check form-check-inline">
+				<input class="form-check-input" type="radio" name="exercise" value="Moderate" <?php echo
+				 !empty($patient_medical_history_details) ? $patient_medical_history_details['exercise']=='Moderate' ? 'checked' :
+				 '' : '' ; ?> >
+				<span class="form-check-label"> Moderate </span>
+			</label>
+			<label class="form-check form-check-inline">
+				<input class="form-check-input" type="radio" name="exercise" value="High" <?php echo
+				 !empty($patient_medical_history_details) ? $patient_medical_history_details['exercise']=='High' ? 'checked' : '' :
+				 '' ; ?> >
+				<span class="form-check-label"> >10 Hours </span>
+			</label>
+		</div> <!-- form-group end.// -->
+		<div class="col form-group">
+			<label>Additional comments on exercise</label>
+			<textarea class="form-control" placeholder="Additional comments on exercise." name='exercise_comments'><?php echo !empty($patient_medical_history_details) ? $patient_medical_history_details['exercise_comments'] : '';?> </textarea>
+		</div>
 		<h3>Examinations</h3>
 		<div class="col form-group">
 			<label>Height</label>
@@ -111,3 +273,37 @@
 		</form>
 	</article>
 </div>
+<script>
+        $(function () {
+            $('a#travel-add').click(function () {
+                var p = $('#travel-history-block').find('tbody');
+                var c = p.find('tr:first').clone();
+                c.show('slow');
+                //c.find('select[name="add_ons[add_on_id][]"]').chosenDestroy();
+                c.removeClass('hidden');
+                c.addClass('validate_this');
+                p.append(c);
+                excuteTravelValid();
+            });
+            excuteTravelValid();
+        });
+
+        function excuteTravelValid(){
+            $('#travel-history-block').find('tbody .validate_this input').keyup(function(){
+                // console.log($(this).val());
+                $(this).parent().parent('tr').children('td').children('input').each(function(){
+                    console.log($(this).val());
+                    });
+                if($(this).val()){
+                    $(this).parent().parent('tr').children('td').children('input').each(function(){
+                        $(this).attr('required',true);
+                    });
+                }else{
+                    $(this).parent().parent('tr').children('td').children('input').each(function(){
+                        $(this).removeAttr('required');
+                    });
+                }
+            });
+        }
+    </script>
+

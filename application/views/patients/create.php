@@ -6,20 +6,19 @@
 			<header class="card-header">
 				<h4 class="card-title mt-2">
 					<u>
-						<?php echo strtoupper('register form') ?></u>
+						<?php echo strtoupper('PATIENTS REGISTRATION FORM') ?></u>
 				</h4>
 			</header>
 			<article class="card-body">
 				<h5>
 					<?php echo strtoupper('description') ?>
 				</h5>
-				<p style='border-left: solid 4px #1b1f22;padding: 0.5rem 0.5rem 0.5rem 0.5rem;'>Please
-					do read the instructions carefully and do fill up the registration form with
-					answer to best of your knowledge.</p>
+				<p style='border-left: solid 4px #1b1f22;padding: 0.5rem 0.5rem 0.5rem 0.5rem;'>Please do read the instructions carefully and fill up the registration form with
+answers to the best of your knowledge.</p>
 			</article>
 			<article class="card-body">
 				<?php echo validation_errors(); ?>
-				<?php echo form_open('patients/create'); ?>
+				<?php echo form_open('patients/create',array('id' => 'create_form')); ?>
 				<?php $this->load->view('patients/patient_basic_details'); ?>
 				<div class="form-group">
 					<div class="col-md-12" style='border: 1px solid #00070e;'></div>
