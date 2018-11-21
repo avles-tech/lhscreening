@@ -53,7 +53,7 @@ class Patients extends CI_Controller {
                                 <td>'.$row->last_name.'</td>
                                 <td>'.$row->email.'</td>
                                 <td>'.$gender.'</td>
-                                <td>'.nice_date($row->dob,'d-M-Y').'</td>
+                                <td>'.nice_date($row->dob,'d/m/Y').'</td>
                                 <td>'.$row->phone_mobile.'</td>
                                 <td> <a href="'.base_url().'index.php/patients/view/'.$row->patient_id.'"> view patient </a></td>
                                 </tr>
@@ -178,7 +178,7 @@ class Patients extends CI_Controller {
                 $form_data = $this->input->post();
                 $this->patient_phq_model->set_patient_phq($patient_id,$form_data);
                 $this->load->view('templates/header');
-                $this->load->view('patients/view', array( 'patient_id' => $patient_id) );
+                $this->load->view('patients/view', array( 'patient_id' => $patient_id , 'tab'=>'phq') );
                 $this->load->view('templates/footer');
         }
         public function update_gad(){
