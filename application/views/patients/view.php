@@ -1,5 +1,6 @@
 <?php
 //echo $patient_id;
+//echo $tab;
 $patient_details = $this->patients_model->get_patients($patient_id);
 echo '<h2>'.$patient_details['first_name'].' '.$patient_details['last_name'].'</h2>';
 //echo $phq_list[0]['question'];
@@ -101,4 +102,13 @@ $this->user_activity_model->set('selected '.$patient_details['first_name'].'(pat
 			}
 		});
 	}
+
+	var params = {},
+                   queryString = location.hash.substring(1),
+                   regex = /([^&=]+)=([^&]*)/g,
+                   m;
+               while (m = regex.exec(queryString)) {
+                 params[m[1]] = m[2];
+               }
+               //alert("your access token is : " + params["tab"]);
 	</Script>

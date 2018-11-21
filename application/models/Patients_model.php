@@ -16,6 +16,7 @@ class Patients_model extends CI_Model {
                         $this->db->or_like('last_name', $query);
                         $this->db->or_like('email', $query);
                         $this->db->or_like('phone_mobile', $query);
+                        $this->db->or_like('DATE_FORMAT(dob, "%d/%m/%Y ")', $query);
                 }
                 $this->db->order_by('patient_id', 'DESC');
                 $this->db->limit('10');

@@ -34,7 +34,7 @@
 					 aria-expanded="false">
 						<?php $user = $this->ion_auth->user()->row(); echo $user->first_name ?>
 					</a>
-					<div class="dropdown-menu pull-right" aria-labelledby="navbarDropdownMenuLink">
+					<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
 						<a class="dropdown-item" href="<?php echo site_url('auth/change_password'); ?>">change password</a>
 						<a class="dropdown-item" href="<?php echo site_url('auth/logout'); ?>">Log out</a>
 					</div>
