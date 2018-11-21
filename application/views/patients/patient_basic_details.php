@@ -10,6 +10,21 @@ else{
 ?>
 <div class="form-row">
 	<div class="col form-group">
+		<label>Title</label>
+		<select class="form-control" name='title' value="<?php echo array_key_exists('title', $patient_details) ? $patient_details['title'] : '';?>">
+			<option value="Ms">Ms</option>
+			<option value="Mrs">Mrs</option>
+			<option value="Mis">Mis</option>
+			<option value="Mr">Mr</option>
+			<option value="Dr">Dr</option>
+			<option value="Others">Others</option>
+		</select>
+	</div> <!-- form-group end.// -->
+	<div class="col form-group">
+	</div>
+</div>
+<div class="form-row">
+	<div class="col form-group">
 		<label>First name </label>
 		<input type="text" class="form-control" name='first_name' value="<?php echo array_key_exists('first_name', $patient_details) ? $patient_details['first_name'] : '';?>"
 		 required>
@@ -28,12 +43,27 @@ else{
 <div class="form-row">
 	<div class="form-group col-md-6">
 		<label>Phone home</label>
-		<input class='form-control' name='phone_home' type='tel' pattern='/((?:\+|00)[17](?: |\-)?|(?:\+|00)[1-9]\d{0,2}(?: |\-)?|(?:\+|00)1\-\d{3}(?: |\-)?)?(0\d|\([0-9]{3}\)|[1-9]{0,3})(?:((?: |\-)[0-9]{2}){4}|((?:[0-9]{2}){4})|((?: |\-)[0-9]{3}(?: |\-)[0-9]{4})|([0-9]{7}))/g'
-		 value="<?php echo array_key_exists('phone_home', $patient_details) ? $patient_details['phone_home'] : '';?>" />
+		<input class='form-control' name='phone_home' type='tel' value="<?php echo array_key_exists('phone_home', $patient_details) ? $patient_details['phone_home'] : '';?>" />
 	</div> <!-- form-group end.// -->
 	<div class="form-group col-md-6">
-		<label>Phone mobile</label>
+	<div class="form-check form-check-inline">
+			<input type="checkbox" value="1" name="phone_home_preferred" <?php echo array_key_exists('phone_home_preferred',
+			 $patient_details) ? $patient_details['phone_home_preferred']=='1' ? 'checked' : '' : '' ; ?>>
+			<label>Preferred</label>
+		</div>
+	</div> <!-- form-group end.// -->
+</div> <!-- form-row.// -->
+<div class="form-row">
+	<div class="form-group col-md-6">
+	<label>Phone mobile</label>
 		<input class='form-control' name='phone_mobile' type='tel' value="<?php echo array_key_exists('phone_mobile', $patient_details) ? $patient_details['phone_mobile'] : '';?>" />
+	</div> <!-- form-group end.// -->
+	<div class="form-group col-md-6">
+	<div class="form-check form-check-inline">
+			<input type="checkbox" value="1" name="phone_mobile_preferred" <?php echo array_key_exists('phone_mobile_preferred',
+			 $patient_details) ? $patient_details['phone_mobile_preferred']=='1' ? 'checked' : '' : '' ; ?>>
+			<label>Preferred</label>
+		</div>
 	</div> <!-- form-group end.// -->
 </div> <!-- form-row.// -->
 <div class="form-row">
@@ -42,7 +72,11 @@ else{
 		<input class='form-control' name='phone_work' type='tel' value="<?php echo array_key_exists('phone_work', $patient_details) ? $patient_details['phone_work'] : '';?>" />
 	</div> <!-- form-group end.// -->
 	<div class="form-group col-md-6">
-
+		<div class="form-check form-check-inline">
+			<input type="checkbox" value="1" name="phone_work_preferred" <?php echo array_key_exists('phone_work_preferred',
+			 $patient_details) ? $patient_details['phone_work_preferred']=='1' ? 'checked' : '' : '' ; ?>>
+			<label>Preferred</label>
+		</div>
 	</div> <!-- form-group end.// -->
 </div> <!-- form-row.// -->
 <div class="form-group">
@@ -117,7 +151,7 @@ else{
 </div> <!-- form-row end.// -->
 <div class="form-group">
 	<label>Relationship</label>
-	<input class="form-control" type="text" name="next_of_kin_relationship" value="<?php echo array_key_exists('next_of_kin_phone', $patient_details) ? $patient_details['next_of_kin_phone'] : '';?>" />
+	<input class="form-control" type="text" name="next_of_kin_relationship" value="<?php echo array_key_exists('next_of_kin_relationship', $patient_details) ? $patient_details['next_of_kin_relationship'] : '';?>" />
 </div> <!-- form-group end.// -->
 <div class="form-group">
 	<label> In case of emergency if you are uncontactable, do you provide consent for your next of kin to be contacted
@@ -131,7 +165,7 @@ else{
 	<label class="form-check form-check-inline">
 		<input class="form-check-input" type="radio" name="next_of_kin_contact" value="0" <?php echo
 		 array_key_exists('next_of_kin_contact', $patient_details) ? $patient_details['next_of_kin_contact']=='0' ? 'checked'
-		 : '' : 'checked' ; ?> >
+		 : '' : '' ; ?> >
 		<span class="form-check-label"> No</span>
 	</label>
 </div> <!-- form-group end.// -->
@@ -139,7 +173,8 @@ else{
 <h4>NHS / Alternative GP</h4>
 <div class="form-group">
 	<label>Name of NHS / Alternative GP</label>
-	<input type="text" class="form-control" name="alternative_gp" value="<?php echo array_key_exists('alternative_gp', $patient_details) ? $patient_details['alternative_gp'] : '';?>" placeholder="If applicable" />
+	<input type="text" class="form-control" name="alternative_gp" value="<?php echo array_key_exists('alternative_gp', $patient_details) ? $patient_details['alternative_gp'] : '';?>"
+	 placeholder="If applicable" />
 </div> <!-- form-group end.// -->
 <div class="form-group">
 	<label>I consent to my medical information being shared with my regular GP if I am not contactable.</label>
@@ -153,7 +188,7 @@ else{
 	<label class="form-check form-check-inline">
 		<input class="form-check-input" type="radio" name="gp_contact_agree" value="0" <?php echo
 		 array_key_exists('gp_contact_agree', $patient_details) ? $patient_details['gp_contact_agree']=='0' ? 'checked' : ''
-		 : 'checked' ; ?> >
+		 : '' ; ?> >
 		<span class="form-check-label"> Disagree</span>
 	</label>
 </div> <!-- form-group end.// -->
@@ -178,34 +213,34 @@ else{
 	<label>Are you aware of any allergies to the following?</label>
 	<br>
 	<div class="form-check form-check-inline">
-		<input type="checkbox" value="1" name="allergy_milk" <?php echo array_key_exists('allergy_milk',
-		 $patient_details) ? $patient_details['allergy_milk']=='1' ? 'checked' : '' : '' ; ?>>
+		<input type="checkbox" value="1" name="allergy_milk" <?php echo array_key_exists('allergy_milk', $patient_details) ?
+		 $patient_details['allergy_milk']=='1' ? 'checked' : '' : '' ; ?>>
 		<label>Milk</label>
 	</div>
 	<div class="form-check form-check-inline">
-		<input type="checkbox" value="1" name="allergy_eggs" <?php echo array_key_exists('allergy_eggs',
-		 $patient_details) ? $patient_details['allergy_eggs']=='1' ? 'checked' : '' : '' ; ?>>
+		<input type="checkbox" value="1" name="allergy_eggs" <?php echo array_key_exists('allergy_eggs', $patient_details) ?
+		 $patient_details['allergy_eggs']=='1' ? 'checked' : '' : '' ; ?>>
 		<label>Eggs</label>
 	</div>
 	<div class="form-check form-check-inline">
 		<input type="checkbox" value="1" name="allergy_peanuts" <?php echo array_key_exists('allergy_peanuts',
 		 $patient_details) ? $patient_details['allergy_peanuts']=='1' ? 'checked' : '' : '' ; ?>>
-		<label >Peanuts</label>
+		<label>Peanuts</label>
 	</div>
 	<div class="form-check form-check-inline">
 		<input type="checkbox" value="1" name="allergy_shellfish" <?php echo array_key_exists('allergy_shellfish',
 		 $patient_details) ? $patient_details['allergy_shellfish']=='1' ? 'checked' : '' : '' ; ?>>
-		<label >Shellfish</label>
+		<label>Shellfish</label>
 	</div>
 	<div class="form-check form-check-inline">
 		<input type="checkbox" value="1" name="allergy_iodine" <?php echo array_key_exists('allergy_iodine',
 		 $patient_details) ? $patient_details['allergy_iodine']=='1' ? 'checked' : '' : '' ; ?>>
-		<label >Iodine</label>
+		<label>Iodine</label>
 	</div>
 	<div class="form-check form-check-inline">
 		<input type="checkbox" value="1" name="allergy_pencillin" <?php echo array_key_exists('allergy_pencillin',
 		 $patient_details) ? $patient_details['allergy_pencillin']=='1' ? 'checked' : '' : '' ; ?>>
-		<label >Penicillin</label>
+		<label>Penicillin</label>
 	</div>
 	<div class="form-check form-check-inline">
 		<input type="checkbox" value="1" name="allergy_treenuts" <?php echo array_key_exists('allergy_treenuts',
@@ -216,13 +251,15 @@ else{
 <div class="form-group">
 	<label>Other Allergies</label>
 	<div class="form-check form-check-inline">
-		<input type="radio" value="1" id="allergy_others_yes" name="allergy_others" <?php echo array_key_exists('allergy_others',
-		 $patient_details) ? $patient_details['allergy_others']=='1' ? 'checked' : '' : '' ; ?>>
+		<input type="radio" value="1" id="allergy_others_yes" name="allergy_others" <?php echo
+		 array_key_exists('allergy_others', $patient_details) ? $patient_details['allergy_others']=='1' ? 'checked' : '' : ''
+		 ; ?>>
 		<label>Yes</label>
 	</div>
 	<div class="form-check form-check-inline">
-		<input type="radio" value="0" id="allergy_others_no" name="allergy_others" <?php echo array_key_exists('allergy_others',
-		 $patient_details) ? $patient_details['allergy_others']=='0' ? 'checked' : '' : 'checked' ; ?>>
+		<input type="radio" value="0" id="allergy_others_no" name="allergy_others" <?php echo
+		 array_key_exists('allergy_others', $patient_details) ? $patient_details['allergy_others']=='0' ? 'checked' : '' :
+		 '' ; ?>>
 		<label>No</label>
 	</div>
 </div> <!-- form-group end.// -->
@@ -241,7 +278,7 @@ else{
 	</label>
 	<label class="form-check form-check-inline">
 		<input class="form-check-input" type="radio" name="hay_fever" value="0" <?php echo array_key_exists('hay_fever',
-		 $patient_details) ? $patient_details['hay_fever']=='0' ? 'checked' : '' : 'checked' ; ?> >
+		 $patient_details) ? $patient_details['hay_fever']=='0' ? 'checked' : '' : '' ; ?> >
 		<span class="form-check-label"> No</span>
 	</label>
 </div> <!-- form-group end.// -->
@@ -254,7 +291,7 @@ else{
 	</label>
 	<label class="form-check form-check-inline">
 		<input class="form-check-input" type="radio" name="asthma" value="0" <?php echo array_key_exists('asthma',
-		 $patient_details) ? $patient_details['asthma']=='0' ? 'checked' : '' : 'checked' ; ?> >
+		 $patient_details) ? $patient_details['asthma']=='0' ? 'checked' : '' : '' ; ?> >
 		<span class="form-check-label"> No</span>
 	</label>
 </div> <!-- form-group end.// -->
@@ -265,22 +302,24 @@ else{
 	<label>Do you require a chaperone before this consultation?</label>
 	<br>
 	<label class="form-check form-check-inline">
-		<input class="form-check-input" type="radio" name="chaperone_required" value="1" <?php echo array_key_exists('chaperone_required',
-		 $patient_details) ? $patient_details['chaperone_required']=='1' ? 'checked' : '' : '' ; ?> >
+		<input class="form-check-input" type="radio" name="chaperone_required" value="1" <?php echo
+		 array_key_exists('chaperone_required', $patient_details) ? $patient_details['chaperone_required']=='1' ? 'checked' :
+		 '' : '' ; ?> >
 		<span class="form-check-label"> Yes </span>
 	</label>
 	<label class="form-check form-check-inline">
-		<input class="form-check-input" type="radio" name="chaperone_required" value="0" <?php echo array_key_exists('chaperone_required',
-		 $patient_details) ? $patient_details['chaperone_required']=='0' ? 'checked' : '' : 'checked' ; ?> >
+		<input class="form-check-input" type="radio" name="chaperone_required" value="0" <?php echo
+		 array_key_exists('chaperone_required', $patient_details) ? $patient_details['chaperone_required']=='0' ? 'checked' :
+		 '' : '' ; ?> >
 		<span class="form-check-label"> No</span>
 	</label>
 </div> <!-- form-group end.// -->
 <script>
-	$('#allergy_others_yes').click(function(){
-		this.checked?$('#allergy_others_details_div').show():$('#allergy_others_details_div').hide(); //time for show
+	$('#allergy_others_yes').click(function () {
+		this.checked ? $('#allergy_others_details_div').show() : $('#allergy_others_details_div').hide(); //time for show
 	});
-	$('#allergy_others_no').click(function(){
-		this.checked?$('#allergy_others_details_div').hide():$('#allergy_others_details_div').show(); //time for show
+	$('#allergy_others_no').click(function () {
+		this.checked ? $('#allergy_others_details_div').hide() : $('#allergy_others_details_div').show(); //time for show
 	});
 
 	//Age
@@ -291,9 +330,56 @@ else{
 		var years = (currentDate.getFullYear() - birth_date.getFullYear());
 
 		if (currentDate.getMonth() < birth_date.getMonth() ||
-				currentDate.getMonth() == birth_date.getMonth() && currentDate.getDate() < birth_date.getDate()) {
+			currentDate.getMonth() == birth_date.getMonth() && currentDate.getDate() < birth_date.getDate()) {
 			years--;
 		}
 		$('input[name=age]').val(years);
 	}
+
+</script>
+<script>
+	$(document).ready(function () {
+		$('#create_form').validate({ // initialize the plugin
+			rules: {
+				first_name: {
+					required: true,
+					lettersonly: true
+				},
+				last_name: {
+					required: true,
+					lettersonly: true
+				},
+				email: {
+					required: true,
+					email: true
+				},
+				postal_code: {
+					postcodeUK: true
+				},
+				phone_home: {
+					phonesUK: true
+				},
+				phone_mobile: {
+					mobileUK: true
+				},
+				phone_work: {
+					phonesUK: true
+				},
+				occupation: {
+					lettersonly: true
+				},
+				next_of_kin_name: {
+					lettersonly: true
+				},
+				next_of_kin_phone: {
+					phonesUK: true
+				},
+				next_of_kin_relationship:{
+					lettersonly: true
+				}
+
+			}
+		});
+	});
+
 </script>
