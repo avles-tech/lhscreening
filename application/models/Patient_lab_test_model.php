@@ -22,7 +22,7 @@ class Patient_lab_test_model extends CI_Model {
 
         public function get_patient_lab_test($patient_id)
         {
-                $this->db->select('p.id,p.test_id,l.test_name,p.value,l.category');
+                $this->db->select('p.id,p.test_id,l.test_name,p.value,l.category,l.unit');
                 $this->db->from('patient_lab_test p');
                 $this->db->join('lab_test_list l', 'l.test_id = p.test_id', 'left');
                 $this->db->where('p.patient_id', $patient_id);
