@@ -81,6 +81,110 @@
 				<label>Yellow Fever</label>
 			</div>
 		</div> <!-- form-group end.// -->
+		<h3>Lifestyle</h3>
+		<div class="form-group">
+			<label>Smoking</label>
+			<label class="form-check form-check-inline">
+				<input class="form-check-input" type="radio" name="smoking" value="Non-smoker" <?php echo
+				 !empty($patient_medical_history_details) ? $patient_medical_history_details['smoking']=='Non-smoker' ? 'checked' :
+				 '' : '' ; ?> >
+				<span class="form-check-label"> Non-smoker </span>
+			</label>
+			<label class="form-check form-check-inline">
+				<input class="form-check-input" type="radio" name="smoking" value="Social" <?php echo
+				 !empty($patient_medical_history_details) ? $patient_medical_history_details['smoking']=='Social' ? 'checked' : ''
+				 : '' ; ?> >
+				<span class="form-check-label"> Social </span>
+			</label>
+			<label class="form-check form-check-inline">
+				<input class="form-check-input" type="radio" name="smoking" value="Frequent" <?php echo
+				 !empty($patient_medical_history_details) ? $patient_medical_history_details['smoking']=='Frequent' ? 'checked' :
+				 '' : '' ; ?> >
+				<span class="form-check-label"> Frequent </span>
+			</label>
+			<label class="form-check form-check-inline">
+				<input class="form-check-input" type="radio" name="smoking" value="Moderate" <?php echo
+				 !empty($patient_medical_history_details) ? $patient_medical_history_details['smoking']=='Moderate' ? 'checked' :
+				 '' : '' ; ?> >
+				<span class="form-check-label"> Moderate </span>
+			</label>
+			<label class="form-check form-check-inline">
+				<input class="form-check-input" type="radio" name="smoking" value="Chronic" <?php echo
+				 !empty($patient_medical_history_details) ? $patient_medical_history_details['smoking']=='Chronic' ? 'checked' : ''
+				 : '' ; ?> >
+				<span class="form-check-label"> Chronic </span>
+			</label>
+		</div> <!-- form-group end.// -->
+		<div class="form-group">
+			<label>Sleep</label>
+			<label class="form-check form-check-inline">
+				<input class="form-check-input" type="radio" name="sleep" value="4-5 Hours" <?php echo
+				 !empty($patient_medical_history_details) ? $patient_medical_history_details['sleep']=='4-5 Hours' ? 'checked' : ''
+				 : '' ; ?> >
+				<span class="form-check-label"> 4-5 Hours </span>
+			</label>
+			<label class="form-check form-check-inline">
+				<input class="form-check-input" type="radio" name="sleep" value="6-8 Hours" <?php echo
+				 !empty($patient_medical_history_details) ? $patient_medical_history_details['sleep']=='6-8 Hours' ? 'checked' : ''
+				 : '' ; ?> >
+				<span class="form-check-label"> 6-8 Hours </span>
+			</label>
+			<label class="form-check form-check-inline">
+				<input class="form-check-input" type="radio" name="sleep" value="8-10 Hours" <?php echo
+				 !empty($patient_medical_history_details) ? $patient_medical_history_details['sleep']=='8-10 Hours' ? 'checked' :
+				 '' : '' ; ?> >
+				<span class="form-check-label"> 8-10 Hours </span>
+			</label>
+			<label class="form-check form-check-inline">
+				<input class="form-check-input" type="radio" name="sleep" value=">10 Hours" <?php echo
+				 !empty($patient_medical_history_details) ? $patient_medical_history_details['sleep']=='>10 Hours' ? 'checked' : ''
+				 : '' ; ?> >
+				<span class="form-check-label"> >10 Hours </span>
+			</label>
+		</div> <!-- form-group end.// -->
+		<div class="col form-group">
+			<label>Sleep comments</label>
+			<textarea class="form-control" name='sleep_comments'><?php echo !empty($patient_medical_history_details) ? $patient_medical_history_details['sleep_comments'] : '';?> </textarea>
+		</div>
+		<div class="col form-group">
+			<label>Alcohol Consumption</label>
+			<textarea class="form-control" name='alcohol_consumption'><?php echo !empty($patient_medical_history_details) ? $patient_medical_history_details['alcohol_consumption'] : '';?> </textarea>
+		</div>
+		<div class="col form-group">
+			<label>Diet</label>
+			<textarea class="form-control" name='diet'><?php echo !empty($patient_medical_history_details) ? $patient_medical_history_details['diet'] : '';?> </textarea>
+		</div>
+		<div class="form-group">
+			<label>Exercise</label>
+			<label class="form-check form-check-inline">
+				<input class="form-check-input" type="radio" name="exercise" value="None" <?php echo
+				 !empty($patient_medical_history_details) ? $patient_medical_history_details['exercise']=='None' ? 'checked' : '' :
+				 '' ; ?> >
+				<span class="form-check-label"> None </span>
+			</label>
+			<label class="form-check form-check-inline">
+				<input class="form-check-input" type="radio" name="exercise" value="Low" <?php echo
+				 !empty($patient_medical_history_details) ? $patient_medical_history_details['exercise']=='Low' ? 'checked' : '' :
+				 '' ; ?> >
+				<span class="form-check-label"> Low </span>
+			</label>
+			<label class="form-check form-check-inline">
+				<input class="form-check-input" type="radio" name="exercise" value="Moderate" <?php echo
+				 !empty($patient_medical_history_details) ? $patient_medical_history_details['exercise']=='Moderate' ? 'checked' :
+				 '' : '' ; ?> >
+				<span class="form-check-label"> Moderate </span>
+			</label>
+			<label class="form-check form-check-inline">
+				<input class="form-check-input" type="radio" name="exercise" value="High" <?php echo
+				 !empty($patient_medical_history_details) ? $patient_medical_history_details['exercise']=='High' ? 'checked' : '' :
+				 '' ; ?> >
+				<span class="form-check-label"> >10 Hours </span>
+			</label>
+		</div> <!-- form-group end.// -->
+		<div class="col form-group">
+			<label>Additional comments on exercise</label>
+			<textarea class="form-control" placeholder="Additional comments on exercise." name='exercise_comments'><?php echo !empty($patient_medical_history_details) ? $patient_medical_history_details['exercise_comments'] : '';?> </textarea>
+		</div>
 		<h3>Examinations</h3>
 		<div class="col form-group">
 			<label>Height</label>
