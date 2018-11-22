@@ -182,35 +182,34 @@ class Patients extends CI_Controller {
                 }
         }
         public function update_phq(){
-                $this->load->library('form_validation');
+  
                 $patient_id = $this->input->post('patient_id');
                 $form_data = $this->input->post();
                 $this->patient_phq_model->set_patient_phq($patient_id,$form_data);
         }
+
+        public function save_exit(){
+                $patient_id = $this->input->post('patient_id');
+                $this->patients_model->save_exit($patient_id,$form_data);
+        }
+
         public function update_gad(){
-                $this->load->library('form_validation');
                 $patient_id = $this->input->post('patient_id');
                 $form_data = $this->input->post();
                 $this->patient_gad_model->set_patient_gad($patient_id,$form_data);
         }
         public function update_patient_lab_test(){
-                $this->load->library('form_validation');
+
                 $patient_id = $this->input->post('patient_id');
                 $form_data = $this->input->post();
                 $this->patient_lab_test_model->set_patient_lab_test($patient_id,$form_data);
-                $this->load->view('templates/header');
-                $this->load->view('patients/view', array( 'patient_id' => $patient_id) );
-                $this->load->view('templates/footer');
+  
         }
 
         public function update_gp(){
-                $this->load->library('form_validation');
                 $patient_id = $this->input->post('patient_id');
                 $form_data = $this->input->post();
                 $this->patient_gp_model->set($patient_id,$form_data);
-                $this->load->view('templates/header');
-                $this->load->view('patients/view', array( 'patient_id' => $patient_id) );
-                $this->load->view('templates/footer');
         }
 
         public function update_medical_history(){

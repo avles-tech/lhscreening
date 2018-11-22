@@ -53,8 +53,8 @@ class Upload extends CI_Controller {
                 if ( ! $this->upload->do_upload('userfile'))
                 {
                         $error = array('error' => $this->upload->display_errors());
-
-                        $this->load->view('upload_form', $error);
+                        echo $error;
+                        //$this->load->view('upload_form', $error);
                 }
                 else
                 {
