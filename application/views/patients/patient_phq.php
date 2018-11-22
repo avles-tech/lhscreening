@@ -2,7 +2,8 @@
 	<article class="card-body">
 		<?php 
             echo validation_errors();  
-            echo form_open('patients/update_phq');
+			//echo form_open('patients/update_phq');
+			echo form_open('phq_form',array( 'id' => 'phq_form'));
         ?>
 		<div class="form-row">
             <?php 
@@ -45,3 +46,25 @@
 		</form>
 	</article>
 </div>
+<script>
+		$('form#phq_form').submit(function (e) {
+
+			var form = $(this);
+
+			e.preventDefault();
+
+			$.ajax({
+				type: "POST",
+				url: "<?php echo site_url('patients/update_phq'); ?>",
+				data: form.serialize(), // <--- THIS IS THE CHANGE
+				dataType: "html",
+				success: function (data) {
+					//$('#feed-container').prepend(data);
+				},
+				error: function () {
+					alert("Error posting feed.");
+				}
+			});
+
+		});
+	</script>

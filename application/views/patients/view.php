@@ -41,7 +41,7 @@ $this->user_activity_model->set('selected '.$patient_details['first_name'].'(pat
 			<article class="card-body">
 				<?php 
 					echo validation_errors();  
-					echo form_open('patients/update');  
+					echo form_open('basic_details_form',array( 'id' => 'basic_details_form'));  
 					echo form_hidden('patient_id',$patient_id);
 					$this->load->view('patients/patient_basic_details', array( 'patient_id' => $patient_id)); 
 				?>
@@ -112,3 +112,42 @@ $this->user_activity_model->set('selected '.$patient_details['first_name'].'(pat
                }
                //alert("your access token is : " + params["tab"]);
 	</Script>
+	<Script>
+		$('#myTab a').click(function(e) {
+			e.preventDefault();
+			$(this).tab('show');
+		});
+
+		// store the currently selected tab in the hash value
+		$("ul.nav-tabs > li > a").on("shown.bs.tab", function(e) {
+			var id = $(e.target).attr("href").substr(1);
+			window.location.hash = id;
+		});
+
+		// on load of the page: switch to the currently selected tab
+		var hash = window.location.hash;
+		console.log('hash',hash);
+		$('#myTab a[href="' + hash + '"]').tab('show');
+	</Script>
+	<script>
+		$('form#basic_details_form').submit(function (e) {
+
+			var form = $(this);
+
+			e.preventDefault();
+
+			$.ajax({
+				type: "POST",
+				url: "<?php echo site_url('patients/update'); ?>",
+				data: form.serialize(), // <--- THIS IS THE CHANGE
+				dataType: "html",
+				success: function (data) {
+					//$('#feed-container').prepend(data);
+				},
+				error: function () {
+					alert("Error posting feed.");
+				}
+			});
+
+		});
+	</script>

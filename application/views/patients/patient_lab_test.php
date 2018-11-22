@@ -18,7 +18,8 @@
 			?>
 		<?php	
             echo validation_errors();  
-			echo form_open('patients/update_patient_lab_test');
+			//echo form_open('patients/update_patient_lab_test');
+			echo form_open('patient_lab_test_form',array( 'id' => 'patient_lab_test_form'));
 			echo form_hidden('patient_id',$patient_id);
 			?>
 		<?php
@@ -48,3 +49,25 @@
 		</form>
 	</article>
 </div>
+<script>
+		$('form#patient_lab_test_form').submit(function (e) {
+
+			var form = $(this);
+
+			e.preventDefault();
+
+			$.ajax({
+				type: "POST",
+				url: "<?php echo site_url('patients/update_patient_lab_test'); ?>",
+				data: form.serialize(), // <--- THIS IS THE CHANGE
+				dataType: "html",
+				success: function (data) {
+					//$('#feed-container').prepend(data);
+				},
+				error: function () {
+					alert("Error posting feed.");
+				}
+			});
+
+		});
+	</script>
