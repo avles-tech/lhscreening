@@ -17,22 +17,22 @@
 				</label>
 			</div> <!-- form-group end.// -->
 			<div class="form-group col-md-6">
-				<div>
+			<label class="form-check">
 					<input type="radio" name="<?php echo $item['id'] ?>" value="0" <?php echo $item['value'] == '0' ? 'checked' : '' ?>>
-					<label>Not at all</label>
-				</div>
-				<div>
+					<span class="form-check-label">Not at all</span>
+				</label>
+				<label class="form-check">
 					<input type="radio" name="<?php echo $item['id'] ?>" value="1" <?php echo $item['value'] == '1' ? 'checked' : '' ?>>
-					<label>Several days</label>
-				</div>
-				<div>
+					<span class="form-check-label">Several days</span>
+				</label>
+				<label class="form-check">
 					<input type="radio" name="<?php echo $item['id'] ?>" value="2" <?php echo $item['value'] == '2' ? 'checked' : '' ?>>
-					<label>More than half the days</label>
-				</div>
-				<div>
+					<span class="form-check-label">More than half the days</span>
+				</label>
+				<label class="form-check">
 					<input type="radio" name="<?php echo $item['id'] ?>" value="3" <?php echo $item['value'] == '3' ? 'checked' : '' ?>>
-					<label>Nearly every day</label>
-				</div>
+					<span class="form-check-label">Nearly every day</span>
+				</label>
 			</div> <!-- form-group end.// -->
 			<?php endforeach; ?>
 		</div> <!-- form-row.// -->
