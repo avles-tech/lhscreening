@@ -87,6 +87,12 @@ class Patients extends CI_Controller {
                 $this->load->view('templates/footer');
         }
 
+        public function patient_exists()
+        {
+                $data = $this->input->post();
+                echo $this->patients_model->patient_exists($data);
+        }
+
         public function index()
         {
                 if (!$this->ion_auth->logged_in())

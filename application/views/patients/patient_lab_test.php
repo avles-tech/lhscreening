@@ -31,8 +31,8 @@
 			<label class="col-sm-2 col-form-label">
 				<?php echo $item['test_name'] ?></label>
 			<div class="col-sm-4">
-				<input class="form-control" name='<?php echo $item[' id'] ?>' value="
-				<?php echo array_key_exists('value', $item) ? $item['value'] : '';?>" >
+				<input class="form-control" name='<?php echo $item['id'] ?>' value="
+				<?php echo array_key_exists('test_name', $item) ? $item['value'] : '';?>" >
 			</div>
 			<div class="small-3 columns">
 				<span class="postfix"><?php echo array_key_exists('unit', $item) ? $item['unit'] : '';?></span>
