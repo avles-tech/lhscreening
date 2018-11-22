@@ -60,6 +60,11 @@ class Patients_model extends CI_Model {
                 echo json_encode($this->db->get('patients')->result_array());
         }
 
+        public function save_exit()
+        {       $this->db->where('patient_id', $this->input->post('patient_id'));
+                return $this->db->update('patients', array('save_exit'=>'1'));
+        }
+
         public function set_patients()
         {
                 $this->load->helper('url');

@@ -2,7 +2,8 @@
 	<article class="card-body">
 		<?php
 			
-            $patient_gp_details = $this->patient_gp_model->get($patient_id);
+			$patient_gp_details = $this->patient_gp_model->get($patient_id);
+			$patient_details = $this->patients_model->get_patients($patient_id);
 
             //echo empty($patient_gp_details) ? 'empty': $patient_gp_details['blood_results'];
 
@@ -14,60 +15,87 @@
 
 		<div class="col form-group">
 			<label>Blood results summary</label>
-			<textarea class="form-control" name='blood_results'><?php echo empty($patient_gp_details) ? '': $patient_gp_details['blood_results'];?> </textarea>
+			<textarea <?php echo empty($patient_details) ? '' : $patient_details['save_exit']=='1' ? 'disabled' : '' ?> class="form-control" name='blood_results'><?php echo empty($patient_gp_details) ? '': $patient_gp_details['blood_results'];?> </textarea>
 		</div>
 		<!-- form-group end.// -->
-        <div class="col form-group">
+		<div class="col form-group">
 			<label>Ultrasound results summary</label>
-			<textarea class="form-control" name='ultra_sound'><?php echo empty($patient_gp_details) ? '': $patient_gp_details['ultra_sound'];?> </textarea>
+			<textarea <?php echo empty($patient_details) ? '' : $patient_details['save_exit']=='1' ? 'disabled' : '' ?> class="form-control" name='ultra_sound'><?php echo empty($patient_gp_details) ? '': $patient_gp_details['ultra_sound'];?> </textarea>
 		</div>
 		<!-- form-group end.// -->
-        <div class="col form-group">
+		<div class="col form-group">
 			<label>MRI results summary</label>
-			<textarea class="form-control" name='mri_results'><?php echo empty($patient_gp_details) ? '': $patient_gp_details['mri_results'];?> </textarea>
+			<textarea class="form-control" <?php echo empty($patient_details) ? '' : $patient_details['save_exit']=='1' ? 'disabled' : '' ?> name='mri_results'><?php echo empty($patient_gp_details) ? '': $patient_gp_details['mri_results'];?> </textarea>
 		</div>
 		<!-- form-group end.// -->
-        <div class="col form-group">
+		<div class="col form-group">
 			<label>Overall lifestyle summary</label>
-			<textarea class="form-control" name='overall_lifestyle'><?php echo empty($patient_gp_details) ? '': $patient_gp_details['overall_lifestyle'];?> </textarea>
+			<textarea <?php echo empty($patient_details) ? '' : $patient_details['save_exit']=='1' ? 'disabled' : '' ?> class="form-control" name='overall_lifestyle'><?php echo empty($patient_gp_details) ? '': $patient_gp_details['overall_lifestyle'];?> </textarea>
 		</div>
 		<!-- form-group end.// -->
-        <div class="col form-group">
+		<div class="col form-group">
 			<label>Additional comments</label>
-			<textarea class="form-control" name='additional_comments'><?php echo empty($patient_gp_details) ? '': $patient_gp_details['additional_comments'];?> </textarea>
+			<textarea <?php echo empty($patient_details) ? '' : $patient_details['save_exit']=='1' ? 'disabled' : '' ?> class="form-control" name='additional_comments'><?php echo empty($patient_gp_details) ? '': $patient_gp_details['additional_comments'];?> </textarea>
 		</div>
 		<!-- form-group end.// -->
 		<div class="form-row">
 			<!-- form-group end.// -->
-			<div class="form-group">
-				<button type="submit" class="btn btn-primary btn-block"> Save </button>
-				
+			<div class="form-group btn-group  mr-2">
+				<button id='gp_save_button' <?php echo empty($patient_details) ? '' : $patient_details['save_exit']=='1' ? 'disabled' : '' ?> type="submit" class="btn btn-primary "> Save </button>
+			</div> <!-- form-group// -->
+			<div class="form-group btn-group">
+				<button id='save_exit' class="btn btn-primary " <?php echo empty($patient_details) ? '' : $patient_details['save_exit']=='1' ? 'disabled' : '' ?>>Save & exit</button>
 			</div> <!-- form-group// -->
 		</div>
 		</form>
 	</article>
 </div>
 <script>
-		$('form#gp_form').submit(function (e) {
+	$('form#gp_form').submit(function (e) {
 
-			var form = $(this);
+		var form = $(this);
 
-			e.preventDefault();
+		e.preventDefault();
 
+		$.ajax({
+			type: "POST",
+			url: "<?php echo site_url('patients/update_gp'); ?>",
+			data: form.serialize(), // <--- THIS IS THE CHANGE
+			dataType: "html",
+			success: function (data) {
+				//$('#feed-container').prepend(data);
+				alertify.set('notifier', 'position', 'top-right');
+				alertify.notify('patient gp details updated', 'success', 5, function () {
+					console.log('dismissed');
+				});
+			},
+			error: function () {
+				alert("Error posting feed.");
+			}
+		});
+
+	});
+
+</script>
+<script type="text/javascript">
+	$(document).ready(function () {
+		$("#save_exit").click(function () {
 			$.ajax({
 				type: "POST",
-				url: "<?php echo site_url('patients/update_gp'); ?>",
-				data: form.serialize(), // <--- THIS IS THE CHANGE
-				dataType: "html",
+				url: "<?php echo site_url('patients/save_exit'); ?>",
+				data: {'patient_id':45}, // <--- THIS IS THE CHANGE
 				success: function (data) {
 					//$('#feed-container').prepend(data);
-					alertify.set('notifier','position', 'top-right');
-					alertify.notify('patient details updated', 'success', 5, function(){  console.log('dismissed'); });
+					alertify.set('notifier', 'position', 'top-right');
+					alertify.notify('patient save and exit', 'success', 5, function () {
+						console.log('dismissed');
+					});
 				},
 				error: function () {
 					alert("Error posting feed.");
 				}
 			});
-
 		});
-	</script>
+	});
+
+</script>

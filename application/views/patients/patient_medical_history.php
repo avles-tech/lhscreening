@@ -10,23 +10,23 @@
 		<h3>Medical history</h3>
 		<div class="col form-group">
 			<label>Present Symptoms</label>
-			<textarea class="form-control" name='present_symptoms'><?php echo !empty($patient_medical_history_details) ? $patient_medical_history_details['present_symptoms'] : '';?> </textarea>
+			<textarea <?php echo empty($patient_details) ? '' : $patient_details['save_exit']=='1' ? 'disabled' : '' ?> class="form-control" name='present_symptoms'><?php echo !empty($patient_medical_history_details) ? $patient_medical_history_details['present_symptoms'] : '';?> </textarea>
 		</div>
 		<div class="col form-group">
 			<label>Past Medical History</label>
-			<textarea class="form-control" name='past_medical_history'><?php echo !empty($patient_medical_history_details) ? $patient_medical_history_details['past_medical_history'] : '';?> </textarea>
+			<textarea <?php echo empty($patient_details) ? '' : $patient_details['save_exit']=='1' ? 'disabled' : '' ?> class="form-control" name='past_medical_history'><?php echo !empty($patient_medical_history_details) ? $patient_medical_history_details['past_medical_history'] : '';?> </textarea>
 		</div>
 		<div class="col form-group">
 			<label>Current Treatment (if applicable)</label>
-			<textarea class="form-control" name='current_treatment'><?php echo !empty($patient_medical_history_details) ? $patient_medical_history_details['current_treatment'] : '';?> </textarea>
+			<textarea <?php echo empty($patient_details) ? '' : $patient_details['save_exit']=='1' ? 'disabled' : '' ?> class="form-control" name='current_treatment'><?php echo !empty($patient_medical_history_details) ? $patient_medical_history_details['current_treatment'] : '';?> </textarea>
 		</div>
 		<div class="col form-group">
 			<label>Men's / Women's Health</label>
-			<textarea class="form-control" name='health'><?php echo !empty($patient_medical_history_details) ? $patient_medical_history_details['health'] : '';?> </textarea>
+			<textarea <?php echo empty($patient_details) ? '' : $patient_details['save_exit']=='1' ? 'disabled' : '' ?> <?php echo empty($patient_details) ? '' : $patient_details['save_exit']=='1' ? 'disabled' : '' ?> class="form-control" name='health'><?php echo !empty($patient_medical_history_details) ? $patient_medical_history_details['health'] : '';?> </textarea>
 		</div>
 		<div class="col form-group">
 			<label>Family History</label>
-			<textarea class="form-control" name='family_history'><?php echo !empty($patient_medical_history_details) ? $patient_medical_history_details['family_history'] : '';?> </textarea>
+			<textarea <?php echo empty($patient_details) ? '' : $patient_details['save_exit']=='1' ? 'disabled' : '' ?> class="form-control" name='family_history'><?php echo !empty($patient_medical_history_details) ? $patient_medical_history_details['family_history'] : '';?> </textarea>
 		</div>
 		<!-- form-group end.// -->
 		<!-- <h3>Travel & Vaccination History</h3>
@@ -92,32 +92,32 @@
 		<div class="form-group">
 			<div class="form-check form-check-inline">
 				<input type="checkbox" value="1" name="vaccine_mumps" <?php echo !empty($patient_medical_history_details) ?
-				 $patient_medical_history_details['vaccine_mumps']=='1' ? 'checked' : '' : '' ; ?>>
+				 $patient_medical_history_details['vaccine_mumps']=='1' ? 'checked' : '' : '' ; ?> <?php echo empty($patient_details) ? '' : $patient_details['save_exit']=='1' ? 'disabled' : '' ?>>
 				<label>Mumps</label>
 			</div>
 			<div class="form-check form-check-inline">
 				<input type="checkbox" value="1" name="vaccine_rubella" <?php echo !empty($patient_medical_history_details) ?
-				 $patient_medical_history_details['vaccine_rubella']=='1' ? 'checked' : '' : '' ; ?>>
+				 $patient_medical_history_details['vaccine_rubella']=='1' ? 'checked' : '' : '' ; ?> <?php echo empty($patient_details) ? '' : $patient_details['save_exit']=='1' ? 'disabled' : '' ?> <?php echo empty($patient_details) ? '' : $patient_details['save_exit']=='1' ? 'disabled' : '' ?>>
 				<label>German Measles (Rubella)</label>
 			</div>
 			<div class="form-check form-check-inline">
 				<input type="checkbox" value="1" name="vaccine_tb" <?php !empty($patient_medical_history_details) ?
-				 $patient_medical_history_details['vaccine_tb']=='1' ? 'checked' : '' : '' ; ?>>
+				 $patient_medical_history_details['vaccine_tb']=='1' ? 'checked' : '' : '' ; ?> <?php echo empty($patient_details) ? '' : $patient_details['save_exit']=='1' ? 'disabled' : '' ?> <?php echo empty($patient_details) ? '' : $patient_details['save_exit']=='1' ? 'disabled' : '' ?>>
 				<label> Chicken Pox</label>
 			</div>
 			<div class="form-check form-check-inline">
 				<input type="checkbox" value="1" name="vaccine_chicken_pox" <?php echo !empty($patient_medical_history_details) ?
-				 $patient_medical_history_details['vaccine_chicken_pox']=='1' ? 'checked' : '' : '' ; ?>>
+				 $patient_medical_history_details['vaccine_chicken_pox']=='1' ? 'checked' : '' : '' ; ?> <?php echo empty($patient_details) ? '' : $patient_details['save_exit']=='1' ? 'disabled' : '' ?> <?php echo empty($patient_details) ? '' : $patient_details['save_exit']=='1' ? 'disabled' : '' ?>>
 				<label>Tuberculosis (TB)</label>
 			</div>
 			<div class="form-check form-check-inline">
 				<input type="checkbox" value="1" name="vaccine_tetanus" <?php echo !empty($patient_medical_history_details) ?
-				 $patient_medical_history_details['vaccine_tetanus']=='1' ? 'checked' : '' : '' ; ?>>
+				 $patient_medical_history_details['vaccine_tetanus']=='1' ? 'checked' : '' : '' ; ?> <?php echo empty($patient_details) ? '' : $patient_details['save_exit']=='1' ? 'disabled' : '' ?>>
 				<label>Tetanus</label>
 			</div>
 			<div class="form-check form-check-inline">
 				<input type="checkbox" value="1" name="vaccine_polio" <?php echo !empty($patient_medical_history_details) ?
-				 $patient_medical_history_details['vaccine_polio']=='1' ? 'checked' : '' : '' ; ?>>
+				 $patient_medical_history_details['vaccine_polio']=='1' ? 'checked' : '' : '' ; ?> <?php echo empty($patient_details) ? '' : $patient_details['save_exit']=='1' ? 'disabled' : '' ?>>
 				<label>Polio</label>
 			</div>
 			<div class="form-check form-check-inline">
