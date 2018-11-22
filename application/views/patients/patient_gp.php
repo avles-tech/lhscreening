@@ -61,6 +61,8 @@
 				dataType: "html",
 				success: function (data) {
 					//$('#feed-container').prepend(data);
+					alertify.set('notifier','position', 'top-right');
+					alertify.notify('patient details updated', 'success', 5, function(){  console.log('dismissed'); });
 				},
 				error: function () {
 					alert("Error posting feed.");

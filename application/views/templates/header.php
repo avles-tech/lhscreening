@@ -7,6 +7,7 @@
 
 	<link href="<?php echo base_url(); ?>assets/bootstrap-4.1.3-dist/css/bootstrap.css" rel="stylesheet">
 	<link href="<?php echo base_url(); ?>assets/EasyAutocomplete-1.3.5/easy-autocomplete.min.css" rel="stylesheet">
+	<link href="<?php echo base_url(); ?>assets/alertifyjs/css/alertify.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -15,6 +16,7 @@
 	<script src="<?php echo base_url(); ?>assets/jquery-validation-1.17.0/additional-methods.min.js"></script>
 	<script src="<?php echo base_url(); ?>assets/bootstrap-4.1.3-dist/js/bootstrap.min.js"></script>
 	<script src="<?php echo base_url(); ?>assets/EasyAutocomplete-1.3.5/jquery.easy-autocomplete.min.js"></script>
+	<script src="<?php echo base_url(); ?>assets/alertifyjs/alertify.min.js"></script>
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
 		<a class="navbar-brand" href="<?php echo base_url(); ?>index.php/patients">
 			<img src="<?php echo base_url(); ?>assets/lyca/images/logo.png" height='35px' alt="">Patient Management
