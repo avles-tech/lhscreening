@@ -42,13 +42,13 @@ class Patients_model extends CI_Model {
                         'last_name' => $last_name,
                         'dob' => $dob
                 ));
-                $count = count($patient_gp);
+                $result = $query->result_array();
+                $count = count($result);
                 if (empty($count)){
-                        return true;
+                        return false;
                 }
                 else{
-                        $this->db->where('patient_id' , $patient_id);
-                        return false;
+                        return true;
                 }
         }
 

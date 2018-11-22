@@ -48,7 +48,7 @@ $this->user_activity_model->set('selected '.$patient_details['first_name'].'(pat
 				<div class="form-row">
 					<!-- form-group end.// -->
 					<div class="form-group">
-						<button type="submit" class="btn btn-primary btn-block"> Save </button>
+						<button type="submit" id='basic_details_save_button' class="btn btn-primary btn-block"> Save </button>
 					</div> <!-- form-group// -->
 				</div>
 				</form>

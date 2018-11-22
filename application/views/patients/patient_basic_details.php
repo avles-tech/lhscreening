@@ -430,7 +430,15 @@ function checkPatientExists(){
 				,dob: dob
 			},
 			success: function (data) {
-					console.log('data',data);
+					if(data==1){
+						alert('patient exists already');
+						$("#create").prop("disabled", true);
+						$("#basic_details_save_button").prop("disabled", true);
+					}
+					else{
+						$("#create").prop("disabled", false);
+						$("#basic_details_save_button").prop("disabled", false);
+					}
 				}
 		});
 }
