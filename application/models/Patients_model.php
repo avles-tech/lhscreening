@@ -35,6 +35,23 @@ class Patients_model extends CI_Model {
                 return $query->row_array();
         }
 
+        public function patient_exists($first_name,$last_name,$dob)
+        {
+                $query = $this->db->get_where('patients', array(
+                        'first_name' => $first_name,
+                        'last_name' => $last_name,
+                        'dob' => $dob
+                ));
+                $count = count($patient_gp);
+                if (empty($count)){
+                        return true;
+                }
+                else{
+                        $this->db->where('patient_id' , $patient_id);
+                        return false;
+                }
+        }
+
         public function set_patients()
         {
                 $this->load->helper('url');

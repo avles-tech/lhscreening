@@ -12,6 +12,7 @@ else{
 	<div class="col form-group">
 		<label>Title</label>
 		<select class="form-control" name='title' value="<?php echo array_key_exists('title', $patient_details) ? $patient_details['title'] : '';?>">
+			<option disabled selected value>-</option>
 			<option value="Ms">Ms</option>
 			<option value="Mrs">Mrs</option>
 			<option value="Mis">Mis</option>
@@ -47,8 +48,8 @@ else{
 	</div> <!-- form-group end.// -->
 	<div class="form-group col-md-6">
 	<div class="form-check form-check-inline">
-			<input type="checkbox" value="1" name="phone_home_preferred" <?php echo array_key_exists('phone_home_preferred',
-			 $patient_details) ? $patient_details['phone_home_preferred']=='1' ? 'checked' : '' : '' ; ?>>
+			<input type="checkbox" value="1" name="phone_home_prefer" <?php echo array_key_exists('phone_home_prefer',
+			 $patient_details) ? $patient_details['phone_home_prefer']=='1' ? 'checked' : '' : '' ; ?>>
 			<label>Preferred</label>
 		</div>
 	</div> <!-- form-group end.// -->
@@ -60,8 +61,8 @@ else{
 	</div> <!-- form-group end.// -->
 	<div class="form-group col-md-6">
 	<div class="form-check form-check-inline">
-			<input type="checkbox" value="1" name="phone_mobile_preferred" <?php echo array_key_exists('phone_mobile_preferred',
-			 $patient_details) ? $patient_details['phone_mobile_preferred']=='1' ? 'checked' : '' : '' ; ?>>
+			<input type="checkbox" value="1" name="phone_mobile_prefer" <?php echo array_key_exists('phone_mobile_prefer',
+			 $patient_details) ? $patient_details['phone_mobile_prefer']=='1' ? 'checked' : '' : '' ; ?>>
 			<label>Preferred</label>
 		</div>
 	</div> <!-- form-group end.// -->
@@ -73,8 +74,8 @@ else{
 	</div> <!-- form-group end.// -->
 	<div class="form-group col-md-6">
 		<div class="form-check form-check-inline">
-			<input type="checkbox" value="1" name="phone_work_preferred" <?php echo array_key_exists('phone_work_preferred',
-			 $patient_details) ? $patient_details['phone_work_preferred']=='1' ? 'checked' : '' : '' ; ?>>
+			<input type="checkbox" value="1" name="phone_work_prefer" <?php echo array_key_exists('phone_work_prefer',
+			 $patient_details) ? $patient_details['phone_work_prefer']=='1' ? 'checked' : '' : '' ; ?>>
 			<label>Preferred</label>
 		</div>
 	</div> <!-- form-group end.// -->
@@ -122,6 +123,7 @@ else{
 		<input type="text" class="form-control" name='blood_group' value="<?php echo array_key_exists('blood_group', $patient_details) ? $patient_details['blood_group'] : '';?>"> -->
 		<label>Blood group</label>
 		<select class="form-control" name='blood_group' value="<?php echo array_key_exists('blood_group', $patient_details) ? $patient_details['blood_group'] : '';?>">
+			<option disabled selected value> -- </option>
 			<option value="A+">A+</option>
 			<option value="A-">A-</option>
 			<option value="B+">B+</option>
@@ -146,7 +148,7 @@ else{
 	</div> <!-- form-group end.// -->
 	<div class="col form-group">
 		<label>Phone Number</label>
-		<input type="text" class="form-control" name="next_of_kin_phone" value="<?php echo array_key_exists('next_of_kin_phone', $patient_details) ? $patient_details['next_of_kin_phone'] : '';?>" />
+		<input type="text" class="form-control" placeholder='+441234567890' name="next_of_kin_phone" value="<?php echo array_key_exists('next_of_kin_phone', $patient_details) ? $patient_details['next_of_kin_phone'] : '';?>" />
 	</div> <!-- form-group end.// -->
 </div> <!-- form-row end.// -->
 <div class="form-group">
