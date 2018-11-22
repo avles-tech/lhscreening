@@ -43,7 +43,7 @@ else{
 <div class="form-row">
 	<div class="form-group col-md-6">
 		<label>Phone home</label>
-		<input class='form-control' name='phone_home' type='tel' value="<?php echo array_key_exists('phone_home', $patient_details) ? $patient_details['phone_home'] : '';?>" />
+		<input class='form-control' placeholder='+441234567890' name='phone_home' type='tel' value="<?php echo array_key_exists('phone_home', $patient_details) ? $patient_details['phone_home'] : '';?>" />
 	</div> <!-- form-group end.// -->
 	<div class="form-group col-md-6">
 	<div class="form-check form-check-inline">
@@ -56,7 +56,7 @@ else{
 <div class="form-row">
 	<div class="form-group col-md-6">
 	<label>Phone mobile</label>
-		<input class='form-control' name='phone_mobile' type='tel' value="<?php echo array_key_exists('phone_mobile', $patient_details) ? $patient_details['phone_mobile'] : '';?>" />
+		<input class='form-control' placeholder='+441234567890' name='phone_mobile' type='tel' value="<?php echo array_key_exists('phone_mobile', $patient_details) ? $patient_details['phone_mobile'] : '';?>" />
 	</div> <!-- form-group end.// -->
 	<div class="form-group col-md-6">
 	<div class="form-check form-check-inline">
@@ -69,7 +69,7 @@ else{
 <div class="form-row">
 	<div class="form-group col-md-6">
 		<label>Phone work</label>
-		<input class='form-control' name='phone_work' type='tel' value="<?php echo array_key_exists('phone_work', $patient_details) ? $patient_details['phone_work'] : '';?>" />
+		<input class='form-control' placeholder='+441234567890' name='phone_work' type='tel' value="<?php echo array_key_exists('phone_work', $patient_details) ? $patient_details['phone_work'] : '';?>" />
 	</div> <!-- form-group end.// -->
 	<div class="form-group col-md-6">
 		<div class="form-check form-check-inline">
@@ -382,4 +382,32 @@ else{
 		});
 	});
 
+</script>
+<script>
+function checkPatientExists(){
+	firstName =  $( "input[name=first_name]" ).val();
+	lastName =  $( "input[name=last_name]" ).val();
+	dob =  $( "input[name=dob]" ).val();
+	$.ajax({
+			url: "<?php echo base_url(); ?>index.php/patients/patient_exists",
+			method: "POST",
+			data: {
+				first_name: firstName
+				,last_name: lastName
+				,dob: dob
+			},
+			success: function (data) {
+					console.log('data',data);
+				}
+		});
+}
+	$( "input[name=first_name]" ).change(function() {
+		checkPatientExists();
+	});
+	$( "input[name=last_name]" ).change(function() {
+		checkPatientExists();
+	});
+	$( "input[name=dob]" ).change(function() {
+		checkPatientExists();
+	});
 </script>
