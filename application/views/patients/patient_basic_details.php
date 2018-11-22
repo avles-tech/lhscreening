@@ -386,6 +386,37 @@ else{
 
 </script>
 <script>
+
+var options = {
+
+	url: function (phrase) {
+		return "<?php echo base_url(); ?>index.php/patients/occupations";
+	},
+
+	getValue: function (element) {
+		console.log('element',element);
+		return element.occupation;
+	},
+
+	ajaxSettings: {
+		dataType: "json",
+		method: "POST",
+		data: {
+			dataType: "json"
+		}
+	},
+
+	preparePostData: function (data) {
+		data.phrase = $("input[name=occupation]").val();
+		return data;
+	},
+	
+	requestDelay: 400
+};
+
+$("input[name=occupation]").easyAutocomplete(options);
+</script>
+<script>
 function checkPatientExists(){
 	firstName =  $( "input[name=first_name]" ).val();
 	lastName =  $( "input[name=last_name]" ).val();

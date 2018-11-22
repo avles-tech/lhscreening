@@ -52,6 +52,14 @@ class Patients_model extends CI_Model {
                 }
         }
 
+        public function occupations()
+        {       
+                $this->db->distinct('occupation');
+                $this->db->select('occupation');
+                $this->db->where('occupation is NOT NULL', NULL, FALSE);
+                echo json_encode($this->db->get('patients')->result_array());
+        }
+
         public function set_patients()
         {
                 $this->load->helper('url');

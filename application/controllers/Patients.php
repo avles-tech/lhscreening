@@ -93,6 +93,11 @@ class Patients extends CI_Controller {
                 echo $this->patients_model->patient_exists($data);
         }
 
+        public function occupations()
+        {
+                echo $this->patients_model->occupations();
+        }
+
         public function index()
         {
                 if (!$this->ion_auth->logged_in())
