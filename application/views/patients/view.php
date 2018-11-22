@@ -112,7 +112,7 @@ $this->user_activity_model->set('selected '.$patient_details['first_name'].'(pat
                }
                //alert("your access token is : " + params["tab"]);
 	</Script>
-	<Script>
+	<!-- <Script>
 		$('#myTab a').click(function(e) {
 			e.preventDefault();
 			$(this).tab('show');
@@ -126,10 +126,11 @@ $this->user_activity_model->set('selected '.$patient_details['first_name'].'(pat
 
 		// on load of the page: switch to the currently selected tab
 		var hash = window.location.hash;
-		console.log('hash',hash);
+
 		$('#myTab a[href="' + hash + '"]').tab('show');
-	</Script>
+	</Script> -->
 	<script>
+
 		$('form#basic_details_form').submit(function (e) {
 
 			var form = $(this);
@@ -143,6 +144,8 @@ $this->user_activity_model->set('selected '.$patient_details['first_name'].'(pat
 				dataType: "html",
 				success: function (data) {
 					//$('#feed-container').prepend(data);
+					alertify.set('notifier','position', 'top-right');
+					alertify.notify('patient details updated', 'success', 5, function(){  console.log('dismissed'); });
 				},
 				error: function () {
 					alert("Error posting feed.");
