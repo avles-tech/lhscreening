@@ -3,7 +3,8 @@
 		<?php
 			$patient_medical_history_details = $this->patient_medical_history_model->get($patient_id);
             echo validation_errors();  
-			echo form_open('patients/update_medical_history');
+			//echo form_open('patients/update_medical_history');
+			echo form_open('medical_history_form',array( 'id' => 'medical_history_form'));
 			echo form_hidden('patient_id',$patient_id);
         ?>
 		<h3>Medical history</h3>
@@ -28,7 +29,7 @@
 			<textarea class="form-control" name='family_history'><?php echo !empty($patient_medical_history_details) ? $patient_medical_history_details['family_history'] : '';?> </textarea>
 		</div>
 		<!-- form-group end.// -->
-		<h3>Travel & Vaccination History</h3>
+		<!-- <h3>Travel & Vaccination History</h3>
 		<div class="form-group">
 			<div class="col-md-1 col-sm-1 col-xs-12">
 				<a id="travel-add" class="btn btn-success" type="button">Add <span class="fa fa-plus"></span></a>
@@ -86,7 +87,7 @@
 				<blockquote>Travel date is important, if accurate date is unknown please select rough date.</blockquote>
 			</div>
 
-		</div>
+		</div> -->
 		<h3>Vaccinations</h3>
 		<div class="form-group">
 			<div class="form-check form-check-inline">
@@ -308,3 +309,26 @@
 	}
 
 </script>
+
+<script>
+		$('form#medical_history_form').submit(function (e) {
+
+			var form = $(this);
+
+			e.preventDefault();
+
+			$.ajax({
+				type: "POST",
+				url: "<?php echo site_url('patients/update_medical_history'); ?>",
+				data: form.serialize(), // <--- THIS IS THE CHANGE
+				dataType: "html",
+				success: function (data) {
+					//$('#feed-container').prepend(data);
+				},
+				error: function () {
+					alert("Error posting feed.");
+				}
+			});
+
+		});
+	</script>

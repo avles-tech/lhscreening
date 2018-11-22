@@ -7,7 +7,8 @@
             //echo empty($patient_gp_details) ? 'empty': $patient_gp_details['blood_results'];
 
             echo validation_errors();  
-            echo form_open('patients/update_gp');
+			//echo form_open('patients/update_gp');
+			echo form_open('gp_form',array( 'id' => 'gp_form'));
             echo form_hidden('patient_id',$patient_id);
         ?>
 
@@ -46,3 +47,25 @@
 		</form>
 	</article>
 </div>
+<script>
+		$('form#gp_form').submit(function (e) {
+
+			var form = $(this);
+
+			e.preventDefault();
+
+			$.ajax({
+				type: "POST",
+				url: "<?php echo site_url('patients/update_gp'); ?>",
+				data: form.serialize(), // <--- THIS IS THE CHANGE
+				dataType: "html",
+				success: function (data) {
+					//$('#feed-container').prepend(data);
+				},
+				error: function () {
+					alert("Error posting feed.");
+				}
+			});
+
+		});
+	</script>

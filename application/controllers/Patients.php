@@ -178,9 +178,7 @@ class Patients extends CI_Controller {
                 {
                         $form_data = $this->input->post();
                         $this->patients_model->update_patients($patient_id,$form_data);
-                        $this->load->view('templates/header');
-                        $this->load->view('patients/view',array('patient_id' => $patient_id));
-                        $this->load->view('templates/footer');
+                        
                 }
         }
         public function update_phq(){
@@ -188,18 +186,12 @@ class Patients extends CI_Controller {
                 $patient_id = $this->input->post('patient_id');
                 $form_data = $this->input->post();
                 $this->patient_phq_model->set_patient_phq($patient_id,$form_data);
-                $this->load->view('templates/header');
-                $this->load->view('patients/view', array( 'patient_id' => $patient_id , 'tab'=>'phq') );
-                $this->load->view('templates/footer');
         }
         public function update_gad(){
                 $this->load->library('form_validation');
                 $patient_id = $this->input->post('patient_id');
                 $form_data = $this->input->post();
                 $this->patient_gad_model->set_patient_gad($patient_id,$form_data);
-                $this->load->view('templates/header');
-                $this->load->view('patients/view', array( 'patient_id' => $patient_id) );
-                $this->load->view('templates/footer');
         }
         public function update_patient_lab_test(){
                 $this->load->library('form_validation');

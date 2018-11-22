@@ -341,8 +341,7 @@ else{
 </script>
 <script>
 	$(document).ready(function () {
-		$('#create_form').validate({ // initialize the plugin
-			rules: {
+		var x = {
 				first_name: {
 					required: true,
 					lettersonly: true
@@ -380,7 +379,14 @@ else{
 					lettersonly: true
 				}
 
-			}
+			};
+
+		$('#create_form').validate({ // initialize the plugin
+			rules: x
+		});
+
+		$('#basic_details_form').validate({ // initialize the plugin
+			rules: x
 		});
 	});
 
