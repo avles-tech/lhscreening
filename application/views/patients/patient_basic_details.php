@@ -430,6 +430,7 @@ function checkPatientExists(){
 				,dob: dob
 			},
 			success: function (data) {
+				
 					if(data==1){
 						alert('patient exists already');
 						$("#create").prop("disabled", true);
