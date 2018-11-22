@@ -90,7 +90,7 @@ class Patients extends CI_Controller {
         public function patient_exists()
         {
                 $data = $this->input->post();
-                echo $this->patients_model->patient_exists($data);
+                echo $this->patients_model->patient_exists($data['first_name'],$data['last_name'],$data['dob']);
         }
 
         public function occupations()
