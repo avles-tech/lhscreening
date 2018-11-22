@@ -122,22 +122,22 @@
 			</div>
 			<div class="form-check form-check-inline">
 				<input type="checkbox" value="1" name="vaccine_hepatitis" <?php echo !empty($patient_medical_history_details) ?
-				 $patient_medical_history_details['vaccine_hepatitis']=='1' ? 'checked' : '' : '' ; ?>>
+				 $patient_medical_history_details['vaccine_hepatitis']=='1' ? 'checked' : '' : '' ; ?> <?php echo empty($patient_details) ? '' : $patient_details['save_exit']=='1' ? 'disabled' : '' ?>>
 				<label>Hepatitis</label>
 			</div>
 			<div class="form-check form-check-inline">
 				<input type="checkbox" value="1" name="vaccine_diphtheria" <?php echo !empty($patient_medical_history_details) ?
-				 $patient_medical_history_details['vaccine_diphtheria']=='1' ? 'checked' : '' : '' ; ?>>
+				 $patient_medical_history_details['vaccine_diphtheria']=='1' ? 'checked' : '' : '' ; ?> <?php echo empty($patient_details) ? '' : $patient_details['save_exit']=='1' ? 'disabled' : '' ?>>
 				<label>Diphtheria</label>
 			</div>
 			<div class="form-check form-check-inline">
 				<input type="checkbox" value="1" name="vaccine_scarlet_fever" <?php echo !empty($patient_medical_history_details) ?
-				 $patient_medical_history_details['vaccine_scarlet_fever']=='1' ? 'checked' : '' : '' ; ?>>
+				 $patient_medical_history_details['vaccine_scarlet_fever']=='1' ? 'checked' : '' : '' ; ?> <?php echo empty($patient_details) ? '' : $patient_details['save_exit']=='1' ? 'disabled' : '' ?>>
 				<label>Scarlet Fever</label>
 			</div>
 			<div class="form-check form-check-inline">
 				<input type="checkbox" value="1" name="vaccine_yellow_fever" <?php echo !empty($patient_medical_history_details) ?
-				 $patient_medical_history_details['vaccine_yellow_fever']=='1' ? 'checked' : '' : '' ; ?>>
+				 $patient_medical_history_details['vaccine_yellow_fever']=='1' ? 'checked' : '' : '' ; ?> <?php echo empty($patient_details) ? '' : $patient_details['save_exit']=='1' ? 'disabled' : '' ?>>
 				<label>Yellow Fever</label>
 			</div>
 		</div> <!-- form-group end.// -->
