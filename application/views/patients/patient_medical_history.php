@@ -30,7 +30,10 @@
 		<!-- form-group end.// -->
 		<h3>Travel & Vaccination History</h3>
 		<div class="form-group">
-			<label class="control-label col-md-3 col-sm-3 col-xs-12">Travel &amp; Vaccination History</label>
+			<div class="col-md-1 col-sm-1 col-xs-12">
+				<a id="travel-add" class="btn btn-success" type="button">Add <span class="fa fa-plus"></span></a>
+			</div>
+			<br>
 			<div class="col-md-6 col-sm-6 col-xs-12" id="travel-history-block">
 				<table class="table table-striped">
 					<thead>
@@ -82,9 +85,7 @@
 				<br>
 				<blockquote>Travel date is important, if accurate date is unknown please select rough date.</blockquote>
 			</div>
-			<div class="col-md-1 col-sm-1 col-xs-12">
-				<a id="travel-add" class="btn btn-success" type="button">Add <span class="fa fa-plus"></span></a>
-			</div>
+
 		</div>
 		<h3>Vaccinations</h3>
 		<div class="form-group">
@@ -274,36 +275,36 @@
 	</article>
 </div>
 <script>
-        $(function () {
-            $('a#travel-add').click(function () {
-                var p = $('#travel-history-block').find('tbody');
-                var c = p.find('tr:first').clone();
-                c.show('slow');
-                //c.find('select[name="add_ons[add_on_id][]"]').chosenDestroy();
-                c.removeClass('hidden');
-                c.addClass('validate_this');
-                p.append(c);
-                excuteTravelValid();
-            });
-            excuteTravelValid();
-        });
+	$(function () {
+		$('a#travel-add').click(function () {
+			var p = $('#travel-history-block').find('tbody');
+			var c = p.find('tr:first').clone();
+			c.show('slow');
+			//c.find('select[name="add_ons[add_on_id][]"]').chosenDestroy();
+			c.removeClass('hidden');
+			c.addClass('validate_this');
+			p.append(c);
+			excuteTravelValid();
+		});
+		excuteTravelValid();
+	});
 
-        function excuteTravelValid(){
-            $('#travel-history-block').find('tbody .validate_this input').keyup(function(){
-                // console.log($(this).val());
-                $(this).parent().parent('tr').children('td').children('input').each(function(){
-                    console.log($(this).val());
-                    });
-                if($(this).val()){
-                    $(this).parent().parent('tr').children('td').children('input').each(function(){
-                        $(this).attr('required',true);
-                    });
-                }else{
-                    $(this).parent().parent('tr').children('td').children('input').each(function(){
-                        $(this).removeAttr('required');
-                    });
-                }
-            });
-        }
-    </script>
+	function excuteTravelValid() {
+		$('#travel-history-block').find('tbody .validate_this input').keyup(function () {
+			// console.log($(this).val());
+			$(this).parent().parent('tr').children('td').children('input').each(function () {
+				console.log($(this).val());
+			});
+			if ($(this).val()) {
+				$(this).parent().parent('tr').children('td').children('input').each(function () {
+					$(this).attr('required', true);
+				});
+			} else {
+				$(this).parent().parent('tr').children('td').children('input').each(function () {
+					$(this).removeAttr('required');
+				});
+			}
+		});
+	}
 
+</script>
