@@ -77,6 +77,11 @@
 <script>
       $(function () {
       	var sig = $('#sig').signature();
+            <?php 
+                  $filename = './uploads/'.$user->id.'_signature.jpeg'; 
+                  if (file_exists($filename)) :?>
+                        sig.signature('draw', '<?php echo 'data:image/jpeg;base64,'.base64_encode(file_get_contents($filename)) ?>');
+                  <?php endif ?>
       	$('#save_signature').click(function () {
       		//alert(sig.signature('toSVG'));
                   var sig_jpeg = $('#sig').signature('toDataURL', 'image/jpeg');
