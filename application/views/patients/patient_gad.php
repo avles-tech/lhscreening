@@ -9,6 +9,8 @@
             <?php 
 			$patient_gad = $this->patient_gad_model->get_patient_gad($patient_id);
 			$patient_details = $this->patients_model->get_patients($patient_id);
+			$read_only = empty($patient_details) ? '' : $patient_details['save_exit']=='1' ? 'disabled' : '';
+			
             echo form_hidden('patient_id',$patient_id);
             foreach ($patient_gad as $item): 
             ?>
@@ -19,19 +21,19 @@
 			</div> <!-- form-group end.// -->
 			<div class="form-group col-md-6">
 			<label class="form-check">
-					<input type="radio" name="<?php echo $item['id'] ?>" value="0" <?php echo $item['value'] == '0' ? 'checked' : '' ?> <?php echo empty($patient_details) ? '' : $patient_details['save_exit']=='1' ? 'disabled' : '' ?>>
+					<input type="radio" name="<?php echo $item['id'] ?>" value="0" <?php echo $item['value'] == '0' ? 'checked' : '' ?> <?php echo $read_only ?>>
 					<span class="form-check-label">Not at all</span>
 				</label>
 				<label class="form-check">
-					<input type="radio" name="<?php echo $item['id'] ?>" value="1" <?php echo $item['value'] == '1' ? 'checked' : '' ?> <?php echo empty($patient_details) ? '' : $patient_details['save_exit']=='1' ? 'disabled' : '' ?>>
+					<input type="radio" name="<?php echo $item['id'] ?>" value="1" <?php echo $item['value'] == '1' ? 'checked' : '' ?> <?php echo $read_only ?>>
 					<span class="form-check-label">Several days</span>
 				</label>
 				<label class="form-check">
-					<input type="radio" name="<?php echo $item['id'] ?>" value="2" <?php echo $item['value'] == '2' ? 'checked' : '' ?> <?php echo empty($patient_details) ? '' : $patient_details['save_exit']=='1' ? 'disabled' : '' ?>>
+					<input type="radio" name="<?php echo $item['id'] ?>" value="2" <?php echo $item['value'] == '2' ? 'checked' : '' ?> <?php echo $read_only ?>>
 					<span class="form-check-label">More than half the days</span>
 				</label>
 				<label class="form-check">
-					<input type="radio" name="<?php echo $item['id'] ?>" value="3" <?php echo $item['value'] == '3' ? 'checked' : '' ?> <?php echo empty($patient_details) ? '' : $patient_details['save_exit']=='1' ? 'disabled' : '' ?>>
+					<input type="radio" name="<?php echo $item['id'] ?>" value="3" <?php echo $item['value'] == '3' ? 'checked' : '' ?> <?php echo $read_only ?>>
 					<span class="form-check-label">Nearly every day</span>
 				</label>
 			</div> <!-- form-group end.// -->

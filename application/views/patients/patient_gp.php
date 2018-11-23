@@ -4,7 +4,7 @@
 			
 			$patient_gp_details = $this->patient_gp_model->get($patient_id);
 			$patient_details = $this->patients_model->get_patients($patient_id);
-
+			$read_only = empty($patient_details) ? '' : $patient_details['save_exit']=='1' ? 'disabled' : '';
             //echo empty($patient_gp_details) ? 'empty': $patient_gp_details['blood_results'];
 
             echo validation_errors();  
@@ -15,36 +15,36 @@
 
 		<div class="col form-group">
 			<label>Blood results summary</label>
-			<textarea <?php echo empty($patient_details) ? '' : $patient_details['save_exit']=='1' ? 'disabled' : '' ?> class="form-control" name='blood_results'><?php echo empty($patient_gp_details) ? '': $patient_gp_details['blood_results'];?> </textarea>
+			<textarea <?php echo $read_only ?> class="form-control" name='blood_results'><?php echo empty($patient_gp_details) ? '': $patient_gp_details['blood_results'];?> </textarea>
 		</div>
 		<!-- form-group end.// -->
 		<div class="col form-group">
 			<label>Ultrasound results summary</label>
-			<textarea <?php echo empty($patient_details) ? '' : $patient_details['save_exit']=='1' ? 'disabled' : '' ?> class="form-control" name='ultra_sound'><?php echo empty($patient_gp_details) ? '': $patient_gp_details['ultra_sound'];?> </textarea>
+			<textarea <?php echo $read_only ?> class="form-control" name='ultra_sound'><?php echo empty($patient_gp_details) ? '': $patient_gp_details['ultra_sound'];?> </textarea>
 		</div>
 		<!-- form-group end.// -->
 		<div class="col form-group">
 			<label>MRI results summary</label>
-			<textarea class="form-control" <?php echo empty($patient_details) ? '' : $patient_details['save_exit']=='1' ? 'disabled' : '' ?> name='mri_results'><?php echo empty($patient_gp_details) ? '': $patient_gp_details['mri_results'];?> </textarea>
+			<textarea class="form-control" <?php echo $read_only ?> name='mri_results'><?php echo empty($patient_gp_details) ? '': $patient_gp_details['mri_results'];?> </textarea>
 		</div>
 		<!-- form-group end.// -->
 		<div class="col form-group">
 			<label>Overall lifestyle summary</label>
-			<textarea <?php echo empty($patient_details) ? '' : $patient_details['save_exit']=='1' ? 'disabled' : '' ?> class="form-control" name='overall_lifestyle'><?php echo empty($patient_gp_details) ? '': $patient_gp_details['overall_lifestyle'];?> </textarea>
+			<textarea <?php echo $read_only ?> class="form-control" name='overall_lifestyle'><?php echo empty($patient_gp_details) ? '': $patient_gp_details['overall_lifestyle'];?> </textarea>
 		</div>
 		<!-- form-group end.// -->
 		<div class="col form-group">
 			<label>Additional comments</label>
-			<textarea <?php echo empty($patient_details) ? '' : $patient_details['save_exit']=='1' ? 'disabled' : '' ?> class="form-control" name='additional_comments'><?php echo empty($patient_gp_details) ? '': $patient_gp_details['additional_comments'];?> </textarea>
+			<textarea <?php echo $read_only ?> class="form-control" name='additional_comments'><?php echo empty($patient_gp_details) ? '': $patient_gp_details['additional_comments'];?> </textarea>
 		</div>
 		<!-- form-group end.// -->
 		<div class="form-row">
 			<!-- form-group end.// -->
 			<div class="form-group btn-group  mr-2">
-				<button id='gp_save_button' <?php echo empty($patient_details) ? '' : $patient_details['save_exit']=='1' ? 'disabled' : '' ?> type="submit" class="btn btn-primary "> Save </button>
+				<button id='gp_save_button' <?php echo $read_only ?> type="submit" class="btn btn-primary "> Save </button>
 			</div> <!-- form-group// -->
 			<div class="form-group btn-group">
-				<button id='save_exit' class="btn btn-primary " <?php echo empty($patient_details) ? '' : $patient_details['save_exit']=='1' ? 'disabled' : '' ?>>Save & exit</button>
+				<button id='save_exit' class="btn btn-primary " <?php echo $read_only ?>>Save & exit</button>
 			</div> <!-- form-group// -->
 		</div>
 		</form>
