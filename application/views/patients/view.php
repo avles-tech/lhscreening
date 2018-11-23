@@ -2,6 +2,18 @@
 //echo $patient_id;
 //echo $tab;
 $patient_details = $this->patients_model->get_patients($patient_id);
+$save_exited = empty($patient_details) ? '0' : $patient_details['save_exit']=='1';
+
+$user = $this->ion_auth->user()->row(); 
+
+if ($save_exited=='1' && $this->ion_auth->is_admin())
+{
+	$button_code = "<div class='float-sm-right'>
+		<button id='edit_user_button' class='btn btn-primary btn-block '> edit user details</button>
+	</div>";
+	echo $button_code;
+}
+
 echo '<h2>'.$patient_details['first_name'].' '.$patient_details['last_name'].'</h2>';
 //echo $phq_list[0]['question'];
 $this->user_activity_model->set('selected '.$patient_details['first_name'].'(patient ID:'.$patient_details['patient_id'].') for update');
@@ -130,13 +142,9 @@ $this->user_activity_model->set('selected '.$patient_details['first_name'].'(pat
 		$('#myTab a[href="' + hash + '"]').tab('show');
 	</Script> -->
 	<script>
-
 		$('form#basic_details_form').submit(function (e) {
-
 			var form = $(this);
-
 			e.preventDefault();
-
 			$.ajax({
 				type: "POST",
 				url: "<?php echo site_url('patients/update'); ?>",
@@ -152,5 +160,18 @@ $this->user_activity_model->set('selected '.$patient_details['first_name'].'(pat
 				}
 			});
 
+		});
+	</script>
+<script>
+		$("#edit_user_button").click(function () {
+			alertify.prompt( 'Reason for edit', 'Reason', ''
+               , function(evt, value) { 
+				   	alertify.success('You entered: ' + value);
+				   	$(":input").prop('disabled', false);
+					$(":button").prop('disabled', false);
+				}
+               , function() { alertify.error('Cancel') });
+
+			
 		});
 	</script>
