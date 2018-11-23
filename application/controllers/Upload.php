@@ -61,11 +61,35 @@ class Upload extends CI_Controller {
                         $data = array('upload_data' => $this->upload->data());
 
                         $this->patient_reports_model->set_patient_reports($this->upload->data('file_name'));
+                }
+        }
 
+        public function upload_signature()
+        {
+                $form_data = $this->input->post();
+                $patient_id = $form_data['user_id'];
+                $config['upload_path']          = './uploads/';
+                $config['allowed_types']        = 'pdf|jpg|jpeg';
+                $config['max_size']             = 10240;
+                $config['max_width']            = 1024;
+                $config['max_height']           = 768;
+                $config['file_name'] = $patient_id.'_signature'; 
+                $config['overwrite'] = true;
 
-                        $this->load->view('templates/header');
-                        $this->load->view('patients/view',array('patient_id' => $patient_id));
-                        $this->load->view('templates/footer');
+                $this->load->library('upload', $config);
+
+                if ( ! $this->upload->do_upload('userfile'))
+                {
+                        $error = array('error' => $this->upload->display_errors());
+                        echo $error;
+                        //$this->load->view('upload_form', $error);
+                }
+                else
+                {
+                        $data = array('upload_data' => $this->upload->data());
+
+                        $this->patient_reports_model->set_patient_reports($this->upload->data('file_name'));
+
                 }
         }
 }

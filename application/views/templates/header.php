@@ -6,15 +6,19 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 
 	<link href="<?php echo base_url(); ?>assets/bootstrap-4.1.3-dist/css/bootstrap.css" rel="stylesheet">
+	<link href="<?php echo base_url(); ?>assets/jquery-ui-1.12.1/jquery-ui.min.css" rel="stylesheet">
+	<link href="<?php echo base_url(); ?>assets/jquery.signature.package-1.2.0/css/jquery.signature.css" rel="stylesheet">
 	<link href="<?php echo base_url(); ?>assets/EasyAutocomplete-1.3.5/easy-autocomplete.min.css" rel="stylesheet">
 	<link href="<?php echo base_url(); ?>assets/alertifyjs/css/alertify.min.css" rel="stylesheet">
 </head>
 
 <body>
 	<script src="<?php echo base_url(); ?>assets/jquery-3.3.1/jquery-3.3.1.min.js"></script>
+	<script src="<?php echo base_url(); ?>assets/jquery-ui-1.12.1/jquery-ui.min.js"></script>
 	<script src="<?php echo base_url(); ?>assets/jquery-validation-1.17.0/jquery.validate.min.js"></script>
 	<script src="<?php echo base_url(); ?>assets/jquery-validation-1.17.0/additional-methods.min.js"></script>
 	<script src="<?php echo base_url(); ?>assets/bootstrap-4.1.3-dist/js/bootstrap.min.js"></script>
+	<script src="<?php echo base_url(); ?>assets/jquery.signature.package-1.2.0/js/jquery.signature.min.js"></script>
 	<script src="<?php echo base_url(); ?>assets/EasyAutocomplete-1.3.5/jquery.easy-autocomplete.min.js"></script>
 	<script src="<?php echo base_url(); ?>assets/alertifyjs/alertify.min.js"></script>
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">

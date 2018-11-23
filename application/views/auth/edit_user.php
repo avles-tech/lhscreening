@@ -64,3 +64,32 @@
       <p><?php echo form_submit('submit', lang('edit_user_submit_btn'));?></p>
 
 <?php echo form_close();?>
+
+<div id='sig'>
+
+</div>
+
+<p style="clear: both;">
+	<button id="clear">Clear</button> 
+	<button id="save_signature">Save Signature</button>
+</p>
+
+<script>
+      $(function () {
+      	var sig = $('#sig').signature();
+      	$('#save_signature').click(function () {
+      		//alert(sig.signature('toSVG'));
+                  var sig_jpeg = $('#sig').signature('toDataURL', 'image/jpeg');
+                  alert(sig_jpeg);
+      	});
+            $('#clear').click(function() {
+		sig.signature('clear');
+	});
+
+
+      });
+</script>
+<style>
+.kbw-signature { width: 400px; height: 200px; }
+</style>
+
