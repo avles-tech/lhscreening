@@ -45,56 +45,59 @@ else{
 	<input type="email" class="form-control" name='email' value="<?php echo array_key_exists('email', $patient_details) ? $patient_details['email'] : '';?>"
 	 required <?php echo $read_only ?>>
 </div> <!-- form-group end.// -->
-<div class="form-row">
-	<div class="form-group col-md-6">
-		<label>Phone home</label>
+<div class="form-group row">
+	<label class="col-sm-2 col-form-label">Phone home</label>
+	<div class="col-sm-5">
 		<input class='form-control' placeholder='+441234567890' name='phone_home' type='tel' value="<?php echo array_key_exists('phone_home', $patient_details) ? $patient_details['phone_home'] : '';?>"
 		 <?php echo $read_only ?>/>
-	</div> <!-- form-group end.// -->
-	<div class="form-group col-md-6">
-		<div class="form-check form-check-inline">
+	</div>
+	<div class="col-sm-5">
+		<div class="form-check">
 			<label class="form-check">
-				<input type="checkbox" value="1" name="phone_home_prefer" <?php echo array_key_exists('phone_home_prefer',
-				 $patient_details) ? $patient_details['phone_home_prefer']=='1' ? 'checked' : '' : '' ; echo $read_only?>/>
+				<input type="checkbox" value="1" class="form-check-input" name="phone_home_prefer" <?php echo
+				 array_key_exists('phone_home_prefer', $patient_details) ? $patient_details['phone_home_prefer']=='1' ? 'checked' :
+				 '' : '' ; echo $read_only?>/>
 				<span class="form-check-label">Preferred</span>
 			</label>
 		</div>
-	</div> <!-- form-group end.// -->
-</div> <!-- form-row.// -->
-<div class="form-row">
-	<div class="form-group col-md-6">
-		<label>Phone mobile</label>
+	</div>
+</div>
+<div class="form-group row">
+	<label class="col-sm-2 col-form-label">Phone mobile</label>
+	<div class="col-sm-5">
 		<input class='form-control' placeholder='+441234567890' name='phone_mobile' type='tel' value="<?php echo array_key_exists('phone_mobile', $patient_details) ? $patient_details['phone_mobile'] : '';?>"
 		 <?php echo $read_only ?>/>
-	</div> <!-- form-group end.// -->
-	<div class="form-group col-md-6">
-		<div class="form-check form-check-inline">
+	</div>
+	<div class="col-sm-5">
+		<div class="form-check">
 			<label class="form-check">
-				<input type="checkbox" value="1" name="phone_mobile_prefer" <?php echo array_key_exists('phone_mobile_prefer',
-				 $patient_details) ? $patient_details['phone_mobile_prefer']=='1' ? 'checked' : '' : '' ; ?>
+				<input type="checkbox" value="1" class="form-check-input" name="phone_mobile_prefer" <?php echo
+				 array_key_exists('phone_mobile_prefer', $patient_details) ? $patient_details['phone_mobile_prefer']=='1' ?
+				 'checked' : '' : '' ; ?>
 				<?php echo $read_only ?>>
 				<span class="form-check-label">Preferred</span>
 			</label>
 		</div>
-	</div> <!-- form-group end.// -->
-</div> <!-- form-row.// -->
-<div class="form-row">
-	<div class="form-group col-md-6">
-		<label>Phone work</label>
+	</div>
+</div>
+<div class="form-group row">
+	<label class="col-sm-2 col-form-label">Phone work</label>
+	<div class="col-sm-5">
 		<input class='form-control' placeholder='+441234567890' name='phone_work' type='tel' value="<?php echo array_key_exists('phone_work', $patient_details) ? $patient_details['phone_work'] : '';?>"
 		 <?php echo $read_only ?>/>
-	</div> <!-- form-group end.// -->
-	<div class="form-group col-md-6">
-		<div class="form-check form-check-inline">
+	</div>
+	<div class="col-sm-5">
+		<div class="form-check">
 			<label class="form-check">
-				<input type="checkbox" value="1" name="phone_work_prefer" <?php echo array_key_exists('phone_work_prefer',
-				 $patient_details) ? $patient_details['phone_work_prefer']=='1' ? 'checked' : '' : '' ; ?>
+				<input type="checkbox" class="form-check-input" value="1" name="phone_work_prefer" <?php echo
+				 array_key_exists('phone_work_prefer', $patient_details) ? $patient_details['phone_work_prefer']=='1' ? 'checked' :
+				 '' : '' ; ?>
 				<?php echo $read_only ?>>
 				<span class="form-check-label">Preferred</span>
 			</label>
 		</div>
-	</div> <!-- form-group end.// -->
-</div> <!-- form-row.// -->
+	</div>
+</div>
 <div class="form-group">
 	<label class="form-check form-check-inline">
 		<input class="form-check-input" type="radio" name="gender" value="1" <?php echo array_key_exists('gender',
@@ -243,60 +246,60 @@ else{
 	<label>Are you aware of any allergies to the following?</label>
 	<br>
 	<div class="form-check form-check-inline">
-	<label class="form-check">
-		<input type="checkbox" value="1" name="allergy_milk" <?php echo array_key_exists('allergy_milk', $patient_details) ?
-		 $patient_details['allergy_milk']=='1' ? 'checked' : '' : '' ; ?>
-		<?php echo $read_only ?>>
-		<span class="form-check-label">Milk</span>
+		<label class="form-check">
+			<input type="checkbox" value="1" name="allergy_milk" <?php echo array_key_exists('allergy_milk', $patient_details) ?
+			 $patient_details['allergy_milk']=='1' ? 'checked' : '' : '' ; ?>
+			<?php echo $read_only ?>>
+			<span class="form-check-label">Milk</span>
 		</label>
 	</div>
 	<div class="form-check form-check-inline">
-	<label class="form-check">
-		<input type="checkbox" value="1" name="allergy_eggs" <?php echo array_key_exists('allergy_eggs', $patient_details) ?
-		 $patient_details['allergy_eggs']=='1' ? 'checked' : '' : '' ; ?>
-		<?php echo $read_only ?>>
-		<span class="form-check-label">Eggs</span>
+		<label class="form-check">
+			<input type="checkbox" value="1" name="allergy_eggs" <?php echo array_key_exists('allergy_eggs', $patient_details) ?
+			 $patient_details['allergy_eggs']=='1' ? 'checked' : '' : '' ; ?>
+			<?php echo $read_only ?>>
+			<span class="form-check-label">Eggs</span>
 		</label>
 	</div>
 	<div class="form-check form-check-inline">
-	<label class="form-check">
-		<input type="checkbox" value="1" name="allergy_peanuts" <?php echo array_key_exists('allergy_peanuts',
-		 $patient_details) ? $patient_details['allergy_peanuts']=='1' ? 'checked' : '' : '' ; ?>
-		<?php echo $read_only ?>
-		<?php echo $read_only ?>>
-		<span class="form-check-label">Peanuts</span>
+		<label class="form-check">
+			<input type="checkbox" value="1" name="allergy_peanuts" <?php echo array_key_exists('allergy_peanuts',
+			 $patient_details) ? $patient_details['allergy_peanuts']=='1' ? 'checked' : '' : '' ; ?>
+			<?php echo $read_only ?>
+			<?php echo $read_only ?>>
+			<span class="form-check-label">Peanuts</span>
 		</label>
 	</div>
 	<div class="form-check form-check-inline">
-	<label class="form-check">
-		<input type="checkbox" value="1" name="allergy_shellfish" <?php echo array_key_exists('allergy_shellfish',
-		 $patient_details) ? $patient_details['allergy_shellfish']=='1' ? 'checked' : '' : '' ; ?>
-		<?php echo $read_only ?>>
-		<span class="form-check-label">Shellfish</span>
+		<label class="form-check">
+			<input type="checkbox" value="1" name="allergy_shellfish" <?php echo array_key_exists('allergy_shellfish',
+			 $patient_details) ? $patient_details['allergy_shellfish']=='1' ? 'checked' : '' : '' ; ?>
+			<?php echo $read_only ?>>
+			<span class="form-check-label">Shellfish</span>
 		</label>
 	</div>
 	<div class="form-check form-check-inline">
-	<label class="form-check">
-		<input type="checkbox" value="1" name="allergy_iodine" <?php echo array_key_exists('allergy_iodine',
-		 $patient_details) ? $patient_details['allergy_iodine']=='1' ? 'checked' : '' : '' ; ?>
-		<?php echo $read_only ?>>
-		<span class="form-check-label">Iodine</span>
+		<label class="form-check">
+			<input type="checkbox" value="1" name="allergy_iodine" <?php echo array_key_exists('allergy_iodine',
+			 $patient_details) ? $patient_details['allergy_iodine']=='1' ? 'checked' : '' : '' ; ?>
+			<?php echo $read_only ?>>
+			<span class="form-check-label">Iodine</span>
 		</label>
 	</div>
 	<div class="form-check form-check-inline">
-	<label class="form-check">
-		<input type="checkbox" value="1" name="allergy_pencillin" <?php echo array_key_exists('allergy_pencillin',
-		 $patient_details) ? $patient_details['allergy_pencillin']=='1' ? 'checked' : '' : '' ; ?>
-		<?php echo $read_only ?>>
-		<span class="form-check-label">Penicillin</span>
+		<label class="form-check">
+			<input type="checkbox" value="1" name="allergy_pencillin" <?php echo array_key_exists('allergy_pencillin',
+			 $patient_details) ? $patient_details['allergy_pencillin']=='1' ? 'checked' : '' : '' ; ?>
+			<?php echo $read_only ?>>
+			<span class="form-check-label">Penicillin</span>
 		</label>
 	</div>
 	<div class="form-check form-check-inline">
-	<label class="form-check">
-		<input type="checkbox" value="1" name="allergy_treenuts" <?php echo array_key_exists('allergy_treenuts',
-		 $patient_details) ? $patient_details['allergy_treenuts']=='1' ? 'checked' : '' : '' ; ?>
-		<?php echo $read_only ?>>
-		<span class="form-check-label">Tree nuts(walnuts/almonds/pecan)</span>
+		<label class="form-check">
+			<input type="checkbox" value="1" name="allergy_treenuts" <?php echo array_key_exists('allergy_treenuts',
+			 $patient_details) ? $patient_details['allergy_treenuts']=='1' ? 'checked' : '' : '' ; ?>
+			<?php echo $read_only ?>>
+			<span class="form-check-label">Tree nuts(walnuts/almonds/pecan)</span>
 		</label>
 	</div>
 </div> <!-- form-group end.// -->
