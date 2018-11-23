@@ -4,6 +4,7 @@ class Patients_model extends CI_Model {
         public function __construct()
         {
                 $this->load->database();
+                $this->load->library('ion_auth');
         }
 
         function search($query)
@@ -60,9 +61,11 @@ class Patients_model extends CI_Model {
                 echo json_encode($this->db->get('patients')->result_array());
         }
 
-        public function save_exit()
-        {       $this->db->where('patient_id', $this->input->post('patient_id'));
-                return $this->db->update('patients', array('save_exit'=>'1'));
+        public function save_exit($patient_id)
+        {
+                $user = $this->ion_auth->user()->row(); 
+                $this->db->where('patient_id', $patient_id);
+                return $this->db->update('patients', array('save_exit'=>'1' , 'save_exist_user_id'=> $user->id));
         }
 
         public function set_patients()

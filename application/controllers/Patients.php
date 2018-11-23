@@ -190,7 +190,7 @@ class Patients extends CI_Controller {
 
         public function save_exit(){
                 $patient_id = $this->input->post('patient_id');
-                $this->patients_model->save_exit($patient_id,$form_data);
+                $this->patients_model->save_exit($patient_id);
         }
 
         public function update_gad(){

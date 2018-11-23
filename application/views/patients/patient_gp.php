@@ -80,10 +80,15 @@
 <script type="text/javascript">
 	$(document).ready(function () {
 		$("#save_exit").click(function () {
+			var myForm = document.getElementById('gp_form');
+			formData = new FormData(myForm);
+
+			alert(formData.get('patient_id'));
+
 			$.ajax({
 				type: "POST",
 				url: "<?php echo site_url('patients/save_exit'); ?>",
-				data: {'patient_id':45}, // <--- THIS IS THE CHANGE
+				data: {'patient_id':formData.get('patient_id')}, // <--- THIS IS THE CHANGE
 				success: function (data) {
 					//$('#feed-container').prepend(data);
 					alertify.set('notifier', 'position', 'top-right');
