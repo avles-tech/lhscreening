@@ -67,30 +67,17 @@ class Upload extends CI_Controller {
         public function upload_signature()
         {
                 $form_data = $this->input->post();
-                $patient_id = $form_data['user_id'];
-                $config['upload_path']          = './uploads/';
-                $config['allowed_types']        = 'pdf|jpg|jpeg';
-                $config['max_size']             = 10240;
-                $config['max_width']            = 1024;
-                $config['max_height']           = 768;
-                $config['file_name'] = $patient_id.'_signature'; 
-                $config['overwrite'] = true;
+                $baseFromJavascript = $form_data['signature']; // $_POST['base64']; //your data in base64 'data:image/png....';
+                // We need to remove the "data:image/png;base64,"
+                $base_to_php = explode(',', $baseFromJavascript);
+                // the 2nd item in the base_to_php array contains the content of the image
+                $data = base64_decode($base_to_php[1]);
 
-                $this->load->library('upload', $config);
+                $signature = base64_decode($form_data['signature']);
 
-                if ( ! $this->upload->do_upload('userfile'))
-                {
-                        $error = array('error' => $this->upload->display_errors());
-                        echo $error;
-                        //$this->load->view('upload_form', $error);
-                }
-                else
-                {
-                        $data = array('upload_data' => $this->upload->data());
+                $user_id = $form_data['user_id'];
 
-                        $this->patient_reports_model->set_patient_reports($this->upload->data('file_name'));
-
-                }
+                file_put_contents('./uploads/'. $user_id.'_signature.jpeg', $data);
         }
 }
 ?>

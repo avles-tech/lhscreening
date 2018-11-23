@@ -24,8 +24,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 
-$config['base_url'] = 'https://stormy-mesa-5521.herokuapp.com';
-//$config['base_url'] = 'http://lyca.com/lhscreening';
+//$config['base_url'] = 'https://stormy-mesa-5521.herokuapp.com';
+$config['base_url'] = 'http://lyca.com/lhscreening';
 
 /*
 |--------------------------------------------------------------------------

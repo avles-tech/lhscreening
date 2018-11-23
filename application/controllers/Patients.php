@@ -68,7 +68,10 @@ class Patients extends CI_Controller {
                 }
                 $output .= '</table>';
 
-                $this->user_activity_model->set('have searched for a registered patient');
+                if($query!='')
+                {
+                        $this->user_activity_model->set('searched for a registered patient');
+                }
 
                 echo $output;
         }

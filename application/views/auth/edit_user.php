@@ -80,7 +80,19 @@
       	$('#save_signature').click(function () {
       		//alert(sig.signature('toSVG'));
                   var sig_jpeg = $('#sig').signature('toDataURL', 'image/jpeg');
-                  alert(sig_jpeg);
+                  //alert(sig_jpeg.split(',')[1]);
+			$.ajax({
+				url: "<?php echo base_url(); ?>index.php/upload/upload_signature",
+				method: "POST",
+				data: {
+					user_id: '1'
+                              ,signature : sig_jpeg
+				},
+				success: function (data) {
+					$('#result').html(data);
+				}
+			});
+
       	});
             $('#clear').click(function() {
 		sig.signature('clear');
