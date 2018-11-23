@@ -83,8 +83,6 @@
 			var myForm = document.getElementById('gp_form');
 			formData = new FormData(myForm);
 
-			alert(formData.get('patient_id'));
-
 			$.ajax({
 				type: "POST",
 				url: "<?php echo site_url('patients/save_exit'); ?>",
@@ -95,6 +93,7 @@
 					alertify.notify('patient save and exit', 'success', 5, function () {
 						console.log('dismissed');
 					});
+					location.reload();
 				},
 				error: function () {
 					alert("Error posting feed.");
