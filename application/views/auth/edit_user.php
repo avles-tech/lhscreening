@@ -85,7 +85,7 @@
 				url: "<?php echo base_url(); ?>index.php/upload/upload_signature",
 				method: "POST",
 				data: {
-					user_id: '1'
+					user_id: <?php echo $user->id?>
                               ,signature : sig_jpeg
 				},
 				success: function (data) {
