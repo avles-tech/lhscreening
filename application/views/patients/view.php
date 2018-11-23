@@ -115,13 +115,13 @@ $this->user_activity_model->set('selected '.$patient_details['first_name'].'(pat
 		});
 	}
 
-	var params = {},
-                   queryString = location.hash.substring(1),
-                   regex = /([^&=]+)=([^&]*)/g,
-                   m;
-               while (m = regex.exec(queryString)) {
-                 params[m[1]] = m[2];
-               }
+	// var params = {},
+    //                queryString = location.hash.substring(1),
+    //                regex = /([^&=]+)=([^&]*)/g,
+    //                m;
+    //            while (m = regex.exec(queryString)) {
+    //              params[m[1]] = m[2];
+    //            }
                //alert("your access token is : " + params["tab"]);
 	</Script>
 	<!-- <Script>
@@ -164,14 +164,13 @@ $this->user_activity_model->set('selected '.$patient_details['first_name'].'(pat
 	</script>
 <script>
 		$("#edit_user_button").click(function () {
-			alertify.prompt( 'Reason for edit', 'Reason', ''
-               , function(evt, value) { 
-				   	alertify.success('You entered: ' + value);
-				   	$(":input").prop('disabled', false);
-					$(":button").prop('disabled', false);
-				}
-               , function() { alertify.error('Cancel') });
-
-			
+			alertify.prompt('Reason for edit', 'Reason', '', function (evt, value) {
+				alertify.success('You entered: ' + value);
+				setActivity('<?php echo 'edited  '.$patient_details['first_name'].' ( Patient ID :'.$patient_id.') , reason : '?>'+value);
+				$(":input").prop('disabled', false);
+				$(":button").prop('disabled', false);
+			}, function () {
+				alertify.error('Cancel')
+			});
 		});
 	</script>
