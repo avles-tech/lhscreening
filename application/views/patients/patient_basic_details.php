@@ -9,7 +9,7 @@ else{
 }
 ?>
 <?php 
-	$read_only = empty($patient_details) ? '' : $patient_details['save_exit']=='1' ? 'disabled' : '';
+	$read_only = !array_key_exists('save_exit', $patient_details) ? '' : $patient_details['save_exit']=='1' ? 'disabled' : '';
 ?>
 <div class="form-row">
 	<div class="col form-group">
@@ -46,12 +46,12 @@ else{
 	 required <?php echo $read_only ?>>
 </div> <!-- form-group end.// -->
 <div class="form-group row">
-	<label class="col-sm-2 col-form-label">Phone home</label>
+	<label class="col-sm-3 col-form-label">Phone home</label>
 	<div class="col-sm-5">
 		<input class='form-control' placeholder='+441234567890' name='phone_home' type='tel' value="<?php echo array_key_exists('phone_home', $patient_details) ? $patient_details['phone_home'] : '';?>"
 		 <?php echo $read_only ?>/>
 	</div>
-	<div class="col-sm-5">
+	<div class="col-sm-4">
 		<div class="form-check">
 			<label class="form-check">
 				<input type="checkbox" value="1" class="form-check-input" name="phone_home_prefer" <?php echo
@@ -63,12 +63,12 @@ else{
 	</div>
 </div>
 <div class="form-group row">
-	<label class="col-sm-2 col-form-label">Phone mobile</label>
+	<label class="col-sm-3 col-form-label">Phone mobile</label>
 	<div class="col-sm-5">
 		<input class='form-control' placeholder='+441234567890' name='phone_mobile' type='tel' value="<?php echo array_key_exists('phone_mobile', $patient_details) ? $patient_details['phone_mobile'] : '';?>"
 		 <?php echo $read_only ?>/>
 	</div>
-	<div class="col-sm-5">
+	<div class="col-sm-4">
 		<div class="form-check">
 			<label class="form-check">
 				<input type="checkbox" value="1" class="form-check-input" name="phone_mobile_prefer" <?php echo
@@ -81,12 +81,12 @@ else{
 	</div>
 </div>
 <div class="form-group row">
-	<label class="col-sm-2 col-form-label">Phone work</label>
+	<label class="col-sm-3 col-form-label">Phone work</label>
 	<div class="col-sm-5">
 		<input class='form-control' placeholder='+441234567890' name='phone_work' type='tel' value="<?php echo array_key_exists('phone_work', $patient_details) ? $patient_details['phone_work'] : '';?>"
 		 <?php echo $read_only ?>/>
 	</div>
-	<div class="col-sm-5">
+	<div class="col-sm-4">
 		<div class="form-check">
 			<label class="form-check">
 				<input type="checkbox" class="form-check-input" value="1" name="phone_work_prefer" <?php echo
