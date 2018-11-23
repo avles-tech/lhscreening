@@ -9,6 +9,8 @@
 	<article class="card-body">
 		<?php
 			$patient_lab_test = $this->patient_lab_test_model->get_patient_lab_test($patient_id);
+			$patient_details = $this->patients_model->get_patients($patient_id);
+			$read_only = empty($patient_details) ? '' : $patient_details['save_exit']=='1' ? 'disabled' : '';
 			
 			$categories = array();
 			foreach ($patient_lab_test as $c) {
@@ -33,7 +35,7 @@
 				<?php echo $item['test_name'] ?></label>
 			<div class="col-sm-4">
 				<input class="form-control" name='<?php echo $item['id'] ?>' value="
-				<?php echo array_key_exists('test_name', $item) ? $item['value'] : '';?>" >
+				<?php echo array_key_exists('test_name', $item) ? $item['value'] : '';?>" <?php echo $read_only ?>>
 			</div>
 			<div class="small-3 columns">
 				<span class="postfix"><?php echo array_key_exists('unit', $item) ? $item['unit'] : '';?></span>
@@ -43,7 +45,7 @@
 		<div class="form-row">
 			<!-- form-group end.// -->
 			<div class="form-group">
-				<button type="submit" class="btn btn-primary btn-block"> Save </button>
+				<button type="submit" class="btn btn-primary btn-block" <?php echo $read_only ?>> Save </button>
 			</div> <!-- form-group// -->
 		</div>
 		</form>
