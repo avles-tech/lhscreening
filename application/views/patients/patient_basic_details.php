@@ -14,7 +14,8 @@ else{
 <div class="form-row">
 	<div class="col form-group">
 		<label>Title</label>
-		<select class="form-control" name='title' value="<?php echo array_key_exists('title', $patient_details) ? $patient_details['title'] : '';?>" <?php echo $read_only ?>>
+		<select class="form-control" name='title' value="<?php echo array_key_exists('title', $patient_details) ? $patient_details['title'] : '';?>"
+		 <?php echo $read_only ?>>
 			<option disabled selected value>-</option>
 			<option value="Ms">Ms</option>
 			<option value="Mrs">Mrs</option>
@@ -47,51 +48,64 @@ else{
 <div class="form-row">
 	<div class="form-group col-md-6">
 		<label>Phone home</label>
-		<input class='form-control' placeholder='+441234567890' name='phone_home' type='tel' value="<?php echo array_key_exists('phone_home', $patient_details) ? $patient_details['phone_home'] : '';?>" <?php echo $read_only ?>/>
+		<input class='form-control' placeholder='+441234567890' name='phone_home' type='tel' value="<?php echo array_key_exists('phone_home', $patient_details) ? $patient_details['phone_home'] : '';?>"
+		 <?php echo $read_only ?>/>
 	</div> <!-- form-group end.// -->
 	<div class="form-group col-md-6">
-	<div class="form-check form-check-inline">
-			<input type="checkbox" value="1" name="phone_home_prefer" <?php echo array_key_exists('phone_home_prefer',
-			 $patient_details) ? $patient_details['phone_home_prefer']=='1' ? 'checked' : '' : '' ; ?> <?php echo $read_only ?>>
-			<label>Preferred</label>
+		<div class="form-check form-check-inline">
+			<label class="form-check">
+				<input type="checkbox" value="1" name="phone_home_prefer" <?php echo array_key_exists('phone_home_prefer',
+				 $patient_details) ? $patient_details['phone_home_prefer']=='1' ? 'checked' : '' : '' ; echo $read_only?>/>
+				<span class="form-check-label">Preferred</span>
+			</label>
 		</div>
 	</div> <!-- form-group end.// -->
 </div> <!-- form-row.// -->
 <div class="form-row">
 	<div class="form-group col-md-6">
-	<label>Phone mobile</label>
-		<input class='form-control' placeholder='+441234567890' name='phone_mobile' type='tel' value="<?php echo array_key_exists('phone_mobile', $patient_details) ? $patient_details['phone_mobile'] : '';?>" <?php echo $read_only ?>/>
+		<label>Phone mobile</label>
+		<input class='form-control' placeholder='+441234567890' name='phone_mobile' type='tel' value="<?php echo array_key_exists('phone_mobile', $patient_details) ? $patient_details['phone_mobile'] : '';?>"
+		 <?php echo $read_only ?>/>
 	</div> <!-- form-group end.// -->
 	<div class="form-group col-md-6">
-	<div class="form-check form-check-inline">
-			<input type="checkbox" value="1" name="phone_mobile_prefer" <?php echo array_key_exists('phone_mobile_prefer',
-			 $patient_details) ? $patient_details['phone_mobile_prefer']=='1' ? 'checked' : '' : '' ; ?> <?php echo $read_only ?>>
-			<label>Preferred</label>
+		<div class="form-check form-check-inline">
+			<label class="form-check">
+				<input type="checkbox" value="1" name="phone_mobile_prefer" <?php echo array_key_exists('phone_mobile_prefer',
+				 $patient_details) ? $patient_details['phone_mobile_prefer']=='1' ? 'checked' : '' : '' ; ?>
+				<?php echo $read_only ?>>
+				<span class="form-check-label">Preferred</span>
+			</label>
 		</div>
 	</div> <!-- form-group end.// -->
 </div> <!-- form-row.// -->
 <div class="form-row">
 	<div class="form-group col-md-6">
 		<label>Phone work</label>
-		<input class='form-control' placeholder='+441234567890' name='phone_work' type='tel' value="<?php echo array_key_exists('phone_work', $patient_details) ? $patient_details['phone_work'] : '';?>" <?php echo $read_only ?>/>
+		<input class='form-control' placeholder='+441234567890' name='phone_work' type='tel' value="<?php echo array_key_exists('phone_work', $patient_details) ? $patient_details['phone_work'] : '';?>"
+		 <?php echo $read_only ?>/>
 	</div> <!-- form-group end.// -->
 	<div class="form-group col-md-6">
 		<div class="form-check form-check-inline">
-			<input type="checkbox" value="1" name="phone_work_prefer" <?php echo array_key_exists('phone_work_prefer',
-			 $patient_details) ? $patient_details['phone_work_prefer']=='1' ? 'checked' : '' : '' ; ?> <?php echo $read_only ?>>
-			<label>Preferred</label>
+			<label class="form-check">
+				<input type="checkbox" value="1" name="phone_work_prefer" <?php echo array_key_exists('phone_work_prefer',
+				 $patient_details) ? $patient_details['phone_work_prefer']=='1' ? 'checked' : '' : '' ; ?>
+				<?php echo $read_only ?>>
+				<span class="form-check-label">Preferred</span>
+			</label>
 		</div>
 	</div> <!-- form-group end.// -->
 </div> <!-- form-row.// -->
 <div class="form-group">
 	<label class="form-check form-check-inline">
 		<input class="form-check-input" type="radio" name="gender" value="1" <?php echo array_key_exists('gender',
-		 $patient_details) ? $patient_details['gender']=='1' ? 'checked' : '' : '' ; ?> required <?php echo $read_only ?>>
+		 $patient_details) ? $patient_details['gender']=='1' ? 'checked' : '' : '' ; ?> required
+		<?php echo $read_only ?>>
 		<span class="form-check-label"> Male </span>
 	</label>
 	<label class="form-check form-check-inline">
 		<input class="form-check-input" type="radio" name="gender" value="0" <?php echo array_key_exists('gender',
-		 $patient_details) ? $patient_details['gender']=='0' ? 'checked' : '' : '' ; ?> required <?php echo $read_only ?>>
+		 $patient_details) ? $patient_details['gender']=='0' ? 'checked' : '' : '' ; ?> required
+		<?php echo $read_only ?>>
 		<span class="form-check-label"> Female</span>
 	</label>
 </div> <!-- form-group end.// -->
@@ -104,7 +118,8 @@ else{
 	</div> <!-- form-group end.// -->
 	<div class="form-group col-md-6">
 		<label>Age</label>
-		<input class='form-control' name='age' value="<?php echo array_key_exists('age', $patient_details) ? $patient_details['age']:'';?>" <?php echo $read_only ?>/>
+		<input class='form-control' name='age' value="<?php echo array_key_exists('age', $patient_details) ? $patient_details['age']:'';?>"
+		 <?php echo $read_only ?>/>
 	</div> <!-- form-group end.// -->
 </div> <!-- form-row.// -->
 <div class="form-group">
@@ -114,7 +129,8 @@ else{
 <div class="form-row">
 	<div class="form-group col-md-6">
 		<label>Postal code</label>
-		<input class='form-control' name='postal_code' value="<?php echo array_key_exists('postal_code', $patient_details) ? $patient_details['postal_code'] : '';?>" <?php echo $read_only ?>/>
+		<input class='form-control' name='postal_code' value="<?php echo array_key_exists('postal_code', $patient_details) ? $patient_details['postal_code'] : '';?>"
+		 <?php echo $read_only ?>/>
 	</div> <!-- form-group end.// -->
 	<div class="form-group col-md-6">
 
@@ -125,7 +141,8 @@ else{
 		<!-- <label>Blood group</label>
 		<input type="text" class="form-control" name='blood_group' value="<?php echo array_key_exists('blood_group', $patient_details) ? $patient_details['blood_group'] : '';?>"> -->
 		<label>Blood group</label>
-		<select class="form-control" name='blood_group' value="<?php echo array_key_exists('blood_group', $patient_details) ? $patient_details['blood_group'] : '';?>" <?php echo $read_only ?>>
+		<select class="form-control" name='blood_group' value="<?php echo array_key_exists('blood_group', $patient_details) ? $patient_details['blood_group'] : '';?>"
+		 <?php echo $read_only ?>>
 			<option disabled selected value> -- </option>
 			<option value="A+">A+</option>
 			<option value="A-">A-</option>
@@ -139,7 +156,8 @@ else{
 	</div> <!-- form-group end.// -->
 	<div class="col form-group">
 		<label>Occupation</label>
-		<input type="text" class="form-control" name='occupation' value="<?php echo array_key_exists('occupation', $patient_details) ? $patient_details['occupation'] : '';?>" <?php echo $read_only ?>>
+		<input type="text" class="form-control" name='occupation' value="<?php echo array_key_exists('occupation', $patient_details) ? $patient_details['occupation'] : '';?>"
+		 <?php echo $read_only ?>>
 	</div> <!-- form-group end.// -->
 </div> <!-- form-row end.// -->
 <br>
@@ -147,16 +165,19 @@ else{
 <div class="form-row">
 	<div class="col form-group">
 		<label>Name</label>
-		<input type="text" class="form-control" name="next_of_kin_name" value="<?php echo array_key_exists('next_of_kin_name', $patient_details) ? $patient_details['next_of_kin_name'] : '';?>" <?php echo $read_only ?>/>
+		<input type="text" class="form-control" name="next_of_kin_name" value="<?php echo array_key_exists('next_of_kin_name', $patient_details) ? $patient_details['next_of_kin_name'] : '';?>"
+		 <?php echo $read_only ?>/>
 	</div> <!-- form-group end.// -->
 	<div class="col form-group">
 		<label>Phone Number</label>
-		<input type="text" class="form-control" placeholder='+441234567890' name="next_of_kin_phone" value="<?php echo array_key_exists('next_of_kin_phone', $patient_details) ? $patient_details['next_of_kin_phone'] : '';?>" <?php echo $read_only ?>/>
+		<input type="text" class="form-control" placeholder='+441234567890' name="next_of_kin_phone" value="<?php echo array_key_exists('next_of_kin_phone', $patient_details) ? $patient_details['next_of_kin_phone'] : '';?>"
+		 <?php echo $read_only ?>/>
 	</div> <!-- form-group end.// -->
 </div> <!-- form-row end.// -->
 <div class="form-group">
 	<label>Relationship</label>
-	<input class="form-control" type="text" name="next_of_kin_relationship" value="<?php echo array_key_exists('next_of_kin_relationship', $patient_details) ? $patient_details['next_of_kin_relationship'] : '';?>" <?php echo $read_only ?>/>
+	<input class="form-control" type="text" name="next_of_kin_relationship" value="<?php echo array_key_exists('next_of_kin_relationship', $patient_details) ? $patient_details['next_of_kin_relationship'] : '';?>"
+	 <?php echo $read_only ?>/>
 </div> <!-- form-group end.// -->
 <div class="form-group">
 	<label> In case of emergency if you are uncontactable, do you provide consent for your next of kin to be contacted
@@ -164,13 +185,15 @@ else{
 	<label class="form-check form-check-inline">
 		<input class="form-check-input" type="radio" name="next_of_kin_contact" value="1" <?php echo
 		 array_key_exists('next_of_kin_contact', $patient_details) ? $patient_details['next_of_kin_contact']=='1' ? 'checked'
-		 : '' : '' ; ?> <?php echo $read_only ?>>
+		 : '' : '' ; ?>
+		<?php echo $read_only ?>>
 		<span class="form-check-label"> yes </span>
 	</label>
 	<label class="form-check form-check-inline">
 		<input class="form-check-input" type="radio" name="next_of_kin_contact" value="0" <?php echo
 		 array_key_exists('next_of_kin_contact', $patient_details) ? $patient_details['next_of_kin_contact']=='0' ? 'checked'
-		 : '' : '' ; ?> <?php echo $read_only ?>>
+		 : '' : '' ; ?>
+		<?php echo $read_only ?>>
 		<span class="form-check-label"> No</span>
 	</label>
 </div> <!-- form-group end.// -->
@@ -187,13 +210,15 @@ else{
 	<label class="form-check form-check-inline">
 		<input class="form-check-input" type="radio" name="gp_contact_agree" value="1" <?php echo
 		 array_key_exists('gp_contact_agree', $patient_details) ? $patient_details['gp_contact_agree']=='1' ? 'checked' : ''
-		 : '' ; ?> <?php echo $read_only ?>>
+		 : '' ; ?>
+		<?php echo $read_only ?>>
 		<span class="form-check-label"> Agree </span>
 	</label>
 	<label class="form-check form-check-inline">
 		<input class="form-check-input" type="radio" name="gp_contact_agree" value="0" <?php echo
 		 array_key_exists('gp_contact_agree', $patient_details) ? $patient_details['gp_contact_agree']=='0' ? 'checked' : ''
-		 : '' ; ?> <?php echo $read_only ?>>
+		 : '' ; ?>
+		<?php echo $read_only ?>>
 		<span class="form-check-label"> Disagree</span>
 	</label>
 </div> <!-- form-group end.// -->
@@ -218,54 +243,82 @@ else{
 	<label>Are you aware of any allergies to the following?</label>
 	<br>
 	<div class="form-check form-check-inline">
+	<label class="form-check">
 		<input type="checkbox" value="1" name="allergy_milk" <?php echo array_key_exists('allergy_milk', $patient_details) ?
-		 $patient_details['allergy_milk']=='1' ? 'checked' : '' : '' ; ?> <?php echo $read_only ?>>
-		<label>Milk</label>
+		 $patient_details['allergy_milk']=='1' ? 'checked' : '' : '' ; ?>
+		<?php echo $read_only ?>>
+		<span class="form-check-label">Milk</span>
+		</label>
 	</div>
 	<div class="form-check form-check-inline">
+	<label class="form-check">
 		<input type="checkbox" value="1" name="allergy_eggs" <?php echo array_key_exists('allergy_eggs', $patient_details) ?
-		 $patient_details['allergy_eggs']=='1' ? 'checked' : '' : '' ; ?> <?php echo $read_only ?>>
-		<label>Eggs</label>
+		 $patient_details['allergy_eggs']=='1' ? 'checked' : '' : '' ; ?>
+		<?php echo $read_only ?>>
+		<span class="form-check-label">Eggs</span>
+		</label>
 	</div>
 	<div class="form-check form-check-inline">
+	<label class="form-check">
 		<input type="checkbox" value="1" name="allergy_peanuts" <?php echo array_key_exists('allergy_peanuts',
-		 $patient_details) ? $patient_details['allergy_peanuts']=='1' ? 'checked' : '' : '' ; ?> <?php echo $read_only ?> <?php echo $read_only ?>>
-		<label>Peanuts</label>
+		 $patient_details) ? $patient_details['allergy_peanuts']=='1' ? 'checked' : '' : '' ; ?>
+		<?php echo $read_only ?>
+		<?php echo $read_only ?>>
+		<span class="form-check-label">Peanuts</span>
+		</label>
 	</div>
 	<div class="form-check form-check-inline">
+	<label class="form-check">
 		<input type="checkbox" value="1" name="allergy_shellfish" <?php echo array_key_exists('allergy_shellfish',
-		 $patient_details) ? $patient_details['allergy_shellfish']=='1' ? 'checked' : '' : '' ; ?> <?php echo $read_only ?>>
-		<label>Shellfish</label>
+		 $patient_details) ? $patient_details['allergy_shellfish']=='1' ? 'checked' : '' : '' ; ?>
+		<?php echo $read_only ?>>
+		<span class="form-check-label">Shellfish</span>
+		</label>
 	</div>
 	<div class="form-check form-check-inline">
+	<label class="form-check">
 		<input type="checkbox" value="1" name="allergy_iodine" <?php echo array_key_exists('allergy_iodine',
-		 $patient_details) ? $patient_details['allergy_iodine']=='1' ? 'checked' : '' : '' ; ?> <?php echo $read_only ?>>
-		<label>Iodine</label>
+		 $patient_details) ? $patient_details['allergy_iodine']=='1' ? 'checked' : '' : '' ; ?>
+		<?php echo $read_only ?>>
+		<span class="form-check-label">Iodine</span>
+		</label>
 	</div>
 	<div class="form-check form-check-inline">
+	<label class="form-check">
 		<input type="checkbox" value="1" name="allergy_pencillin" <?php echo array_key_exists('allergy_pencillin',
-		 $patient_details) ? $patient_details['allergy_pencillin']=='1' ? 'checked' : '' : '' ; ?> <?php echo $read_only ?>>
-		<label>Penicillin</label>
+		 $patient_details) ? $patient_details['allergy_pencillin']=='1' ? 'checked' : '' : '' ; ?>
+		<?php echo $read_only ?>>
+		<span class="form-check-label">Penicillin</span>
+		</label>
 	</div>
 	<div class="form-check form-check-inline">
+	<label class="form-check">
 		<input type="checkbox" value="1" name="allergy_treenuts" <?php echo array_key_exists('allergy_treenuts',
-		 $patient_details) ? $patient_details['allergy_treenuts']=='1' ? 'checked' : '' : '' ; ?> <?php echo $read_only ?>>
-		<label>Tree nuts(walnuts/almonds/pecan)</label>
+		 $patient_details) ? $patient_details['allergy_treenuts']=='1' ? 'checked' : '' : '' ; ?>
+		<?php echo $read_only ?>>
+		<span class="form-check-label">Tree nuts(walnuts/almonds/pecan)</span>
+		</label>
 	</div>
 </div> <!-- form-group end.// -->
 <div class="form-group">
 	<label>Other Allergies</label>
 	<div class="form-check form-check-inline">
-		<input type="radio" value="1" id="allergy_others_yes" name="allergy_others" <?php echo
-		 array_key_exists('allergy_others', $patient_details) ? $patient_details['allergy_others']=='1' ? 'checked' : '' : ''
-		 ; ?> <?php echo $read_only ?>>
-		<label>Yes</label>
+		<label class="form-check">
+			<input type="radio" value="1" id="allergy_others_yes" name="allergy_others" <?php echo
+			 array_key_exists('allergy_others', $patient_details) ? $patient_details['allergy_others']=='1' ? 'checked' : '' :
+			 '' ; ?>
+			<?php echo $read_only ?>>
+			<span class="form-check-label">Yes</span>
+		</label>
 	</div>
 	<div class="form-check form-check-inline">
-		<input type="radio" value="0" id="allergy_others_no" name="allergy_others" <?php echo
-		 array_key_exists('allergy_others', $patient_details) ? $patient_details['allergy_others']=='0' ? 'checked' : '' :
-		 '' ; ?> <?php echo $read_only ?>>
-		<label>No</label>
+		<label class="form-check">
+			<input type="radio" value="0" id="allergy_others_no" name="allergy_others" <?php echo
+			 array_key_exists('allergy_others', $patient_details) ? $patient_details['allergy_others']=='0' ? 'checked' : '' :
+			 '' ; ?>
+			<?php echo $read_only ?>>
+			<span class="form-check-label">No</span>
+		</label>
 	</div>
 </div> <!-- form-group end.// -->
 <div class="form-group" style="display:none;" id="allergy_others_details_div">
@@ -278,12 +331,14 @@ else{
 	<label>Do you suffer from Hayfever?</label>
 	<label class="form-check form-check-inline">
 		<input class="form-check-input" type="radio" name="hay_fever" value="1" <?php echo array_key_exists('hay_fever',
-		 $patient_details) ? $patient_details['hay_fever']=='1' ? 'checked' : '' : '' ; ?> <?php echo $read_only ?>>
+		 $patient_details) ? $patient_details['hay_fever']=='1' ? 'checked' : '' : '' ; ?>
+		<?php echo $read_only ?>>
 		<span class="form-check-label"> Yes </span>
 	</label>
 	<label class="form-check form-check-inline">
 		<input class="form-check-input" type="radio" name="hay_fever" value="0" <?php echo array_key_exists('hay_fever',
-		 $patient_details) ? $patient_details['hay_fever']=='0' ? 'checked' : '' : '' ; ?> <?php echo $read_only ?>>
+		 $patient_details) ? $patient_details['hay_fever']=='0' ? 'checked' : '' : '' ; ?>
+		<?php echo $read_only ?>>
 		<span class="form-check-label"> No</span>
 	</label>
 </div> <!-- form-group end.// -->
@@ -291,12 +346,14 @@ else{
 	<label>Do you have Asthma?</label>
 	<label class="form-check form-check-inline">
 		<input class="form-check-input" type="radio" name="asthma" value="1" <?php echo array_key_exists('asthma',
-		 $patient_details) ? $patient_details['asthma']=='1' ? 'checked' : '' : '' ; ?> <?php echo $read_only ?>>
+		 $patient_details) ? $patient_details['asthma']=='1' ? 'checked' : '' : '' ; ?>
+		<?php echo $read_only ?>>
 		<span class="form-check-label"> Yes </span>
 	</label>
 	<label class="form-check form-check-inline">
 		<input class="form-check-input" type="radio" name="asthma" value="0" <?php echo array_key_exists('asthma',
-		 $patient_details) ? $patient_details['asthma']=='0' ? 'checked' : '' : '' ; ?> <?php echo $read_only ?>>
+		 $patient_details) ? $patient_details['asthma']=='0' ? 'checked' : '' : '' ; ?>
+		<?php echo $read_only ?>>
 		<span class="form-check-label"> No</span>
 	</label>
 </div> <!-- form-group end.// -->
@@ -309,13 +366,15 @@ else{
 	<label class="form-check form-check-inline">
 		<input class="form-check-input" type="radio" name="chaperone_required" value="1" <?php echo
 		 array_key_exists('chaperone_required', $patient_details) ? $patient_details['chaperone_required']=='1' ? 'checked' :
-		 '' : '' ; ?> <?php echo $read_only ?>>
+		 '' : '' ; ?>
+		<?php echo $read_only ?>>
 		<span class="form-check-label"> Yes </span>
 	</label>
 	<label class="form-check form-check-inline">
 		<input class="form-check-input" type="radio" name="chaperone_required" value="0" <?php echo
 		 array_key_exists('chaperone_required', $patient_details) ? $patient_details['chaperone_required']=='0' ? 'checked' :
-		 '' : '' ; ?> <?php echo $read_only ?>>
+		 '' : '' ; ?>
+		<?php echo $read_only ?>>
 		<span class="form-check-label"> No</span>
 	</label>
 </div> <!-- form-group end.// -->
@@ -345,44 +404,44 @@ else{
 <script>
 	$(document).ready(function () {
 		var x = {
-				first_name: {
-					required: true,
-					lettersonly: true
-				},
-				last_name: {
-					required: true,
-					lettersonly: true
-				},
-				email: {
-					required: true,
-					email: true
-				},
-				postal_code: {
-					postcodeUK: true
-				},
-				phone_home: {
-					phonesUK: true
-				},
-				phone_mobile: {
-					mobileUK: true
-				},
-				phone_work: {
-					phonesUK: true
-				},
-				occupation: {
-					lettersonly: true
-				},
-				next_of_kin_name: {
-					lettersonly: true
-				},
-				next_of_kin_phone: {
-					phonesUK: true
-				},
-				next_of_kin_relationship:{
-					lettersonly: true
-				}
+			first_name: {
+				required: true,
+				lettersonly: true
+			},
+			last_name: {
+				required: true,
+				lettersonly: true
+			},
+			email: {
+				required: true,
+				email: true
+			},
+			postal_code: {
+				postcodeUK: true
+			},
+			phone_home: {
+				phonesUK: true
+			},
+			phone_mobile: {
+				mobileUK: true
+			},
+			phone_work: {
+				phonesUK: true
+			},
+			occupation: {
+				lettersonly: true
+			},
+			next_of_kin_name: {
+				lettersonly: true
+			},
+			next_of_kin_phone: {
+				phonesUK: true
+			},
+			next_of_kin_relationship: {
+				lettersonly: true
+			}
 
-			};
+		};
 
 		$('#create_form').validate({ // initialize the plugin
 			rules: x
@@ -395,70 +454,70 @@ else{
 
 </script>
 <script>
+	var options = {
 
-var options = {
+		url: function (phrase) {
+			return "<?php echo base_url(); ?>index.php/patients/occupations";
+		},
 
-	url: function (phrase) {
-		return "<?php echo base_url(); ?>index.php/patients/occupations";
-	},
+		getValue: function (element) {
+			console.log('element', element);
+			return element.occupation;
+		},
 
-	getValue: function (element) {
-		console.log('element',element);
-		return element.occupation;
-	},
+		ajaxSettings: {
+			dataType: "json",
+			method: "POST",
+			data: {
+				dataType: "json"
+			}
+		},
 
-	ajaxSettings: {
-		dataType: "json",
-		method: "POST",
-		data: {
-			dataType: "json"
-		}
-	},
+		preparePostData: function (data) {
+			data.phrase = $("input[name=occupation]").val();
+			return data;
+		},
 
-	preparePostData: function (data) {
-		data.phrase = $("input[name=occupation]").val();
-		return data;
-	},
-	
-	requestDelay: 400
-};
+		requestDelay: 400
+	};
 
-$("input[name=occupation]").easyAutocomplete(options);
+	$("input[name=occupation]").easyAutocomplete(options);
+
 </script>
 <script>
-function checkPatientExists(){
-	firstName =  $( "input[name=first_name]" ).val();
-	lastName =  $( "input[name=last_name]" ).val();
-	dob =  $( "input[name=dob]" ).val();
-	$.ajax({
+	function checkPatientExists() {
+		firstName = $("input[name=first_name]").val();
+		lastName = $("input[name=last_name]").val();
+		dob = $("input[name=dob]").val();
+		$.ajax({
 			url: "<?php echo base_url(); ?>index.php/patients/patient_exists",
 			method: "POST",
 			data: {
-				first_name: firstName
-				,last_name: lastName
-				,dob: dob
+				first_name: firstName,
+				last_name: lastName,
+				dob: dob
 			},
 			success: function (data) {
-				
-					if(data==1){
-						alert('patient exists already');
-						$("#create").prop("disabled", true);
-						$("#basic_details_save_button").prop("disabled", true);
-					}
-					else{
-						$("#create").prop("disabled", false);
-						$("#basic_details_save_button").prop("disabled", false);
-					}
+
+				if (data == 1) {
+					alert('patient exists already');
+					$("#create").prop("disabled", true);
+					$("#basic_details_save_button").prop("disabled", true);
+				} else {
+					$("#create").prop("disabled", false);
+					$("#basic_details_save_button").prop("disabled", false);
 				}
+			}
 		});
-}
-	$( "input[name=first_name]" ).change(function() {
+	}
+	$("input[name=first_name]").change(function () {
 		checkPatientExists();
 	});
-	$( "input[name=last_name]" ).change(function() {
+	$("input[name=last_name]").change(function () {
 		checkPatientExists();
 	});
-	$( "input[name=dob]" ).change(function() {
+	$("input[name=dob]").change(function () {
 		checkPatientExists();
 	});
+
 </script>
