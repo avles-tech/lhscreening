@@ -43,6 +43,7 @@ class User_activity_model extends CI_Model {
                         $this->db->or_like('u.first_name', $query);
                 }
                 $this->db->limit('10');
+                $this->db->order_by('date_time', 'DESC');
                 return $this->db->get();
         }
 
