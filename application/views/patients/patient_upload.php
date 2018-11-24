@@ -4,8 +4,8 @@
 	<br /><br />
 	<?php 
 			$patient_reports = $this->patient_reports_model->get_patient_reports($patient_id);
-			echo form_open_multipart('upload/do_upload');
-			//echo form_open_multipart('upload_blood_report_form',array( 'id' => 'upload_blood_report_form'));
+			//echo form_open_multipart('upload/do_upload_ex');
+			echo form_open_multipart('upload_blood_report_form',array( 'id' => 'upload_blood_report_form'));
 			echo form_hidden('patient_id',$patient_id); 
 			echo form_hidden('report','blood'); 
 		?>
@@ -25,7 +25,7 @@
 			echo form_hidden('patient_id',$patient_id); 
 			echo form_hidden('report','mri'); 
 		?>
-	<input type="file" name="userfile" size="20" />
+	<input type="file" name="userfile" id= 'userfile' size="20" accept=".jpeg,.jpg,.pdf"/>
 
 	<input type="submit" value="upload" />
 	</form>
@@ -55,17 +55,17 @@
 ?>
 
 <script>
-		$('form#upload_blood_report_form').submit(function (e) {
-
-			var form = $(this);
+		$('form').submit(function (e) {
 
 			e.preventDefault();
 
 			$.ajax({
 				type: "POST",
-				url: "<?php echo site_url('upload/do_upload'); ?>",
-				data: form.serialize(), // <--- THIS IS THE CHANGE
-				dataType: "html",
+				url: "<?php echo site_url('upload/do_upload_ex'); ?>",
+				data: new FormData(this),
+				processData:false,
+                     contentType:false,
+                     cache:false,
 				success: function (data) {
 					//$('#feed-container').prepend(data);
 				},
