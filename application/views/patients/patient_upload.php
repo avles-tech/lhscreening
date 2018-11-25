@@ -28,7 +28,8 @@
 <div class="form-group">
 	<br />
 	<?php 
-			echo form_open_multipart('upload/do_upload');
+			//echo form_open_multipart('upload/do_upload');
+			echo form_open_multipart('upload_mri_report_form',array( 'id' => 'upload_mri_report_form'));
 			echo form_hidden('patient_id',$patient_id); 
 			echo form_hidden('report','mri'); 
 		?>
@@ -52,7 +53,8 @@
 <div class="form-group">
 	<br />
 	<?php 
-			echo form_open_multipart('upload/do_upload');
+			//echo form_open_multipart('upload/do_upload');
+			echo form_open_multipart('upload_xray_report_form',array( 'id' => 'upload_xray_report_form'));
 			echo form_hidden('patient_id',$patient_id); 
 			echo form_hidden('report','xray'); 
 		?>
@@ -134,7 +136,7 @@
 		});
 	}
 
-	$('form').submit(function (e) {
+	$('form[id^=upload_]').submit(function (e) {
 
 		e.preventDefault();
 		

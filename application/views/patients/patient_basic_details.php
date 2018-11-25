@@ -17,12 +17,12 @@ else{
 		<select class="form-control" name='title' value="<?php echo array_key_exists('title', $patient_details) ? $patient_details['title'] : '';?>"
 		 <?php echo $read_only ?>>
 			<option disabled selected value>-</option>
-			<option value="Ms">Ms</option>
-			<option value="Mrs">Mrs</option>
-			<option value="Mis">Mis</option>
-			<option value="Mr">Mr</option>
-			<option value="Dr">Dr</option>
-			<option value="Others">Others</option>
+			<option value="Ms" <?php echo array_key_exists('title', $patient_details) ? $patient_details['title']== 'Ms' ? 'selected' :'' : '';?>>Ms</option>
+			<option value="Mrs" <?php echo array_key_exists('title', $patient_details) ? $patient_details['title']== 'Mrs' ? 'selected' :'' : '';?>>Mrs</option>
+			<option value="Mis" <?php echo array_key_exists('title', $patient_details) ? $patient_details['title']== 'Mis' ? 'selected' :'' : '';?> >Mis</option>
+			<option value="Mr" <?php echo array_key_exists('title', $patient_details) ? $patient_details['title']== 'Mr' ? 'selected' :'' : '';?>>Mr</option>
+			<option value="Dr" <?php echo array_key_exists('title', $patient_details) ? $patient_details['title']== 'Dr' ? 'selected' :'' : '';?> >Dr</option>
+			<option value="Others" <?php echo array_key_exists('title', $patient_details) ? $patient_details['title']== 'Others' ? 'selected' :'' : '';?>>Others</option>
 		</select>
 	</div> <!-- form-group end.// -->
 	<div class="col form-group">
@@ -147,14 +147,14 @@ else{
 		<select class="form-control" name='blood_group' value="<?php echo array_key_exists('blood_group', $patient_details) ? $patient_details['blood_group'] : '';?>"
 		 <?php echo $read_only ?>>
 			<option disabled selected value> -- </option>
-			<option value="A+">A+</option>
-			<option value="A-">A-</option>
-			<option value="B+">B+</option>
-			<option value="B-">B-</option>
-			<option value="O+">O+</option>
-			<option value="O-">O-</option>
-			<option value="AB+">AB+</option>
-			<option value="AB-">AB-</option>
+			<option value="A+" <?php echo array_key_exists('blood_group', $patient_details) ? $patient_details['blood_group']== 'A+' ? 'selected' :'' : '';?>>A+</option>
+			<option value="A-" <?php echo array_key_exists('blood_group', $patient_details) ? $patient_details['blood_group']== 'A-' ? 'selected' :'' : '';?>>A-</option>
+			<option value="B+" <?php echo array_key_exists('blood_group', $patient_details) ? $patient_details['blood_group']== 'B+' ? 'selected' :'' : '';?>>B+</option>
+			<option value="B-" <?php echo array_key_exists('blood_group', $patient_details) ? $patient_details['blood_group']== 'B-' ? 'selected' :'' : '';?>>B-</option>
+			<option value="O+" <?php echo array_key_exists('blood_group', $patient_details) ? $patient_details['blood_group']== 'O+' ? 'selected' :'' : '';?>>O+</option>
+			<option value="O-" <?php echo array_key_exists('blood_group', $patient_details) ? $patient_details['blood_group']== 'O-' ? 'selected' :'' : '';?>>O-</option>
+			<option value="AB+" <?php echo array_key_exists('blood_group', $patient_details) ? $patient_details['blood_group']== 'AB+' ? 'selected' :'' : '';?>>AB+</option>
+			<option value="AB-" <?php echo array_key_exists('blood_group', $patient_details) ? $patient_details['blood_group']== 'AB-' ? 'selected' :'' : '';?>>AB-</option>
 		</select>
 	</div> <!-- form-group end.// -->
 	<div class="col form-group">
