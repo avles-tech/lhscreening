@@ -42,8 +42,11 @@
 		</div> <!-- form-row.// -->
 		<div class="form-row">
 			<!-- form-group end.// -->
-			<div class="form-group">
+			<div class="form-group btn-group mr-2">
 				<button type="submit" class="btn btn-primary btn-block"> Save </button>
+			</div> <!-- form-group// -->
+			<div class="form-group btn-group mr-2">
+				<a id='save_exit' href="<?php echo base_url().'index.php/patients'?>" class="btn btn-danger" role='button'>Cancel</a>
 			</div> <!-- form-group// -->
 		</div>
 		</form>
