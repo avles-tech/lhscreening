@@ -453,6 +453,10 @@ else{
 		$('#basic_details_form').validate({ // initialize the plugin
 			rules: x
 		});
+
+		jQuery.validator.addMethod("lettersonly", function(value, element) {
+			return this.optional(element) || /^[a-z\s]+$/i.test(value);
+		}, "Only alphabetical characters"); 
 	});
 
 </script>

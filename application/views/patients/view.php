@@ -178,9 +178,7 @@ $this->user_activity_model->set('selected '.$patient_details['first_name'].'(pat
 	$("#edit_user_button").click(function () {
 		alertify.prompt('Reason for edit', 'Reason', '', function (evt, value) {
 			alertify.success('You entered: ' + value);
-			setActivity('<?php echo '
-				edited '.$patient_details['
-				first_name '].'(Patient ID: '.$patient_id.'), reason: '?>' + value);
+			setActivity("<?php echo 'edited '.$patient_details['first_name'].'(Patient ID: '.$patient_id.'), reason: '?>" + value);
 			$(":input").prop('disabled', false);
 			$(":button").prop('disabled', false);
 		}, function () {
