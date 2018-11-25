@@ -6,7 +6,7 @@
 			echo form_open('gad_form',array( 'id' => 'gad_form'));
         ?>
 		<div class="form-row">
-            <?php 
+			<?php 
 			$patient_gad = $this->patient_gad_model->get_patient_gad($patient_id);
 			$patient_details = $this->patients_model->get_patients($patient_id);
 			$read_only = empty($patient_details) ? '' : $patient_details['save_exit']=='1' ? 'disabled' : '';
@@ -20,20 +20,24 @@
 				</label>
 			</div> <!-- form-group end.// -->
 			<div class="form-group col-md-6">
-			<label class="form-check">
-					<input type="radio" name="<?php echo $item['id'] ?>" value="0" <?php echo $item['value'] == '0' ? 'checked' : '' ?> <?php echo $read_only ?>>
+				<label class="form-check">
+					<input type="radio" name="<?php echo $item['id'] ?>" value="0" <?php echo $item['value']=='0' ? 'checked' : '' ?>
+					<?php echo $read_only ?>>
 					<span class="form-check-label">Not at all</span>
 				</label>
 				<label class="form-check">
-					<input type="radio" name="<?php echo $item['id'] ?>" value="1" <?php echo $item['value'] == '1' ? 'checked' : '' ?> <?php echo $read_only ?>>
+					<input type="radio" name="<?php echo $item['id'] ?>" value="1" <?php echo $item['value']=='1' ? 'checked' : '' ?>
+					<?php echo $read_only ?>>
 					<span class="form-check-label">Several days</span>
 				</label>
 				<label class="form-check">
-					<input type="radio" name="<?php echo $item['id'] ?>" value="2" <?php echo $item['value'] == '2' ? 'checked' : '' ?> <?php echo $read_only ?>>
+					<input type="radio" name="<?php echo $item['id'] ?>" value="2" <?php echo $item['value']=='2' ? 'checked' : '' ?>
+					<?php echo $read_only ?>>
 					<span class="form-check-label">More than half the days</span>
 				</label>
 				<label class="form-check">
-					<input type="radio" name="<?php echo $item['id'] ?>" value="3" <?php echo $item['value'] == '3' ? 'checked' : '' ?> <?php echo $read_only ?>>
+					<input type="radio" name="<?php echo $item['id'] ?>" value="3" <?php echo $item['value']=='3' ? 'checked' : '' ?>
+					<?php echo $read_only ?>>
 					<span class="form-check-label">Nearly every day</span>
 				</label>
 			</div> <!-- form-group end.// -->
@@ -52,26 +56,29 @@
 	</article>
 </div>
 <script>
-		$('form#gad_form').submit(function (e) {
+	$('form#gad_form').submit(function (e) {
 
-			var form = $(this);
+		var form = $(this);
 
-			e.preventDefault();
+		e.preventDefault();
 
-			$.ajax({
-				type: "POST",
-				url: "<?php echo site_url('patients/update_gad'); ?>",
-				data: form.serialize(), // <--- THIS IS THE CHANGE
-				dataType: "html",
-				success: function (data) {
-					//$('#feed-container').prepend(data);
-					alertify.set('notifier','position', 'top-right');
-					alertify.notify('patient details updated', 'success', 5, function(){  console.log('dismissed'); });
-				},
-				error: function () {
-					alert("Error posting feed.");
-				}
-			});
-
+		$.ajax({
+			type: "POST",
+			url: "<?php echo site_url('patients/update_gad'); ?>",
+			data: form.serialize(), // <--- THIS IS THE CHANGE
+			dataType: "html",
+			success: function (data) {
+				//$('#feed-container').prepend(data);
+				alertify.set('notifier', 'position', 'top-right');
+				alertify.notify('patient details updated', 'success', 5, function () {
+					console.log('dismissed');
+				});
+			},
+			error: function () {
+				alert("Error posting feed.");
+			}
 		});
-	</script>
+
+	});
+
+</script>

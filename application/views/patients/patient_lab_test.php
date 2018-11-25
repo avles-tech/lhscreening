@@ -34,11 +34,13 @@
 			<label class="col-sm-2 col-form-label">
 				<?php echo $item['test_name'] ?></label>
 			<div class="col-sm-4">
-				<input class="form-control" name='<?php echo $item['id'] ?>' value="
-				<?php echo array_key_exists('test_name', $item) ? $item['value'] : '';?>" <?php echo $read_only ?>>
+				<input class="form-control" name='<?php echo $item[' id'] ?>' value="
+				<?php echo array_key_exists('test_name', $item) ? $item['value'] : '';?>"
+				<?php echo $read_only ?>>
 			</div>
 			<div class="small-3 columns">
-				<span class="postfix"><?php echo array_key_exists('unit', $item) ? $item['unit'] : '';?></span>
+				<span class="postfix">
+					<?php echo array_key_exists('unit', $item) ? $item['unit'] : '';?></span>
 			</div>
 		</div> <!-- form-group end.// -->
 		<?php  endif; endforeach; endforeach; ?>
@@ -55,26 +57,29 @@
 	</article>
 </div>
 <script>
-		$('form#patient_lab_test_form').submit(function (e) {
+	$('form#patient_lab_test_form').submit(function (e) {
 
-			var form = $(this);
+		var form = $(this);
 
-			e.preventDefault();
+		e.preventDefault();
 
-			$.ajax({
-				type: "POST",
-				url: "<?php echo site_url('patients/update_patient_lab_test'); ?>",
-				data: form.serialize(), // <--- THIS IS THE CHANGE
-				dataType: "html",
-				success: function (data) {
-					//$('#feed-container').prepend(data);
-					alertify.set('notifier','position', 'top-right');
-					alertify.notify('patient details updated', 'success', 5, function(){  console.log('dismissed'); });
-				},
-				error: function () {
-					alert("Error posting feed.");
-				}
-			});
-
+		$.ajax({
+			type: "POST",
+			url: "<?php echo site_url('patients/update_patient_lab_test'); ?>",
+			data: form.serialize(), // <--- THIS IS THE CHANGE
+			dataType: "html",
+			success: function (data) {
+				//$('#feed-container').prepend(data);
+				alertify.set('notifier', 'position', 'top-right');
+				alertify.notify('patient details updated', 'success', 5, function () {
+					console.log('dismissed');
+				});
+			},
+			error: function () {
+				alert("Error posting feed.");
+			}
 		});
-	</script>
+
+	});
+
+</script>

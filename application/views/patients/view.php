@@ -19,7 +19,7 @@ echo '<h2>'.$patient_details['first_name'].' '.$patient_details['last_name'].'</
 $this->user_activity_model->set('selected '.$patient_details['first_name'].'(patient ID:'.$patient_details['patient_id'].') for update');
 ?>
 <ul class="nav nav-tabs" id="myTab" role="tablist">
-	<li class="nav-item" >
+	<li class="nav-item">
 		<a class="nav-link active" id="basic_details-tab" data-toggle="tab" href="#basic_details" role="tab" aria-controls="basic_details"
 		 aria-selected="true">Basic Details</a>
 	</li>
@@ -30,20 +30,25 @@ $this->user_activity_model->set('selected '.$patient_details['first_name'].'(pat
 		<a class="nav-link" id="gad-tab" data-toggle="tab" href="#gad" role="tab" aria-controls="gad" aria-selected="false">GAD-7</a>
 	</li>
 	<li class="nav-item" onclick="setActivity('<?php echo 'opened Medical history results of '.$patient_details['first_name'].' (Patient ID:'.$patient_id.')' ?>')">
-		<a class="nav-link" id="medical_history-tab" data-toggle="tab" href="#medical_history" role="tab" aria-controls="medical_history" aria-selected="false">Medical History</a>
+		<a class="nav-link" id="medical_history-tab" data-toggle="tab" href="#medical_history" role="tab" aria-controls="medical_history"
+		 aria-selected="false">Medical History</a>
 	</li>
 	<li class="nav-item" onclick="setActivity('<?php echo 'opened Laboratory test results of '.$patient_details['first_name'].' (Patient ID:'.$patient_id.')' ?>')">
-		<a class="nav-link" id="lab_test-tab" data-toggle="tab" href="#lab_test" role="tab" aria-controls="lab_test" aria-selected="false">Laboratory Test</a>
+		<a class="nav-link" id="lab_test-tab" data-toggle="tab" href="#lab_test" role="tab" aria-controls="lab_test"
+		 aria-selected="false">Laboratory Test</a>
 	</li>
 	<li class="nav-item" onclick="setActivity('<?php echo 'opened uploads of '.$patient_details['first_name'].' (Patient ID:'.$patient_id.')' ?>')">
-		<a class="nav-link" id="upload_report-tab" data-toggle="tab" href="#upload_report" role="tab" aria-controls="upload_report" aria-selected="false">Reports</a>
+		<a class="nav-link" id="upload_report-tab" data-toggle="tab" href="#upload_report" role="tab" aria-controls="upload_report"
+		 aria-selected="false">Reports</a>
 	</li>
 	<?php if ($this->ion_auth->in_group('gp')): ?>
 	<li class="nav-item" onclick="setActivity('<?php echo 'opened GP Summary and Recommendations of '.$patient_details['first_name'].' (Patient ID:'.$patient_id.')' ?>')">
-		<a class="nav-link" id="gp-tab" data-toggle="tab" href="#gp" role="tab" aria-controls="gp" aria-selected="false">GP summary & recommendation</a>
+		<a class="nav-link" id="gp-tab" data-toggle="tab" href="#gp" role="tab" aria-controls="gp" aria-selected="false">GP
+			summary & recommendation</a>
 	</li>
-	<li class="nav-item" >
-		<a class="nav-link" id="generate_report-tab" data-toggle="tab" href="#generate_report" role="tab" aria-controls="generate_report" aria-selected="false">Generate Reports</a>
+	<li class="nav-item">
+		<a class="nav-link" id="generate_report-tab" data-toggle="tab" href="#generate_report" role="tab" aria-controls="generate_report"
+		 aria-selected="false">Generate Reports</a>
 	</li>
 	<?php endif ?>
 </ul>
@@ -60,11 +65,12 @@ $this->user_activity_model->set('selected '.$patient_details['first_name'].'(pat
 				<div class="form-row">
 					<!-- form-group end.// -->
 					<div class="form-group btn-group mr-2">
-						<button type="submit" id='basic_details_save_button' class="btn btn-primary btn-block" <?php echo empty($patient_details) ? '' : $patient_details['save_exit']=='1' ? 'disabled' : '' ?>> Save </button>
+						<button type="submit" id='basic_details_save_button' class="btn btn-primary btn-block" <?php echo
+						 empty($patient_details) ? '' : $patient_details['save_exit']=='1' ? 'disabled' : '' ?>> Save </button>
 					</div> <!-- form-group// -->
 					<div class="form-group btn-group mr-2">
-				<a id='save_exit' href="<?php echo base_url().'index.php/patients'?>" class="btn btn-danger" role='button'>Cancel</a>
-			</div> <!-- form-group// -->
+						<a id='save_exit' href="<?php echo base_url().'index.php/patients'?>" class="btn btn-danger" role='button'>Cancel</a>
+					</div> <!-- form-group// -->
 				</div>
 				</form>
 			</article>
@@ -81,34 +87,33 @@ $this->user_activity_model->set('selected '.$patient_details['first_name'].'(pat
 		?>
 	</div>
 	<div class="tab-pane" id="medical_history" role="tabpanel" aria-labelledby="gad-tab">
-	<?php 
+		<?php 
 			$this->load->view('patients/patient_medical_history',array( 'patient_id' => $patient_id)); 
 		?>
 	</div>
 	<div class="tab-pane" id="lab_test" role="tabpanel" aria-labelledby="gad-tab">
-	<?php 
+		<?php 
 			$this->load->view('patients/patient_lab_test',array( 'patient_id' => $patient_id)); 
 		?>
 	</div>
 	<div class="tab-pane" id="upload_report" role="tabpanel" aria-labelledby="gad-tab">
-	<?php 
+		<?php 
 		$this->load->view('patients/patient_upload', array( 'patient_id' => $patient_id)); 
 	?>
 	</div>
 	<div class="tab-pane" id="gp" role="tabpanel" aria-labelledby="gad-tab">
-	<?php 
+		<?php 
 		$this->load->view('patients/patient_gp', array( 'patient_id' => $patient_id)); 
 	?>
 	</div>
 	<div class="tab-pane" id="generate_report" role="tabpanel" aria-labelledby="generate_report-tab">
-	<?php 
+		<?php 
 		$this->load->view('patients/patient_report', array( 'patient_id' => $patient_id)); 
 	?>
 	</div>
 </div>
 <Script>
-	function setActivity(activity)
-	{
+	function setActivity(activity) {
 		$.ajax({
 			url: "<?php echo base_url(); ?>index.php/Useractivity/set_activity",
 			method: "POST",
@@ -119,15 +124,16 @@ $this->user_activity_model->set('selected '.$patient_details['first_name'].'(pat
 	}
 
 	// var params = {},
-    //                queryString = location.hash.substring(1),
-    //                regex = /([^&=]+)=([^&]*)/g,
-    //                m;
-    //            while (m = regex.exec(queryString)) {
-    //              params[m[1]] = m[2];
-    //            }
-               //alert("your access token is : " + params["tab"]);
-	</Script>
-	<!-- <Script>
+	//                queryString = location.hash.substring(1),
+	//                regex = /([^&=]+)=([^&]*)/g,
+	//                m;
+	//            while (m = regex.exec(queryString)) {
+	//              params[m[1]] = m[2];
+	//            }
+	//alert("your access token is : " + params["tab"]);
+
+</Script>
+<!-- <Script>
 		$('#myTab a').click(function(e) {
 			e.preventDefault();
 			$(this).tab('show');
@@ -144,36 +150,42 @@ $this->user_activity_model->set('selected '.$patient_details['first_name'].'(pat
 
 		$('#myTab a[href="' + hash + '"]').tab('show');
 	</Script> -->
-	<script>
-		$('form#basic_details_form').submit(function (e) {
-			var form = $(this);
-			e.preventDefault();
-			$.ajax({
-				type: "POST",
-				url: "<?php echo site_url('patients/update'); ?>",
-				data: form.serialize(), // <--- THIS IS THE CHANGE
-				dataType: "html",
-				success: function (data) {
-					//$('#feed-container').prepend(data);
-					alertify.set('notifier','position', 'top-right');
-					alertify.notify('patient details updated', 'success', 5, function(){  console.log('dismissed'); });
-				},
-				error: function () {
-					alert("Error posting feed.");
-				}
-			});
-
-		});
-	</script>
 <script>
-		$("#edit_user_button").click(function () {
-			alertify.prompt('Reason for edit', 'Reason', '', function (evt, value) {
-				alertify.success('You entered: ' + value);
-				setActivity('<?php echo 'edited  '.$patient_details['first_name'].' ( Patient ID :'.$patient_id.') , reason : '?>'+value);
-				$(":input").prop('disabled', false);
-				$(":button").prop('disabled', false);
-			}, function () {
-				alertify.error('Cancel')
-			});
+	$('form#basic_details_form').submit(function (e) {
+		var form = $(this);
+		e.preventDefault();
+		$.ajax({
+			type: "POST",
+			url: "<?php echo site_url('patients/update'); ?>",
+			data: form.serialize(), // <--- THIS IS THE CHANGE
+			dataType: "html",
+			success: function (data) {
+				//$('#feed-container').prepend(data);
+				alertify.set('notifier', 'position', 'top-right');
+				alertify.notify('patient details updated', 'success', 5, function () {
+					console.log('dismissed');
+				});
+			},
+			error: function () {
+				alert("Error posting feed.");
+			}
 		});
-	</script>
+
+	});
+
+</script>
+<script>
+	$("#edit_user_button").click(function () {
+		alertify.prompt('Reason for edit', 'Reason', '', function (evt, value) {
+			alertify.success('You entered: ' + value);
+			setActivity('<?php echo '
+				edited '.$patient_details['
+				first_name '].'(Patient ID: '.$patient_id.'), reason: '?>' + value);
+			$(":input").prop('disabled', false);
+			$(":button").prop('disabled', false);
+		}, function () {
+			alertify.error('Cancel')
+		});
+	});
+
+</script>

@@ -86,18 +86,20 @@
 <script type="text/javascript">
 	$(document).ready(function () {
 
-		function save_action_pressed(){
+		function save_action_pressed() {
 			var myForm = document.getElementById('gp_form');
 			formData = new FormData(myForm);
 
-			console.log('this',$(this)[0].id);
+			console.log('this', $(this)[0].id);
 
 			let that = this;
 
 			$.ajax({
 				type: "POST",
 				url: "<?php echo site_url('patients/save_exit'); ?>",
-				data: {'patient_id':formData.get('patient_id')}, // <--- THIS IS THE CHANGE
+				data: {
+					'patient_id': formData.get('patient_id')
+				}, // <--- THIS IS THE CHANGE
 				success: function (data) {
 					//$('#feed-container').prepend(data);
 					alertify.set('notifier', 'position', 'top-right');
@@ -105,11 +107,11 @@
 						console.log('dismissed');
 					});
 					console.log('test');
-					if($(that)[0].id.toString()==='save_complete')
+					if ($(that)[0].id.toString() === 'save_complete')
 						location.reload();
-					else if($(that)[0].id==='save_exit')
+					else if ($(that)[0].id === 'save_exit')
 						location.href = "<?php echo base_url().'index.php/patients'?>";
-						//console.log('test');
+					//console.log('test');
 				},
 				error: function () {
 					alert("Error posting feed.");
