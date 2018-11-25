@@ -43,8 +43,14 @@
 			<div class="form-group btn-group  mr-2">
 				<button id='gp_save_button' <?php echo $read_only ?> type="submit" class="btn btn-primary "> Save </button>
 			</div> <!-- form-group// -->
-			<div class="form-group btn-group">
-				<button id='save_exit' class="btn btn-primary " <?php echo $read_only ?>>Save & exit</button>
+			<div class="form-group btn-group mr-2">
+				<button id='save_complete' class="btn btn-primary " <?php echo $read_only ?>>Save & complete</button>
+			</div> <!-- form-group// -->
+			<div class="form-group btn-group mr-2">
+				<button id='save_exit' class="btn btn-primary " <?php echo $read_only ?>>Save & Exit</button>
+			</div> <!-- form-group// -->
+			<div class="form-group btn-group mr-2">
+				<a id='save_exit' href="<?php echo base_url().'index.php/patients'?>" class="btn btn-danger" role='button'>Cancel</a>
 			</div> <!-- form-group// -->
 		</div>
 		</form>
@@ -79,9 +85,14 @@
 </script>
 <script type="text/javascript">
 	$(document).ready(function () {
-		$("#save_exit").click(function () {
+
+		function save_action_pressed(){
 			var myForm = document.getElementById('gp_form');
 			formData = new FormData(myForm);
+
+			console.log('this',$(this)[0].id);
+
+			let that = this;
 
 			$.ajax({
 				type: "POST",
@@ -93,13 +104,21 @@
 					alertify.notify('patient save and exit', 'success', 5, function () {
 						console.log('dismissed');
 					});
-					location.reload();
+					console.log('test');
+					if($(that)[0].id.toString()==='save_complete')
+						location.reload();
+					else if($(that)[0].id==='save_exit')
+						location.href = "<?php echo base_url().'index.php/patients'?>";
+						//console.log('test');
 				},
 				error: function () {
 					alert("Error posting feed.");
 				}
 			});
-		});
+		}
+		$("#save_complete").click(save_action_pressed);
+
+		$("#save_exit").click(save_action_pressed);
 	});
 
 </script>

@@ -12,15 +12,16 @@ class Useractivity extends CI_Controller {
             $this->user_activity_model->set($activity);
         }
 
+        public function get_users(){
+                echo json_encode($this->ion_auth->users()->result()) ;
+        }
+
         function search()
         {
                 $output = '';
-                $query = '';
-                if($this->input->post('query'))
-                {
-                        $query = $this->input->post('query');
-                }
-                $data = $this->user_activity_model->search($query);
+      
+                $data = $this->user_activity_model->search();
+
                 $output .= '
                 <div class="table-responsive">
                 <table class="table table-bordered ">
