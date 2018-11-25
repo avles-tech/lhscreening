@@ -106,5 +106,30 @@ class Upload extends CI_Controller {
 
                 file_put_contents('./uploads/'. $user_id.'_signature.jpeg', $data);
         }
+
+        public function rename_file()
+        {
+                $data = $this->input->post();
+                $old_name = './uploads/'.$data['old_name'];
+                $new_name = $data['new_name'].'.'.pathinfo($old_name, PATHINFO_EXTENSION);
+                $new_name_path = './uploads/'.$data['new_name'].'.'.pathinfo($old_name, PATHINFO_EXTENSION);
+
+                rename( $old_name, $new_name_path);
+
+                $this->patient_reports_model->set_patient_reports($new_name);
+        }
+
+        public function del_report()
+        {
+                $this->patient_reports_model->del_patient_reports();
+        }
+
+        public function load_upload_div($patient_id,$report)
+        {
+                $data['result'] = array('patient_id'=>$patient_id , 'report'=>$report);
+
+
+                return $this->load->view('patients/upload_file_div',$data,true);//This will load your view page to the div element
+        }
 }
 ?>

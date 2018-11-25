@@ -39,4 +39,10 @@ class Patient_reports_model extends CI_Model {
                 return $this->db->update('patient_reports', $data);
             }
         }
+
+        public function del_patient_reports($patient_id = FALSE)
+        {
+                $this->db->where('patient_id' , $this->input->post('patient_id'));
+                $query = $this->db->update('patient_reports', array($this->input->post('report') => ''));
+        }
 }
