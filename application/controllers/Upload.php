@@ -64,6 +64,33 @@ class Upload extends CI_Controller {
                 }
         }
 
+        public function do_upload_ex()
+        {
+                $form_data = $this->input->post();
+                $patient_id = $form_data['patient_id'];
+                $config['upload_path']          = './uploads/';
+                $config['allowed_types']        = 'pdf|jpg|jpeg';
+                $config['max_size']             = 10240;
+                $config['max_width']            = 1024;
+                $config['max_height']           = 768;
+                $config['overwrite'] = true;
+
+                $this->load->library('upload', $config);
+
+                if ( ! $this->upload->do_upload('userfile'))
+                {
+                        $error = array('error' => $this->upload->display_errors());
+                        echo $error;
+                        //$this->load->view('upload_form', $error);
+                }
+                else
+                {
+                        $data = array('upload_data' => $this->upload->data());
+
+                        $this->patient_reports_model->set_patient_reports($this->upload->data('file_name'));
+                }
+        }
+
         public function upload_signature()
         {
                 $form_data = $this->input->post();
@@ -78,6 +105,31 @@ class Upload extends CI_Controller {
                 $user_id = $form_data['user_id'];
 
                 file_put_contents('./uploads/'. $user_id.'_signature.jpeg', $data);
+        }
+
+        public function rename_file()
+        {
+                $data = $this->input->post();
+                $old_name = './uploads/'.$data['old_name'];
+                $new_name = $data['new_name'].'.'.pathinfo($old_name, PATHINFO_EXTENSION);
+                $new_name_path = './uploads/'.$data['new_name'].'.'.pathinfo($old_name, PATHINFO_EXTENSION);
+
+                rename( $old_name, $new_name_path);
+
+                $this->patient_reports_model->set_patient_reports($new_name);
+        }
+
+        public function del_report()
+        {
+                $this->patient_reports_model->del_patient_reports();
+        }
+
+        public function load_upload_div($patient_id,$report)
+        {
+                $data['result'] = array('patient_id'=>$patient_id , 'report'=>$report);
+
+
+                return $this->load->view('patients/upload_file_div',$data,true);//This will load your view page to the div element
         }
 }
 ?>
