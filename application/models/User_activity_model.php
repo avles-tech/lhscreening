@@ -32,16 +32,36 @@ class User_activity_model extends CI_Model {
             return $insert_id;
         }
 
-        function search($query)
+        function search()
         {
+                $search_text = $this->input->post('search_text');
+                $from_date_time = $this->input->post('from_date_time');
+                $to_date_time = $this->input->post('to_date_time');
+                $search_by_user = $this->input->post('search_by_user');
+
+
                 $this->db->select("a.*,u.first_name");
                 $this->db->from("user_activities a");
                 $this->db->join('users u', 'a.user_id = u.id', 'left');
-                if($query != '')
+                if($search_text != '')
                 {
-                        $this->db->like('activity', $query);
-                        $this->db->or_like('u.first_name', $query);
+                        $this->db->like('activity', $search_text);
                 }
+                if($from_date_time != '')
+                {
+                        $this->db->where('date_time >=', $from_date_time);
+                }
+
+                if($to_date_time != '')
+                {
+                        $this->db->where('date_time <=', $to_date_time);
+                }
+
+                if($search_by_user != '')
+                {
+                        $this->db->where('u.first_name', $search_by_user);
+                }
+
                 $this->db->limit('100');
                 $this->db->order_by('date_time', 'DESC');
                 return $this->db->get();

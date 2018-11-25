@@ -170,7 +170,6 @@
 
 	});
 
-
 	// $("a[data-action='change_filename']").click(function () {
 	// 	report = $(this).attr("data-report");
 	// 	filename = $(this).attr("data-filename")
