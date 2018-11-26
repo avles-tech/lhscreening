@@ -87,45 +87,47 @@
 	$(document).ready(function () {
 
 		function save_complete_pressed() {
-			var myForm = document.getElementById('gp_form');
-			formData = new FormData(myForm);
-
-			console.log('this', $(this)[0].id);
-
 			let that = this;
+			alertify.confirm('', 'Are you sure ?', function () {
+				var myForm = document.getElementById('gp_form');
+				formData = new FormData(myForm);
 
-			$.ajax({
-				type: "POST",
-				url: "<?php echo site_url('patients/save_complete'); ?>",
-				data: {
-					'patient_id': formData.get('patient_id')
-				}, // <--- THIS IS THE CHANGE
-				success: function (data) {
-					//$('#feed-container').prepend(data);
-					alertify.set('notifier', 'position', 'top-right');
-					alertify.notify('patient save and completed', 'success', 5, function () {
-						console.log('dismissed');
-					});
-					console.log('test');
+				$.ajax({
+					type: "POST",
+					url: "<?php echo site_url('patients/save_complete'); ?>",
+					data: {
+						'patient_id': formData.get('patient_id')
+					}, // <--- THIS IS THE CHANGE
+					success: function (data) {
+						//$('#feed-container').prepend(data);
+						alertify.set('notifier', 'position', 'top-right');
+						alertify.notify('patient save and completed', 'success', 5, function () {
+							console.log('dismissed');
+						});
+						console.log('test');
 
-					location.reload();
+						location.reload();
 
-					//console.log('test');
-				},
-				error: function () {
-					alert("Error posting feed.");
-				}
+						//console.log('test');
+					},
+					error: function () {
+						alert("Error posting feed.");
+					}
+				});
+			}, function () {
+				alertify.error('Cancel')
 			});
 		}
-		$("#save_exit").click(()=>{
+		
+		$("button[id^='save_exit']").click(()=>{
 			alertify.set('notifier', 'position', 'top-right');
-					alertify.notify('patient save and exit', 'success', 5, function () {
-						console.log('dismissed');
-					});
-					location.href = "<?php echo base_url().'index.php/patients'?>";
+			alertify.notify('patient save and exit', 'success', 5, function () {
+				console.log('dismissed');
+			});
+			location.href = "<?php echo base_url().'index.php/patients'?>";
 		});
 
-		$("#save_complete").click(save_complete_pressed);
+		$("button#save_complete").click(save_complete_pressed);
 	});
 
 </script>
