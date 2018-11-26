@@ -50,7 +50,7 @@
 				<button id='save_exit' class="btn btn-primary " <?php echo $read_only ?>>Save & Exit</button>
 			</div> <!-- form-group// -->
 			<div class="form-group btn-group mr-2">
-				<a id='save_exit' href="<?php echo base_url().'index.php/patients'?>" class="btn btn-danger" role='button'>Cancel</a>
+				<a  href="<?php echo base_url().'index.php/patients'?>" class="btn btn-danger" role='button'>Cancel</a>
 			</div> <!-- form-group// -->
 		</div>
 		</form>
@@ -86,41 +86,48 @@
 <script type="text/javascript">
 	$(document).ready(function () {
 
-		function save_action_pressed() {
-			var myForm = document.getElementById('gp_form');
-			formData = new FormData(myForm);
-
-			console.log('this', $(this)[0].id);
-
+		function save_complete_pressed() {
 			let that = this;
+			alertify.confirm('', 'Are you sure ?', function () {
+				var myForm = document.getElementById('gp_form');
+				formData = new FormData(myForm);
 
-			$.ajax({
-				type: "POST",
-				url: "<?php echo site_url('patients/save_exit'); ?>",
-				data: {
-					'patient_id': formData.get('patient_id')
-				}, // <--- THIS IS THE CHANGE
-				success: function (data) {
-					//$('#feed-container').prepend(data);
-					alertify.set('notifier', 'position', 'top-right');
-					alertify.notify('patient save and exit', 'success', 5, function () {
-						console.log('dismissed');
-					});
-					console.log('test');
-					if ($(that)[0].id.toString() === 'save_complete')
+				$.ajax({
+					type: "POST",
+					url: "<?php echo site_url('patients/save_complete'); ?>",
+					data: {
+						'patient_id': formData.get('patient_id')
+					}, // <--- THIS IS THE CHANGE
+					success: function (data) {
+						//$('#feed-container').prepend(data);
+						alertify.set('notifier', 'position', 'top-right');
+						alertify.notify('patient save and completed', 'success', 5, function () {
+							console.log('dismissed');
+						});
+						console.log('test');
+
 						location.reload();
-					else if ($(that)[0].id === 'save_exit')
-						location.href = "<?php echo base_url().'index.php/patients'?>";
-					//console.log('test');
-				},
-				error: function () {
-					alert("Error posting feed.");
-				}
+
+						//console.log('test');
+					},
+					error: function () {
+						alert("Error posting feed.");
+					}
+				});
+			}, function () {
+				alertify.error('Cancel')
 			});
 		}
-		$("#save_complete").click(save_action_pressed);
+		
+		$("button[id^='save_exit']").click(()=>{
+			alertify.set('notifier', 'position', 'top-right');
+			alertify.notify('patient save and exit', 'success', 5, function () {
+				console.log('dismissed');
+			});
+			location.href = "<?php echo base_url().'index.php/patients'?>";
+		});
 
-		$("#save_exit").click(save_action_pressed);
+		$("button#save_complete").click(save_complete_pressed);
 	});
 
 </script>

@@ -70,9 +70,6 @@ class Upload extends CI_Controller {
                 $patient_id = $form_data['patient_id'];
                 $config['upload_path']          = './uploads/';
                 $config['allowed_types']        = 'pdf|jpg|jpeg';
-                $config['max_size']             = 10240;
-                $config['max_width']            = 1024;
-                $config['max_height']           = 768;
                 $config['overwrite'] = true;
 
                 $this->load->library('upload', $config);

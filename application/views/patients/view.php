@@ -6,6 +6,8 @@ $save_exited = empty($patient_details) ? '0' : $patient_details['save_exit']=='1
 
 $user = $this->ion_auth->user()->row(); 
 
+$read_only = empty($patient_details) ? '' : $patient_details['save_exit']=='1' ? 'disabled' : '';
+
 if ($save_exited=='1' && $this->ion_auth->is_admin())
 {
 	$button_code = "<div class='float-sm-right'>
@@ -18,7 +20,7 @@ echo '<h2>'.$patient_details['first_name'].' '.$patient_details['last_name'].'</
 //echo $phq_list[0]['question'];
 $this->user_activity_model->set('selected '.$patient_details['first_name'].'(patient ID:'.$patient_details['patient_id'].') for update');
 ?>
-<ul class="nav nav-tabs" id="myTab" role="tablist">
+<ul class="nav nav-tabs flex-sm-row" id="myTab" role="tablist">
 	<li class="nav-item">
 		<a class="nav-link active" id="basic_details-tab" data-toggle="tab" href="#basic_details" role="tab" aria-controls="basic_details"
 		 aria-selected="true">Basic Details</a>
@@ -69,7 +71,10 @@ $this->user_activity_model->set('selected '.$patient_details['first_name'].'(pat
 						 empty($patient_details) ? '' : $patient_details['save_exit']=='1' ? 'disabled' : '' ?>> Save </button>
 					</div> <!-- form-group// -->
 					<div class="form-group btn-group mr-2">
-						<a id='save_exit' href="<?php echo base_url().'index.php/patients'?>" class="btn btn-danger" role='button'>Cancel</a>
+						<button id='save_exit' class="btn btn-primary " <?php echo $read_only ?>>Save & Exit</button>
+					</div> <!-- form-group// -->
+					<div class="form-group btn-group mr-2">
+						<a href="<?php echo base_url().'index.php/patients'?>" class="btn btn-danger" role='button'>Cancel</a>
 					</div> <!-- form-group// -->
 				</div>
 				</form>
