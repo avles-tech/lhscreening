@@ -2,6 +2,7 @@
     $patient_details = $this->patients_model->get_patients($patient_id);
     $patient_gad = $this->patient_gad_model->get_patient_gad($patient_id);
     $patient_phq = $this->patient_phq_model->get_patient_phq($patient_id);
+    $patient_lab_test = $this->patient_lab_test_model->get_patient_lab_test($patient_id);
     $patient_reports = $this->patient_reports_model->get_patient_reports($patient_id);
 
     $tcpdflib = new Fpdilib();
@@ -91,6 +92,13 @@
     $html = "<br><h1>GAD-7 Details</h1>";
     foreach ($patient_gad as $item): 
         $html.= "<p>".$item['question']." : ".$answers[$item['value']]."</p>";
+    endforeach;
+    $tcpdflib->writeHTML($html, true, 0, true, 0);
+    
+    $tcpdflib->AddPage();
+    $html = "<br><h1>Lab Test</h1>";
+    foreach ($patient_lab_test as $item): 
+        $html.= "<p>".$item['test_name']." : ".$item['value']." ".$item['unit']."</p>";
     endforeach;
     $tcpdflib->writeHTML($html, true, 0, true, 0);
 
