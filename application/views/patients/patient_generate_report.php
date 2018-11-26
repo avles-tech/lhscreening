@@ -37,6 +37,47 @@
     $html.= "<p> Phone Work :".$patient_details['phone_work']."</p>";
     $html.= "<p> Address :".$patient_details['address']."</p>";
     $html.= "<p> Postal Code :".$patient_details['postal_code']."</p>";
+    $html.= "<p> Blood Group :".$patient_details['blood_group']."</p>";
+    $html.= "<p> Occupation :".$patient_details['occupation']."</p>";
+
+    $html.= "<br><h1>Next of kin details</h1>";
+    $html.= "<p> Name :".$patient_details['next_of_kin_name']."</p>";
+    $html.= "<p> Phone Number :".$patient_details['next_of_kin_phone']."</p>";
+    $html.= "<p> Relationship :".$patient_details['next_of_kin_relationship']."</p>";
+    $html.= "<p> In case of emergency if you are uncontactable, do you provide consent for your next of kin to be contacted
+    and for relevant clinical information to be divulged? ".($patient_details['next_of_kin_contact']=='1'?'Yes':'No')."</p>";
+
+    $html.= "<br><h1>NHS / Alternative GP</h1>";
+    $html.= "<p> Name :".$patient_details['alternative_gp']."</p>";
+    $html.= "<p> I consent to my medical information being shared with my regular GP if I am not contactable. :".($patient_details['gp_contact_agree']=='1'?'Yes':'No')."</p>";
+    
+
+
+    $tcpdflib->writeHTML($html, true, 0, true, 0);
+    
+    $tcpdflib->AddPage();
+
+    $html = "<br><h1>Health</h1>";
+    $html.= "<p> How is your health at present? Is there anything in particular you would like to discuss with the Doctor today? :".$patient_details['health_at_present']."</p>";
+    $html.= "<p> Are you taking any medications at present Kindly list the medications as well as doses? ".$patient_details['current_medication']."</p>";
+    $html.= "<p> Are you aware of any allergies to the following? : </p>";
+    $html.= "<table> <tr > <th> Allergy </th> <th> Yes/No</th></tr>";
+    $html.= "<tr> <td> Eggs </td> <td>".($patient_details['allergy_milk']=='1'?'Yes':'No')." </td> </tr>";
+    $html.= "<tr> <td> Milk </td> <td>".($patient_details['allergy_eggs']=='1'?'Yes':'No')." </td> </tr>";
+    $html.= "<tr> <td> Peanuts </td> <td>".($patient_details['allergy_peanuts']=='1'?'Yes':'No')." </td> </tr>";
+    $html.= "<tr> <td> Shellfish </td> <td>".($patient_details['allergy_shellfish']=='1'?'Yes':'No')." </td> </tr>";
+    $html.= "<tr> <td> Iodine </td> <td>".($patient_details['allergy_iodine']=='1'?'Yes':'No')." </td> </tr>";
+    $html.= "<tr> <td> Penicillin </td> <td>".($patient_details['allergy_pencillin']=='1'?'Yes':'No')." </td> </tr>";
+    $html.= "<tr> <td> Tree nuts(walnuts/almonds/pecan) </td> <td>".($patient_details['allergy_treenuts']=='1'?'Yes':'No')." </td> </tr>";
+    $html.= "</table>";
+    $html.= "<p> Other Allergies ".($patient_details['allergy_others']=='1'?'Yes':'No')." </p>";
+    $patient_details['allergy_others']=='1' ? $html.= "<p> Other Allergies Details ".($patient_details['allergy_others_details']=='1'?'Yes':'No')." </p>" : '' ;
+    $html.= "<p> Do you suffer from Hayfever? ".($patient_details['hay_fever']=='1'?'Yes':'No')." </p>";
+    $html.= "<p> Do you have Asthma? ".($patient_details['asthma']=='1'?'Yes':'No')." </p>";
+
+    $html.= "<br><h1>CHAPERONE</h1>";
+    $html.= "<p> ODo you require a chaperone before this consultation?".($patient_details['chaperone_required']=='1'?'Yes':'No')." </p>";
+
     $tcpdflib->writeHTML($html, true, 0, true, 0);
 
     $tcpdflib->AddPage();
