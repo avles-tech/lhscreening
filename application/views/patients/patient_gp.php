@@ -50,7 +50,7 @@
 				<button id='save_exit' class="btn btn-primary " <?php echo $read_only ?>>Save & Exit</button>
 			</div> <!-- form-group// -->
 			<div class="form-group btn-group mr-2">
-				<a id='save_exit' href="<?php echo base_url().'index.php/patients'?>" class="btn btn-danger" role='button'>Cancel</a>
+				<a  href="<?php echo base_url().'index.php/patients'?>" class="btn btn-danger" role='button'>Cancel</a>
 			</div> <!-- form-group// -->
 		</div>
 		</form>
