@@ -191,9 +191,9 @@ class Patients extends CI_Controller {
                 $this->patient_phq_model->set_patient_phq($patient_id,$form_data);
         }
 
-        public function save_exit(){
+        public function save_complete(){
                 $patient_id = $this->input->post('patient_id');
-                $this->patients_model->save_exit($patient_id);
+                $this->patients_model->save_complete($patient_id);
         }
 
         public function update_gad(){

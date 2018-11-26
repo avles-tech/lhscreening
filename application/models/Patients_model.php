@@ -61,7 +61,7 @@ class Patients_model extends CI_Model {
                 echo json_encode($this->db->get('patients')->result_array());
         }
 
-        public function save_exit($patient_id)
+        public function save_complete($patient_id)
         {
                 $user = $this->ion_auth->user()->row(); 
                 $this->db->where('patient_id', $patient_id);

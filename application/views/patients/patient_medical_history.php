@@ -275,6 +275,9 @@
 				<button type="submit" class="btn btn-primary btn-block" <?php echo $read_only ?>> Save </button>
 			</div> <!-- form-group// -->
 			<div class="form-group btn-group mr-2">
+						<button id='save_exit' class="btn btn-primary " <?php echo $read_only ?>>Save & Exit</button>
+					</div> <!-- form-group// -->
+			<div class="form-group btn-group mr-2">
 				<a href="<?php echo base_url().'index.php/patients'?>" class="btn btn-danger" role='button'>Cancel</a>
 			</div> <!-- form-group// -->
 		</div>
