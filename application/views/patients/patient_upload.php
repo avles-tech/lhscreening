@@ -77,7 +77,7 @@
 //$this->load->view('patients/patient_report',array( 'patient_id' => $patient_id)); 
 ?>
 <div class="form-group btn-group mr-2">
-	<a id='save_exit' href="<?php echo base_url().'index.php/patients'?>" class="btn btn-danger" role='button'>Cancel</a>
+	<a  href="<?php echo base_url().'index.php/patients'?>" class="btn btn-danger" role='button'>Cancel</a>
 </div> <!-- form-group// -->
 <script>
 	function ChangeFileName(report, filename) {
