@@ -17,12 +17,18 @@ else{
 		<select class="form-control" name='title' value="<?php echo array_key_exists('title', $patient_details) ? $patient_details['title'] : '';?>"
 		 <?php echo $read_only ?>>
 			<option disabled selected value>-</option>
-			<option value="Ms" <?php echo array_key_exists('title', $patient_details) ? $patient_details['title']== 'Ms' ? 'selected' :'' : '';?>>Ms</option>
-			<option value="Mrs" <?php echo array_key_exists('title', $patient_details) ? $patient_details['title']== 'Mrs' ? 'selected' :'' : '';?>>Mrs</option>
-			<option value="Mis" <?php echo array_key_exists('title', $patient_details) ? $patient_details['title']== 'Mis' ? 'selected' :'' : '';?> >Mis</option>
-			<option value="Mr" <?php echo array_key_exists('title', $patient_details) ? $patient_details['title']== 'Mr' ? 'selected' :'' : '';?>>Mr</option>
-			<option value="Dr" <?php echo array_key_exists('title', $patient_details) ? $patient_details['title']== 'Dr' ? 'selected' :'' : '';?> >Dr</option>
-			<option value="Others" <?php echo array_key_exists('title', $patient_details) ? $patient_details['title']== 'Others' ? 'selected' :'' : '';?>>Others</option>
+			<option value="Ms" <?php echo array_key_exists('title', $patient_details) ? $patient_details['title']=='Ms' ?
+			 'selected' :'' : '' ;?>>Ms</option>
+			<option value="Mrs" <?php echo array_key_exists('title', $patient_details) ? $patient_details['title']=='Mrs' ?
+			 'selected' :'' : '' ;?>>Mrs</option>
+			<option value="Mis" <?php echo array_key_exists('title', $patient_details) ? $patient_details['title']=='Mis' ?
+			 'selected' :'' : '' ;?> >Mis</option>
+			<option value="Mr" <?php echo array_key_exists('title', $patient_details) ? $patient_details['title']=='Mr' ?
+			 'selected' :'' : '' ;?>>Mr</option>
+			<option value="Dr" <?php echo array_key_exists('title', $patient_details) ? $patient_details['title']=='Dr' ?
+			 'selected' :'' : '' ;?> >Dr</option>
+			<option value="Others" <?php echo array_key_exists('title', $patient_details) ? $patient_details['title']=='Others'
+			 ? 'selected' :'' : '' ;?>>Others</option>
 		</select>
 	</div> <!-- form-group end.// -->
 	<div class="col form-group">
@@ -147,14 +153,22 @@ else{
 		<select class="form-control" name='blood_group' value="<?php echo array_key_exists('blood_group', $patient_details) ? $patient_details['blood_group'] : '';?>"
 		 <?php echo $read_only ?>>
 			<option disabled selected value> -- </option>
-			<option value="A+" <?php echo array_key_exists('blood_group', $patient_details) ? $patient_details['blood_group']== 'A+' ? 'selected' :'' : '';?>>A+</option>
-			<option value="A-" <?php echo array_key_exists('blood_group', $patient_details) ? $patient_details['blood_group']== 'A-' ? 'selected' :'' : '';?>>A-</option>
-			<option value="B+" <?php echo array_key_exists('blood_group', $patient_details) ? $patient_details['blood_group']== 'B+' ? 'selected' :'' : '';?>>B+</option>
-			<option value="B-" <?php echo array_key_exists('blood_group', $patient_details) ? $patient_details['blood_group']== 'B-' ? 'selected' :'' : '';?>>B-</option>
-			<option value="O+" <?php echo array_key_exists('blood_group', $patient_details) ? $patient_details['blood_group']== 'O+' ? 'selected' :'' : '';?>>O+</option>
-			<option value="O-" <?php echo array_key_exists('blood_group', $patient_details) ? $patient_details['blood_group']== 'O-' ? 'selected' :'' : '';?>>O-</option>
-			<option value="AB+" <?php echo array_key_exists('blood_group', $patient_details) ? $patient_details['blood_group']== 'AB+' ? 'selected' :'' : '';?>>AB+</option>
-			<option value="AB-" <?php echo array_key_exists('blood_group', $patient_details) ? $patient_details['blood_group']== 'AB-' ? 'selected' :'' : '';?>>AB-</option>
+			<option value="A+" <?php echo array_key_exists('blood_group', $patient_details) ? $patient_details['blood_group']=='A+'
+			 ? 'selected' :'' : '' ;?>>A+</option>
+			<option value="A-" <?php echo array_key_exists('blood_group', $patient_details) ? $patient_details['blood_group']=='A-'
+			 ? 'selected' :'' : '' ;?>>A-</option>
+			<option value="B+" <?php echo array_key_exists('blood_group', $patient_details) ? $patient_details['blood_group']=='B+'
+			 ? 'selected' :'' : '' ;?>>B+</option>
+			<option value="B-" <?php echo array_key_exists('blood_group', $patient_details) ? $patient_details['blood_group']=='B-'
+			 ? 'selected' :'' : '' ;?>>B-</option>
+			<option value="O+" <?php echo array_key_exists('blood_group', $patient_details) ? $patient_details['blood_group']=='O+'
+			 ? 'selected' :'' : '' ;?>>O+</option>
+			<option value="O-" <?php echo array_key_exists('blood_group', $patient_details) ? $patient_details['blood_group']=='O-'
+			 ? 'selected' :'' : '' ;?>>O-</option>
+			<option value="AB+" <?php echo array_key_exists('blood_group', $patient_details) ? $patient_details['blood_group']=='AB+'
+			 ? 'selected' :'' : '' ;?>>AB+</option>
+			<option value="AB-" <?php echo array_key_exists('blood_group', $patient_details) ? $patient_details['blood_group']=='AB-'
+			 ? 'selected' :'' : '' ;?>>AB-</option>
 		</select>
 	</div> <!-- form-group end.// -->
 	<div class="col form-group">
@@ -381,6 +395,46 @@ else{
 		<span class="form-check-label"> No</span>
 	</label>
 </div> <!-- form-group end.// -->
+
+<h4> CONSENT </h4>
+<p>(Please tick the following as you find appropriate)</p>
+<p>I consent to being contacted by un-encrypted email and/or telephone and /or WhatsApp messenger to discuss
+	management plans, diagnosis and to disclose results. I accept the risk associated with receiving messages
+	received by the above means.</p>
+<div class="form-group">
+	<label class="form-check form-check-inline">
+		<input class="form-check-input" type="radio" name="consent_unencrypted" value="1">
+		<span class="form-check-label"> yes </span>
+	</label>
+	<label class="form-check form-check-inline">
+		<input class="form-check-input" type="radio" name="consent_unencrypted" value="0">
+		<span class="form-check-label"> No</span>
+	</label>
+</div> <!-- form-group end.// -->
+<p>I consent to having messages left on my preferred telephone number</p>
+<div class="form-group">
+	<label class="form-check form-check-inline">
+		<input class="form-check-input" type="radio" name="consent_messages" value="1">
+		<span class="form-check-label"> yes </span>
+	</label>
+	<label class="form-check form-check-inline">
+		<input class="form-check-input" type="radio" name="consent_messages" value="0">
+		<span class="form-check-label"> No</span>
+	</label>
+</div> <!-- form-group end.// -->
+<p>I consent that my medical information being shared with my regular GP if I am not contactable.</p>
+<div class="form-group">
+	<label class="form-check form-check-inline">
+		<input class="form-check-input" type="radio" name="consent_medical_information" value="1">
+		<span class="form-check-label"> yes </span>
+	</label>
+	<label class="form-check form-check-inline">
+		<input class="form-check-input" type="radio" name="consent_medical_information" value="0">
+		<span class="form-check-label"> No</span>
+	</label>
+</div> <!-- form-group end.// -->
+
+
 <script>
 	$('#allergy_others_yes').click(function () {
 		this.checked ? $('#allergy_others_details_div').show() : $('#allergy_others_details_div').hide(); //time for show
@@ -454,9 +508,9 @@ else{
 			rules: x
 		});
 
-		jQuery.validator.addMethod("lettersonly", function(value, element) {
+		jQuery.validator.addMethod("lettersonly", function (value, element) {
 			return this.optional(element) || /^[a-z\s]+$/i.test(value);
-		}, "Only alphabetical characters"); 
+		}, "Only alphabetical characters");
 	});
 
 </script>
