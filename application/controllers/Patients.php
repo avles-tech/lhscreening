@@ -28,7 +28,8 @@ class Patients extends CI_Controller {
                 {
                         $query = $this->input->post('query');
                 }
-                $data = $this->patients_model->search($query);
+                $dob = $this->input->post('dob');
+                $data = $this->patients_model->search($query,$dob);
                 $output .= '
                 <div class="table-responsive">
                 <table class="table table-bordered ">

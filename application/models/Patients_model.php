@@ -7,7 +7,7 @@ class Patients_model extends CI_Model {
                 $this->load->library('ion_auth');
         }
 
-        function search($query)
+        function search($query,$dob)
         {
                 $this->db->select("*");
                 $this->db->from("patients");
@@ -18,6 +18,10 @@ class Patients_model extends CI_Model {
                         $this->db->or_like('email', $query);
                         $this->db->or_like('phone_mobile', $query);
                         $this->db->or_like('DATE_FORMAT(dob, "%d/%m/%Y ")', $query);
+                }
+                if($dob != '')
+                {
+                        $this->db->where('dob', $dob);
                 }
                 $this->db->order_by('patient_id', 'DESC');
                 $this->db->limit('10');
