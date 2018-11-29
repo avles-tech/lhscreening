@@ -75,8 +75,8 @@
     $tcpdflib->writeHTML($html, true, 0, true, 0);
     
     $html = "<br><h1>Health</h1>";
-    $html.= "<p> How is your health at present? Is there anything in particular you would like to discuss with the Doctor today? :".$patient_details['health_at_present']."</p>";
-    $html.= "<p> Are you taking any medications at present Kindly list the medications as well as doses? ".$patient_details['current_medication']."</p>";
+    $html.= "<p> How is your health at present? Is there anything in particular you would like to discuss with the Doctor today? <b>".$patient_details['health_at_present']."</b></p>";
+    $html.= "<p> Are you taking any medications at present Kindly list the medications as well as doses? <b>".$patient_details['current_medication']."</b></p>";
     $html.= "<p> Are you aware of any allergies to the following? : </p>";
     $html.= "<table> <tr > <th> Allergy </th> <th> Yes/No</th></tr>";
     $html.= "<tr> <td> Eggs </td> <td> <b>".($patient_details['allergy_milk']=='1'?'Yes':'No')." </b></td> </tr>";
