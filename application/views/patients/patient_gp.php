@@ -38,6 +38,13 @@
 			<textarea <?php echo $read_only ?> class="form-control" name='additional_comments'><?php echo empty($patient_gp_details) ? '': $patient_gp_details['additional_comments'];?> </textarea>
 		</div>
 		<!-- form-group end.// -->
+		<?php if($read_only && $this->ion_auth->in_group('gp')) :?>
+		<div class="col form-group">
+			<label>Second Opinion</label>
+			<textarea <?php echo $read_only ?> class="form-control" name='gp_second'><?php echo empty($patient_gp_details) ? '': $patient_gp_details['gp_second'];?> </textarea>
+		</div>
+		<?php endif ?>
+		<!-- form-group end.// -->
 		<div class="form-row">
 			<!-- form-group end.// -->
 			<div class="form-group btn-group  mr-2">
