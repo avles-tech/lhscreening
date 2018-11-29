@@ -109,7 +109,7 @@ define ('PDF_AUTHOR', 'TCPDF');
 /**
  * Header title.
  */
-define ('PDF_HEADER_TITLE', '');
+define ('PDF_HEADER_TITLE', 'TCPDF Example');
 
 /**
  * Header description string.
@@ -124,7 +124,7 @@ define ('PDF_UNIT', 'mm');
 /**
  * Header margin.
  */
-define ('PDF_MARGIN_HEADER', 5);
+define ('PDF_MARGIN_HEADER', 1);
 
 /**
  * Footer margin.
