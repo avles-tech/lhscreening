@@ -71,7 +71,7 @@
 
 <p style="clear: both;">
 	<button id="clear">Clear</button> 
-	<button id="save_signature">Save Signature</button>
+	<button type='button' id="save_signature">Save Signature</button>
 </p>
 
 <script>
@@ -95,6 +95,7 @@
 				},
 				success: function (data) {
 					$('#result').html(data);
+                              location.reload();
 				}
 			});
 
