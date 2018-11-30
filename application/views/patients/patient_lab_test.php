@@ -1,17 +1,7 @@
 <div class="card">
-	<?php 
-	// $lab_test_categories = $this->patient_lab_test_model->get_lab_test_categories();
-
-	// foreach ($lab_test_categories as $item):
-	// 	echo $item['category'];
-	// endforeach;
-	?>
 	<article class="card-body">
 		<?php
-			$patient_lab_test = $this->patient_lab_test_model->get_patient_lab_test($patient_id);
-			$patient_details = $this->patients_model->get_patients($patient_id);
-			$read_only = empty($patient_details) ? '' : $patient_details['save_exit']=='1' ? 'disabled' : '';
-			
+			$patient_lab_test = $this->patient_lab_test_model->get_patient_lab_test($patient_id);	
 			$categories = array();
 			foreach ($patient_lab_test as $c) {
 				$categories[] = $c['category'];
@@ -52,7 +42,7 @@
 						<button id='save_exit' class="btn btn-primary " <?php echo $read_only ?>>Save & Exit</button>
 					</div> <!-- form-group// -->
 			<div class="form-group btn-group mr-2">
-				<a href="<?php echo base_url().'index.php/patients'?>" class="btn btn-danger" role='button'>Cancel</a>
+				<a href="<?php echo base_url().'patients'?>" class="btn btn-danger" role='button'>Cancel</a>
 			</div> <!-- form-group// -->
 		</div>
 		</form>

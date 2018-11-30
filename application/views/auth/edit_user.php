@@ -87,7 +87,7 @@
                   var sig_jpeg = $('#sig').signature('toDataURL', 'image/jpeg');
                   //alert(sig_jpeg.split(',')[1]);
 			$.ajax({
-				url: "<?php echo base_url(); ?>index.php/upload/upload_signature",
+				url: "<?php echo base_url(); ?>upload/upload_signature",
 				method: "POST",
 				data: {
 					user_id: <?php echo $user->id?>

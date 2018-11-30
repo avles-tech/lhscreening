@@ -1,6 +1,6 @@
 <br>
 <div class="float-right">
-<a href="<?php echo base_url().'index.php/patients/create' ?>" > Register Patient</a>
+<a href="<?php echo base_url().'patients/create' ?>" > Register Patient</a>
 </div>
 <br>
 <br>

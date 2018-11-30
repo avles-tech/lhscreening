@@ -2,8 +2,6 @@
 	<article class="card-body">
 		<?php
 			$patient_medical_history_details = $this->patient_medical_history_model->get($patient_id);
-			$patient_details = $this->patients_model->get_patients($patient_id);
-			$read_only = empty($patient_details) ? '' : $patient_details['save_exit']=='1' ? 'disabled' : '';
 			
             echo validation_errors();  
 			//echo form_open('patients/update_medical_history');
@@ -278,7 +276,7 @@
 						<button id='save_exit' class="btn btn-primary " <?php echo $read_only ?>>Save & Exit</button>
 					</div> <!-- form-group// -->
 			<div class="form-group btn-group mr-2">
-				<a href="<?php echo base_url().'index.php/patients'?>" class="btn btn-danger" role='button'>Cancel</a>
+				<a href="<?php echo base_url().'patients'?>" class="btn btn-danger" role='button'>Cancel</a>
 			</div> <!-- form-group// -->
 		</div>
 		</form>

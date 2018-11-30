@@ -93,7 +93,7 @@
 
 		function load_data(search_text, from_date_time, to_date_time,search_by_user) {
 			$.ajax({
-				url: "<?php echo base_url(); ?>index.php/useractivity/search",
+				url: "<?php echo base_url(); ?>useractivity/search",
 				method: "POST",
 				data: {
 					search_text: search_text,
@@ -128,7 +128,7 @@
 	var options2 = {
 
 		url: function (phrase) {
-			return "<?php echo base_url(); ?>index.php/patients/get_patients";
+			return "<?php echo base_url(); ?>patients/get_patients";
 		},
 
 		list: {
@@ -161,7 +161,7 @@
 	var options = {
 
 		url: function (phrase) {
-			return "<?php echo base_url(); ?>index.php/useractivity/get_users";
+			return "<?php echo base_url(); ?>useractivity/get_users";
 		},
 		list: {
 			match: {

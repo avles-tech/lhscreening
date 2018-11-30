@@ -19,6 +19,10 @@ class Patients extends CI_Controller {
                 $this->load->library('ion_auth');
                 $this->load->library('Tcpdflib');
                 $this->load->library('Fpdilib');
+
+                $this->load->helper('form');
+                $this->load->library('form_validation');
+                
         }
         function search()
         {
@@ -56,7 +60,7 @@ class Patients extends CI_Controller {
                                 <td>'.$gender.'</td>
                                 <td>'.nice_date($row->dob,'d/m/Y').'</td>
                                 <td>'.$row->phone_mobile.'</td>
-                                <td> <a href="'.base_url().'index.php/patients/view/'.$row->patient_id.'"> view patient </a></td>
+                                <td> <a href="'.base_url().'patients/view/'.$row->patient_id.'"> view patient </a></td>
                                 </tr>
                                 ';
                         }
@@ -139,8 +143,6 @@ class Patients extends CI_Controller {
         }
         public function create()
         {
-                $this->load->helper('form');
-                $this->load->library('form_validation');
                 $this->form_validation->set_rules('first_name', 'First Name', 'required');
                 $this->form_validation->set_rules('last_name', 'Last Name', 'required');
                 //$this->form_validation->set_rules('dob', 'Date of birth', 'regex_match[(0[1-9]|1[0-9]|2[0-9]|3(0|1))-(0[1-9]|1[0-2])-\d{4}]');
@@ -167,8 +169,6 @@ class Patients extends CI_Controller {
         }
         public function update()
         {
-                $this->load->helper('form');
-                $this->load->library('form_validation');
                 $this->form_validation->set_rules('first_name', 'First Name', 'required');
                 $this->form_validation->set_rules('last_name', 'Last Name', 'required');
                 $patient_id = $this->input->post('patient_id');

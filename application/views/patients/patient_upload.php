@@ -77,7 +77,7 @@
 //$this->load->view('patients/patient_report',array( 'patient_id' => $patient_id)); 
 ?>
 <div class="form-group btn-group mr-2">
-	<a  href="<?php echo base_url().'index.php/patients'?>" class="btn btn-danger" role='button'>Cancel</a>
+	<a  href="<?php echo base_url().'patients'?>" class="btn btn-danger" role='button'>Cancel</a>
 </div> <!-- form-group// -->
 <script>
 	function ChangeFileName(report, filename) {
@@ -99,7 +99,7 @@
 					value = value + extension;
 					let html = "";
 					html +=
-						"<a class='btn btn-primary btn-group mr-2'  role='button' href='<?php echo base_url() ?>index.php/upload/download/" +
+						"<a class='btn btn-primary btn-group mr-2'  role='button' href='<?php echo base_url() ?>upload/download/" +
 						value + "'>" + value + "</a>";
 					html +=
 						"<a class='btn btn-warning btn-group mr-2' onclick='ChangeFileNameEx(this)' id='changedFilename' data-filename='" +
@@ -167,7 +167,7 @@
 				//$('#mri_file_div').load('upload/load_upload_div?patient_id='+ <?php echo $patient_id ?>+ '&report=mr');
 				let html = "";
 				html +=
-					"<a class='btn btn-primary btn-group mr-2'  role='button' href='<?php echo base_url() ?>index.php/upload/download/" +
+					"<a class='btn btn-primary btn-group mr-2'  role='button' href='<?php echo base_url() ?>upload/download/" +
 					filename + "'>" + filename + "</a>";
 				html +=
 					"<a class='btn btn-warning btn-group mr-2' onclick='ChangeFileNameEx(this)' id='changedFilename' data-filename='" +
