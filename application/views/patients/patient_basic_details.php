@@ -8,7 +8,7 @@
 			 'selected' :'' : '' ;?>>Ms</option>
 			<option value="Mrs" <?php echo array_key_exists('title', $patient_details) ? $patient_details['title']=='Mrs' ?
 			 'selected' :'' : '' ;?>>Mrs</option>
-			<option value="Mis" <?php echo array_key_exists('title', $patient_details) ? $patient_details['title']=='Mis' ?
+			<option value="Miss" <?php echo array_key_exists('title', $patient_details) ? $patient_details['title']=='Miss' ?
 			 'selected' :'' : '' ;?> >Mis</option>
 			<option value="Mr" <?php echo array_key_exists('title', $patient_details) ? $patient_details['title']=='Mr' ?
 			 'selected' :'' : '' ;?>>Mr</option>
