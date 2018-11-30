@@ -1,16 +1,3 @@
-<?php
-$patient_details = array();
-
-if($patient_id==0){
-	$patient_details['patient_id'] = '0';
-}
-else{
-	$patient_details = $this->patients_model->get_patients($patient_id);
-}
-?>
-<?php 
-	$read_only = !array_key_exists('save_exit', $patient_details) ? '' : $patient_details['save_exit']=='1' ? 'disabled' : '';
-?>
 <div class="form-row">
 	<div class="col form-group">
 		<label>Title</label>
@@ -436,14 +423,32 @@ else{
 
 
 <script>
-	$('#allergy_others_yes').click(function () {
-		this.checked ? $('#allergy_others_details_div').show() : $('#allergy_others_details_div').hide(); //time for show
-	});
-	$('#allergy_others_no').click(function () {
-		this.checked ? $('#allergy_others_details_div').hide() : $('#allergy_others_details_div').show(); //time for show
-	});
+	
+	function checkPatientExists() {
+		firstName = $("input[name=first_name]").val();
+		lastName = $("input[name=last_name]").val();
+		dob = $("input[name=dob]").val();
+		$.ajax({
+			url: "<?php echo base_url(); ?>patients/patient_exists",
+			method: "POST",
+			data: {
+				first_name: firstName,
+				last_name: lastName,
+				dob: dob
+			},
+			success: function (data) {
+				if (data == 1) {
+					alert('patient exists already');
+					$("#create").prop("disabled", true);
+					$("#basic_details_save_button").prop("disabled", true);
+				} else {
+					$("#create").prop("disabled", false);
+					$("#basic_details_save_button").prop("disabled", false);
+				}
+			}
+		});
+	}
 
-	//Age
 	function getAge(birthDate) {
 		var birth_date = new Date(birthDate);
 		var currentDate = new Date();
@@ -457,8 +462,7 @@ else{
 		$('input[name=age]').val(years);
 	}
 
-</script>
-<script>
+
 	$(document).ready(function () {
 		var x = {
 			first_name: {
@@ -500,12 +504,19 @@ else{
 
 		};
 
-		$('#create_form').validate({ // initialize the plugin
+		$('#create_form').validate({
 			rules: x
 		});
 
-		$('#basic_details_form').validate({ // initialize the plugin
+		$('#basic_details_form').validate({
 			rules: x
+		});
+
+		$('#allergy_others_yes').click(function () {
+			this.checked ? $('#allergy_others_details_div').show() : $('#allergy_others_details_div').hide(); //time for show
+		});
+		$('#allergy_others_no').click(function () {
+			this.checked ? $('#allergy_others_details_div').hide() : $('#allergy_others_details_div').show(); //time for show
 		});
 
 		jQuery.validator.addMethod("lettersonly", function (value, element) {
@@ -513,12 +524,10 @@ else{
 		}, "Only alphabetical characters");
 	});
 
-</script>
-<script>
 	var options = {
-
 		url: function (phrase) {
-			return "<?php echo base_url(); ?>index.php/patients/occupations";
+			return "<?php echo base_url().'patients/occupations"
+			'; ?>";
 		},
 
 		getValue: function (element) {
@@ -544,33 +553,6 @@ else{
 
 	$("input[name=occupation]").easyAutocomplete(options);
 
-</script>
-<script>
-	function checkPatientExists() {
-		firstName = $("input[name=first_name]").val();
-		lastName = $("input[name=last_name]").val();
-		dob = $("input[name=dob]").val();
-		$.ajax({
-			url: "<?php echo base_url(); ?>index.php/patients/patient_exists",
-			method: "POST",
-			data: {
-				first_name: firstName,
-				last_name: lastName,
-				dob: dob
-			},
-			success: function (data) {
-
-				if (data == 1) {
-					alert('patient exists already');
-					$("#create").prop("disabled", true);
-					$("#basic_details_save_button").prop("disabled", true);
-				} else {
-					$("#create").prop("disabled", false);
-					$("#basic_details_save_button").prop("disabled", false);
-				}
-			}
-		});
-	}
 	$("input[name=first_name]").change(function () {
 		checkPatientExists();
 	});

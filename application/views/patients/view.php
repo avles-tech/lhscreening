@@ -62,7 +62,7 @@ $this->user_activity_model->set('selected '.$patient_details['first_name'].'(pat
 					echo validation_errors();  
 					echo form_open('basic_details_form',array( 'id' => 'basic_details_form'));  
 					echo form_hidden('patient_id',$patient_id);
-					$this->load->view('patients/patient_basic_details', array( 'patient_id' => $patient_id)); 
+					$this->load->view('patients/patient_basic_details', array( 'patient_id' => $patient_id , 'patient_details'=>$patient_details ,'read_only'=>$read_only)); 
 				?>
 				<div class="form-row">
 					<!-- form-group end.// -->
@@ -74,7 +74,7 @@ $this->user_activity_model->set('selected '.$patient_details['first_name'].'(pat
 						<button id='save_exit' class="btn btn-primary " <?php echo $read_only ?>>Save & Exit</button>
 					</div> <!-- form-group// -->
 					<div class="form-group btn-group mr-2">
-						<a href="<?php echo base_url().'index.php/patients'?>" class="btn btn-danger" role='button'>Cancel</a>
+						<a href="<?php echo base_url().'patients'?>" class="btn btn-danger" role='button'>Cancel</a>
 					</div> <!-- form-group// -->
 				</div>
 				</form>
@@ -83,7 +83,7 @@ $this->user_activity_model->set('selected '.$patient_details['first_name'].'(pat
 	</div>
 	<div class="tab-pane" id="phq" role="tabpanel" aria-labelledby="phq-tab">
 		<?php
-			$this->load->view('patients/patient_phq',array( 'patient_id' => $patient_id));
+			$this->load->view('patients/patient_phq',array( 'patient_id' => $patient_id , 'patient_details'=>$patient_details ,'read_only'=>$read_only));
 		?>
 	</div>
 	<div class="tab-pane" id="gad" role="tabpanel" aria-labelledby="gad-tab">
@@ -93,34 +93,34 @@ $this->user_activity_model->set('selected '.$patient_details['first_name'].'(pat
 	</div>
 	<div class="tab-pane" id="medical_history" role="tabpanel" aria-labelledby="gad-tab">
 		<?php 
-			$this->load->view('patients/patient_medical_history',array( 'patient_id' => $patient_id)); 
+			$this->load->view('patients/patient_medical_history',array( 'patient_id' => $patient_id, 'patient_details'=>$patient_details ,'read_only'=>$read_only)); 
 		?>
 	</div>
 	<div class="tab-pane" id="lab_test" role="tabpanel" aria-labelledby="gad-tab">
 		<?php 
-			$this->load->view('patients/patient_lab_test',array( 'patient_id' => $patient_id)); 
+			$this->load->view('patients/patient_lab_test',array( 'patient_id' => $patient_id , 'patient_details'=>$patient_details ,'read_only'=>$read_only)); 
 		?>
 	</div>
 	<div class="tab-pane" id="upload_report" role="tabpanel" aria-labelledby="gad-tab">
 		<?php 
-		$this->load->view('patients/patient_upload', array( 'patient_id' => $patient_id)); 
+		$this->load->view('patients/patient_upload', array( 'patient_id' => $patient_id , 'patient_details'=>$patient_details ,'read_only'=>$read_only)); 
 	?>
 	</div>
 	<div class="tab-pane" id="gp" role="tabpanel" aria-labelledby="gad-tab">
 		<?php 
-		$this->load->view('patients/patient_gp', array( 'patient_id' => $patient_id)); 
+		$this->load->view('patients/patient_gp', array( 'patient_id' => $patient_id , 'patient_details'=>$patient_details ,'read_only'=>$read_only)); 
 	?>
 	</div>
 	<div class="tab-pane" id="generate_report" role="tabpanel" aria-labelledby="generate_report-tab">
 		<?php 
-		$this->load->view('patients/patient_report', array( 'patient_id' => $patient_id)); 
+		$this->load->view('patients/patient_report', array( 'patient_id' => $patient_id , 'patient_details'=>$patient_details ,'read_only'=>$read_only)); 
 	?>
 	</div>
 </div>
 <Script>
 	function setActivity(activity) {
 		$.ajax({
-			url: "<?php echo base_url(); ?>index.php/Useractivity/set_activity",
+			url: "<?php echo base_url(); ?>Useractivity/set_activity",
 			method: "POST",
 			data: {
 				activity: activity
@@ -162,14 +162,11 @@ $this->user_activity_model->set('selected '.$patient_details['first_name'].'(pat
 		$.ajax({
 			type: "POST",
 			url: "<?php echo site_url('patients/update'); ?>",
-			data: form.serialize(), // <--- THIS IS THE CHANGE
+			data: form.serialize(), 
 			dataType: "html",
 			success: function (data) {
-				//$('#feed-container').prepend(data);
 				alertify.set('notifier', 'position', 'top-right');
-				alertify.notify('patient details updated', 'success', 5, function () {
-					console.log('dismissed');
-				});
+				alertify.notify('patient details updated', 'success', 5);
 			},
 			error: function () {
 				alert("Error posting feed.");
@@ -178,8 +175,14 @@ $this->user_activity_model->set('selected '.$patient_details['first_name'].'(pat
 
 	});
 
-</script>
-<script>
+	$("button[id^='save_exit']").click(()=>{
+			alertify.set('notifier', 'position', 'top-right');
+			alertify.notify('patient save and exit', 'success', 5, function () {
+				console.log('dismissed');
+			});
+			location.href = "<?php echo base_url().'patients'?>";
+		});
+		
 	$("#edit_user_button").click(function () {
 		alertify.prompt('Reason for edit', 'Reason', '', function (evt, value) {
 			alertify.success('You entered: ' + value);

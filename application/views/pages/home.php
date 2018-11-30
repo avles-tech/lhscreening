@@ -31,9 +31,9 @@
 						</div>
 						<nav>
 							<ul>
-								<li><a target="_blank" href="<?php echo base_url(); ?>index.php/patients/create">Patients registrations</a></li>
-								<li><a target="_blank" href="<?php echo base_url(); ?>index.php/auth">Nurse Diagnostics</a></li>
-								<li><a target="_blank" href="<?php echo base_url(); ?>index.php/auth">Administration</a></li>
+								<li><a target="_blank" href="<?php echo base_url(); ?>patients/create">Patients registrations</a></li>
+								<li><a target="_blank" href="<?php echo base_url(); ?>auth">Nurse Diagnostics</a></li>
+								<li><a target="_blank" href="<?php echo base_url(); ?>auth">Administration</a></li>
 							</ul>
 						</nav>
 					</header>

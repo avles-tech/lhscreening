@@ -29,7 +29,7 @@
 		</div>
 		<nav>
 			<ul>
-				<li><a href="<?php echo base_url(); ?>index.php/patients/create">Click here to register</a></li>
+				<li><a href="<?php echo base_url(); ?>patients/create">Click here to register</a></li>
 			</ul>
 		</nav>
 	</header>

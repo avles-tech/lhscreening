@@ -25,7 +25,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 
 //config['base_url'] = 'https://stormy-mesa-5521.herokuapp.com';
-$config['base_url'] = 'http://lyca.com/lhscreening';
+$config['base_url'] = 'http://localhost/lhscreening';
 
 /*
 |--------------------------------------------------------------------------
@@ -37,7 +37,7 @@ $config['base_url'] = 'http://lyca.com/lhscreening';
 | variable so that it is blank.
 |
 */
-$config['index_page'] = 'index.php';
+$config['index_page'] = '';
 
 /*
 |--------------------------------------------------------------------------

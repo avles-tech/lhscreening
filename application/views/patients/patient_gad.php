@@ -8,8 +8,6 @@
 		<div class="form-row">
 			<?php 
 			$patient_gad = $this->patient_gad_model->get_patient_gad($patient_id);
-			$patient_details = $this->patients_model->get_patients($patient_id);
-			$read_only = empty($patient_details) ? '' : $patient_details['save_exit']=='1' ? 'disabled' : '';
 			
             echo form_hidden('patient_id',$patient_id);
             foreach ($patient_gad as $item): 
@@ -52,7 +50,7 @@
 						<button id='save_exit' class="btn btn-primary " <?php echo $read_only ?>>Save & Exit</button>
 					</div> <!-- form-group// -->
 			<div class="form-group btn-group mr-2">
-				<a  href="<?php echo base_url().'index.php/patients'?>" class="btn btn-danger" role='button'>Cancel</a>
+				<a  href="<?php echo base_url().'patients'?>" class="btn btn-danger" role='button'>Cancel</a>
 			</div> <!-- form-group// -->
 		</div>
 		</form>
