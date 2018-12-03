@@ -57,7 +57,7 @@
 				<button id='save_exit' class="btn btn-primary " <?php echo $read_only ?>>Save & Exit</button>
 			</div> <!-- form-group// -->
 			<div class="form-group btn-group mr-2">
-				<a  href="<?php echo base_url().'index.php/patients'?>" class="btn btn-danger" role='button'>Cancel</a>
+				<a  href="<?php echo base_url().'patients'?>" class="btn btn-danger" role='button'>Cancel</a>
 			</div> <!-- form-group// -->
 		</div>
 		</form>
@@ -125,14 +125,6 @@
 				alertify.error('Cancel')
 			});
 		}
-		
-		$("button[id^='save_exit']").click(()=>{
-			alertify.set('notifier', 'position', 'top-right');
-			alertify.notify('patient save and exit', 'success', 5, function () {
-				console.log('dismissed');
-			});
-			location.href = "<?php echo base_url().'index.php/patients'?>";
-		});
 
 		$("button#save_complete").click(save_complete_pressed);
 	});

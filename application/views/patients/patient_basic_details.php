@@ -1,16 +1,9 @@
-<?php
-$patient_details = array();
-
-if($patient_id==0){
-	$patient_details['patient_id'] = '0';
+<style>
+	.error {
+    color:#FF0000;
 }
-else{
-	$patient_details = $this->patients_model->get_patients($patient_id);
-}
-?>
-<?php 
-	$read_only = !array_key_exists('save_exit', $patient_details) ? '' : $patient_details['save_exit']=='1' ? 'disabled' : '';
-?>
+  
+</style>
 <div class="form-row">
 	<div class="col form-group">
 		<label>Title</label>
@@ -21,14 +14,14 @@ else{
 			 'selected' :'' : '' ;?>>Ms</option>
 			<option value="Mrs" <?php echo array_key_exists('title', $patient_details) ? $patient_details['title']=='Mrs' ?
 			 'selected' :'' : '' ;?>>Mrs</option>
-			<option value="Mis" <?php echo array_key_exists('title', $patient_details) ? $patient_details['title']=='Mis' ?
+			<option value="Miss" <?php echo array_key_exists('title', $patient_details) ? $patient_details['title']=='Miss' ?
 			 'selected' :'' : '' ;?> >Mis</option>
 			<option value="Mr" <?php echo array_key_exists('title', $patient_details) ? $patient_details['title']=='Mr' ?
 			 'selected' :'' : '' ;?>>Mr</option>
 			<option value="Dr" <?php echo array_key_exists('title', $patient_details) ? $patient_details['title']=='Dr' ?
 			 'selected' :'' : '' ;?> >Dr</option>
-			<option value="Others" <?php echo array_key_exists('title', $patient_details) ? $patient_details['title']=='Others'
-			 ? 'selected' :'' : '' ;?>>Others</option>
+			<option value="Other" <?php echo array_key_exists('title', $patient_details) ? $patient_details['title']=='Other'
+			 ? 'selected' :'' : '' ;?>>Other</option>
 		</select>
 	</div> <!-- form-group end.// -->
 	<div class="col form-group">
@@ -36,7 +29,7 @@ else{
 </div>
 <div class="form-row">
 	<div class="col form-group">
-		<label>First name </label>
+		<label>First Name </label>
 		<input type="text" class="form-control" name='first_name' value="<?php echo array_key_exists('first_name', $patient_details) ? $patient_details['first_name'] : '';?>"
 		 required <?php echo $read_only ?>>
 	</div> <!-- form-group end.// -->
@@ -47,12 +40,12 @@ else{
 	</div> <!-- form-group end.// -->
 </div> <!-- form-row end.// -->
 <div class="form-group">
-	<label>Email address</label>
+	<label>Email Address</label>
 	<input type="email" class="form-control" name='email' value="<?php echo array_key_exists('email', $patient_details) ? $patient_details['email'] : '';?>"
 	 required <?php echo $read_only ?>>
 </div> <!-- form-group end.// -->
 <div class="form-group row">
-	<label class="col-sm-3 col-form-label">Phone home</label>
+	<label class="col-sm-3 col-form-label">Phone Home</label>
 	<div class="col-sm-5">
 		<input class='form-control' placeholder='+441234567890' name='phone_home' type='tel' value="<?php echo array_key_exists('phone_home', $patient_details) ? $patient_details['phone_home'] : '';?>"
 		 <?php echo $read_only ?>/>
@@ -69,7 +62,7 @@ else{
 	</div>
 </div>
 <div class="form-group row">
-	<label class="col-sm-3 col-form-label">Phone mobile</label>
+	<label class="col-sm-3 col-form-label">Phone Mobile</label>
 	<div class="col-sm-5">
 		<input class='form-control' placeholder='+441234567890' name='phone_mobile' type='tel' value="<?php echo array_key_exists('phone_mobile', $patient_details) ? $patient_details['phone_mobile'] : '';?>"
 		 <?php echo $read_only ?>/>
@@ -87,7 +80,7 @@ else{
 	</div>
 </div>
 <div class="form-group row">
-	<label class="col-sm-3 col-form-label">Phone work</label>
+	<label class="col-sm-3 col-form-label">Phone Work</label>
 	<div class="col-sm-5">
 		<input class='form-control' placeholder='+441234567890' name='phone_work' type='tel' value="<?php echo array_key_exists('phone_work', $patient_details) ? $patient_details['phone_work'] : '';?>"
 		 <?php echo $read_only ?>/>
@@ -128,7 +121,7 @@ else{
 	<div class="form-group col-md-6">
 		<label>Age</label>
 		<input class='form-control' name='age' value="<?php echo array_key_exists('age', $patient_details) ? $patient_details['age']:'';?>"
-		 <?php echo $read_only ?>/>
+		disabled/>
 	</div> <!-- form-group end.// -->
 </div> <!-- form-row.// -->
 <div class="form-group">
@@ -149,7 +142,7 @@ else{
 	<div class="col form-group">
 		<!-- <label>Blood group</label>
 		<input type="text" class="form-control" name='blood_group' value="<?php echo array_key_exists('blood_group', $patient_details) ? $patient_details['blood_group'] : '';?>"> -->
-		<label>Blood group</label>
+		<label>Blood Group</label>
 		<select class="form-control" name='blood_group' value="<?php echo array_key_exists('blood_group', $patient_details) ? $patient_details['blood_group'] : '';?>"
 		 <?php echo $read_only ?>>
 			<option disabled selected value> -- </option>
@@ -178,7 +171,7 @@ else{
 	</div> <!-- form-group end.// -->
 </div> <!-- form-row end.// -->
 <br>
-<h4>Next of kin details</h4>
+<h4>Next of Kin Details</h4>
 <div class="form-row">
 	<div class="col form-group">
 		<label>Name</label>
@@ -313,7 +306,7 @@ else{
 			<input type="checkbox" value="1" name="allergy_treenuts" <?php echo array_key_exists('allergy_treenuts',
 			 $patient_details) ? $patient_details['allergy_treenuts']=='1' ? 'checked' : '' : '' ; ?>
 			<?php echo $read_only ?>>
-			<span class="form-check-label">Tree nuts(walnuts/almonds/pecan)</span>
+			<span class="form-check-label">Tree Nuts(Walnuts/Almonds/Pecan)</span>
 		</label>
 	</div>
 </div> <!-- form-group end.// -->
@@ -397,7 +390,7 @@ else{
 </div> <!-- form-group end.// -->
 
 <h4> CONSENT </h4>
-<p>(Please tick the following as you find appropriate)</p>
+<p>(Please select the following as you find appropriate)</p>
 <p>I consent to being contacted by un-encrypted email and/or telephone and /or WhatsApp messenger to discuss
 	management plans, diagnosis and to disclose results. I accept the risk associated with receiving messages
 	received by the above means.</p>
@@ -436,14 +429,32 @@ else{
 
 
 <script>
-	$('#allergy_others_yes').click(function () {
-		this.checked ? $('#allergy_others_details_div').show() : $('#allergy_others_details_div').hide(); //time for show
-	});
-	$('#allergy_others_no').click(function () {
-		this.checked ? $('#allergy_others_details_div').hide() : $('#allergy_others_details_div').show(); //time for show
-	});
+	
+	function checkPatientExists() {
+		firstName = $("input[name=first_name]").val();
+		lastName = $("input[name=last_name]").val();
+		dob = $("input[name=dob]").val();
+		$.ajax({
+			url: "<?php echo base_url(); ?>patients/patient_exists",
+			method: "POST",
+			data: {
+				first_name: firstName,
+				last_name: lastName,
+				dob: dob
+			},
+			success: function (data) {
+				if (data == 1) {
+					alert('patient exists already');
+					$("#create").prop("disabled", true);
+					$("#basic_details_save_button").prop("disabled", true);
+				} else {
+					$("#create").prop("disabled", false);
+					$("#basic_details_save_button").prop("disabled", false);
+				}
+			}
+		});
+	}
 
-	//Age
 	function getAge(birthDate) {
 		var birth_date = new Date(birthDate);
 		var currentDate = new Date();
@@ -457,8 +468,7 @@ else{
 		$('input[name=age]').val(years);
 	}
 
-</script>
-<script>
+
 	$(document).ready(function () {
 		var x = {
 			first_name: {
@@ -500,12 +510,19 @@ else{
 
 		};
 
-		$('#create_form').validate({ // initialize the plugin
+		$('#create_form').validate({
 			rules: x
 		});
 
-		$('#basic_details_form').validate({ // initialize the plugin
+		$('#basic_details_form').validate({
 			rules: x
+		});
+
+		$('#allergy_others_yes').click(function () {
+			this.checked ? $('#allergy_others_details_div').show() : $('#allergy_others_details_div').hide(); //time for show
+		});
+		$('#allergy_others_no').click(function () {
+			this.checked ? $('#allergy_others_details_div').hide() : $('#allergy_others_details_div').show(); //time for show
 		});
 
 		jQuery.validator.addMethod("lettersonly", function (value, element) {
@@ -513,12 +530,9 @@ else{
 		}, "Only alphabetical characters");
 	});
 
-</script>
-<script>
 	var options = {
-
 		url: function (phrase) {
-			return "<?php echo base_url(); ?>index.php/patients/occupations";
+			return "<?php echo base_url().'patients/occupations'; ?>";
 		},
 
 		getValue: function (element) {
@@ -544,33 +558,6 @@ else{
 
 	$("input[name=occupation]").easyAutocomplete(options);
 
-</script>
-<script>
-	function checkPatientExists() {
-		firstName = $("input[name=first_name]").val();
-		lastName = $("input[name=last_name]").val();
-		dob = $("input[name=dob]").val();
-		$.ajax({
-			url: "<?php echo base_url(); ?>index.php/patients/patient_exists",
-			method: "POST",
-			data: {
-				first_name: firstName,
-				last_name: lastName,
-				dob: dob
-			},
-			success: function (data) {
-
-				if (data == 1) {
-					alert('patient exists already');
-					$("#create").prop("disabled", true);
-					$("#basic_details_save_button").prop("disabled", true);
-				} else {
-					$("#create").prop("disabled", false);
-					$("#basic_details_save_button").prop("disabled", false);
-				}
-			}
-		});
-	}
 	$("input[name=first_name]").change(function () {
 		checkPatientExists();
 	});

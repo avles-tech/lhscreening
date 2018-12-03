@@ -20,7 +20,7 @@
 			<article class="card-body">
 				<?php echo validation_errors(); ?>
 				<?php echo form_open('patients/create',array('id' => 'create_form')); ?>
-				<?php $this->load->view('patients/patient_basic_details'); ?>
+				<?php $this->load->view('patients/patient_basic_details',array( 'patient_id' => '0' , 'patient_details'=>array() ,'read_only'=>'0')); ?>
 				<div class='form-group'>
 					<div class="form-check form-check-inline">
 						<label class="form-check">
@@ -65,3 +65,7 @@
 		</div> <!-- card.// -->
 	</div> <!-- col.//-->
 </div> <!-- row.//-->
+
+<script>
+
+</script>

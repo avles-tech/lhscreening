@@ -71,7 +71,7 @@
 
 <p style="clear: both;">
 	<button id="clear">Clear</button> 
-	<button id="save_signature">Save Signature</button>
+	<button type='button' id="save_signature">Save Signature</button>
 </p>
 
 <script>
@@ -87,7 +87,7 @@
                   var sig_jpeg = $('#sig').signature('toDataURL', 'image/jpeg');
                   //alert(sig_jpeg.split(',')[1]);
 			$.ajax({
-				url: "<?php echo base_url(); ?>index.php/upload/upload_signature",
+				url: "<?php echo base_url(); ?>upload/upload_signature",
 				method: "POST",
 				data: {
 					user_id: <?php echo $user->id?>
@@ -95,6 +95,7 @@
 				},
 				success: function (data) {
 					$('#result').html(data);
+                              location.reload();
 				}
 			});
 

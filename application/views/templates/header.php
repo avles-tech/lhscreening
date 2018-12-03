@@ -22,7 +22,7 @@
 	<script src="<?php echo base_url(); ?>assets/EasyAutocomplete-1.3.5/jquery.easy-autocomplete.min.js"></script>
 	<script src="<?php echo base_url(); ?>assets/alertifyjs/alertify.min.js"></script>
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
-		<a class="navbar-brand" href="<?php echo base_url(); ?>index.php/patients">
+		<a class="navbar-brand" href="<?php echo base_url(); ?>patients">
 			<img src="<?php echo base_url(); ?>assets/lyca/images/logo.png" height='35px' alt="">Patient Management
 		</a>
 		<div class="collapse navbar-collapse" id="navbarNavDropdown">

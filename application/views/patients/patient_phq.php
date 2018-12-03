@@ -1,11 +1,7 @@
 <div class="card">
 	<article class="card-body">
 		<?php 
-
-			$patient_details = $this->patients_model->get_patients($patient_id);
-			$read_only = empty($patient_details) ? '' : $patient_details['save_exit']=='1' ? 'disabled' : '';
 			echo validation_errors();  
-			//echo form_open('patients/update_phq');
 			echo form_open('phq_form',array( 'id' => 'phq_form'));
         ?>
 		<div class="form-row">
@@ -53,7 +49,7 @@
 						<button id='save_exit' class="btn btn-primary " <?php echo $read_only ?>>Save & Exit</button>
 					</div> <!-- form-group// -->
 			<div class="form-group btn-group mr-2">
-				<a href="<?php echo base_url().'index.php/patients'?>" class="btn btn-danger" role='button'>Cancel</a>
+				<a href="<?php echo base_url().'patients'?>" class="btn btn-danger" role='button'>Cancel</a>
 			</div> <!-- form-group// -->
 		</div>
 		</form>
@@ -69,12 +65,11 @@
 		$.ajax({
 			type: "POST",
 			url: "<?php echo site_url('patients/update_phq'); ?>",
-			data: form.serialize(), // <--- THIS IS THE CHANGE
+			data: form.serialize(),
 			dataType: "html",
 			success: function (data) {
-				//$('#feed-container').prepend(data);
 				alertify.set('notifier', 'position', 'top-right');
-				alertify.notify('patient details updated', 'success', 5, function () {
+				alertify.notify('Patient details updated', 'success', 5, function () {
 					console.log('dismissed');
 				});
 			},
@@ -82,7 +77,6 @@
 				alert("Error posting feed.");
 			}
 		});
-
 	});
 
 </script>
