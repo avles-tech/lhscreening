@@ -526,8 +526,7 @@
 
 	var options = {
 		url: function (phrase) {
-			return "<?php echo base_url().'patients/occupations"
-			'; ?>";
+			return "<?php echo base_url().'patients/occupations'; ?>";
 		},
 
 		getValue: function (element) {
