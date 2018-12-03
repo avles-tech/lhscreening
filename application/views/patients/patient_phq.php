@@ -69,7 +69,7 @@
 			dataType: "html",
 			success: function (data) {
 				alertify.set('notifier', 'position', 'top-right');
-				alertify.notify('patient details updated', 'success', 5, function () {
+				alertify.notify('Patient details updated', 'success', 5, function () {
 					console.log('dismissed');
 				});
 			},

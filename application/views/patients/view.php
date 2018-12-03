@@ -166,7 +166,7 @@ $this->user_activity_model->set('selected '.$patient_details['first_name'].'(pat
 			dataType: "html",
 			success: function (data) {
 				alertify.set('notifier', 'position', 'top-right');
-				alertify.notify('patient details updated', 'success', 5);
+				alertify.notify('Patient details updated', 'success', 5);
 			},
 			error: function () {
 				alert("Error posting feed.");

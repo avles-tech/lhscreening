@@ -15,7 +15,7 @@
 			<label class="custom-file-label" for="userfile">Choose file</label>
 		</div>
 		<div class="input-group-append">
-			<button class="btn btn-outline-secondary" type="submit" value="upload">upload</button>
+			<button class="btn btn-outline-secondary" type="submit" value="upload">Upload</button>
 		</div>
 	</div>
 	<div id='file_div' data-report='blood'>
@@ -39,7 +39,7 @@
 			<label class="custom-file-label" for="userfile">Choose file</label>
 		</div>
 		<div class="input-group-append">
-			<button class="btn btn-outline-secondary" type="submit" value="upload">upload</button>
+			<button class="btn btn-outline-secondary" type="submit" value="upload">Upload</button>
 		</div>
 	</div>
 	<div id='file_div' data-report='mri'>
@@ -64,7 +64,7 @@
 			<label class="custom-file-label" for="userfile">Choose file</label>
 		</div>
 		<div class="input-group-append">
-			<button class="btn btn-outline-secondary" type="submit" value="upload">upload</button>
+			<button class="btn btn-outline-secondary" type="submit" value="upload">Upload</button>
 		</div>
 	</div>
 	<div id='file_div' data-report='xray'>
@@ -76,9 +76,9 @@
 <?php 
 //$this->load->view('patients/patient_report',array( 'patient_id' => $patient_id)); 
 ?>
-<div class="form-group btn-group mr-2">
+<!-- <div class="form-group btn-group mr-2">
 	<a  href="<?php echo base_url().'patients'?>" class="btn btn-danger" role='button'>Cancel</a>
-</div> <!-- form-group// -->
+</div>  -->
 <script>
 	function ChangeFileName(report, filename) {
 		alertify.prompt('File Rename', 'New File Name', '', function (evt, value) {
@@ -114,7 +114,7 @@
 				}
 			});
 		}, function () {
-			alertify.error('Cancel')
+			//alertify.error('Cancel')
 		});
 
 
@@ -122,7 +122,7 @@
 
 	function delReport(report) {
 		alertify.confirm('', 'Are you sure ?', function () {
-			alertify.success('Ok');
+			//alertify.success('Ok');
 			var file_div = $('div[data-report="' + report + '"]');
 			$.ajax({
 				type: "POST",
@@ -140,7 +140,7 @@
 				}
 			});
 		}, function () {
-			alertify.error('Cancel')
+			//alertify.error('Cancel')
 		});
 	}
 
@@ -163,7 +163,7 @@
 			cache: false,
 			success: function (data) {
 				//$('#feed-container').prepend(data);
-				alertify.success('file uploaded');
+				alertify.success('File uploaded');
 				//$('#mri_file_div').load('upload/load_upload_div?patient_id='+ <?php echo $patient_id ?>+ '&report=mr');
 				let html = "";
 				html +=
@@ -171,10 +171,10 @@
 					filename + "'>" + filename + "</a>";
 				html +=
 					"<a class='btn btn-warning btn-group mr-2' onclick='ChangeFileNameEx(this)' id='changedFilename' data-filename='" +
-					filename + "' data-report='" + report + "' role='button' href='#' > rename </a>";
+					filename + "' data-report='" + report + "' role='button' href='#' > Rename </a>";
 				html +=
 					"<a class='btn btn-danger btn-group mr-2' onclick='delReportEx(this)' role='button' href='#' data-report='" +
-					report + "'> delete </a>";
+					report + "'> Delete </a>";
 				file_div.html(html);
 			},
 			error: function () {
@@ -200,7 +200,7 @@
 		console.log('$(_this)', $(_this));
 		ChangeFileName(report, filename);
 
-		console.log('test', _this);
+		//console.log('test', _this);
 	}
 
 	function delReportEx(_this) {
