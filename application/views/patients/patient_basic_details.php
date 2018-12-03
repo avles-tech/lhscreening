@@ -1,3 +1,9 @@
+<style>
+	.error {
+    color:#FF0000;
+}
+  
+</style>
 <div class="form-row">
 	<div class="col form-group">
 		<label>Title</label>
@@ -14,8 +20,8 @@
 			 'selected' :'' : '' ;?>>Mr</option>
 			<option value="Dr" <?php echo array_key_exists('title', $patient_details) ? $patient_details['title']=='Dr' ?
 			 'selected' :'' : '' ;?> >Dr</option>
-			<option value="Others" <?php echo array_key_exists('title', $patient_details) ? $patient_details['title']=='Others'
-			 ? 'selected' :'' : '' ;?>>Others</option>
+			<option value="Other" <?php echo array_key_exists('title', $patient_details) ? $patient_details['title']=='Other'
+			 ? 'selected' :'' : '' ;?>>Other</option>
 		</select>
 	</div> <!-- form-group end.// -->
 	<div class="col form-group">
@@ -23,7 +29,7 @@
 </div>
 <div class="form-row">
 	<div class="col form-group">
-		<label>First name </label>
+		<label>First Name </label>
 		<input type="text" class="form-control" name='first_name' value="<?php echo array_key_exists('first_name', $patient_details) ? $patient_details['first_name'] : '';?>"
 		 required <?php echo $read_only ?>>
 	</div> <!-- form-group end.// -->
@@ -34,12 +40,12 @@
 	</div> <!-- form-group end.// -->
 </div> <!-- form-row end.// -->
 <div class="form-group">
-	<label>Email address</label>
+	<label>Email Address</label>
 	<input type="email" class="form-control" name='email' value="<?php echo array_key_exists('email', $patient_details) ? $patient_details['email'] : '';?>"
 	 required <?php echo $read_only ?>>
 </div> <!-- form-group end.// -->
 <div class="form-group row">
-	<label class="col-sm-3 col-form-label">Phone home</label>
+	<label class="col-sm-3 col-form-label">Phone Home</label>
 	<div class="col-sm-5">
 		<input class='form-control' placeholder='+441234567890' name='phone_home' type='tel' value="<?php echo array_key_exists('phone_home', $patient_details) ? $patient_details['phone_home'] : '';?>"
 		 <?php echo $read_only ?>/>
@@ -56,7 +62,7 @@
 	</div>
 </div>
 <div class="form-group row">
-	<label class="col-sm-3 col-form-label">Phone mobile</label>
+	<label class="col-sm-3 col-form-label">Phone Mobile</label>
 	<div class="col-sm-5">
 		<input class='form-control' placeholder='+441234567890' name='phone_mobile' type='tel' value="<?php echo array_key_exists('phone_mobile', $patient_details) ? $patient_details['phone_mobile'] : '';?>"
 		 <?php echo $read_only ?>/>
@@ -74,7 +80,7 @@
 	</div>
 </div>
 <div class="form-group row">
-	<label class="col-sm-3 col-form-label">Phone work</label>
+	<label class="col-sm-3 col-form-label">Phone Work</label>
 	<div class="col-sm-5">
 		<input class='form-control' placeholder='+441234567890' name='phone_work' type='tel' value="<?php echo array_key_exists('phone_work', $patient_details) ? $patient_details['phone_work'] : '';?>"
 		 <?php echo $read_only ?>/>
@@ -115,7 +121,7 @@
 	<div class="form-group col-md-6">
 		<label>Age</label>
 		<input class='form-control' name='age' value="<?php echo array_key_exists('age', $patient_details) ? $patient_details['age']:'';?>"
-		 <?php echo $read_only ?>/>
+		disabled/>
 	</div> <!-- form-group end.// -->
 </div> <!-- form-row.// -->
 <div class="form-group">
@@ -136,7 +142,7 @@
 	<div class="col form-group">
 		<!-- <label>Blood group</label>
 		<input type="text" class="form-control" name='blood_group' value="<?php echo array_key_exists('blood_group', $patient_details) ? $patient_details['blood_group'] : '';?>"> -->
-		<label>Blood group</label>
+		<label>Blood Group</label>
 		<select class="form-control" name='blood_group' value="<?php echo array_key_exists('blood_group', $patient_details) ? $patient_details['blood_group'] : '';?>"
 		 <?php echo $read_only ?>>
 			<option disabled selected value> -- </option>
@@ -165,7 +171,7 @@
 	</div> <!-- form-group end.// -->
 </div> <!-- form-row end.// -->
 <br>
-<h4>Next of kin details</h4>
+<h4>Next of Kin Details</h4>
 <div class="form-row">
 	<div class="col form-group">
 		<label>Name</label>
@@ -300,7 +306,7 @@
 			<input type="checkbox" value="1" name="allergy_treenuts" <?php echo array_key_exists('allergy_treenuts',
 			 $patient_details) ? $patient_details['allergy_treenuts']=='1' ? 'checked' : '' : '' ; ?>
 			<?php echo $read_only ?>>
-			<span class="form-check-label">Tree nuts(walnuts/almonds/pecan)</span>
+			<span class="form-check-label">Tree Nuts(Walnuts/Almonds/Pecan)</span>
 		</label>
 	</div>
 </div> <!-- form-group end.// -->
@@ -384,7 +390,7 @@
 </div> <!-- form-group end.// -->
 
 <h4> CONSENT </h4>
-<p>(Please tick the following as you find appropriate)</p>
+<p>(Please select the following as you find appropriate)</p>
 <p>I consent to being contacted by un-encrypted email and/or telephone and /or WhatsApp messenger to discuss
 	management plans, diagnosis and to disclose results. I accept the risk associated with receiving messages
 	received by the above means.</p>

@@ -157,13 +157,10 @@ class Patients extends CI_Controller {
                 else
                 {
                         $insert_id = $this->patients_model->set_patients();
-                        $this->load->view('templates/header');
-                        $this->load->view('patients/registration_success');
-                        $this->load->view('templates/footer');
+                        redirect('patients/registration_success','refresh');
                         $this->patient_phq_model->get_patient_phq($insert_id);
                         $this->patient_gad_model->get_patient_gad($insert_id);
                         $this->patient_lab_test_model->get_patient_lab_test($insert_id);
-                        
                 }
                 //echo "test";
         }
@@ -182,7 +179,6 @@ class Patients extends CI_Controller {
                 {
                         $form_data = $this->input->post();
                         $this->patients_model->update_patients($patient_id,$form_data);
-                        
                 }
         }
         public function update_phq(){
@@ -234,5 +230,12 @@ class Patients extends CI_Controller {
         public function get_patients()
 	{
                 echo json_encode($this->patients_model->get_patients());
+        }
+
+        public function registration_success()
+	{
+                $this->load->view('templates/header');
+                $this->load->view('patients/registration_success');
+                $this->load->view('templates/footer');
         }
 }
