@@ -157,7 +157,7 @@ class Patients extends CI_Controller {
                 else
                 {
                         $insert_id = $this->patients_model->set_patients();
-                        redirect('patients/registration_success','refresh');
+                        //redirect('patients/registration_success','refresh');
                         $this->patient_phq_model->get_patient_phq($insert_id);
                         $this->patient_gad_model->get_patient_gad($insert_id);
                         $this->patient_lab_test_model->get_patient_lab_test($insert_id);
