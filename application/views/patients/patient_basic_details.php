@@ -15,7 +15,7 @@
 			<option value="Mrs" <?php echo array_key_exists('title', $patient_details) ? $patient_details['title']=='Mrs' ?
 			 'selected' :'' : '' ;?>>Mrs</option>
 			<option value="Miss" <?php echo array_key_exists('title', $patient_details) ? $patient_details['title']=='Miss' ?
-			 'selected' :'' : '' ;?> >Mis</option>
+			 'selected' :'' : '' ;?> >Miss</option>
 			<option value="Mr" <?php echo array_key_exists('title', $patient_details) ? $patient_details['title']=='Mr' ?
 			 'selected' :'' : '' ;?>>Mr</option>
 			<option value="Dr" <?php echo array_key_exists('title', $patient_details) ? $patient_details['title']=='Dr' ?
@@ -426,10 +426,26 @@
 		<span class="form-check-label"> No</span>
 	</label>
 </div> <!-- form-group end.// -->
-
-
+<div id='sig'>
+</div>
+<p style="clear: both;">
+	<a href='#' class='btn btn-info' role='button' id="clear">Clear</a> 
+</p>
+<style>
+.kbw-signature { width: 400px; height: 200px; }
+</style>
 <script>
-	
+	var sig = $('#sig').signature();
+
+	$('#clear').click(function(e) {
+		e.preventDefault();
+	});
+
+	<?php 
+	if (!empty($patient_details['signature'])) :?>
+		sig.signature('draw', '<?php echo $patient_details['signature'] ?>');
+	<?php endif ?>
+
 	function checkPatientExists() {
 		firstName = $("input[name=first_name]").val();
 		lastName = $("input[name=last_name]").val();
@@ -470,6 +486,9 @@
 
 
 	$(document).ready(function () {
+
+		var sig = $('#sig').signature();
+
 		var x = {
 			first_name: {
 				required: true,
@@ -512,10 +531,65 @@
 
 		$('#create_form').validate({
 			rules: x
-		});
+			,submitHandler: function (form) {
+				var create_form = document.getElementById('create_form');
+				var form_data = new FormData(create_form);
+				var sig_jpeg = $('#sig').signature('toDataURL', 'image/jpeg');
+				form_data.append('signature',sig_jpeg);
+				//console.log('form_data',form_data);
+				// for(var pair of form_data.entries()) {
+				// 	console.log(pair[0]+ ', '+ pair[1]); 
+				// }
+             $.ajax({
+                 type: "POST",
+                 url: "<?php echo site_url('patients/create'); ?>",
+                 data: form_data,
+				 processData: false,
+				contentType: false,
+				cache: false,
+                 success: function () {
+					alertify.set('notifier', 'position', 'top-right');
+					alertify.notify('Patient Created', 'success', 5, function () {
+						console.log('dismissed');
+					});
+					$('#create_form')[0].reset();
+					location.href = "<?php echo base_url().'/patients/registration_success'; ?>";
+					
+                 }
+             });
+             return false; // required to block normal submit since you used ajax
+			}
+    	});
+
 
 		$('#basic_details_form').validate({
 			rules: x
+			,submitHandler: function (form) {
+				var basic_details_form = document.getElementById('basic_details_form');
+				var form_data = new FormData(basic_details_form);
+				var sig_jpeg = $('#sig').signature('toDataURL', 'image/jpeg');
+				form_data.append('signature',sig_jpeg);
+				//console.log('form_data',form_data);
+				// for(var pair of form_data.entries()) {
+				// 	console.log(pair[0]+ ', '+ pair[1]); 
+				// }
+             $.ajax({
+                 type: "POST",
+                 url: "<?php echo site_url('patients/update'); ?>",
+                 data: form_data,
+				 processData: false,
+				contentType: false,
+				cache: false,
+                 success: function () {
+					alertify.set('notifier', 'position', 'top-right');
+					alertify.notify('Patient details updated', 'success', 5, function () {
+						console.log('dismissed');
+					});
+										
+                 }
+             });
+             return false; // required to block normal submit since you used ajax
+			}
 		});
 
 		$('#allergy_others_yes').click(function () {
