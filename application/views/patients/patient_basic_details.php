@@ -439,6 +439,7 @@
 
 	$('#clear').click(function(e) {
 		e.preventDefault();
+		sig.signature('clear');
 	});
 
 	<?php 
