@@ -73,6 +73,8 @@
     
 
     $tcpdflib->writeHTML($html, true, 0, true, 0);
+
+    $tcpdflib->AddPage();
     
     $html = "<br><h1>Health</h1>";
     $html.= "<p> How is your health at present? Is there anything in particular you would like to discuss with the Doctor today? :".$patient_details['health_at_present']."</p>";
@@ -88,16 +90,19 @@
     $html.= "<tr> <td> Tree nuts(walnuts/almonds/pecan) </td> <td> <b>".($patient_details['allergy_treenuts']=='1'?'Yes':'No')." </b></td> </tr>";
     $html.= "</table>";
     $html.= "<p> Other Allergies <b>".($patient_details['allergy_others']=='1'?'Yes':'No')."</b> </p>";
-    $patient_details['allergy_others']=='1' ? $html.= "<p> Other Allergies Details <b>".($patient_details['allergy_others_details']=='1'?'Yes':'No')."</b> </p>" : '' ;
+    $patient_details['allergy_others']=='1' ? $html.= "<p> Other Allergies Details <b>".$patient_details['allergy_others_details']."</b> </p>" : '' ;
     $html.= "<p> Do you suffer from Hayfever? <b>".($patient_details['hay_fever']=='1'?'Yes':'No')."</b> </p>";
     $html.= "<p> Do you have Asthma? <b>".($patient_details['asthma']=='1'?'Yes':'No')."</b> </p>";
     
-    $tcpdflib->AddPage();
-
+    
     $html.= "<br><h1>CHAPERONE</h1>";
     $html.= "<p> Do you require a chaperone before this consultation? <b>".($patient_details['chaperone_required']=='1'?'Yes':'No')."</b> </p>";
+    
+    $tcpdflib->writeHTML($html, true, 0, true, 0);
 
-    $html.= "<br><h1>CONSENT</h1>";
+    $tcpdflib->AddPage();
+    
+    $html= "<br><h1>CONSENT</h1>";
     $html.= "<p>I consent to being contacted by un-encrypted email and/or telephone and /or WhatsApp messenger to discuss management plans, diagnosis and to disclose results. I accept the risk associated with receiving messages received by the above means <b>".($patient_details['consent_unencrypted']=='1'?'Yes':'No')."</b> </p>";
     $html.= "<p>I consent to having messages left on my preferred telephone number <b>".($patient_details['consent_messages']=='1'?'Yes':'No')."</b> </p>";
     $html.= "<p>I consent that my medical information being shared with my regular GP if I am not contactable <b>".($patient_details['consent_medical_information']=='1'?'Yes':'No')."</b> </p>";
