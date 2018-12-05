@@ -43,7 +43,7 @@
         ,'3'=>'Nearly every day'
     );
 
-    $html = "<br><h1>Patient Details</h1>";
+    $html = "<h1>Patient Details</h1>";
     $html .= "<table border='0'>";
     $html.= "<tr> <td> First Name </td> <td><b>".$patient_details['first_name']."</b></td></tr>";
     $html.= "<tr> <td> Last Name </td> <td><b>".$patient_details['last_name']."</b></td></tr>";
@@ -60,14 +60,14 @@
     $html.= "<tr> <td> Occupation </td> <td><b>".$patient_details['occupation']."</b></td></tr>";
     $html.= "<table>";
 
-    $html.= "<br><h1>Next of kin details</h1>";
+    $html.= "<h1>Next of kin details</h1>";
     $html.= "<p> Name <b>".$patient_details['next_of_kin_name']."</b></p>";
     $html.= "<p> Phone Number <b>".$patient_details['next_of_kin_phone']."</b></p>";
     $html.= "<p> Relationship <b>".$patient_details['next_of_kin_relationship']."</b></p>";
     $html.= "<p> In case of emergency if you are uncontactable, do you provide consent for your next of kin to be contacted
     and for relevant clinical information to be divulged <b>".($patient_details['next_of_kin_contact']=='1'?'Yes':'No')."</b></p>";
 
-    $html.= "<br><h1>NHS / Alternative GP</h1>";
+    $html.= "<h1>NHS / Alternative GP</h1>";
     $html.= "<p> Name <b>".$patient_details['alternative_gp']."</b></p>";
     $html.= "<p> I consent to my medical information being shared with my regular GP if I am not contactable. <b>".($patient_details['gp_contact_agree']=='1'?'Yes':'No')."</b></p>";
     
@@ -98,11 +98,22 @@
     $html.= "<p> Do you require a chaperone before this consultation? <b>".($patient_details['chaperone_required']=='1'?'Yes':'No')."</b> </p>";
 
     $html.= "<br><h1>CONSENT</h1>";
-    $html.= "<p> I consent to being contacted by un-encrypted email and/or telephone and /or WhatsApp messenger to discuss management plans, diagnosis and to disclose results. I accept the risk associated with receiving messages received by the above means <b>".($patient_details['consent_unencrypted']=='1'?'Yes':'No')."</b> </p>";
-    $html.= "<p> I consent to having messages left on my preferred telephone number <b>".($patient_details['consent_messages']=='1'?'Yes':'No')."</b> </p>";
-    $html.= "<p> I consent that my medical information being shared with my regular GP if I am not contactable <b>".($patient_details['consent_medical_information']=='1'?'Yes':'No')."</b> </p>";
+    $html.= "<p>I consent to being contacted by un-encrypted email and/or telephone and /or WhatsApp messenger to discuss management plans, diagnosis and to disclose results. I accept the risk associated with receiving messages received by the above means <b>".($patient_details['consent_unencrypted']=='1'?'Yes':'No')."</b> </p>";
+    $html.= "<p>I consent to having messages left on my preferred telephone number <b>".($patient_details['consent_messages']=='1'?'Yes':'No')."</b> </p>";
+    $html.= "<p>I consent that my medical information being shared with my regular GP if I am not contactable <b>".($patient_details['consent_medical_information']=='1'?'Yes':'No')."</b> </p>";
 
-    $tcpdflib->writeHTML($html, true, 0, true, 0);
+    //$tcpdflib->writeHTML($html, true, 0, true, 0);
+
+    //$tcpdflib->setJPEGQuality(25);
+    //$imgdata = base64_decode($patient_details['signature']);
+    $img_base64_encoded = $patient_details['signature'];
+    $imageContent = file_get_contents($img_base64_encoded);
+    $path = tempnam(sys_get_temp_dir(), 'prefix');
+    
+    file_put_contents ($path, $imageContent);
+
+    $html.= '<img align="right" height="80" width="80" src="' . $path . '">';
+    $tcpdflib->writeHTML($html, true, false, true, false, '');
 
     $tcpdflib->AddPage();
     $html = "<br> <h1>PHQ-9 Details</h1>";
