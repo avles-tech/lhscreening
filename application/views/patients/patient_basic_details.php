@@ -391,9 +391,7 @@
 
 <h4> CONSENT </h4>
 <p>(Please select the following as you find appropriate)</p>
-<p>I consent to being contacted by un-encrypted email and/or telephone and /or WhatsApp messenger to discuss
-	management plans, diagnosis and to disclose results. I accept the risk associated with receiving messages
-	received by the above means.</p>
+<p>I consent to being contacted by un-encrypted email and/or telephone to discuss management plans, diagnosis and to disclose results. I accept the risk associated with receiving messages received by the above means.</p>
 <div class="form-group">
 	<label class="form-check form-check-inline">
 		<input class="form-check-input" type="radio" name="consent_unencrypted" value="1">
@@ -526,6 +524,15 @@
 			},
 			next_of_kin_relationship: {
 				lettersonly: true
+			},
+			consent_unencrypted: {
+				required: true
+			},
+			consent_messages: {
+				required: true
+			},
+			consent_medical_information: {
+				required: true
 			}
 
 		};
@@ -585,8 +592,7 @@
 					alertify.set('notifier', 'position', 'top-right');
 					alertify.notify('Patient details updated', 'success', 5, function () {
 						console.log('dismissed');
-					});
-										
+					});				
                  }
              });
              return false; // required to block normal submit since you used ajax

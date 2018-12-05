@@ -1,6 +1,4 @@
 <?php
-//echo $patient_id;
-//echo $tab;
 $patient_details = $this->patients_model->get_patients($patient_id);
 $save_exited = empty($patient_details) ? '0' : $patient_details['save_exit']=='1';
 
@@ -17,7 +15,7 @@ if ($save_exited=='1' && $this->ion_auth->is_admin())
 }
 
 echo '<h2>'.$patient_details['first_name'].' '.$patient_details['last_name'].'</h2>';
-//echo $phq_list[0]['question'];
+
 $this->user_activity_model->set('selected '.$patient_details['first_name'].'(patient ID:'.$patient_details['patient_id'].') for update');
 ?>
 <ul class="nav nav-tabs flex-sm-row" id="myTab" role="tablist">
@@ -43,7 +41,7 @@ $this->user_activity_model->set('selected '.$patient_details['first_name'].'(pat
 		<a class="nav-link" id="upload_report-tab" data-toggle="tab" href="#upload_report" role="tab" aria-controls="upload_report"
 		 aria-selected="false">Reports</a>
 	</li>
-	<?php if ($this->ion_auth->in_group('gp')): ?>
+	<?php if ($this->ion_auth->in_group('gp') || $this->ion_auth->in_group('nurse')): ?>
 	<li class="nav-item" onclick="setActivity('<?php echo 'opened GP Summary and Recommendations of '.$patient_details['first_name'].' (Patient ID:'.$patient_id.')' ?>')">
 		<a class="nav-link" id="gp-tab" data-toggle="tab" href="#gp" role="tab" aria-controls="gp" aria-selected="false">GP
 			summary & recommendation</a>
@@ -128,53 +126,8 @@ $this->user_activity_model->set('selected '.$patient_details['first_name'].'(pat
 		});
 	}
 
-	// var params = {},
-	//                queryString = location.hash.substring(1),
-	//                regex = /([^&=]+)=([^&]*)/g,
-	//                m;
-	//            while (m = regex.exec(queryString)) {
-	//              params[m[1]] = m[2];
-	//            }
-	//alert("your access token is : " + params["tab"]);
-
 </Script>
-<!-- <Script>
-		$('#myTab a').click(function(e) {
-			e.preventDefault();
-			$(this).tab('show');
-		});
-
-		// store the currently selected tab in the hash value
-		$("ul.nav-tabs > li > a").on("shown.bs.tab", function(e) {
-			var id = $(e.target).attr("href").substr(1);
-			window.location.hash = id;
-		});
-
-		// on load of the page: switch to the currently selected tab
-		var hash = window.location.hash;
-
-		$('#myTab a[href="' + hash + '"]').tab('show');
-	</Script> -->
 <script>
-	$('form#basic_details_form').submit(function (e) {
-		var form = $(this);
-		e.preventDefault();
-		$.ajax({
-			type: "POST",
-			url: "<?php echo site_url('patients/update'); ?>",
-			data: form.serialize(), 
-			dataType: "html",
-			success: function (data) {
-				alertify.set('notifier', 'position', 'top-right');
-				alertify.notify('Patient details updated', 'success', 5);
-			},
-			error: function () {
-				alert("Error posting feed.");
-			}
-		});
-
-	});
-
 	$("button[id^='save_exit']").click(()=>{
 			alertify.set('notifier', 'position', 'top-right');
 			alertify.notify('patient save and exit', 'success', 5, function () {
