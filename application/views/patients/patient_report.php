@@ -1,6 +1,6 @@
 <br>
 <br>
-<a href="<?php echo base_url().'patients/patient_generate_report/'.$patient_id?>" class='btn btn-info' role='button'>
+<a href="<?php echo base_url().'patients/patient_generate_report/'.$patient_id?>" class='btn btn-info' role='button' target="_blank">
 	Generate Report</a>
 <br>
 <br>
