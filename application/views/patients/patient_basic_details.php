@@ -394,33 +394,51 @@
 <p>I consent to being contacted by un-encrypted email and/or telephone to discuss management plans, diagnosis and to disclose results. I accept the risk associated with receiving messages received by the above means.</p>
 <div class="form-group">
 	<label class="form-check form-check-inline">
-		<input class="form-check-input" type="radio" name="consent_unencrypted" value="1">
+		<input class="form-check-input" type="radio" name="consent_unencrypted" value="1" <?php echo
+		 array_key_exists('consent_unencrypted', $patient_details) ? $patient_details['consent_unencrypted']=='1' ? 'checked' : ''
+		 : '' ; ?>
+		<?php echo $read_only ?>>
 		<span class="form-check-label"> yes </span>
 	</label>
 	<label class="form-check form-check-inline">
-		<input class="form-check-input" type="radio" name="consent_unencrypted" value="0">
+		<input class="form-check-input" type="radio" name="consent_unencrypted" value="0" <?php echo
+		 array_key_exists('consent_unencrypted', $patient_details) ? $patient_details['consent_unencrypted']=='0' ? 'checked' : ''
+		 : '' ; ?>
+		<?php echo $read_only ?>>
 		<span class="form-check-label"> No</span>
 	</label>
 </div> <!-- form-group end.// -->
 <p>I consent to having messages left on my preferred telephone number</p>
 <div class="form-group">
 	<label class="form-check form-check-inline">
-		<input class="form-check-input" type="radio" name="consent_messages" value="1">
+		<input class="form-check-input" type="radio" name="consent_messages" value="1" <?php echo
+		 array_key_exists('consent_messages', $patient_details) ? $patient_details['consent_messages']=='1' ? 'checked' : ''
+		 : '' ; ?>
+		<?php echo $read_only ?>>
 		<span class="form-check-label"> yes </span>
 	</label>
 	<label class="form-check form-check-inline">
-		<input class="form-check-input" type="radio" name="consent_messages" value="0">
+		<input class="form-check-input" type="radio" name="consent_messages" value="0" <?php echo
+		 array_key_exists('consent_messages', $patient_details) ? $patient_details['consent_messages']=='0' ? 'checked' : ''
+		 : '' ; ?>
+		<?php echo $read_only ?>>
 		<span class="form-check-label"> No</span>
 	</label>
 </div> <!-- form-group end.// -->
 <p>I consent that my medical information being shared with my regular GP if I am not contactable.</p>
 <div class="form-group">
 	<label class="form-check form-check-inline">
-		<input class="form-check-input" type="radio" name="consent_medical_information" value="1">
+		<input class="form-check-input" type="radio" name="consent_medical_information" value="1" <?php echo
+		 array_key_exists('consent_medical_information', $patient_details) ? $patient_details['consent_medical_information']=='1' ? 'checked' : ''
+		 : '' ; ?>
+		<?php echo $read_only ?>>
 		<span class="form-check-label"> yes </span>
 	</label>
 	<label class="form-check form-check-inline">
-		<input class="form-check-input" type="radio" name="consent_medical_information" value="0">
+		<input class="form-check-input" type="radio" name="consent_medical_information" value="0" <?php echo
+		 array_key_exists('consent_medical_information', $patient_details) ? $patient_details['consent_medical_information']=='0' ? 'checked' : ''
+		 : '' ; ?>
+		<?php echo $read_only ?>>
 		<span class="form-check-label"> No</span>
 	</label>
 </div> <!-- form-group end.// -->
