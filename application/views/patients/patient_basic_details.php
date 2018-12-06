@@ -34,7 +34,7 @@
 		 required <?php echo $read_only ?>>
 	</div> <!-- form-group end.// -->
 	<div class="col form-group">
-		<label>Last name</label>
+		<label>Last Name</label>
 		<input type="text" class="form-control" name='last_name' value="<?php echo array_key_exists('last_name', $patient_details) ? $patient_details['last_name'] : '';?>"
 		 required <?php echo $read_only ?>>
 	</div> <!-- form-group end.// -->
