@@ -498,17 +498,28 @@
 		});
 	}
 
+	<?php if(array_key_exists('dob', $patient_details)){
+			echo "getAge('".$patient_details['dob']."');";
+	}
+	
+	?>
+
 	function getAge(birthDate) {
 		var birth_date = new Date(birthDate);
 		var currentDate = new Date();
+		
+		var a = moment(new Date());
+		var b = moment(birth_date);
 
-		var years = (currentDate.getFullYear() - birth_date.getFullYear());
+		var years = a.diff(b, 'year');
+		b.add(years, 'years');
 
-		if (currentDate.getMonth() < birth_date.getMonth() ||
-			currentDate.getMonth() == birth_date.getMonth() && currentDate.getDate() < birth_date.getDate()) {
-			years--;
-		}
-		$('input[name=age]').val(years);
+		var months = a.diff(b, 'months');
+		b.add(months, 'months');
+
+		var days = a.diff(b, 'days');
+
+		$('input[name=age]').val(years + ' Years ' + months + ' Months ');
 	}
 
 

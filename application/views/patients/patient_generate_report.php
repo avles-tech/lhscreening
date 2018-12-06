@@ -43,12 +43,17 @@
         ,'3'=>'Nearly every day'
     );
 
+    $date1=date_create($patient_details['dob']);
+    $date2=new DateTime();
+
+    $diff=date_diff($date1,$date2);
+
     $html = "<h1>Patient Details</h1>";
     $html .= "<table border='0'>";
     $html.= "<tr> <td> First Name </td> <td><b>".$patient_details['first_name']."</b></td></tr>";
     $html.= "<tr> <td> Last Name </td> <td><b>".$patient_details['last_name']."</b></td></tr>";
     $html.= "<tr> <td> Gender </td> <td><b>".$gender."</b></td></tr>";
-    $html.= "<tr> <td> Age </td> <td><b>".$patient_details['age']."</b></td></tr>";
+    $html.= "<tr> <td> Age </td> <td><b>".($diff->format("%Y Years %m Months"))."</b></td></tr>";
     $html.= "<tr> <td> Date of birth </td> <td><b>".nice_date($patient_details['dob'],'d-M-Y')."</b></td></tr>";
     $html.= "<tr> <td> Email </td> <td><b>".$patient_details['email']."</b></td></tr>";
     $html.= "<tr> <td> Phone Mobile </td> <td><b>".$patient_details['phone_mobile']."</b></td></tr>";
