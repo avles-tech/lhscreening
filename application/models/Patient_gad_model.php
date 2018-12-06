@@ -30,21 +30,17 @@ class Patient_gad_model extends CI_Model {
         }
         public function set_patient_gad($patient_id,$form_data)
         {
-            $this->load->helper('url');
-            $query_gad_list = $this->db->get('gad_list');
-            $gad_list = $query_gad_list->result_array();
             $query = $this->db->get_where('patient_gad', array('patient_id' => $patient_id));
             $patient_gad = $query->result_array();
             $count = count($patient_gad);
             if (empty($count)){
-                echo 'something wrong';
+                return 'something wrong';
                 //return $this->db->insert('patient_gad', $data);
             }
             else{
                 foreach($patient_gad AS $item){
                         $data = array(
-                                'id' => $item['id']
-                                , 'value' => $form_data[$item['id']]
+                                'value' => $form_data[$item['id']]
                         );
                         $this->db->where('id' , $item['id']);
                         $this->db->update('patient_gad', $data);
