@@ -129,17 +129,45 @@
     $tcpdflib->writeHTML($html, true, false, true, false, '');
 
     $tcpdflib->AddPage();
+    $phq_score = 0;
     $html = "<br> <h1>PHQ-9 Details</h1>";
     foreach ($patient_phq as $item): 
         $html.= "<p>".$item['question']." <b> ".$answers[$item['value']]."</b></p>";
+        $phq_score = $phq_score + $item['value'];
     endforeach;
+    $html.= "<p> PHQ-9 Score: <b>".$phq_score."/27</b></p>";
+    $dep_ser = 0;
+    if($phq_score <= 4)
+        $dep_ser = 'None';
+    else if($phq_score <= 9)
+        $dep_ser = 'Mild';
+    else if($phq_score <= 14)
+        $dep_ser = 'Moderate';
+    else if($phq_score <= 19)
+        $dep_ser = 'Moderately severe';
+    else if($phq_score <= 27)
+        $dep_ser = 'Severe';
+    $html.= "<p> Depression Severity: <b>".$dep_ser."</b></p>";
     $tcpdflib->writeHTML($html, true, 0, true, 0);
 
     $tcpdflib->AddPage();
+    $gad_score = 0;
     $html = "<br><h1>GAD-7 Details</h1>";
     foreach ($patient_gad as $item): 
         $html.= "<p>".$item['question']." <b> ".$answers[$item['value']]."</b></p>";
+        $gad_score = $gad_score + $item['value'];
     endforeach;
+    $html.= "<p> GAD-7 Score: <b>".$gad_score."/24</b></p>";
+    $anx_ser = '';
+    if($gad_score <= 5)
+        $anx_ser = 'None';
+    else if($gad_score <= 10)
+        $anx_ser = 'Mild';
+    else if($gad_score <= 15)
+        $anx_ser = 'Moderate ';
+    else
+        $anx_ser ='Sever anxiety';
+    $html.= "<p> Anxiety Severity: <b>".$anx_ser."</b></p>";
     $tcpdflib->writeHTML($html, true, 0, true, 0);
 
     $tcpdflib->AddPage();
