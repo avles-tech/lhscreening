@@ -63,7 +63,7 @@ class User_activity_model extends CI_Model {
                 }
 
                 $this->db->limit('100');
-                $this->db->order_by('date_time', 'DESC');
+                $this->db->order_by('id', 'DESC');
                 return $this->db->get();
         }
 
