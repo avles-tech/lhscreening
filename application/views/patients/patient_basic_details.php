@@ -442,11 +442,21 @@
 		<span class="form-check-label"> No</span>
 	</label>
 </div> <!-- form-group end.// -->
-<div id='sig'>
+
+<div class='row'>
+	<div class='column'>
+		<label>Signature</label>
+	</div>
+	<div class='column'>
+		<div id='sig'>
+		</div>
+		<p style="clear: both;">
+			<a href='#' class='btn btn-info' role='button' id="clear">Clear</a> 
+		</p>
+	</div>
 </div>
-<p style="clear: both;">
-	<a href='#' class='btn btn-info' role='button' id="clear">Clear</a> 
-</p>
+
+
 <style>
 .kbw-signature { width: 400px; height: 200px; }
 </style>
@@ -550,6 +560,9 @@
 				required: true
 			},
 			consent_medical_information: {
+				required: true
+			}
+			,next_of_kin_contact : {
 				required: true
 			}
 
