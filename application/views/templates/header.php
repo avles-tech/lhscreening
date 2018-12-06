@@ -12,7 +12,7 @@
 	<link href="<?php echo base_url(); ?>assets/alertifyjs/css/alertify.min.css" rel="stylesheet">
 </head>
 
-<body>
+<body _style='background-image: url("<?php echo base_url(); ?>assets/lyca/images/Lyca-Westferry.jpg");'>
 	<script src="<?php echo base_url(); ?>assets/jquery-3.3.1/jquery-3.3.1.min.js"></script>
 	<script src="<?php echo base_url(); ?>assets/jquery-ui-1.12.1/jquery-ui.min.js"></script>
 	<script src="<?php echo base_url(); ?>assets/jquery-validation-1.17.0/jquery.validate.min.js"></script>
