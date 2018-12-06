@@ -98,6 +98,7 @@
 	</div>
 </div>
 <div class="form-group">
+<div id='gender_group'>
 	<label class="form-check form-check-inline">
 		<input class="form-check-input" type="radio" name="gender" value="1" <?php echo array_key_exists('gender',
 		 $patient_details) ? $patient_details['gender']=='1' ? 'checked' : '' : '' ; ?> required
@@ -110,6 +111,7 @@
 		<?php echo $read_only ?>>
 		<span class="form-check-label"> Female</span>
 	</label>
+</div>
 </div> <!-- form-group end.// -->
 <div class="form-row">
 	<div class="form-group col-md-6">
@@ -190,6 +192,7 @@
 	 <?php echo $read_only ?>/>
 </div> <!-- form-group end.// -->
 <div class="form-group">
+<div id='next_of_kin_contact_group'>
 	<label> In case of emergency if you are uncontactable, do you provide consent for your next of kin to be contacted
 		and for relevant clinical information to be divulged? </label>
 	<label class="form-check form-check-inline">
@@ -206,6 +209,7 @@
 		<?php echo $read_only ?>>
 		<span class="form-check-label"> No</span>
 	</label>
+	</div>
 </div> <!-- form-group end.// -->
 <br>
 <h4>NHS / Alternative GP</h4>
@@ -393,6 +397,7 @@
 <p>(Please select the following as you find appropriate)</p>
 <p>I consent to being contacted by un-encrypted email and/or telephone to discuss management plans, diagnosis and to disclose results. I accept the risk associated with receiving messages received by the above means.</p>
 <div class="form-group">
+<div id='consent_unencrypted_group'>
 	<label class="form-check form-check-inline">
 		<input class="form-check-input" type="radio" name="consent_unencrypted" value="1" <?php echo
 		 array_key_exists('consent_unencrypted', $patient_details) ? $patient_details['consent_unencrypted']=='1' ? 'checked' : ''
@@ -407,9 +412,11 @@
 		<?php echo $read_only ?>>
 		<span class="form-check-label"> No</span>
 	</label>
+	</div>
 </div> <!-- form-group end.// -->
 <p>I consent to having messages left on my preferred telephone number</p>
 <div class="form-group">
+<div id='consent_messages_group'>
 	<label class="form-check form-check-inline">
 		<input class="form-check-input" type="radio" name="consent_messages" value="1" <?php echo
 		 array_key_exists('consent_messages', $patient_details) ? $patient_details['consent_messages']=='1' ? 'checked' : ''
@@ -424,9 +431,11 @@
 		<?php echo $read_only ?>>
 		<span class="form-check-label"> No</span>
 	</label>
+	</div>
 </div> <!-- form-group end.// -->
 <p>I consent that my medical information being shared with my regular GP if I am not contactable.</p>
 <div class="form-group">
+<div id='consent_medical_information_group'>
 	<label class="form-check form-check-inline">
 		<input class="form-check-input" type="radio" name="consent_medical_information" value="1" <?php echo
 		 array_key_exists('consent_medical_information', $patient_details) ? $patient_details['consent_medical_information']=='1' ? 'checked' : ''
@@ -441,6 +450,7 @@
 		<?php echo $read_only ?>>
 		<span class="form-check-label"> No</span>
 	</label>
+	</div>
 </div> <!-- form-group end.// -->
 
 <div class='row'>
@@ -581,6 +591,29 @@
 
 		$('#create_form').validate({
 			rules: x
+			,errorPlacement: function(error, element) {
+				if (element.attr("name") == "gender") {
+					error.insertAfter("#gender_group");
+				}
+				else if (element.attr("name") == "next_of_kin_contact") {
+					error.insertAfter("#next_of_kin_contact_group");
+				} 
+				else if (element.attr("name") == "consent_unencrypted") {
+					error.insertAfter("#consent_unencrypted_group");
+				} 
+				else if (element.attr("name") == "consent_messages") {
+					error.insertAfter("#consent_messages_group");
+				} 
+				else if (element.attr("name") == "consent_medical_information") {
+					error.insertAfter("#consent_medical_information_group");
+				} 
+				else if (element.attr("name") == "confirm_medical_history") {
+					error.insertAfter("#confirm_medical_history_group");
+				} 
+				else {
+					error.insertAfter(element);
+				}
+			}
 			,submitHandler: function (form) {
 				var create_form = document.getElementById('create_form');
 				var form_data = new FormData(create_form);
@@ -614,6 +647,26 @@
 
 		$('#basic_details_form').validate({
 			rules: x
+			,errorPlacement: function(error, element) {
+				if (element.attr("name") == "gender") {
+					error.insertAfter("#gender_group");
+				}
+				else if (element.attr("name") == "next_of_kin_contact") {
+					error.insertAfter("#next_of_kin_contact_group");
+				} 
+				else if (element.attr("name") == "consent_unencrypted") {
+					error.insertAfter("#consent_unencrypted_group");
+				} 
+				else if (element.attr("name") == "consent_messages") {
+					error.insertAfter("#consent_messages_group");
+				} 
+				else if (element.attr("name") == "consent_medical_information") {
+					error.insertAfter("#consent_medical_information_group");
+				} 
+				else {
+					error.insertAfter(element);
+				}
+			}
 			,submitHandler: function (form) {
 				var basic_details_form = document.getElementById('basic_details_form');
 				var form_data = new FormData(basic_details_form);
