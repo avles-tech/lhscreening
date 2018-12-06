@@ -34,7 +34,7 @@
 		 required <?php echo $read_only ?>>
 	</div> <!-- form-group end.// -->
 	<div class="col form-group">
-		<label>Last name</label>
+		<label>Last Name</label>
 		<input type="text" class="form-control" name='last_name' value="<?php echo array_key_exists('last_name', $patient_details) ? $patient_details['last_name'] : '';?>"
 		 required <?php echo $read_only ?>>
 	</div> <!-- form-group end.// -->
@@ -197,7 +197,7 @@
 		 array_key_exists('next_of_kin_contact', $patient_details) ? $patient_details['next_of_kin_contact']=='1' ? 'checked'
 		 : '' : '' ; ?>
 		<?php echo $read_only ?>>
-		<span class="form-check-label"> yes </span>
+		<span class="form-check-label"> Yes </span>
 	</label>
 	<label class="form-check form-check-inline">
 		<input class="form-check-input" type="radio" name="next_of_kin_contact" value="0" <?php echo
