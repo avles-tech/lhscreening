@@ -26,7 +26,7 @@
 
 
   <p><?php echo form_submit('submit', lang('login_submit_btn') ,array('class'=>'btn btn-lg btn-primary btn-block'));?></p>
-  <p><a href="forgot_password"><?php echo lang('login_forgot_password');?></a></p>
+  <!-- <p><a href="forgot_password"><?php echo lang('login_forgot_password');?></a></p> -->
 <?php echo form_close();?>
 
 
