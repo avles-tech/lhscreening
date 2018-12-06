@@ -111,13 +111,16 @@
 
     //$tcpdflib->setJPEGQuality(25);
     //$imgdata = base64_decode($patient_details['signature']);
-    $img_base64_encoded = $patient_details['signature'];
-    $imageContent = file_get_contents($img_base64_encoded);
-    $path = tempnam(sys_get_temp_dir(), 'prefix');
-    
-    file_put_contents ($path, $imageContent);
+    if($patient_details['signature']){
+        $img_base64_encoded = $patient_details['signature'];
+        $imageContent = file_get_contents($img_base64_encoded);
+        $path = tempnam(sys_get_temp_dir(), 'prefix');
+        
+        file_put_contents ($path, $imageContent);
 
-    $html.= '<img align="right" height="80" width="80" src="' . $path . '">';
+        $html.= '<img align="right" height="80" width="80" src="' . $path . '">';
+    }
+    
     $tcpdflib->writeHTML($html, true, false, true, false, '');
 
     $tcpdflib->AddPage();
