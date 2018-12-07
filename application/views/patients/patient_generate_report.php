@@ -119,7 +119,7 @@
     if(!empty($patient_details['signature'])){
         $img_base64_encoded = $patient_details['signature'];
         $imageContent = file_get_contents($img_base64_encoded);
-        $path = tempnam(sys_get_temp_dir(), 'prefix');
+        $path = tempnam(K_PATH_CACHE, 'prefix');
         
         file_put_contents ($path, $imageContent);
 
