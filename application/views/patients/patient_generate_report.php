@@ -119,6 +119,8 @@
     if(!empty($patient_details['signature'])){
         $img_base64_encoded = $patient_details['signature'];
         $imageContent = file_get_contents($img_base64_encoded);
+
+        echo K_PATH_CACHE;
         $path = tempnam(K_PATH_CACHE, 'prefix');
         
         file_put_contents ($path, $imageContent);
@@ -317,7 +319,7 @@
         }
     }
 
-    $tcpdflib->Output($patient_details['first_name'].'_Report.pdf', 'I');
+    //$tcpdflib->Output($patient_details['first_name'].'_Report.pdf', 'I');
 
     
 ?>
