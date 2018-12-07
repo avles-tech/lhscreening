@@ -317,7 +317,7 @@
         }
     }
 
-    $tcpdflib->Output($patient_details['first_name'].'_Report', 'I');
+    $tcpdflib->Output($patient_details['first_name'].'_Report.pdf', 'I');
 
     
 ?>
