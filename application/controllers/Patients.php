@@ -142,7 +142,7 @@ class Patients extends CI_Controller {
                 $this->load->view('patients/view',$data);
                 $this->load->view('templates/footer');
 
-                $this->output->cache(60);
+                //$this->output->cache(60);
         }
         public function create()
         {
