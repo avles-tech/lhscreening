@@ -119,6 +119,7 @@ class Patients extends CI_Controller {
                 $this->load->view('templates/header');
                 $this->load->view('patients/index', $data);
                 $this->load->view('templates/footer');
+
         }
         public function view($patient_id = NULL)
         {
@@ -140,6 +141,8 @@ class Patients extends CI_Controller {
                 $this->load->view('templates/header');
                 $this->load->view('patients/view',$data);
                 $this->load->view('templates/footer');
+
+                $this->output->cache(60);
         }
         public function create()
         {
@@ -157,7 +160,7 @@ class Patients extends CI_Controller {
                 else
                 {
                         $insert_id = $this->patients_model->set_patients();
-                        redirect('patients/registration_success','refresh');
+                        //redirect('patients/registration_success','refresh');
                         $this->patient_phq_model->get_patient_phq($insert_id);
                         $this->patient_gad_model->get_patient_gad($insert_id);
                         $this->patient_lab_test_model->get_patient_lab_test($insert_id);
@@ -179,37 +182,59 @@ class Patients extends CI_Controller {
                 {
                         $form_data = $this->input->post();
                         $this->patients_model->update_patients($patient_id,$form_data);
+
+                        $this->output->delete_cache('/patients');
+                        $this->output->delete_cache('/patients/view/'.$patient_id);
                 }
         }
-        public function update_phq(){
-  
+        public function update_phq()
+        {
                 $patient_id = $this->input->post('patient_id');
                 $form_data = $this->input->post();
                 $this->patient_phq_model->set_patient_phq($patient_id,$form_data);
+
+                $this->output->delete_cache('/patients');
+                $this->output->delete_cache('/patients/view/'.$patient_id);
+
+                return true;
         }
 
-        public function save_complete(){
+        public function save_complete()
+        {
                 $patient_id = $this->input->post('patient_id');
                 $this->patients_model->save_complete($patient_id);
+
+                $this->output->delete_cache('/patients');
+                $this->output->delete_cache('/patients/view/'.$patient_id);
         }
 
-        public function update_gad(){
+        public function update_gad()
+        {
                 $patient_id = $this->input->post('patient_id');
                 $form_data = $this->input->post();
                 $this->patient_gad_model->set_patient_gad($patient_id,$form_data);
-        }
-        public function update_patient_lab_test(){
 
+                $this->output->delete_cache('/patients');
+                $this->output->delete_cache('/patients/view/'.$patient_id);
+        }
+        public function update_patient_lab_test()
+        {
                 $patient_id = $this->input->post('patient_id');
                 $form_data = $this->input->post();
                 $this->patient_lab_test_model->set_patient_lab_test($patient_id,$form_data);
-  
+                
+                $this->output->delete_cache('/patients');
+                $this->output->delete_cache('/patients/view/'.$patient_id);
         }
 
-        public function update_gp(){
+        public function update_gp()
+        {
                 $patient_id = $this->input->post('patient_id');
                 $form_data = $this->input->post();
                 $this->patient_gp_model->set($patient_id,$form_data);
+
+                $this->output->delete_cache('/patients');
+                $this->output->delete_cache('/patients/view/'.$patient_id);
         }
 
         public function update_medical_history(){
@@ -220,6 +245,9 @@ class Patients extends CI_Controller {
                 $this->load->view('templates/header');
                 $this->load->view('patients/view', array( 'patient_id' => $patient_id) );
                 $this->load->view('templates/footer');
+
+                $this->output->delete_cache('/patients');
+                $this->output->delete_cache('/patients/view/'.$patient_id);
         }
 
         public function patient_generate_report($patient_id)

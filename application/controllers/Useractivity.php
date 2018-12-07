@@ -59,6 +59,11 @@ class Useractivity extends CI_Controller {
         }
 
         public function view(){
+                if (!$this->ion_auth->logged_in())
+		{
+			// redirect them to the login page
+			redirect('auth/login', 'refresh');
+		}
             $this->load->view('templates/header');
             $this->load->view('useractivity/view');
             $this->load->view('templates/footer');

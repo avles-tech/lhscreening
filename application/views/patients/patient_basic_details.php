@@ -15,7 +15,7 @@
 			<option value="Mrs" <?php echo array_key_exists('title', $patient_details) ? $patient_details['title']=='Mrs' ?
 			 'selected' :'' : '' ;?>>Mrs</option>
 			<option value="Miss" <?php echo array_key_exists('title', $patient_details) ? $patient_details['title']=='Miss' ?
-			 'selected' :'' : '' ;?> >Mis</option>
+			 'selected' :'' : '' ;?> >Miss</option>
 			<option value="Mr" <?php echo array_key_exists('title', $patient_details) ? $patient_details['title']=='Mr' ?
 			 'selected' :'' : '' ;?>>Mr</option>
 			<option value="Dr" <?php echo array_key_exists('title', $patient_details) ? $patient_details['title']=='Dr' ?
@@ -34,7 +34,7 @@
 		 required <?php echo $read_only ?>>
 	</div> <!-- form-group end.// -->
 	<div class="col form-group">
-		<label>Last name</label>
+		<label>Last Name</label>
 		<input type="text" class="form-control" name='last_name' value="<?php echo array_key_exists('last_name', $patient_details) ? $patient_details['last_name'] : '';?>"
 		 required <?php echo $read_only ?>>
 	</div> <!-- form-group end.// -->
@@ -98,6 +98,7 @@
 	</div>
 </div>
 <div class="form-group">
+<div id='gender_group'>
 	<label class="form-check form-check-inline">
 		<input class="form-check-input" type="radio" name="gender" value="1" <?php echo array_key_exists('gender',
 		 $patient_details) ? $patient_details['gender']=='1' ? 'checked' : '' : '' ; ?> required
@@ -110,6 +111,7 @@
 		<?php echo $read_only ?>>
 		<span class="form-check-label"> Female</span>
 	</label>
+</div>
 </div> <!-- form-group end.// -->
 <div class="form-row">
 	<div class="form-group col-md-6">
@@ -190,6 +192,7 @@
 	 <?php echo $read_only ?>/>
 </div> <!-- form-group end.// -->
 <div class="form-group">
+<div id='next_of_kin_contact_group'>
 	<label> In case of emergency if you are uncontactable, do you provide consent for your next of kin to be contacted
 		and for relevant clinical information to be divulged? </label>
 	<label class="form-check form-check-inline">
@@ -197,7 +200,7 @@
 		 array_key_exists('next_of_kin_contact', $patient_details) ? $patient_details['next_of_kin_contact']=='1' ? 'checked'
 		 : '' : '' ; ?>
 		<?php echo $read_only ?>>
-		<span class="form-check-label"> yes </span>
+		<span class="form-check-label"> Yes </span>
 	</label>
 	<label class="form-check form-check-inline">
 		<input class="form-check-input" type="radio" name="next_of_kin_contact" value="0" <?php echo
@@ -206,6 +209,7 @@
 		<?php echo $read_only ?>>
 		<span class="form-check-label"> No</span>
 	</label>
+	</div>
 </div> <!-- form-group end.// -->
 <br>
 <h4>NHS / Alternative GP</h4>
@@ -391,45 +395,94 @@
 
 <h4> CONSENT </h4>
 <p>(Please select the following as you find appropriate)</p>
-<p>I consent to being contacted by un-encrypted email and/or telephone and /or WhatsApp messenger to discuss
-	management plans, diagnosis and to disclose results. I accept the risk associated with receiving messages
-	received by the above means.</p>
+<p>I consent to being contacted by un-encrypted email and/or telephone to discuss management plans, diagnosis and to disclose results. I accept the risk associated with receiving messages received by the above means.</p>
 <div class="form-group">
+<div id='consent_unencrypted_group'>
 	<label class="form-check form-check-inline">
-		<input class="form-check-input" type="radio" name="consent_unencrypted" value="1">
+		<input class="form-check-input" type="radio" name="consent_unencrypted" value="1" <?php echo
+		 array_key_exists('consent_unencrypted', $patient_details) ? $patient_details['consent_unencrypted']=='1' ? 'checked' : ''
+		 : '' ; ?>
+		<?php echo $read_only ?>>
 		<span class="form-check-label"> yes </span>
 	</label>
 	<label class="form-check form-check-inline">
-		<input class="form-check-input" type="radio" name="consent_unencrypted" value="0">
+		<input class="form-check-input" type="radio" name="consent_unencrypted" value="0" <?php echo
+		 array_key_exists('consent_unencrypted', $patient_details) ? $patient_details['consent_unencrypted']=='0' ? 'checked' : ''
+		 : '' ; ?>
+		<?php echo $read_only ?>>
 		<span class="form-check-label"> No</span>
 	</label>
+	</div>
 </div> <!-- form-group end.// -->
 <p>I consent to having messages left on my preferred telephone number</p>
 <div class="form-group">
+<div id='consent_messages_group'>
 	<label class="form-check form-check-inline">
-		<input class="form-check-input" type="radio" name="consent_messages" value="1">
+		<input class="form-check-input" type="radio" name="consent_messages" value="1" <?php echo
+		 array_key_exists('consent_messages', $patient_details) ? $patient_details['consent_messages']=='1' ? 'checked' : ''
+		 : '' ; ?>
+		<?php echo $read_only ?>>
 		<span class="form-check-label"> yes </span>
 	</label>
 	<label class="form-check form-check-inline">
-		<input class="form-check-input" type="radio" name="consent_messages" value="0">
+		<input class="form-check-input" type="radio" name="consent_messages" value="0" <?php echo
+		 array_key_exists('consent_messages', $patient_details) ? $patient_details['consent_messages']=='0' ? 'checked' : ''
+		 : '' ; ?>
+		<?php echo $read_only ?>>
 		<span class="form-check-label"> No</span>
 	</label>
+	</div>
 </div> <!-- form-group end.// -->
 <p>I consent that my medical information being shared with my regular GP if I am not contactable.</p>
 <div class="form-group">
+<div id='consent_medical_information_group'>
 	<label class="form-check form-check-inline">
-		<input class="form-check-input" type="radio" name="consent_medical_information" value="1">
+		<input class="form-check-input" type="radio" name="consent_medical_information" value="1" <?php echo
+		 array_key_exists('consent_medical_information', $patient_details) ? $patient_details['consent_medical_information']=='1' ? 'checked' : ''
+		 : '' ; ?>
+		<?php echo $read_only ?>>
 		<span class="form-check-label"> yes </span>
 	</label>
 	<label class="form-check form-check-inline">
-		<input class="form-check-input" type="radio" name="consent_medical_information" value="0">
+		<input class="form-check-input" type="radio" name="consent_medical_information" value="0" <?php echo
+		 array_key_exists('consent_medical_information', $patient_details) ? $patient_details['consent_medical_information']=='0' ? 'checked' : ''
+		 : '' ; ?>
+		<?php echo $read_only ?>>
 		<span class="form-check-label"> No</span>
 	</label>
+	</div>
 </div> <!-- form-group end.// -->
 
+<div class='row'>
+	<div class='column'>
+		<label>Signature</label>
+	</div>
+	<div class='column'>
+		<div id='sig'>
+		</div>
+		<p style="clear: both;">
+			<a href='#' class='btn btn-info' role='button' id="clear">Clear</a> 
+		</p>
+	</div>
+</div>
 
+
+<style>
+.kbw-signature { width: 400px; height: 200px; }
+</style>
 <script>
-	
+	var sig = $('#sig').signature();
+
+	$('#clear').click(function(e) {
+		e.preventDefault();
+		sig.signature('clear');
+	});
+
+	<?php 
+	if (!empty($patient_details['signature'])) :?>
+		sig.signature('draw', '<?php echo $patient_details['signature'] ?>');
+	<?php endif ?>
+
 	function checkPatientExists() {
 		firstName = $("input[name=first_name]").val();
 		lastName = $("input[name=last_name]").val();
@@ -455,21 +508,35 @@
 		});
 	}
 
+	<?php if(array_key_exists('dob', $patient_details)){
+			echo "getAge('".$patient_details['dob']."');";
+	}
+	
+	?>
+
 	function getAge(birthDate) {
 		var birth_date = new Date(birthDate);
 		var currentDate = new Date();
+		
+		var a = moment(new Date());
+		var b = moment(birth_date);
 
-		var years = (currentDate.getFullYear() - birth_date.getFullYear());
+		var years = a.diff(b, 'year');
+		b.add(years, 'years');
 
-		if (currentDate.getMonth() < birth_date.getMonth() ||
-			currentDate.getMonth() == birth_date.getMonth() && currentDate.getDate() < birth_date.getDate()) {
-			years--;
-		}
-		$('input[name=age]').val(years);
+		var months = a.diff(b, 'months');
+		b.add(months, 'months');
+
+		var days = a.diff(b, 'days');
+
+		$('input[name=age]').val(years + ' Years ' + months + ' Months ');
 	}
 
 
 	$(document).ready(function () {
+
+		var sig = $('#sig').signature();
+
 		var x = {
 			first_name: {
 				required: true,
@@ -506,16 +573,125 @@
 			},
 			next_of_kin_relationship: {
 				lettersonly: true
+			},
+			consent_unencrypted: {
+				required: true
+			},
+			consent_messages: {
+				required: true
+			},
+			consent_medical_information: {
+				required: true
+			}
+			,next_of_kin_contact : {
+				required: true
 			}
 
 		};
 
 		$('#create_form').validate({
 			rules: x
-		});
+			,errorPlacement: function(error, element) {
+				if (element.attr("name") == "gender") {
+					error.insertAfter("#gender_group");
+				}
+				else if (element.attr("name") == "next_of_kin_contact") {
+					error.insertAfter("#next_of_kin_contact_group");
+				} 
+				else if (element.attr("name") == "consent_unencrypted") {
+					error.insertAfter("#consent_unencrypted_group");
+				} 
+				else if (element.attr("name") == "consent_messages") {
+					error.insertAfter("#consent_messages_group");
+				} 
+				else if (element.attr("name") == "consent_medical_information") {
+					error.insertAfter("#consent_medical_information_group");
+				} 
+				else if (element.attr("name") == "confirm_medical_history") {
+					error.insertAfter("#confirm_medical_history_group");
+				} 
+				else {
+					error.insertAfter(element);
+				}
+			}
+			,submitHandler: function (form) {
+				var create_form = document.getElementById('create_form');
+				var form_data = new FormData(create_form);
+				var sig_jpeg = $('#sig').signature('toDataURL', 'image/jpeg');
+				form_data.append('signature',sig_jpeg);
+				//console.log('form_data',form_data);
+				// for(var pair of form_data.entries()) {
+				// 	console.log(pair[0]+ ', '+ pair[1]); 
+				// }
+             $.ajax({
+                 type: "POST",
+                 url: "<?php echo site_url('patients/create'); ?>",
+                 data: form_data,
+				 processData: false,
+				contentType: false,
+				cache: false,
+                 success: function () {
+					alertify.set('notifier', 'position', 'top-right');
+					alertify.notify('Patient Created', 'success', 5, function () {
+						console.log('dismissed');
+					});
+					$('#create_form')[0].reset();
+					location.href = "<?php echo base_url().'/patients/registration_success'; ?>";
+					
+                 }
+             });
+             return false; // required to block normal submit since you used ajax
+			}
+    	});
+
 
 		$('#basic_details_form').validate({
 			rules: x
+			,errorPlacement: function(error, element) {
+				if (element.attr("name") == "gender") {
+					error.insertAfter("#gender_group");
+				}
+				else if (element.attr("name") == "next_of_kin_contact") {
+					error.insertAfter("#next_of_kin_contact_group");
+				} 
+				else if (element.attr("name") == "consent_unencrypted") {
+					error.insertAfter("#consent_unencrypted_group");
+				} 
+				else if (element.attr("name") == "consent_messages") {
+					error.insertAfter("#consent_messages_group");
+				} 
+				else if (element.attr("name") == "consent_medical_information") {
+					error.insertAfter("#consent_medical_information_group");
+				} 
+				else {
+					error.insertAfter(element);
+				}
+			}
+			,submitHandler: function (form) {
+				var basic_details_form = document.getElementById('basic_details_form');
+				var form_data = new FormData(basic_details_form);
+				var sig_jpeg = $('#sig').signature('toDataURL', 'image/jpeg');
+				form_data.append('signature',sig_jpeg);
+				//console.log('form_data',form_data);
+				// for(var pair of form_data.entries()) {
+				// 	console.log(pair[0]+ ', '+ pair[1]); 
+				// }
+             $.ajax({
+                 type: "POST",
+                 url: "<?php echo site_url('patients/update'); ?>",
+                 data: form_data,
+				 processData: false,
+				contentType: false,
+				cache: false,
+                 success: function () {
+					alertify.set('notifier', 'position', 'top-right');
+					alertify.notify('Patient details updated', 'success', 5, function () {
+						console.log('dismissed');
+					});				
+                 }
+             });
+             return false; // required to block normal submit since you used ajax
+			}
 		});
 
 		$('#allergy_others_yes').click(function () {

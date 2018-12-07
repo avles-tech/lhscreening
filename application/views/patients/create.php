@@ -22,11 +22,13 @@
 				<?php echo form_open('patients/create',array('id' => 'create_form')); ?>
 				<?php $this->load->view('patients/patient_basic_details',array( 'patient_id' => '0' , 'patient_details'=>array() ,'read_only'=>'0')); ?>
 				<div class='form-group'>
+				<div id='confirm_medical_history_group'>
 					<div class="form-check form-check-inline">
 						<label class="form-check">
 							<input type="checkbox" value="1" name="confirm_medical_history" required>
 							<span class="form-check-label">I confirm that the information I have provided in this form is a true reflection of my current health, and past medical history</span>
 						</label>
+						</div>
 					</div>
 				</div>
 				<div class="form-group">
@@ -65,7 +67,3 @@
 		</div> <!-- card.// -->
 	</div> <!-- col.//-->
 </div> <!-- row.//-->
-
-<script>
-
-</script>

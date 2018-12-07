@@ -12,15 +12,17 @@
 	<link href="<?php echo base_url(); ?>assets/alertifyjs/css/alertify.min.css" rel="stylesheet">
 </head>
 
-<body>
+<body _style='background-image: url("<?php echo base_url(); ?>assets/lyca/images/Lyca-Westferry.jpg");'>
 	<script src="<?php echo base_url(); ?>assets/jquery-3.3.1/jquery-3.3.1.min.js"></script>
 	<script src="<?php echo base_url(); ?>assets/jquery-ui-1.12.1/jquery-ui.min.js"></script>
 	<script src="<?php echo base_url(); ?>assets/jquery-validation-1.17.0/jquery.validate.min.js"></script>
 	<script src="<?php echo base_url(); ?>assets/jquery-validation-1.17.0/additional-methods.min.js"></script>
 	<script src="<?php echo base_url(); ?>assets/bootstrap-4.1.3-dist/js/bootstrap.min.js"></script>
 	<script src="<?php echo base_url(); ?>assets/jquery.signature.package-1.2.0/js/jquery.signature.min.js"></script>
+	<script src="<?php echo base_url(); ?>assets/jquery.signature.package-1.2.0/js/jquery.ui.touch-punch.min.js"></script>
 	<script src="<?php echo base_url(); ?>assets/EasyAutocomplete-1.3.5/jquery.easy-autocomplete.min.js"></script>
 	<script src="<?php echo base_url(); ?>assets/alertifyjs/alertify.min.js"></script>
+	<script src="<?php echo base_url(); ?>assets/moment/moment.js"></script>
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
 		<a class="navbar-brand" href="<?php echo base_url(); ?>patients">
 			<img src="<?php echo base_url(); ?>assets/lyca/images/logo.png" height='35px' alt="">Patient Management

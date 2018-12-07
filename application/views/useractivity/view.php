@@ -1,4 +1,5 @@
 <br>
+<h1>User Activity</h1>
 <br>
 <div class='row'>
 	<div class='col'>
