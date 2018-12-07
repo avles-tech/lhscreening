@@ -120,7 +120,6 @@ class Patients extends CI_Controller {
                 $this->load->view('patients/index', $data);
                 $this->load->view('templates/footer');
 
-                $this->output->cache(60);
         }
         public function view($patient_id = NULL)
         {
