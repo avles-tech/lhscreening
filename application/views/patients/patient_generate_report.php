@@ -13,26 +13,51 @@
     }
     $uniqueCategories = array_unique($categories);
 
-    $tcpdflib = new Tcpdflib();
+    $pdf = new Tcpdflib();
 
-    //$tcpdflib->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, PDF_HEADER_TITLE, PDF_HEADER_STRING);
+    //$pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, PDF_HEADER_TITLE, PDF_HEADER_STRING);
 
-    $tcpdflib->SetTitle($patient_details['first_name'].'_Report');
-    $tcpdflib->SetHeaderMargin(PDF_MARGIN_HEADER);
+    $pdf->SetTitle($patient_details['first_name'].'_Report');
+    $pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
     //echo PDF_HEADER_LOGO;
-    //$tcpdflib->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, PDF_HEADER_TITLE.'', PDF_HEADER_STRING, array(0,64,255), array(0,64,128));
+    //$pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, PDF_HEADER_TITLE.'', PDF_HEADER_STRING, array(0,64,255), array(0,64,128));
     // set default header data
-    $tcpdflib->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, '', PDF_HEADER_STRING, array(0,0,0), array(255,255,255));
-    $tcpdflib->setFooterData(array(0,64,0), array(0,64,128));
+    $pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, '', PDF_HEADER_STRING, array(0,0,0), array(255,255,255));
+    $pdf->setFooterData(array(0,64,0), array(0,64,128));
 
-    $tcpdflib->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
-    $tcpdflib->SetTopMargin(20);
-    $tcpdflib->setFooterMargin(20);
-    $tcpdflib->SetAutoPageBreak(true,20);
-    $tcpdflib->SetAuthor('lhscreening');
-    $tcpdflib->SetDisplayMode('real', 'default');
+    $pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
+    $pdf->SetTopMargin(20);
+    $pdf->setFooterMargin(20);
+    $pdf->SetAutoPageBreak(true,20);
+    $pdf->SetAuthor('lhscreening');
+    $pdf->SetDisplayMode('real', 'default');
+
+    $pdf->setPrintHeader(false);
+    $pdf->setPrintFooter(false);
+
+    $pdf->AddPage();
+    $pdf->setImageScale('1.5');
+    $pdf->Image('./assets/lyca/images/logo.png',15, 10);
+
+    $y = $pdf->getY();
+
+    // set color for background
+    $pdf->SetFillColor(51, 102, 255);
+
+    // set color for text
+    $pdf->SetTextColor(255, 255, 255);
+    $pdf->SetFont('Helvetica', 'B', 20 );
+    $pdf->writeHTMLCell(297, 5, 0, 30, 'Health Assessment Report', 0, 0, 1, true, 'C', true);
+
+    $pdf->SetTextColor(0, 0, 0);
+    $pdf->SetFont('Helvetica', 'B', 11 );
+
+    $pdf->Text(100, 250, $patient_details['title'].' '.$patient_details['first_name'].' '.$patient_details['last_name']);
+
+    $pdf->setPrintHeader(true);
+    $pdf->setPrintFooter(true);
     
-    $tcpdflib->AddPage();
+    $pdf->AddPage();
 
     $gender = $patient_details['gender'] == '1' ? 'Male' : 'Female';
 
@@ -48,101 +73,100 @@
 
     $diff=date_diff($date1,$date2);
 
-    $white_circle = '<img align="right" height="12" width="12" src=".\assets\lyca\images\circle_white.png">';;
-    $black_circle = '<img align="right" height="12" width="12" src=".\assets\lyca\images\circle_black.png">';;
-    
-    $tcpdflib->SetFont('', 'B', 15 ); 
-    $tcpdflib->Text(5, 20, 'Patient Details');
+    $pdf->SetFont('Helvetica', 'B', 20 ); 
+    $pdf->Text(5, 20, 'Patient Details');
 
-    $tcpdflib->SetFont('', '', 10 );
+    $pdf->SetFont('Helvetica', '', 11 );
 
-    $tcpdflib->Text(10, 30, 'First Name');
-    $tcpdflib->Text(40, 30, $patient_details['first_name']);
+    $pdf->Text(10, $pdf->getY()+12, 'First Name');
+    $pdf->Text(40, $pdf->getY(), $patient_details['first_name']);
 
-    $tcpdflib->Text(10, 35, 'Last Name');
-    $tcpdflib->Text(40, 35, $patient_details['last_name']);
+    $pdf->Text(10,  $pdf->getY()+9, 'Last Name');
+    $pdf->Text(40, $pdf->getY(), $patient_details['last_name']);
 
-    $tcpdflib->Text(10, 40, 'Gender');
-    $tcpdflib->Text(40, 40, $gender);
+    $pdf->Text(10,  $pdf->getY()+9, 'Gender');
+    $pdf->Text(40, $pdf->getY(), $gender);
 
-    $tcpdflib->Text(10, 45, 'Date of birth');
-    $tcpdflib->Text(40, 45, nice_date($patient_details['dob'],'d-M-Y'));
+    $pdf->Text(10,  $pdf->getY()+9, 'Date of birth');
+    $pdf->Text(40, $pdf->getY(), nice_date($patient_details['dob'],'d-M-Y'));
 
-    $tcpdflib->Text(90, 45, 'Age ');
-    $tcpdflib->Text(100, 45, $diff->format("%Y Years %m Months"));
+    $pdf->Text(80,  $pdf->getY(), 'Age ');
+    $pdf->Text(90, $pdf->getY(), $diff->format("%Y Years %m Months"));
 
-    $tcpdflib->Text(10, 50, 'Blood Group ');
-    $tcpdflib->Text(40, 50, $patient_details['blood_group']);
+    $pdf->Text(10,  $pdf->getY()+9, 'Blood Group ');
+    $pdf->Text(40, $pdf->getY(), $patient_details['blood_group']);
 
-    $tcpdflib->Text(10, 55, 'Occupation');
-    $tcpdflib->Text(40, 55, $patient_details['occupation']);
+    $pdf->Text(10,  $pdf->getY()+9, 'Occupation');
+    $pdf->Text(40, $pdf->getY(), $patient_details['occupation']);
 
-    $tcpdflib->Text(10, 60, 'London Address (permanent / temporary)');
-    $tcpdflib->Text(10, 65, $patient_details['address']);
+    $pdf->Text(10,  $pdf->getY()+9, 'London Address');
+    $pdf->Text(40, $pdf->getY(), $patient_details['address']);
 
-    $tcpdflib->Text(10, 70, 'Postal Code');
-    $tcpdflib->Text(40, 70, $patient_details['postal_code']);
+    $pdf->Text(10,  $pdf->getY()+9, 'Postal Code');
+    $pdf->Text(40, $pdf->getY(), $patient_details['postal_code']);
 
-    $tcpdflib->Text(10, 75, 'Home telephone');
-    $tcpdflib->Text(40, 75, $patient_details['phone_home']);
+    $pdf->SetFillColor(0, 0, 0);
+
+    $pdf->Text(10, $pdf->getY()+9, 'Home telephone');
+    $pdf->Text(40, $pdf->getY(), $patient_details['phone_home']);
     if($patient_details['phone_home_prefer']==1)
-        $tcpdflib->Circle(70,77,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
+        $pdf->Circle(70,$pdf->getY()+2,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
     else
-        $tcpdflib->Circle(70,77,2);
-    $tcpdflib->Text(72, 75, 'Preferred');
+        $pdf->Circle(70,$pdf->getY()+2,2);
+    $pdf->Text(72, $pdf->getY(), 'Preferred');
 
-    $tcpdflib->Text(10, 80, 'Mobile telephone');
-    $tcpdflib->Text(40, 80, $patient_details['phone_mobile']);
+    $pdf->Text(10, $pdf->getY()+9, 'Mobile telephone');
+    $pdf->Text(40, $pdf->getY(), $patient_details['phone_mobile']);
     if($patient_details['phone_mobile_prefer']==1)
-        $tcpdflib->Circle(70,82,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
+        $pdf->Circle(70,$pdf->getY()+2,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
     else
-        $tcpdflib->Circle(70,82,2);
-    $tcpdflib->Text(72, 80, 'Preferred');
+        $pdf->Circle(70,$pdf->getY()+2,2);
+    $pdf->Text(72, $pdf->getY(), 'Preferred');
 
-    $tcpdflib->Text(10, 85, 'Work telephone');
-    $tcpdflib->Text(40, 85, $patient_details['phone_work']);
+    $pdf->Text(10, $pdf->getY()+9, 'Work telephone');
+    $pdf->Text(40, $pdf->getY(), $patient_details['phone_work']);
     if($patient_details['phone_work_prefer']==1)
-        $tcpdflib->Circle(70,87,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
+        $pdf->Circle(70,$pdf->getY()+2,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
     else
-        $tcpdflib->Circle(70,87,2);
-    $tcpdflib->Text(72, 85, 'Preferred');
+        $pdf->Circle(70,$pdf->getY()+2,2);
+    $pdf->Text(72, $pdf->getY(), 'Preferred');
 
-    $tcpdflib->Text(10, 90, 'Email');
-    $tcpdflib->Text(40, 90, $patient_details['email']);
+    $pdf->Text(10, $pdf->getY()+9, 'Email');
+    $pdf->Text(40, $pdf->getY(), $patient_details['email']);
 
-    $tcpdflib->SetFont('', 'B', 15 ); 
+    $pdf->SetFont('Helvetica', 'B', 20 ); 
 
-    $tcpdflib->Text(5, 100, 'Next of kin details:');
+    $pdf->Text(5, $pdf->getY()+9, 'Next of kin details:');
 
-    $tcpdflib->SetFont('', '', 10 ); 
+    $pdf->SetFont('Helvetica', '', 11 ); 
 
-    $tcpdflib->Text(10, 110, 'Name ');
-    $tcpdflib->Text(50, 110, $patient_details['next_of_kin_name']);
+    $pdf->Text(10, $pdf->getY()+12, 'Name ');
+    $pdf->Text(50, $pdf->getY(), $patient_details['next_of_kin_name']);
 
-    $tcpdflib->Text(10, 115, 'Phone Number');
-    $tcpdflib->Text(50, 115, $patient_details['next_of_kin_phone']);
+    $pdf->Text(10, $pdf->getY()+9, 'Phone Number');
+    $pdf->Text(50, $pdf->getY(), $patient_details['next_of_kin_phone']);
 
-    $tcpdflib->Text(10, 120, 'Relationship');
-    $tcpdflib->Text(50, 120, $patient_details['next_of_kin_relationship']);
+    $pdf->Text(10, $pdf->getY()+9, 'Relationship');
+    $pdf->Text(50, $pdf->getY(), $patient_details['next_of_kin_relationship']);
 
-    $tcpdflib->Text(10, 125, 'In case of emergency if you are uncontactable, do you provide consent for your next of kin to be contacted and for relevant ');
-    $tcpdflib->Text(10, 130, 'clinical information to be divulged?');
-    $tcpdflib->Text(10, 135, 'Y');
+    $pdf->Text(10, $pdf->getY()+9, 'In case of emergency if you are uncontactable, do you provide consent for your next of kin to be contacted ');
+    $pdf->Text(10, $pdf->getY()+9, 'and for relevant clinical information to be divulged?');
+    $pdf->Text(10, $pdf->getY()+9, 'Y');
     if($patient_details['next_of_kin_contact']==1)
-        $tcpdflib->Circle(17,137,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
+        $pdf->Circle(17,$pdf->getY()+2,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
     else
-        $tcpdflib->Circle(17,137,2);
-    $tcpdflib->Text(20, 135, 'N');
+        $pdf->Circle(17,$pdf->getY()+2,2);
+    $pdf->Text(20, $pdf->getY(), 'N');
     if($patient_details['next_of_kin_contact']==0)
-        $tcpdflib->Circle(27,137,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
+        $pdf->Circle(27,$pdf->getY()+2,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
     else
-        $tcpdflib->Circle(27,137,2);
+        $pdf->Circle(27,$pdf->getY()+2,2);
 
-    $tcpdflib->Text(10, 140, 'NHS / Alternative GP');
-    $tcpdflib->Text(10, 145, $patient_details['alternative_gp']);
+    $pdf->Text(10, $pdf->getY()+9, 'NHS / Alternative GP');
+    $pdf->Text(10, $pdf->getY(), $patient_details['alternative_gp']);
 
 
-    $tcpdflib->AddPage();
+    $pdf->AddPage();
     
     $html = "<style>
     div {
@@ -178,18 +202,18 @@
     
     //echo $html;
 
-    $tcpdflib->writeHTML($html, true, false, true, false, '');
+    $pdf->writeHTML($html, true, false, true, false, '');
 
-    $tcpdflib->AddPage();
+    $pdf->AddPage();
     
     $html= "<br><h1>CONSENT</h1>";
     $html.= "<p>I consent to being contacted by un-encrypted email and/or telephone and /or WhatsApp messenger to discuss management plans, diagnosis and to disclose results. I accept the risk associated with receiving messages received by the above means <b>".($patient_details['consent_unencrypted']=='1'?'Yes':'No')."</b> </p>";
     $html.= "<p>I consent to having messages left on my preferred telephone number <b>".($patient_details['consent_messages']=='1'?'Yes':'No')."</b> </p>";
     $html.= "<p>I consent that my medical information being shared with my regular GP if I am not contactable <b>".($patient_details['consent_medical_information']=='1'?'Yes':'No')."</b> </p>";
 
-    //$tcpdflib->writeHTML($html, true, 0, true, 0);
+    //$pdf->writeHTML($html, true, 0, true, 0);
 
-    //$tcpdflib->setJPEGQuality(25);
+    //$pdf->setJPEGQuality(25);
     //$imgdata = base64_decode($patient_details['signature']);
     if($patient_details['signature']){
         $img_base64_encoded = $patient_details['signature'];
@@ -203,9 +227,9 @@
         $html.= '<img align="right" height="80" width="80" src="' . $path . '">';
     }
     
-    $tcpdflib->writeHTML($html, true, false, true, false, '');
+    $pdf->writeHTML($html, true, false, true, false, '');
 
-    $tcpdflib->AddPage();
+    $pdf->AddPage();
     $phq_score = 0;
     $html = "<br> <h1>PHQ-9 Details</h1>";
     foreach ($patient_phq as $item): 
@@ -225,9 +249,9 @@
     else if($phq_score <= 27)
         $dep_ser = 'Severe';
     $html.= "<p> Depression Severity: <b>".$dep_ser."</b></p>";
-    $tcpdflib->writeHTML($html, true, 0, true, 0);
+    $pdf->writeHTML($html, true, 0, true, 0);
 
-    $tcpdflib->AddPage();
+    $pdf->AddPage();
     $gad_score = 0;
     $html = "<br><h1>GAD-7 Details</h1>";
     foreach ($patient_gad as $item): 
@@ -245,9 +269,9 @@
     else
         $anx_ser ='Sever anxiety';
     $html.= "<p> Anxiety Severity: <b>".$anx_ser."</b></p>";
-    $tcpdflib->writeHTML($html, true, 0, true, 0);
+    $pdf->writeHTML($html, true, 0, true, 0);
 
-    $tcpdflib->AddPage();
+    $pdf->AddPage();
     $html = "<br> <h1>Medical History</h1>";
     $html.= "<p>Present Symptoms <b>".$patient_medical_history_details['present_symptoms']."</b></p>";
     $html.= "<p>Past Medical History <b>".$patient_medical_history_details['past_medical_history']."</b></p>";
@@ -285,9 +309,9 @@
     $html.="<p> Body Fat <b>".$patient_medical_history_details['body_fat']."</b></p>";
     $html.="<p> Extraordinary Physical Findings <b>".$patient_medical_history_details['extra_ordinary_physical']."</b></p>";
     
-    $tcpdflib->writeHTML($html, true, 0, true, 0);
+    $pdf->writeHTML($html, true, 0, true, 0);
 
-    $tcpdflib->AddPage();
+    $pdf->AddPage();
     $html = "<br> <h1>Laboratory Test</h1>";
     foreach ($uniqueCategories as $cat):
         $html.='<h3>'.$cat.'</h3>';
@@ -299,9 +323,9 @@
         endforeach;
         $html.='</table> ';
     endforeach;
-    $tcpdflib->writeHTML($html, true, 0, true, 0);
+    $pdf->writeHTML($html, true, 0, true, 0);
 
-    $tcpdflib->AddPage();
+    $pdf->AddPage();
     $html = "<br> <h1>GP Summary & Recommendation</h1>";
     $html.='<table> ';
     $html.= "<tr>  <td> Blood results summary </td> <td><b>".$patient_gp_details['blood_results']."</b> </td></tr>";
@@ -310,32 +334,31 @@
     $html.= "<tr>  <td> Overall lifestyle summary </td> <td><b>".$patient_gp_details['overall_lifestyle']."</b> </td></tr>";
     $html.= "<tr>  <td> Additional comments </td> <td><b>".$patient_gp_details['additional_comments']."</b> </td></tr>";
     $html.='</table> ';
-    $tcpdflib->writeHTML($html, true, 0, true, 0);
+    $pdf->writeHTML($html, true, 0, true, 0);
 
     if(!empty($patient_reports['blood'])){
         $str = explode('.', $patient_reports['blood']);
         if($str[1]=='pdf'){
-            $pageCount = $tcpdflib->setSourceFile('./uploads/'.$patient_reports['blood']);
+            $pageCount = $pdf->setSourceFile('./uploads/'.$patient_reports['blood']);
 
             for ($pageNo = 1; $pageNo <= $pageCount; $pageNo++) {
                 // import a page
-                $templateId = $tcpdflib->importPage($pageNo);
+                $templateId = $pdf->importPage($pageNo);
             
-                $tcpdflib->AddPage();
+                $pdf->AddPage();
                 // use the imported page and adjust the page size
-                $tcpdflib->useTemplate($templateId, array('adjustPageSize' => true));
+                $pdf->useTemplate($templateId, array('adjustPageSize' => true));
             
-                $tcpdflib->SetFont('Helvetica');
-                $tcpdflib->SetXY(5, 5);
-                $tcpdflib->Write(8, 'Blood report');
+                $pdf->SetXY(5, 5);
+                $pdf->Write(8, 'Blood report');
             }
         }
         else{
-            $tcpdflib->AddPage();
+            $pdf->AddPage();
             $html = "<br><h1>Patient Blood Report</h1><br>";
-            $tcpdflib->writeHTML($html, true, 0, true, 0);
-            $tcpdflib->setImageScale('1.5');
-            $tcpdflib->Image('./uploads/'.$patient_reports['blood'],0,$tcpdflib->GetY());
+            $pdf->writeHTML($html, true, 0, true, 0);
+            $pdf->setImageScale('1.5');
+            $pdf->Image('./uploads/'.$patient_reports['blood'],0,$pdf->GetY());
         }
         
     }
@@ -343,58 +366,57 @@
     if(!empty($patient_reports['mri'])){
         $str = explode('.', $patient_reports['mri']);
         if($str[1]=='pdf'){
-            $pageCount = $tcpdflib->setSourceFile('./uploads/'.$patient_reports['mri']);
+            $pageCount = $pdf->setSourceFile('./uploads/'.$patient_reports['mri']);
 
             for ($pageNo = 1; $pageNo <= $pageCount; $pageNo++) {
                 // import a page
-                $templateId = $tcpdflib->importPage($pageNo);
+                $templateId = $pdf->importPage($pageNo);
             
-                $tcpdflib->AddPage();
+                $pdf->AddPage();
                 // use the imported page and adjust the page size
-                $tcpdflib->useTemplate($templateId, array('adjustPageSize' => true));
+                $pdf->useTemplate($templateId, array('adjustPageSize' => true));
             
-                $tcpdflib->SetFont('Helvetica');
-                $tcpdflib->SetXY(5, 5);
-                $tcpdflib->Write(8, 'MRI report');
+                
+                $pdf->SetXY(5, 5);
+                $pdf->Write(8, 'MRI report');
             }
         }
         else{
-            $tcpdflib->AddPage();
+            $pdf->AddPage();
             $html = "<br><h1>Patient MRI Report</h1><br>";
-            $tcpdflib->writeHTML($html, true, 0, true, 0);
-            $tcpdflib->setImageScale('1.5');
-            $tcpdflib->Image('./uploads/'.$patient_reports['mri'],0,$tcpdflib->GetY());
+            $pdf->writeHTML($html, true, 0, true, 0);
+            $pdf->setImageScale('1.5');
+            $pdf->Image('./uploads/'.$patient_reports['mri'],0,$pdf->GetY());
         }
     }
 
     if(!empty($patient_reports['xray'])){
         $str = explode('.', $patient_reports['xray']);
         if($str[1]=='pdf'){
-            $pageCount = $tcpdflib->setSourceFile('./uploads/'.$patient_reports['xray']);
+            $pageCount = $pdf->setSourceFile('./uploads/'.$patient_reports['xray']);
 
             for ($pageNo = 1; $pageNo <= $pageCount; $pageNo++) {
                 // import a page
-                $templateId = $tcpdflib->importPage($pageNo);
+                $templateId = $pdf->importPage($pageNo);
             
-                $tcpdflib->AddPage();
+                $pdf->AddPage();
                 // use the imported page and adjust the page size
-                $tcpdflib->useTemplate($templateId, array('adjustPageSize' => true));
+                $pdf->useTemplate($templateId, array('adjustPageSize' => true));
             
-                $tcpdflib->SetFont('Helvetica');
-                $tcpdflib->SetXY(5, 5);
-                $tcpdflib->Write(8, 'Xray report');
+                $pdf->SetXY(5, 5);
+                $pdf->Write(8, 'Xray report');
             }
         }
         else{
-            $tcpdflib->AddPage();
+            $pdf->AddPage();
             $html = "<br><h1>Patient Xray Report</h1><br>";
-            $tcpdflib->writeHTML($html, true, 0, true, 0);
-            $tcpdflib->setImageScale('1.5');
-            $tcpdflib->Image('./uploads/'.$patient_reports['xray'],0,$tcpdflib->GetY());
+            $pdf->writeHTML($html, true, 0, true, 0);
+            $pdf->setImageScale('1.5');
+            $pdf->Image('./uploads/'.$patient_reports['xray'],0,$pdf->GetY());
         }
     }
 
-    $tcpdflib->Output($patient_details['first_name'].'_Report.pdf', 'I');
+    $pdf->Output($patient_details['first_name'].'_Report.pdf', 'I');
 
     
 ?>
