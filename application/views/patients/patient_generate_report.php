@@ -113,26 +113,26 @@
     $pdf->Text(10, $pdf->getY()+9, 'Home telephone');
     $pdf->Text(40, $pdf->getY(), $patient_details['phone_home']);
     if($patient_details['phone_home_prefer']==1)
-        $pdf->Circle(70,$pdf->getY()+2,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
+        $pdf->Circle(72,$pdf->getY()+2,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
     else
-        $pdf->Circle(70,$pdf->getY()+2,2);
-    $pdf->Text(72, $pdf->getY(), 'Preferred');
+        $pdf->Circle(72,$pdf->getY()+2,2);
+    $pdf->Text(74, $pdf->getY(), 'Preferred');
 
     $pdf->Text(10, $pdf->getY()+9, 'Mobile telephone');
     $pdf->Text(40, $pdf->getY(), $patient_details['phone_mobile']);
     if($patient_details['phone_mobile_prefer']==1)
-        $pdf->Circle(70,$pdf->getY()+2,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
+        $pdf->Circle(72,$pdf->getY()+2,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
     else
-        $pdf->Circle(70,$pdf->getY()+2,2);
-    $pdf->Text(72, $pdf->getY(), 'Preferred');
+        $pdf->Circle(72,$pdf->getY()+2,2);
+    $pdf->Text(74, $pdf->getY(), 'Preferred');
 
     $pdf->Text(10, $pdf->getY()+9, 'Work telephone');
     $pdf->Text(40, $pdf->getY(), $patient_details['phone_work']);
     if($patient_details['phone_work_prefer']==1)
-        $pdf->Circle(70,$pdf->getY()+2,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
+        $pdf->Circle(72,$pdf->getY()+2,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
     else
-        $pdf->Circle(70,$pdf->getY()+2,2);
-    $pdf->Text(72, $pdf->getY(), 'Preferred');
+        $pdf->Circle(72,$pdf->getY()+2,2);
+    $pdf->Text(74, $pdf->getY(), 'Preferred');
 
     $pdf->Text(10, $pdf->getY()+9, 'Email');
     $pdf->Text(40, $pdf->getY(), $patient_details['email']);
@@ -173,7 +173,7 @@
     $pdf->SetFont('Helvetica', '', 11 );
 
     $pdf->Text(10, $pdf->getY()+12, 'Name of NHS / Alternative GP');
-    $pdf->Text(10, $pdf->getY(), $patient_details['alternative_gp']);
+    $pdf->Text(70, $pdf->getY(), $patient_details['alternative_gp']);
 
     $pdf->Text(10, $pdf->getY()+9, 'I consent to my medical information being shared with my regular GP if I am not contactable. ');
     $pdf->Text(10, $pdf->getY()+9, 'Agree');
@@ -200,14 +200,14 @@
     $pdf->SetFillColor(255, 255, 255);
     $pdf->RoundedRect(10, $pdf->getY()+7, 190, 30, 3.50, '1111', 'DF',array('color' => array(51, 102, 255)));
 
-    $pdf->Text(40, $pdf->getY()+9, $patient_details['health_at_present']);
+    $pdf->MultiCell(180, 30, $patient_details['health_at_present'],0,'J',true,1,15, $pdf->getY()+10);
 
     $pdf->Text(10, $pdf->getY()+30, 'Are you taking any medications at present Kindly list the medications as well as doses?');
     
     $pdf->SetFillColor(255, 255, 255);
     $pdf->RoundedRect(10, $pdf->getY()+7, 190, 30, 3.50, '1111', 'DF',array('color' => array(51, 102, 255)));
 
-    $pdf->Text(40, $pdf->getY()+9, $patient_details['current_medication']);
+    $pdf->MultiCell(180, 30, $patient_details['current_medication'],0,'J',true,1,15, $pdf->getY()+10);
 
     $pdf->Text(10, $pdf->getY()+30, 'Are you aware of any allergies to the following?');
    
