@@ -252,7 +252,8 @@ class Patients extends CI_Controller {
 
         public function patient_generate_report($patient_id)
 	{
-                $this->load->view('patients/patient_generate_report',array('patient_id'=>$patient_id));
+                 $this->load->view('patients/patient_generate_report',array('patient_id'=>$patient_id));
+                //$this->load->view('patients/test',array('patient_id'=>$patient_id));
         }
 
         public function get_patients()

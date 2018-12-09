@@ -13,7 +13,7 @@
     }
     $uniqueCategories = array_unique($categories);
 
-    $tcpdflib = new Fpdilib();
+    $tcpdflib = new Tcpdflib();
 
     //$tcpdflib->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, PDF_HEADER_TITLE, PDF_HEADER_STRING);
 
@@ -22,7 +22,7 @@
     //echo PDF_HEADER_LOGO;
     //$tcpdflib->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, PDF_HEADER_TITLE.'', PDF_HEADER_STRING, array(0,64,255), array(0,64,128));
     // set default header data
-    $tcpdflib->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, '', PDF_HEADER_STRING, array(0,64,255), array(0,64,128));
+    $tcpdflib->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, '', PDF_HEADER_STRING, array(0,0,0), array(255,255,255));
     $tcpdflib->setFooterData(array(0,64,0), array(0,64,128));
 
     $tcpdflib->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
@@ -48,43 +48,115 @@
 
     $diff=date_diff($date1,$date2);
 
-    $html = "<h1>Patient Details</h1>";
-    $html .= "<table border='0'>";
-    $html.= "<tr> <td> First Name </td> <td><b>".$patient_details['first_name']."</b></td></tr>";
-    $html.= "<tr> <td> Last Name </td> <td><b>".$patient_details['last_name']."</b></td></tr>";
-    $html.= "<tr> <td> Gender </td> <td><b>".$gender."</b></td></tr>";
-    $html.= "<tr> <td> Age </td> <td><b>".($diff->format("%Y Years %m Months"))."</b></td></tr>";
-    $html.= "<tr> <td> Date of birth </td> <td><b>".nice_date($patient_details['dob'],'d-M-Y')."</b></td></tr>";
-    $html.= "<tr> <td> Email </td> <td><b>".$patient_details['email']."</b></td></tr>";
-    $html.= "<tr> <td> Phone Mobile </td> <td><b>".$patient_details['phone_mobile']."</b></td></tr>";
-    $html.= "<tr> <td> Phone Home </td> <td><b>".$patient_details['phone_home']."</b></td></tr>";
-    $html.= "<tr> <td> Phone Work </td> <td><b>".$patient_details['phone_work']."</b></td></tr>";
-    $html.= "<tr> <td> Address </td> <td><b>".$patient_details['address']."</b></td></tr>";
-    $html.= "<tr> <td> Postal Code </td> <td><b>".$patient_details['postal_code']."</b></td></tr>";
-    $html.= "<tr> <td> Blood Group </td> <td><b>".$patient_details['blood_group']."</b></td></tr>";
-    $html.= "<tr> <td> Occupation </td> <td><b>".$patient_details['occupation']."</b></td></tr>";
-    $html.= "<table>";
-
-    $html.= "<h1>Next of kin details</h1>";
-    $html.= "<p> Name <b>".$patient_details['next_of_kin_name']."</b></p>";
-    $html.= "<p> Phone Number <b>".$patient_details['next_of_kin_phone']."</b></p>";
-    $html.= "<p> Relationship <b>".$patient_details['next_of_kin_relationship']."</b></p>";
-    $html.= "<p> In case of emergency if you are uncontactable, do you provide consent for your next of kin to be contacted
-    and for relevant clinical information to be divulged <b>".($patient_details['next_of_kin_contact']=='1'?'Yes':'No')."</b></p>";
-
-    $html.= "<h1>NHS / Alternative GP</h1>";
-    $html.= "<p> Name <b>".$patient_details['alternative_gp']."</b></p>";
-    $html.= "<p> I consent to my medical information being shared with my regular GP if I am not contactable. <b>".($patient_details['gp_contact_agree']=='1'?'Yes':'No')."</b></p>";
+    $white_circle = '<img align="right" height="12" width="12" src=".\assets\lyca\images\circle_white.png">';;
+    $black_circle = '<img align="right" height="12" width="12" src=".\assets\lyca\images\circle_black.png">';;
     
+    $tcpdflib->SetFont('', 'B', 15 ); 
+    $tcpdflib->Text(5, 20, 'Patient Details');
 
-    $tcpdflib->writeHTML($html, true, 0, true, 0);
+    $tcpdflib->SetFont('', '', 10 );
+
+    $tcpdflib->Text(10, 30, 'First Name');
+    $tcpdflib->Text(40, 30, $patient_details['first_name']);
+
+    $tcpdflib->Text(10, 35, 'Last Name');
+    $tcpdflib->Text(40, 35, $patient_details['last_name']);
+
+    $tcpdflib->Text(10, 40, 'Gender');
+    $tcpdflib->Text(40, 40, $gender);
+
+    $tcpdflib->Text(10, 45, 'Date of birth');
+    $tcpdflib->Text(40, 45, nice_date($patient_details['dob'],'d-M-Y'));
+
+    $tcpdflib->Text(90, 45, 'Age ');
+    $tcpdflib->Text(100, 45, $diff->format("%Y Years %m Months"));
+
+    $tcpdflib->Text(10, 50, 'Blood Group ');
+    $tcpdflib->Text(40, 50, $patient_details['blood_group']);
+
+    $tcpdflib->Text(10, 55, 'Occupation');
+    $tcpdflib->Text(40, 55, $patient_details['occupation']);
+
+    $tcpdflib->Text(10, 60, 'London Address (permanent / temporary)');
+    $tcpdflib->Text(10, 65, $patient_details['address']);
+
+    $tcpdflib->Text(10, 70, 'Postal Code');
+    $tcpdflib->Text(40, 70, $patient_details['postal_code']);
+
+    $tcpdflib->Text(10, 75, 'Home telephone');
+    $tcpdflib->Text(40, 75, $patient_details['phone_home']);
+    if($patient_details['phone_home_prefer']==1)
+        $tcpdflib->Circle(70,77,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
+    else
+        $tcpdflib->Circle(70,77,2);
+    $tcpdflib->Text(72, 75, 'Preferred');
+
+    $tcpdflib->Text(10, 80, 'Mobile telephone');
+    $tcpdflib->Text(40, 80, $patient_details['phone_mobile']);
+    if($patient_details['phone_mobile_prefer']==1)
+        $tcpdflib->Circle(70,82,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
+    else
+        $tcpdflib->Circle(70,82,2);
+    $tcpdflib->Text(72, 80, 'Preferred');
+
+    $tcpdflib->Text(10, 85, 'Work telephone');
+    $tcpdflib->Text(40, 85, $patient_details['phone_work']);
+    if($patient_details['phone_work_prefer']==1)
+        $tcpdflib->Circle(70,87,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
+    else
+        $tcpdflib->Circle(70,87,2);
+    $tcpdflib->Text(72, 85, 'Preferred');
+
+    $tcpdflib->Text(10, 90, 'Email');
+    $tcpdflib->Text(40, 90, $patient_details['email']);
+
+    $tcpdflib->SetFont('', 'B', 15 ); 
+
+    $tcpdflib->Text(5, 100, 'Next of kin details:');
+
+    $tcpdflib->SetFont('', '', 10 ); 
+
+    $tcpdflib->Text(10, 110, 'Name ');
+    $tcpdflib->Text(50, 110, $patient_details['next_of_kin_name']);
+
+    $tcpdflib->Text(10, 115, 'Phone Number');
+    $tcpdflib->Text(50, 115, $patient_details['next_of_kin_phone']);
+
+    $tcpdflib->Text(10, 120, 'Relationship');
+    $tcpdflib->Text(50, 120, $patient_details['next_of_kin_relationship']);
+
+    $tcpdflib->Text(10, 125, 'In case of emergency if you are uncontactable, do you provide consent for your next of kin to be contacted and for relevant ');
+    $tcpdflib->Text(10, 130, 'clinical information to be divulged?');
+    $tcpdflib->Text(10, 135, 'Y');
+    if($patient_details['next_of_kin_contact']==1)
+        $tcpdflib->Circle(17,137,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
+    else
+        $tcpdflib->Circle(17,137,2);
+    $tcpdflib->Text(20, 135, 'N');
+    if($patient_details['next_of_kin_contact']==0)
+        $tcpdflib->Circle(27,137,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
+    else
+        $tcpdflib->Circle(27,137,2);
+
+    $tcpdflib->Text(10, 140, 'NHS / Alternative GP');
+    $tcpdflib->Text(10, 145, $patient_details['alternative_gp']);
+
 
     $tcpdflib->AddPage();
     
-    $html = "<br><h1>Health</h1>";
-    $html.= "<p> How is your health at present? Is there anything in particular you would like to discuss with the Doctor today? :".$patient_details['health_at_present']."</p>";
-    $html.= "<p> Are you taking any medications at present Kindly list the medications as well as doses? ".$patient_details['current_medication']."</p>";
-    $html.= "<p> Are you aware of any allergies to the following? : </p>";
+    $html = "<style>
+    div {
+        border-radius: 25px;
+        border: 2px solid #6666ff;
+        padding: 20px; 
+        width: 200px;
+        height: 150px; 
+      }
+      </style>";
+    $html.= "<br><h1>Health</h1>";
+    $html.= "<p>How is your health at present? Is there anything in particular you would like to discuss with the Doctor today? </p>  <div style='padding: 10px;'>".$patient_details['health_at_present']."</div>";
+    $html.= "<p>Are you taking any medications at present Kindly list the medications as well as doses? ".$patient_details['current_medication']."</p>";
+    $html.= "<p>Are you aware of any allergies to the following? : </p>";
     $html.= "<table> <tr > <th> Allergy </th> <th> Yes/No</th></tr>";
     $html.= "<tr> <td> Eggs </td> <td> <b>".($patient_details['allergy_milk']=='1'?'Yes':'No')." </b></td> </tr>";
     $html.= "<tr> <td> Milk </td> <td> <b>".($patient_details['allergy_eggs']=='1'?'Yes':'No')." </b></td> </tr>";
@@ -103,7 +175,10 @@
     $html.= "<br><h1>CHAPERONE</h1>";
     $html.= "<p> Do you require a chaperone before this consultation? <b>".($patient_details['chaperone_required']=='1'?'Yes':'No')."</b> </p>";
     
-    $tcpdflib->writeHTML($html, true, 0, true, 0);
+    
+    //echo $html;
+
+    $tcpdflib->writeHTML($html, true, false, true, false, '');
 
     $tcpdflib->AddPage();
     
@@ -122,6 +197,8 @@
         $path = tempnam('./uploads/', 'prefix');
         
         file_put_contents ($path, $imageContent);
+
+        //echo $path;
 
         $html.= '<img align="right" height="80" width="80" src="' . $path . '">';
     }
