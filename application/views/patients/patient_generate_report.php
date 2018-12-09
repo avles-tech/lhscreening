@@ -49,6 +49,9 @@
     $pdf->SetFont('Helvetica', 'B', 20 );
     $pdf->writeHTMLCell(297, 5, 0, 30, 'Health Assessment Report', 0, 0, 1, true, 'C', true);
 
+    $pdf->setImageScale('5');
+    $pdf->Image('./assets/lyca/images/Health Assesment.jpg',15, $pdf->getY()+60);
+
     $pdf->SetTextColor(0, 0, 0);
     $pdf->SetFont('Helvetica', 'B', 11 );
 
@@ -150,7 +153,7 @@
     $pdf->Text(50, $pdf->getY(), $patient_details['next_of_kin_relationship']);
 
     $pdf->Text(10, $pdf->getY()+9, 'In case of emergency if you are uncontactable, do you provide consent for your next of kin to be contacted ');
-    $pdf->Text(10, $pdf->getY()+9, 'and for relevant clinical information to be divulged?');
+    $pdf->Text(10, $pdf->getY()+5, 'and for relevant clinical information to be divulged?');
     $pdf->Text(10, $pdf->getY()+9, 'Y');
     if($patient_details['next_of_kin_contact']==1)
         $pdf->Circle(17,$pdf->getY()+2,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
@@ -162,9 +165,52 @@
     else
         $pdf->Circle(27,$pdf->getY()+2,2);
 
-    $pdf->Text(10, $pdf->getY()+9, 'NHS / Alternative GP');
+    //$pdf->AddPage();
+
+    $pdf->SetFont('Helvetica', 'B', 20 ); 
+    $pdf->Text(5, $pdf->getY()+9, 'NHS / Alternative GP');
+
+    $pdf->SetFont('Helvetica', '', 11 );
+
+    $pdf->Text(10, $pdf->getY()+12, 'Name of NHS / Alternative GP');
     $pdf->Text(10, $pdf->getY(), $patient_details['alternative_gp']);
 
+    $pdf->Text(10, $pdf->getY()+9, 'I consent to my medical information being shared with my regular GP if I am not contactable. ');
+    $pdf->Text(10, $pdf->getY()+9, 'Agree');
+    if($patient_details['gp_contact_agree']==1)
+        $pdf->Circle(25,$pdf->getY()+2,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
+    else
+        $pdf->Circle(25,$pdf->getY()+2,2);
+    $pdf->Text(28, $pdf->getY(), 'Disagree');
+    if($patient_details['gp_contact_agree']==0)
+        $pdf->Circle(48,$pdf->getY()+2,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
+    else
+        $pdf->Circle(48,$pdf->getY()+2,2);
+
+    $pdf->AddPage();
+
+    $pdf->SetFont('Helvetica', 'B', 20 ); 
+    $pdf->Text(5, 20, 'Health');
+
+    $pdf->SetFont('Helvetica', '', 11 );
+    
+
+    $pdf->Text(10, $pdf->getY()+12, 'How is your health at present? Is there anything in particular you would like to discuss with the Doctor today?');
+    
+    $pdf->SetFillColor(255, 255, 255);
+    $pdf->RoundedRect(10, $pdf->getY()+7, 190, 30, 3.50, '1111', 'DF',array('color' => array(51, 102, 255)));
+
+    $pdf->Text(40, $pdf->getY()+9, $patient_details['health_at_present']);
+
+    $pdf->Text(10, $pdf->getY()+30, 'Are you taking any medications at present Kindly list the medications as well as doses?');
+    
+    $pdf->SetFillColor(255, 255, 255);
+    $pdf->RoundedRect(10, $pdf->getY()+7, 190, 30, 3.50, '1111', 'DF',array('color' => array(51, 102, 255)));
+
+    $pdf->Text(40, $pdf->getY()+9, $patient_details['current_medication']);
+
+    $pdf->Text(10, $pdf->getY()+30, 'Are you aware of any allergies to the following?');
+   
 
     $pdf->AddPage();
     
