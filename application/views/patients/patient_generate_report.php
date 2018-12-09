@@ -202,41 +202,63 @@
 
     $pdf->MultiCell(180, 30, $patient_details['health_at_present'],0,'J',true,1,15, $pdf->getY()+10);
 
-    $pdf->Text(10, $pdf->getY()+30, 'Are you taking any medications at present Kindly list the medications as well as doses?');
+    $pdf->Text(10, $pdf->getY()+7, 'Are you taking any medications at present Kindly list the medications as well as doses?');
     
     $pdf->SetFillColor(255, 255, 255);
     $pdf->RoundedRect(10, $pdf->getY()+7, 190, 30, 3.50, '1111', 'DF',array('color' => array(51, 102, 255)));
 
     $pdf->MultiCell(180, 30, $patient_details['current_medication'],0,'J',true,1,15, $pdf->getY()+10);
 
-    $pdf->Text(10, $pdf->getY()+30, 'Are you aware of any allergies to the following?');
-   
+    $pdf->SetDrawColor(0,0,0);
+
+    $pdf->Text(10, $pdf->getY()+7, 'Are you aware of any allergies to the following?');
+
+    $pdf->Text(10, $pdf->getY()+7, 'Milk');
+    if($patient_details['allergy_milk']==1)
+        $pdf->Circle(30,$pdf->getY()+2,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
+    else
+        $pdf->Circle(30,$pdf->getY()+2,2);
+    
+    $pdf->Text(40, $pdf->getY(), 'Shellfish');
+    if($patient_details['allergy_shellfish']==1)
+        $pdf->Circle(60,$pdf->getY()+2,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
+    else
+        $pdf->Circle(60,$pdf->getY()+2,2);
+
+    $pdf->Text(10, $pdf->getY()+7, 'Eggs');
+    if($patient_details['allergy_eggs']==1)
+        $pdf->Circle(30,$pdf->getY()+2,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
+    else
+        $pdf->Circle(30,$pdf->getY()+2,2);
+
+    $pdf->Text(40, $pdf->getY(), 'Iodine');
+    if($patient_details['allergy_iodine']==1)
+        $pdf->Circle(60,$pdf->getY()+2,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
+    else
+        $pdf->Circle(60,$pdf->getY()+2,2);
+
+    $pdf->Text(10, $pdf->getY()+7, 'Peanuts');
+    if($patient_details['allergy_peanuts']==1)
+        $pdf->Circle(30,$pdf->getY()+2,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
+    else
+        $pdf->Circle(30,$pdf->getY()+2,2);
+
+    $pdf->Text(40, $pdf->getY(), 'Pencillin');
+    if($patient_details['allergy_pencillin']==1)
+        $pdf->Circle(60,$pdf->getY()+2,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
+    else
+        $pdf->Circle(60,$pdf->getY()+2,2);
+    
+    $pdf->Text(10, $pdf->getY()+7, 'Tree nuts(walnuts/almonds/pecan)');
+    if($patient_details['allergy_treenuts']==1)
+        $pdf->Circle(75,$pdf->getY()+2,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
+    else
+        $pdf->Circle(75,$pdf->getY()+2,2);
 
     $pdf->AddPage();
     
-    $html = "<style>
-    div {
-        border-radius: 25px;
-        border: 2px solid #6666ff;
-        padding: 20px; 
-        width: 200px;
-        height: 150px; 
-      }
-      </style>";
-    $html.= "<br><h1>Health</h1>";
-    $html.= "<p>How is your health at present? Is there anything in particular you would like to discuss with the Doctor today? </p>  <div style='padding: 10px;'>".$patient_details['health_at_present']."</div>";
-    $html.= "<p>Are you taking any medications at present Kindly list the medications as well as doses? ".$patient_details['current_medication']."</p>";
-    $html.= "<p>Are you aware of any allergies to the following? : </p>";
-    $html.= "<table> <tr > <th> Allergy </th> <th> Yes/No</th></tr>";
-    $html.= "<tr> <td> Eggs </td> <td> <b>".($patient_details['allergy_milk']=='1'?'Yes':'No')." </b></td> </tr>";
-    $html.= "<tr> <td> Milk </td> <td> <b>".($patient_details['allergy_eggs']=='1'?'Yes':'No')." </b></td> </tr>";
-    $html.= "<tr> <td> Peanuts </td> <td> <b>".($patient_details['allergy_peanuts']=='1'?'Yes':'No')." </b></td> </tr>";
-    $html.= "<tr> <td> Shellfish </td> <td> <b>".($patient_details['allergy_shellfish']=='1'?'Yes':'No')." </b></td> </tr>";
-    $html.= "<tr> <td> Iodine </td> <td> <b>".($patient_details['allergy_iodine']=='1'?'Yes':'No')." </b></td> </tr>";
-    $html.= "<tr> <td> Penicillin </td> <td> <b>".($patient_details['allergy_pencillin']=='1'?'Yes':'No')." </b></td> </tr>";
-    $html.= "<tr> <td> Tree nuts(walnuts/almonds/pecan) </td> <td> <b>".($patient_details['allergy_treenuts']=='1'?'Yes':'No')." </b></td> </tr>";
-    $html.= "</table>";
-    $html.= "<p> Other Allergies <b>".($patient_details['allergy_others']=='1'?'Yes':'No')."</b> </p>";
+    
+    $html= "<p> Other Allergies <b>".($patient_details['allergy_others']=='1'?'Yes':'No')."</b> </p>";
     $patient_details['allergy_others']=='1' ? $html.= "<p> Other Allergies Details <b>".$patient_details['allergy_others_details']."</b> </p>" : '' ;
     $html.= "<p> Do you suffer from Hayfever? <b>".($patient_details['hay_fever']=='1'?'Yes':'No')."</b> </p>";
     $html.= "<p> Do you have Asthma? <b>".($patient_details['asthma']=='1'?'Yes':'No')."</b> </p>";
@@ -298,6 +320,25 @@
     $pdf->writeHTML($html, true, 0, true, 0);
 
     $pdf->AddPage();
+
+    $pdf->SetFont('Helvetica', 'B', 20 ); 
+    $pdf->Text(5, 20, 'GAD-7 Details');
+
+    $pdf->SetFont('Helvetica', '', 11 );
+    
+    $gad_score = 0;
+    $pdf->setY(35);
+    foreach ($patient_gad as $item):
+        //$pdf->setY($pdf->getY()+7); 
+        $pdf->MultiCell(105, 10, $item['question'],1,'[RIGHT]',0,1,15, $pdf->getY());
+        $pdf->MultiCell(80, 10, $answers[$item['value']],1,'[RIGHT]',0,1,120, $pdf->getY()-10);
+        $gad_score = $gad_score + $item['value'];
+    endforeach;
+    
+    $pdf->MultiCell(185, 10, 'GAD-7 Score: '.$gad_score."/24",1,'[RIGHT]',0,1,15, $pdf->getY());
+
+    $pdf->AddPage();
+
     $gad_score = 0;
     $html = "<br><h1>GAD-7 Details</h1>";
     foreach ($patient_gad as $item): 
