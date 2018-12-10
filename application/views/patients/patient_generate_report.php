@@ -90,8 +90,10 @@
     //$pdf->Text(5, 20, 'Patient Details');
     $pdf->SetFillColor(41, 163, 41);
     $pdf->SetTextColor(255, 255, 255);
-    $pdf->MultiCell(297, 5,'',0,'J',true,1,0,20);
-    $pdf->Text(30, 20, 'Patient Details');
+    //$pdf->MultiCell(70, 5,'',0,'C',true,1,50,20);
+    //$pdf->Text(60, 20, 'Patient Details');
+
+    $pdf->writeHTMLCell(70, 5, 50, 20, 'Patient Details', 0, 0, 1, true, 'C', true);
 
     $pdf->SetFont('Helvetica', '', 11 );
     $pdf->SetTextColor(0, 0, 0);
@@ -156,7 +158,10 @@
     //$pdf->Text(5, $pdf->getY()+9, 'Next of kin details');
     $pdf->SetFillColor(41, 163, 41);
     $pdf->SetTextColor(255, 255, 255);
-    $pdf->writeHTMLCell(297, 5, 0, $pdf->getY()+9, 'Next of kin details', 0, 0, 1, true, 'C', true);
+    $pdf->writeHTMLCell(70, 5, 50, $pdf->getY()+9, 'Next of kin details', 0, 0, 1, true, 'C', true);
+
+    //$pdf->MultiCell(70, 5,'',0,'C',true,1,50,20);
+    //$pdf->Text(60, 20, 'Patient Details');
 
     $pdf->SetFont('Helvetica', '', 11 ); 
     $pdf->SetTextColor(0, 0, 0);
@@ -408,17 +413,25 @@
     else
         $pdf->Circle($x_cor,$pdf->getY()+2,2);
 
-    $html= "<br><h1>CONSENT</h1>";
-    $html.= "<p>I consent to being contacted by un-encrypted email and/or telephone and /or WhatsApp messenger to discuss management plans, diagnosis and to disclose results. I accept the risk associated with receiving messages received by the above means <b>".($patient_details['consent_unencrypted']=='1'?'Yes':'No')."</b> </p>";
-    $html.= "<p>I consent to having messages left on my preferred telephone number <b>".($patient_details['consent_messages']=='1'?'Yes':'No')."</b> </p>";
-    $html.= "<p>I consent that my medical information being shared with my regular GP if I am not contactable <b>".($patient_details['consent_medical_information']=='1'?'Yes':'No')."</b> </p>";
+    $pdf->SetFillColor(255, 255, 255);
+    $pdf->MultiCell(200, 5,'I consent that my medical information being shared with my regular GP if I am not contactable',0,'L',true,1,10, $pdf->getY()+7);
+    
+    $pdf->SetFillColor(0, 0, 0);
 
-    //$pdf->writeHTML($html, true, 0, true, 0);
-
-    //$pdf->setJPEGQuality(25);
-    //$imgdata = base64_decode($patient_details['signature']);
-
-    $pdf->setImageScale('1');
+    $x_cor = 15;
+    $pdf->Text(15, $pdf->getY()+5, 'Y');
+    $x_cor = $x_cor + 7; // 22
+    if($patient_details['consent_medical_information']==1)
+        $pdf->Circle($x_cor ,$pdf->getY()+2,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
+    else
+        $pdf->Circle($x_cor,$pdf->getY()+2,2);
+    $x_cor = $x_cor + 7; // 35
+    $pdf->Text($x_cor, $pdf->getY(), 'N');
+    $x_cor = $x_cor + 7; // 42
+    if($patient_details['consent_medical_information']==0)
+        $pdf->Circle($x_cor,$pdf->getY()+2,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
+    else
+        $pdf->Circle($x_cor,$pdf->getY()+2,2);
 
     if(!empty($patient_details['signature'])){
         $img_base64_encoded = $patient_details['signature'];
@@ -427,13 +440,12 @@
         
         file_put_contents ($path, $imageContent);
 
-        //echo $path;
-
-        $html.= '<img align="right" height="80" width="80" src="' . $path . '">';
+        $pdf->setImageScale('3');
+        $pdf->Image($path,15, $pdf->getY());
     }
-    
-    $pdf->writeHTML($html, true, false, true, false, '');
 
+    $pdf->Text(20, $pdf->getY()+23, 'Signature');
+    
     $pdf->AddPage();
 
     $pdf->SetFont('Helvetica', 'B', 20 ); 
