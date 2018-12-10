@@ -452,14 +452,15 @@
     $pdf->SetFont('Helvetica', 'B', 20 ); 
     $pdf->SetFillColor(41, 163, 41);
     $pdf->SetTextColor(255, 255, 255);
-    $pdf->MultiCell(297, 5,'',0,'J',true,1,0,20);
-    $pdf->Text(30, 20, 'PHQ-9 Details');
+    //$pdf->MultiCell(297, 5,'',0,'J',true,1,0,20);
+    //$pdf->Text(30, 20, 'PHQ-9 Details');
+    $pdf->writeHTMLCell(60, 5, 10, $pdf->getY()+9, 'PHQ-9 Details', 0, 0, 1, true, 'L', true);
 
     $pdf->SetFont('Helvetica', '', 11 );
     $pdf->SetTextColor(0, 0, 0);
     
     $phq_score = 0;
-    $pdf->setY(35);
+    $pdf->setY($pdf->getY()+15);
     $pdf->setCellPaddings(2, 2, 1, 1);
     foreach ($patient_phq as $item):
         $y_test = $pdf->getY();
@@ -485,14 +486,15 @@
     $pdf->SetFont('Helvetica', 'B', 20 ); 
     $pdf->SetFillColor(41, 163, 41);
     $pdf->SetTextColor(255, 255, 255);
-    $pdf->MultiCell(297, 5,'',0,'J',true,1,0,20);
-    $pdf->Text(30, 20, 'GAD-7 Details');
+    //$pdf->MultiCell(297, 5,'',0,'J',true,1,0,20);
+    //$pdf->Text(30, 20, 'GAD-7 Details');
+    $pdf->writeHTMLCell(60, 5, 10, $pdf->getY()+9, 'GAD-7 Details', 0, 0, 1, true, 'L', true);
 
     $pdf->SetFont('Helvetica', '', 11 );
     $pdf->SetTextColor(0, 0, 0);
     
     $gad_score = 0;
-    $pdf->setY(35);
+    $pdf->setY( $pdf->getY()+15);
     foreach ($patient_gad as $item):
         $y_test = $pdf->getY();
         $pdf->MultiCell(105, 13, $item['question'],1,'[RIGHT]',0,1,15, $y_test);
