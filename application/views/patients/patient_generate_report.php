@@ -93,7 +93,7 @@
     //$pdf->MultiCell(70, 5,'',0,'C',true,1,50,20);
     //$pdf->Text(60, 20, 'Patient Details');
 
-    $pdf->writeHTMLCell(70, 5, 50, 20, 'Patient Details', 0, 0, 1, true, 'C', true);
+    $pdf->writeHTMLCell(70, 5, 10, 20, 'Patient Details', 0, 0, 1, true, 'L', true);
 
     $pdf->SetFont('Helvetica', '', 11 );
     $pdf->SetTextColor(0, 0, 0);
@@ -158,7 +158,7 @@
     //$pdf->Text(5, $pdf->getY()+9, 'Next of kin details');
     $pdf->SetFillColor(41, 163, 41);
     $pdf->SetTextColor(255, 255, 255);
-    $pdf->writeHTMLCell(70, 5, 50, $pdf->getY()+9, 'Next of kin details', 0, 0, 1, true, 'C', true);
+    $pdf->writeHTMLCell(70, 5, 10, $pdf->getY()+9, 'Next of kin details', 0, 0, 1, true, 'L', true);
 
     //$pdf->MultiCell(70, 5,'',0,'C',true,1,50,20);
     //$pdf->Text(60, 20, 'Patient Details');
@@ -195,8 +195,8 @@
     //$pdf->Text(5, $pdf->getY()+9, 'NHS / Alternative GP');
     $pdf->SetFillColor(41, 163, 41);
     $pdf->SetTextColor(255, 255, 255);
-    $pdf->writeHTMLCell(297, 5, 0, $pdf->getY()+9, 'NHS / Alternative GP', 0, 0, 1, true, 'C', true);
-
+    //$pdf->writeHTMLCell(297, 5, 0, $pdf->getY()+9, 'NHS / Alternative GP', 0, 0, 1, true, 'C', true);
+    $pdf->writeHTMLCell(90, 5, 10, $pdf->getY()+9, 'NHS / Alternative GP', 0, 0, 1, true, 'L', true);
     $pdf->SetFont('Helvetica', '', 11 ); 
     $pdf->SetTextColor(0, 0, 0);
     $pdf->SetFillColor(0, 0, 0);
@@ -222,7 +222,7 @@
     //$pdf->Text(5, 20, 'Health');
     $pdf->SetFillColor(41, 163, 41);
     $pdf->SetTextColor(255, 255, 255);
-    $pdf->writeHTMLCell(297, 5, 0, $pdf->getY()+9, 'Health', 0, 0, 1, true, 'L', true);
+    $pdf->writeHTMLCell(30, 5, 10, $pdf->getY()+9, 'Health', 0, 0, 1, true, 'L', true);
 
     $pdf->SetFont('Helvetica', '', 11 ); 
     $pdf->SetTextColor(0, 0, 0);
@@ -343,7 +343,7 @@
     //$pdf->Text(5, $pdf->getY()+9, 'CHAPERONE');
     $pdf->SetFillColor(41, 163, 41);
     $pdf->SetTextColor(255, 255, 255);
-    $pdf->writeHTMLCell(297, 5, 0, $pdf->getY()+9, 'CHAPERONE', 0, 0, 1, true, 'L', true);
+    $pdf->writeHTMLCell(50, 5, 10, $pdf->getY()+9, 'CHAPERONE', 0, 0, 1, true, 'L', true);
 
     $pdf->SetFont('Helvetica', '', 11 ); 
     $pdf->SetTextColor(0, 0, 0);
@@ -367,8 +367,9 @@
     $pdf->SetFont('Helvetica', 'B', 20 ); 
     $pdf->SetFillColor(41, 163, 41);
     $pdf->SetTextColor(255, 255, 255);
-    $pdf->MultiCell(297, 5,'',0,'J',true,1,0,20);
-    $pdf->Text(30, 20, 'CONSENT');
+    //$pdf->MultiCell(297, 5,'',0,'J',true,1,0,20);
+    //$pdf->Text(30, 20, 'CONSENT');
+    $pdf->writeHTMLCell(50, 5, 10, $pdf->getY()+9, 'CONSENT', 0, 0, 1, true, 'L', true);
 
     $pdf->SetFont('Helvetica', '', 11 );
     $pdf->SetTextColor(0, 0, 0);
@@ -441,10 +442,10 @@
         file_put_contents ($path, $imageContent);
 
         $pdf->setImageScale('3');
-        $pdf->Image($path,15, $pdf->getY());
+        $pdf->Image($path,15, $pdf->getY()+10);
     }
 
-    $pdf->Text(20, $pdf->getY()+23, 'Signature');
+    $pdf->Text(20, $pdf->getY()+33, 'Signature');
     
     $pdf->AddPage();
 
