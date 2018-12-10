@@ -82,60 +82,60 @@
     $pdf->SetFont('Helvetica', '', 11 );
 
     $pdf->Text(10, $pdf->getY()+12, 'First Name');
-    $pdf->Text(40, $pdf->getY(), $patient_details['first_name']);
+    $pdf->Text(50, $pdf->getY(), $patient_details['first_name']);
 
     $pdf->Text(10,  $pdf->getY()+9, 'Last Name');
-    $pdf->Text(40, $pdf->getY(), $patient_details['last_name']);
+    $pdf->Text(50, $pdf->getY(), $patient_details['last_name']);
 
     $pdf->Text(10,  $pdf->getY()+9, 'Gender');
-    $pdf->Text(40, $pdf->getY(), $gender);
+    $pdf->Text(50, $pdf->getY(), $gender);
 
     $pdf->Text(10,  $pdf->getY()+9, 'Date of birth');
-    $pdf->Text(40, $pdf->getY(), nice_date($patient_details['dob'],'d-M-Y'));
+    $pdf->Text(50, $pdf->getY(), nice_date($patient_details['dob'],'d-M-Y'));
 
     $pdf->Text(80,  $pdf->getY(), 'Age ');
     $pdf->Text(90, $pdf->getY(), $diff->format("%Y Years %m Months"));
 
     $pdf->Text(10,  $pdf->getY()+9, 'Blood Group ');
-    $pdf->Text(40, $pdf->getY(), $patient_details['blood_group']);
+    $pdf->Text(50, $pdf->getY(), $patient_details['blood_group']);
 
     $pdf->Text(10,  $pdf->getY()+9, 'Occupation');
-    $pdf->Text(40, $pdf->getY(), $patient_details['occupation']);
+    $pdf->Text(50, $pdf->getY(), $patient_details['occupation']);
 
     $pdf->Text(10,  $pdf->getY()+9, 'London Address');
-    $pdf->Text(40, $pdf->getY(), $patient_details['address']);
+    $pdf->Text(50, $pdf->getY(), $patient_details['address']);
 
     $pdf->Text(10,  $pdf->getY()+9, 'Postal Code');
-    $pdf->Text(40, $pdf->getY(), $patient_details['postal_code']);
+    $pdf->Text(50, $pdf->getY(), $patient_details['postal_code']);
 
     $pdf->SetFillColor(0, 0, 0);
 
     $pdf->Text(10, $pdf->getY()+9, 'Home telephone');
-    $pdf->Text(40, $pdf->getY(), $patient_details['phone_home']);
+    $pdf->Text(50, $pdf->getY(), $patient_details['phone_home']);
     if($patient_details['phone_home_prefer']==1)
-        $pdf->Circle(72,$pdf->getY()+2,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
+        $pdf->Circle(85,$pdf->getY()+2,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
     else
-        $pdf->Circle(72,$pdf->getY()+2,2);
-    $pdf->Text(74, $pdf->getY(), 'Preferred');
+        $pdf->Circle(85,$pdf->getY()+2,2);
+    $pdf->Text(87, $pdf->getY(), 'Preferred');
 
     $pdf->Text(10, $pdf->getY()+9, 'Mobile telephone');
-    $pdf->Text(40, $pdf->getY(), $patient_details['phone_mobile']);
+    $pdf->Text(50, $pdf->getY(), $patient_details['phone_mobile']);
     if($patient_details['phone_mobile_prefer']==1)
-        $pdf->Circle(72,$pdf->getY()+2,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
+        $pdf->Circle(85,$pdf->getY()+2,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
     else
-        $pdf->Circle(72,$pdf->getY()+2,2);
-    $pdf->Text(74, $pdf->getY(), 'Preferred');
+        $pdf->Circle(85,$pdf->getY()+2,2);
+    $pdf->Text(87, $pdf->getY(), 'Preferred');
 
     $pdf->Text(10, $pdf->getY()+9, 'Work telephone');
-    $pdf->Text(40, $pdf->getY(), $patient_details['phone_work']);
+    $pdf->Text(50, $pdf->getY(), $patient_details['phone_work']);
     if($patient_details['phone_work_prefer']==1)
-        $pdf->Circle(72,$pdf->getY()+2,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
+        $pdf->Circle(85,$pdf->getY()+2,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
     else
-        $pdf->Circle(72,$pdf->getY()+2,2);
-    $pdf->Text(74, $pdf->getY(), 'Preferred');
+        $pdf->Circle(85,$pdf->getY()+2,2);
+    $pdf->Text(87, $pdf->getY(), 'Preferred');
 
     $pdf->Text(10, $pdf->getY()+9, 'Email');
-    $pdf->Text(40, $pdf->getY(), $patient_details['email']);
+    $pdf->Text(50, $pdf->getY(), $patient_details['email']);
 
     $pdf->SetFont('Helvetica', 'B', 20 ); 
 
@@ -202,7 +202,7 @@
 
     $pdf->MultiCell(180, 30, $patient_details['health_at_present'],0,'J',true,1,15, $pdf->getY()+10);
 
-    $pdf->Text(10, $pdf->getY()+7, 'Are you taking any medications at present Kindly list the medications as well as doses?');
+    $pdf->Text(10, $pdf->getY()+2, 'Are you taking any medications at present Kindly list the medications as well as doses?');
     
     $pdf->SetFillColor(255, 255, 255);
     $pdf->RoundedRect(10, $pdf->getY()+7, 190, 30, 3.50, '1111', 'DF',array('color' => array(51, 102, 255)));
@@ -212,13 +212,13 @@
     $pdf->SetDrawColor(0,0,0);
     $pdf->SetFillColor(0,0,0);
 
-    $pdf->Text(10, $pdf->getY()+7, 'Are you aware of any allergies to the following?');
+    $pdf->Text(10, $pdf->getY()+3, 'Are you aware of any allergies to the following?');
 
-    $pdf->Text(10, $pdf->getY()+7, 'Milk');
+    $pdf->Text(15, $pdf->getY()+7, 'Milk');
     if($patient_details['allergy_milk']==1)
-        $pdf->Circle(30,$pdf->getY()+2,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
+        $pdf->Circle(35,$pdf->getY()+2,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
     else
-        $pdf->Circle(30,$pdf->getY()+2,2);
+        $pdf->Circle(35,$pdf->getY()+2,2);
     
     $pdf->Text(40, $pdf->getY(), 'Shellfish');
     if($patient_details['allergy_shellfish']==1)
@@ -226,11 +226,11 @@
     else
         $pdf->Circle(60,$pdf->getY()+2,2);
 
-    $pdf->Text(10, $pdf->getY()+7, 'Eggs');
+    $pdf->Text(15, $pdf->getY()+7, 'Eggs');
     if($patient_details['allergy_eggs']==1)
-        $pdf->Circle(30,$pdf->getY()+2,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
+        $pdf->Circle(35,$pdf->getY()+2,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
     else
-        $pdf->Circle(30,$pdf->getY()+2,2);
+        $pdf->Circle(35,$pdf->getY()+2,2);
 
     $pdf->Text(40, $pdf->getY(), 'Iodine');
     if($patient_details['allergy_iodine']==1)
@@ -238,11 +238,11 @@
     else
         $pdf->Circle(60,$pdf->getY()+2,2);
 
-    $pdf->Text(10, $pdf->getY()+7, 'Peanuts');
+    $pdf->Text(15, $pdf->getY()+7, 'Peanuts');
     if($patient_details['allergy_peanuts']==1)
-        $pdf->Circle(30,$pdf->getY()+2,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
+        $pdf->Circle(35,$pdf->getY()+2,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
     else
-        $pdf->Circle(30,$pdf->getY()+2,2);
+        $pdf->Circle(35,$pdf->getY()+2,2);
 
     $pdf->Text(40, $pdf->getY(), 'Pencillin');
     if($patient_details['allergy_pencillin']==1)
@@ -250,28 +250,77 @@
     else
         $pdf->Circle(60,$pdf->getY()+2,2);
     
-    $pdf->Text(10, $pdf->getY()+7, 'Tree nuts(walnuts/almonds/pecan)');
+    $pdf->Text(15, $pdf->getY()+7, 'Tree nuts(walnuts/almonds/pecan)');
     if($patient_details['allergy_treenuts']==1)
-        $pdf->Circle(75,$pdf->getY()+2,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
+        $pdf->Circle(81,$pdf->getY()+2,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
     else
-        $pdf->Circle(75,$pdf->getY()+2,2);
+        $pdf->Circle(81,$pdf->getY()+2,2);
 
-    $pdf->AddPage();
-    
-    
-    $html= "<p> Other Allergies <b>".($patient_details['allergy_others']=='1'?'Yes':'No')."</b> </p>";
-    $patient_details['allergy_others']=='1' ? $html.= "<p> Other Allergies Details <b>".$patient_details['allergy_others_details']."</b> </p>" : '' ;
-    $html.= "<p> Do you suffer from Hayfever? <b>".($patient_details['hay_fever']=='1'?'Yes':'No')."</b> </p>";
-    $html.= "<p> Do you have Asthma? <b>".($patient_details['asthma']=='1'?'Yes':'No')."</b> </p>";
-    
-    
-    $html.= "<br><h1>CHAPERONE</h1>";
-    $html.= "<p> Do you require a chaperone before this consultation? <b>".($patient_details['chaperone_required']=='1'?'Yes':'No')."</b> </p>";
-    
-    
-    //echo $html;
+    $pdf->Text(10, $pdf->getY()+12, 'Other Allergies');
+    $pdf->Text(40, $pdf->getY(), 'Y');
+    if($patient_details['allergy_others_details']==1)
+        $pdf->Circle(47,$pdf->getY()+2,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
+    else
+        $pdf->Circle(47,$pdf->getY()+2,2);
+    $pdf->Text(50, $pdf->getY(), 'N');
+    if($patient_details['allergy_others_details']==0)
+        $pdf->Circle(57,$pdf->getY()+2,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
+    else
+        $pdf->Circle(57,$pdf->getY()+2,2);
 
-    $pdf->writeHTML($html, true, false, true, false, '');
+    $pdf->Text(10, $pdf->getY()+9, 'Other Allergies Details');
+
+    $pdf->SetFillColor(255, 255, 255);
+    $pdf->RoundedRect(10, $pdf->getY()+7, 190, 30, 3.50, '1111', 'DF',array('color' => array(51, 102, 255)));
+
+    $pdf->MultiCell(180, 30, $patient_details['allergy_others_details'],0,'J',true,1,15, $pdf->getY()+10);
+
+    $pdf->SetDrawColor(0, 0, 0);
+    $pdf->SetFillColor(0, 0, 0);
+
+    $pdf->Text(10, $pdf->getY()+2, 'Do you suffer from Hayfever ?');
+    $pdf->Text(65, $pdf->getY(), 'Y');
+    if($patient_details['hay_fever']==1)
+        $pdf->Circle(72,$pdf->getY()+2,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
+    else
+        $pdf->Circle(72,$pdf->getY()+2,2);
+    $pdf->SetDrawColor(0, 0, 0);
+    $pdf->Text(75, $pdf->getY(), 'N');
+    if($patient_details['hay_fever']==0)
+        $pdf->Circle(82,$pdf->getY()+2,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
+    else
+        $pdf->Circle(82,$pdf->getY()+2,2);
+
+    $pdf->Text(10, $pdf->getY()+9, ' Do you have Asthma?');
+    $pdf->Text(65, $pdf->getY(), 'Y');
+    if($patient_details['asthma']==1)
+        $pdf->Circle(72,$pdf->getY()+2,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
+    else
+        $pdf->Circle(72,$pdf->getY()+2,2);
+    $pdf->SetDrawColor(0, 0, 0);
+    $pdf->Text(75, $pdf->getY(), 'N');
+    if($patient_details['asthma']==0)
+        $pdf->Circle(82,$pdf->getY()+2,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
+    else
+        $pdf->Circle(82,$pdf->getY()+2,2);
+
+    $pdf->SetFont('Helvetica', 'B', 20 ); 
+    $pdf->Text(5, $pdf->getY()+9, 'CHAPERONE');
+
+    $pdf->SetFont('Helvetica', '', 11 );
+
+    $pdf->Text(10, $pdf->getY()+12, 'Do you require a chaperone before this consultation?');
+    $pdf->Text(110, $pdf->getY(), 'Y');
+    if($patient_details['chaperone_required']==1)
+        $pdf->Circle(117,$pdf->getY()+2,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
+    else
+        $pdf->Circle(117,$pdf->getY()+2,2);
+     $pdf->SetDrawColor(0, 0, 0);
+     $pdf->Text(120, $pdf->getY(), 'N');
+    if($patient_details['chaperone_required']==0)
+        $pdf->Circle(127,$pdf->getY()+2,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
+    else
+        $pdf->Circle(127,$pdf->getY()+2,2);
 
     $pdf->AddPage();
     
