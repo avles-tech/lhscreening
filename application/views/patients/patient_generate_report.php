@@ -582,6 +582,7 @@
     $pdf->SetFont('Helvetica', '', 11 );
     $pdf->SetTextColor(0, 0, 0);
 
+    $pdf->SetFillColor(0, 0, 0);
 
     $pdf->Text(10, $pdf->getY()+20, 'Mumps');
     if($patient_medical_history_details['vaccine_mumps']==1)
@@ -646,7 +647,7 @@
     $pdf->SetFont('Helvetica', 'B', 20 ); 
     $pdf->SetFillColor(41, 163, 41);
     $pdf->SetTextColor(255, 255, 255);
-    $pdf->writeHTMLCell(50, 5, 10, $pdf->getY()+12, 'Examinations', 0, 0, 1, true, 'L', true);
+    $pdf->writeHTMLCell(50, 5, 10, $pdf->getY()+12, 'Lifestyle', 0, 0, 1, true, 'L', true);
 
     $pdf->SetFont('Helvetica', '', 11 );
     $pdf->SetTextColor(0, 0, 0);
@@ -744,34 +745,34 @@
     $pdf->SetDrawColor(0, 0, 0);
     $pdf->SetFillColor(0, 0, 0);
 
-    if(array_key_exists('blood',$patient_reports)){
-        if(!empty($patient_reports['blood'])){
-            $str = explode('.', $patient_reports['blood']);
-            if($str[1]=='pdf'){
-                $pageCount = $pdf->setSourceFile('./uploads/'.$patient_reports['blood']);
-    
-                for ($pageNo = 1; $pageNo <= $pageCount; $pageNo++) {
-                    // import a page
-                    $templateId = $pdf->importPage($pageNo);
-                
-                    $pdf->AddPage();
-                    // use the imported page and adjust the page size
-                    $pdf->useTemplate($templateId, array('adjustPageSize' => true));
-                
-                    $pdf->SetXY(5, 5);
-                    $pdf->Write(8, 'Blood report');
-                }
-            }
-            else{
-                $pdf->AddPage();
-                $html = "<br><h1>Patient Blood Report</h1><br>";
-                $pdf->writeHTML($html, true, 0, true, 0);
-                $pdf->setImageScale('1.5');
-                $pdf->Image('./uploads/'.$patient_reports['blood'],0,$pdf->GetY());
-            }
+
+    if(!empty($patient_reports['blood'])){
+        $str = explode('.', $patient_reports['blood']);
+        if($str[1]=='pdf'){
+            $pageCount = $pdf->setSourceFile('./uploads/'.$patient_reports['blood']);
+
+            for ($pageNo = 1; $pageNo <= $pageCount; $pageNo++) {
+                // import a page
+                $templateId = $pdf->importPage($pageNo);
             
+                $pdf->AddPage();
+                // use the imported page and adjust the page size
+                $pdf->useTemplate($templateId, array('adjustPageSize' => true));
+            
+                $pdf->SetXY(5, 5);
+                $pdf->Write(8, 'Blood report');
+            }
         }
+        else{
+            $pdf->AddPage();
+            $html = "<br><h1>Patient Blood Report</h1><br>";
+            $pdf->writeHTML($html, true, 0, true, 0);
+            $pdf->setImageScale('1.5');
+            $pdf->Image('./uploads/'.$patient_reports['blood'],0,$pdf->GetY());
+        }
+        
     }
+
 
     
 
