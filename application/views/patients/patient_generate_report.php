@@ -228,8 +228,6 @@
     $pdf->SetTextColor(0, 0, 0);
     $pdf->SetFillColor(0, 0, 0);
     
-    
-
     $pdf->Text(10, $pdf->getY()+12, 'How is your health at present? Is there anything in particular you would like to discuss with the Doctor today?');
     
     $pdf->SetFillColor(255, 255, 255);
@@ -574,13 +572,6 @@
     $pdf->SetDrawColor(0, 0, 0);
     $pdf->SetFillColor(0, 0, 0);
 
-    $html = "<br> <h1>Medical History</h1>";
-    $html.= "<p>Present Symptoms <b>".$patient_medical_history_details['present_symptoms']."</b></p>";
-    $html.= "<p>Past Medical History <b>".$patient_medical_history_details['past_medical_history']."</b></p>";
-    $html.= "<p>Current Treatment <b>".$patient_medical_history_details['current_treatment']."</b></p>";
-    $html.= "<p>Men's / Women's Health <b>".$patient_medical_history_details['health']."</b></p>";
-    $html.= "<p>Family History <b>".$patient_medical_history_details['family_history']."</b></p>";
-
     $html= "<br> <h1>Vaccinations</h1>";
     $html.="<table>";
     $html.="<tr><td>Mumps</td><td><b>".($patient_medical_history_details['vaccine_mumps']=='1' ? 'Yes' : 'No')."</b></td></tr>";
@@ -628,6 +619,65 @@
     $pdf->writeHTML($html, true, 0, true, 0);
 
     $pdf->AddPage();
+
+    $pdf->SetFont('Helvetica', 'B', 20 ); 
+    $pdf->SetFillColor(41, 163, 41);
+    $pdf->SetTextColor(255, 255, 255);
+    $pdf->writeHTMLCell(130, 5, 10, $pdf->getY()+9, 'GP Summary & Recommendation', 0, 0, 1, true, 'L', true);
+
+    $pdf->SetFont('Helvetica', '', 11 );
+    $pdf->SetTextColor(0, 0, 0);
+
+    $pdf->Text(10, $pdf->getY()+12, 'Blood results summary');
+
+    $pdf->SetFillColor(255, 255, 255);
+    $pdf->RoundedRect(10, $pdf->getY()+7, 190, 30, 3.50, '1111', 'DF',array('color' => array(51, 102, 255)));
+
+    $pdf->MultiCell(180, 30, $patient_medical_history_details['blood_results'],0,'J',true,1,15, $pdf->getY()+10);
+
+    $pdf->SetDrawColor(0, 0, 0);
+    $pdf->SetFillColor(0, 0, 0);
+
+    $pdf->Text(10, $pdf->getY()+5, 'Ultrasound results summary');
+
+    $pdf->SetFillColor(255, 255, 255);
+    $pdf->RoundedRect(10, $pdf->getY()+7, 190, 30, 3.50, '1111', 'DF',array('color' => array(51, 102, 255)));
+
+    $pdf->MultiCell(180, 30, $patient_medical_history_details['ultra_sound'],0,'J',true,1,15, $pdf->getY()+10);
+
+    $pdf->SetDrawColor(0, 0, 0);
+    $pdf->SetFillColor(0, 0, 0);
+
+    $pdf->Text(10, $pdf->getY()+5, 'MRI results summary');
+
+    $pdf->SetFillColor(255, 255, 255);
+    $pdf->RoundedRect(10, $pdf->getY()+7, 190, 30, 3.50, '1111', 'DF',array('color' => array(51, 102, 255)));
+
+    $pdf->MultiCell(180, 30, $patient_medical_history_details['mri_results'],0,'J',true,1,15, $pdf->getY()+10);
+
+    $pdf->SetDrawColor(0, 0, 0);
+    $pdf->SetFillColor(0, 0, 0);
+
+    $pdf->Text(10, $pdf->getY()+5, "Overall lifestyle summary");
+
+    $pdf->SetFillColor(255, 255, 255);
+    $pdf->RoundedRect(10, $pdf->getY()+7, 190, 30, 3.50, '1111', 'DF',array('color' => array(51, 102, 255)));
+
+    $pdf->MultiCell(180, 30, $patient_medical_history_details['overall_lifestyle'],0,'J',true,1,15, $pdf->getY()+10);
+
+    $pdf->SetDrawColor(0, 0, 0);
+    $pdf->SetFillColor(0, 0, 0);
+
+    $pdf->Text(10, $pdf->getY()+5, "Additional comments");
+
+    $pdf->SetFillColor(255, 255, 255);
+    $pdf->RoundedRect(10, $pdf->getY()+7, 190, 30, 3.50, '1111', 'DF',array('color' => array(51, 102, 255)));
+
+    $pdf->MultiCell(180, 30, $patient_medical_history_details['additional_comments'],0,'J',true,1,15, $pdf->getY()+10);
+
+    $pdf->SetDrawColor(0, 0, 0);
+    $pdf->SetFillColor(0, 0, 0);
+
     $html = "<br> <h1>GP Summary & Recommendation</h1>";
     $html.='<table> ';
     $html.= "<tr>  <td> Blood results summary </td> <td><b>".$patient_gp_details['blood_results']."</b> </td></tr>";
@@ -636,7 +686,7 @@
     $html.= "<tr>  <td> Overall lifestyle summary </td> <td><b>".$patient_gp_details['overall_lifestyle']."</b> </td></tr>";
     $html.= "<tr>  <td> Additional comments </td> <td><b>".$patient_gp_details['additional_comments']."</b> </td></tr>";
     $html.='</table> ';
-    $pdf->writeHTML($html, true, 0, true, 0);
+    //$pdf->writeHTML($html, true, 0, true, 0);
 
     if(!empty($patient_reports['blood'])){
         $str = explode('.', $patient_reports['blood']);
