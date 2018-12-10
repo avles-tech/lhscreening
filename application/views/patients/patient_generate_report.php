@@ -643,21 +643,15 @@
     else
         $pdf->Circle(45,$pdf->getY()+4,2);
 
-    
-    $html="<table>";
-    $html.="<tr><td>Mumps</td><td><b>".($patient_medical_history_details['vaccine_mumps']=='1' ? 'Yes' : 'No')."</b></td></tr>";
-    $html.="<tr><td>German Measles (Rubella)</td><td><b>".($patient_medical_history_details['vaccine_rubella']=='1' ? 'Yes' : 'No')."</b></td></tr>";
-    $html.="<tr><td>Chicken Pox</td><td><b>".($patient_medical_history_details['vaccine_tb']=='1' ? 'Yes' : 'No')."</b></td></tr>";
-    $html.="<tr><td>Tuberculosis (TB)</td><td><b>".($patient_medical_history_details['vaccine_chicken_pox']=='1' ? 'Yes' : 'No')."</b></td></tr>";
-    $html.="<tr><td>Tetanus</td><td><b>".($patient_medical_history_details['vaccine_tetanus']=='1' ? 'Yes' : 'No')."</b></td></tr>";
-    $html.="<tr><td>Polio</td><td><b>".($patient_medical_history_details['vaccine_polio']=='1' ? 'Yes' : 'No')."</b></td></tr>";
-    $html.="<tr><td>Hepatitis</td><td><b>".($patient_medical_history_details['vaccine_hepatitis']=='1' ? 'Yes' : 'No')."</b></td></tr>";
-    $html.="<tr><td>Diphtheria</td><td><b>".($patient_medical_history_details['vaccine_diphtheria']=='1' ? 'Yes' : 'No')."</b></td></tr>";
-    $html.="<tr><td>Scarlet Fever</td><td><b>".($patient_medical_history_details['vaccine_scarlet_fever']=='1' ? 'Yes' : 'No')."</b></td></tr>";
-    $html.="<tr><td>Yellow Fever</td><td><b>".($patient_medical_history_details['vaccine_yellow_fever']=='1' ? 'Yes' : 'No')."</b></td></tr>";
-    $html.="</table>";
+    $pdf->SetFont('Helvetica', 'B', 20 ); 
+    $pdf->SetFillColor(41, 163, 41);
+    $pdf->SetTextColor(255, 255, 255);
+    $pdf->writeHTMLCell(50, 5, 10, $pdf->getY()+12, 'Examinations', 0, 0, 1, true, 'L', true);
 
-    $html= "<br> <h1>Examinations</h1>";
+    $pdf->SetFont('Helvetica', '', 11 );
+    $pdf->SetTextColor(0, 0, 0);
+
+    $html= "<br>";
     $html.="<p> Height <b>".$patient_medical_history_details['smoking']."</b></p>";
     $html.="<p> Weight <b>".$patient_medical_history_details['sleep']."</b></p>";
     $html.="<p> Body Mass Index <b>".$patient_medical_history_details['body_mass']."</b></p>";
@@ -667,7 +661,16 @@
     $pdf->writeHTML($html, true, 0, true, 0);
 
     $pdf->AddPage();
-    $html = "<br> <h1>Laboratory Test</h1>";
+
+    $pdf->SetFont('Helvetica', 'B', 20 ); 
+    $pdf->SetFillColor(41, 163, 41);
+    $pdf->SetTextColor(255, 255, 255);
+    $pdf->writeHTMLCell(65, 5, 10, $pdf->getY()+12, 'Laboratory Test', 0, 0, 1, true, 'L', true);
+
+    $pdf->SetFont('Helvetica', '', 11 );
+    $pdf->SetTextColor(0, 0, 0);
+
+    $html = "<br>";
     foreach ($uniqueCategories as $cat):
         $html.='<h3>'.$cat.'</h3>';
         $html.='<table> ';
