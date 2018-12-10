@@ -699,7 +699,7 @@
     $pdf->SetFillColor(255, 255, 255);
     $pdf->RoundedRect(10, $pdf->getY()+7, 190, 30, 3.50, '1111', 'DF',array('color' => array(51, 102, 255)));
 
-    $pdf->MultiCell(180, 30, $patient_medical_history_details['blood_results'],0,'J',true,1,15, $pdf->getY()+10);
+    $pdf->MultiCell(180, 30, $patient_gp_details['blood_results'],0,'J',true,1,15, $pdf->getY()+10);
 
     $pdf->SetDrawColor(0, 0, 0);
     $pdf->SetFillColor(0, 0, 0);
@@ -709,7 +709,7 @@
     $pdf->SetFillColor(255, 255, 255);
     $pdf->RoundedRect(10, $pdf->getY()+7, 190, 30, 3.50, '1111', 'DF',array('color' => array(51, 102, 255)));
 
-    $pdf->MultiCell(180, 30, $patient_medical_history_details['ultra_sound'],0,'J',true,1,15, $pdf->getY()+10);
+    $pdf->MultiCell(180, 30, $patient_gp_details['ultra_sound'],0,'J',true,1,15, $pdf->getY()+10);
 
     $pdf->SetDrawColor(0, 0, 0);
     $pdf->SetFillColor(0, 0, 0);
@@ -719,7 +719,7 @@
     $pdf->SetFillColor(255, 255, 255);
     $pdf->RoundedRect(10, $pdf->getY()+7, 190, 30, 3.50, '1111', 'DF',array('color' => array(51, 102, 255)));
 
-    $pdf->MultiCell(180, 30, $patient_medical_history_details['mri_results'],0,'J',true,1,15, $pdf->getY()+10);
+    $pdf->MultiCell(180, 30, $patient_gp_details['mri_results'],0,'J',true,1,15, $pdf->getY()+10);
 
     $pdf->SetDrawColor(0, 0, 0);
     $pdf->SetFillColor(0, 0, 0);
@@ -729,7 +729,7 @@
     $pdf->SetFillColor(255, 255, 255);
     $pdf->RoundedRect(10, $pdf->getY()+7, 190, 30, 3.50, '1111', 'DF',array('color' => array(51, 102, 255)));
 
-    $pdf->MultiCell(180, 30, $patient_medical_history_details['overall_lifestyle'],0,'J',true,1,15, $pdf->getY()+10);
+    $pdf->MultiCell(180, 30, $patient_gp_details['overall_lifestyle'],0,'J',true,1,15, $pdf->getY()+10);
 
     $pdf->SetDrawColor(0, 0, 0);
     $pdf->SetFillColor(0, 0, 0);
@@ -739,7 +739,7 @@
     $pdf->SetFillColor(255, 255, 255);
     $pdf->RoundedRect(10, $pdf->getY()+7, 190, 30, 3.50, '1111', 'DF',array('color' => array(51, 102, 255)));
 
-    $pdf->MultiCell(180, 30, $patient_medical_history_details['additional_comments'],0,'J',true,1,15, $pdf->getY()+10);
+    $pdf->MultiCell(180, 30, $patient_gp_details['additional_comments'],0,'J',true,1,15, $pdf->getY()+10);
 
     $pdf->SetDrawColor(0, 0, 0);
     $pdf->SetFillColor(0, 0, 0);
