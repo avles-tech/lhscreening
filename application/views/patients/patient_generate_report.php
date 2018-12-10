@@ -61,6 +61,15 @@
     $pdf->setPrintFooter(true);
     
     $pdf->AddPage();
+    $pdf->SetFillColor(255, 255, 255);
+    $pdf->SetFont('Helvetica', '', 13 );
+    $pdf->MultiCell(180, 30, 'Our LycaHealth Ultra Health Assessment comprises of confidential questionnaires that ask questions about your health habits, your medical history and any pre-existing medical conditions (if known).',0,'[LEFT]',true,1,15, $pdf->getY()+10);
+
+    $pdf->MultiCell(180, 30, 'From the analysis of this you will receive an easy-to-understand health report that you an overview of your current health status, as well as health risks and how to manage them.',0,'[LEFT]',true,1,15, $pdf->getY()+2);
+
+    $pdf->MultiCell(180, 30, 'Whether you are trying to get in shape, control an existing condition, or whether this is done as part of a work placed annual health check-up, you will find the help you need through the LycaHealth Ultra Health Assessment.',0,'[LEFT]',true,1,15, $pdf->getY()+2);
+
+    $pdf->AddPage();
 
     $gender = $patient_details['gender'] == '1' ? 'Male' : 'Female';
 
