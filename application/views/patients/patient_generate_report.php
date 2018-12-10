@@ -676,6 +676,7 @@
         $html.='<table> ';
         foreach ($patient_lab_test as $item):
             if($item['category']==$cat):
+                
                 $html.= "<tr>  <td> ".$item['test_name']." </td> <td><b>".$item['value']."</b> ".$item['unit']."</td></tr>";
             endif;
         endforeach;
@@ -742,16 +743,6 @@
 
     $pdf->SetDrawColor(0, 0, 0);
     $pdf->SetFillColor(0, 0, 0);
-
-    $html = "<br> <h1>GP Summary & Recommendation</h1>";
-    $html.='<table> ';
-    $html.= "<tr>  <td> Blood results summary </td> <td><b>".$patient_gp_details['blood_results']."</b> </td></tr>";
-    $html.= "<tr>  <td> Ultrasound results summary </td> <td><b>".$patient_gp_details['ultra_sound']."</b> </td></tr>";
-    $html.= "<tr>  <td> MRI results summary </td> <td><b>".$patient_gp_details['mri_results']."</b> </td></tr>";
-    $html.= "<tr>  <td> Overall lifestyle summary </td> <td><b>".$patient_gp_details['overall_lifestyle']."</b> </td></tr>";
-    $html.= "<tr>  <td> Additional comments </td> <td><b>".$patient_gp_details['additional_comments']."</b> </td></tr>";
-    $html.='</table> ';
-    //$pdf->writeHTML($html, true, 0, true, 0);
 
     if(!empty($patient_reports['blood'])){
         $str = explode('.', $patient_reports['blood']);
