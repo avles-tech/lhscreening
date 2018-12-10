@@ -651,10 +651,71 @@
 
     $pdf->SetFont('Helvetica', '', 11 );
     $pdf->SetTextColor(0, 0, 0);
+    $pdf->SetFillColor(0, 0, 0);
+
+    $pdf->Text(10, $pdf->getY()+12, 'Smoking');
+    $pdf->Text(30, $pdf->getY(), $patient_medical_history_details['smoking']);
+
+    $pdf->Text(10, $pdf->getY()+5, 'Sleep');
+    $pdf->Text(30, $pdf->getY(), $patient_medical_history_details['sleep']);
+    
+    $pdf->Text(10, $pdf->getY()+5, "Sleep comments");
+
+    $pdf->SetFillColor(255, 255, 255);
+    $pdf->RoundedRect(10, $pdf->getY()+7, 190, 30, 3.50, '1111', 'DF',array('color' => array(51, 102, 255)));
+
+    $pdf->MultiCell(180, 30, $patient_medical_history_details['sleep_comments'],0,'L',true,1,15, $pdf->getY()+10);
+
+    $pdf->SetDrawColor(0, 0, 0);
+    $pdf->SetFillColor(0, 0, 0);
+
+    $pdf->Text(10, $pdf->getY()+5, "Alcohol Consumption");
+
+    $pdf->SetFillColor(255, 255, 255);
+    $pdf->RoundedRect(10, $pdf->getY()+7, 190, 23, 3.50, '1111', 'DF',array('color' => array(51, 102, 255)));
+
+    $pdf->MultiCell(180, 30, $patient_medical_history_details['alcohol_consumption'],0,'L',true,1,15, $pdf->getY()+10);
+
+    $pdf->SetDrawColor(0, 0, 0);
+    $pdf->SetFillColor(0, 0, 0);
+
+
+    $pdf->Text(10, $pdf->getY(), "Diet");
+
+    $pdf->SetFillColor(255, 255, 255);
+    $pdf->RoundedRect(10, $pdf->getY()+7, 190, 23, 3.50, '1111', 'DF',array('color' => array(51, 102, 255)));
+
+    $pdf->MultiCell(180, 30, $patient_medical_history_details['diet'],0,'L',true,1,15, $pdf->getY()+10);
+
+    $pdf->SetDrawColor(0, 0, 0);
+    $pdf->SetFillColor(0, 0, 0);
+
+    $pdf->Text(10, $pdf->getY(), 'Exercise');
+    $pdf->Text(30, $pdf->getY(), $patient_medical_history_details['exercise']);
+
+    $pdf->Text(10, $pdf->getY()+5, "Additional comments on exercise");
+
+    $pdf->SetFillColor(255, 255, 255);
+    $pdf->RoundedRect(10, $pdf->getY()+7, 190, 23, 3.50, '1111', 'DF',array('color' => array(51, 102, 255)));
+
+    $pdf->MultiCell(180, 30, $patient_medical_history_details['diet'],0,'L',true,1,15, $pdf->getY()+10);
+
+    $pdf->SetDrawColor(0, 0, 0);
+    $pdf->SetFillColor(0, 0, 0);
+
+    $pdf->AddPage();
+
+    $pdf->SetFont('Helvetica', 'B', 20 ); 
+    $pdf->SetFillColor(41, 163, 41);
+    $pdf->SetTextColor(255, 255, 255);
+    $pdf->writeHTMLCell(50, 5, 10, $pdf->getY()+12, 'Examinations', 0, 0, 1, true, 'L', true);
+
+    $pdf->SetFont('Helvetica', '', 11 );
+    $pdf->SetTextColor(0, 0, 0);
 
     $html= "<br>";
-    $html.="<p> Height <b>".$patient_medical_history_details['smoking']."</b></p>";
-    $html.="<p> Weight <b>".$patient_medical_history_details['sleep']."</b></p>";
+    $html.="<p> Height <b>".$patient_medical_history_details['height']."</b></p>";
+    $html.="<p> Weight <b>".$patient_medical_history_details['weight']."</b></p>";
     $html.="<p> Body Mass Index <b>".$patient_medical_history_details['body_mass']."</b></p>";
     $html.="<p> Body Fat <b>".$patient_medical_history_details['body_fat']."</b></p>";
     $html.="<p> Extraordinary Physical Findings <b>".$patient_medical_history_details['extra_ordinary_physical']."</b></p>";
