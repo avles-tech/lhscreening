@@ -210,6 +210,7 @@
     $pdf->MultiCell(180, 30, $patient_details['current_medication'],0,'J',true,1,15, $pdf->getY()+10);
 
     $pdf->SetDrawColor(0,0,0);
+    $pdf->SetFillColor(0,0,0);
 
     $pdf->Text(10, $pdf->getY()+7, 'Are you aware of any allergies to the following?');
 
@@ -298,26 +299,33 @@
     $pdf->writeHTML($html, true, false, true, false, '');
 
     $pdf->AddPage();
+
+    $pdf->SetFont('Helvetica', 'B', 20 ); 
+    $pdf->Text(5, 20, 'PHQ-9 Details');
+
+    $pdf->SetFont('Helvetica', '', 11 );
+    
     $phq_score = 0;
-    $html = "<br> <h1>PHQ-9 Details</h1>";
-    foreach ($patient_phq as $item): 
-        $html.= "<p>".$item['question']." <b> ".$answers[$item['value']]."</b></p>";
+    $pdf->setY(35);
+    $pdf->setCellPaddings(2, 2, 1, 1);
+    foreach ($patient_phq as $item):
+        $y_test = $pdf->getY();
+        $pdf->MultiCell(105, 18, $item['question'],1,'[RIGHT]',0,1,15, $y_test);
+        $pdf->MultiCell(80, 18, $answers[$item['value']],1,'[CENTER]',0,1,120, $y_test);
         $phq_score = $phq_score + $item['value'];
     endforeach;
-    $html.= "<p> PHQ-9 Score: <b>".$phq_score."/27</b></p>";
-    $dep_ser = 0;
-    if($phq_score <= 4)
+    
+    $dep_ser = '';
+    if($phq_score <= 5)
         $dep_ser = 'None';
-    else if($phq_score <= 9)
+    else if($phq_score <= 10)
         $dep_ser = 'Mild';
-    else if($phq_score <= 14)
-        $dep_ser = 'Moderate';
-    else if($phq_score <= 19)
-        $dep_ser = 'Moderately severe';
-    else if($phq_score <= 27)
-        $dep_ser = 'Severe';
-    $html.= "<p> Depression Severity: <b>".$dep_ser."</b></p>";
-    $pdf->writeHTML($html, true, 0, true, 0);
+    else if($phq_score <= 15)
+        $dep_ser = 'Moderate ';
+    else
+        $dep_ser ='Sever anxiety';
+
+    $pdf->MultiCell(185, 10, 'PHQ-9 Score: '.$phq_score."/27"."\nDepression Severity: ".$dep_ser,1,'[RIGHT]',0,1,15, $pdf->getY());
 
     $pdf->AddPage();
 
@@ -329,23 +337,12 @@
     $gad_score = 0;
     $pdf->setY(35);
     foreach ($patient_gad as $item):
-        //$pdf->setY($pdf->getY()+7); 
-        $pdf->MultiCell(105, 10, $item['question'],1,'[RIGHT]',0,1,15, $pdf->getY());
-        $pdf->MultiCell(80, 10, $answers[$item['value']],1,'[RIGHT]',0,1,120, $pdf->getY()-10);
+        $y_test = $pdf->getY();
+        $pdf->MultiCell(105, 13, $item['question'],1,'[RIGHT]',0,1,15, $y_test);
+        $pdf->MultiCell(80, 13, $answers[$item['value']],1,'[RIGHT]',0,1,120, $y_test);
         $gad_score = $gad_score + $item['value'];
     endforeach;
     
-    $pdf->MultiCell(185, 10, 'GAD-7 Score: '.$gad_score."/24",1,'[RIGHT]',0,1,15, $pdf->getY());
-
-    $pdf->AddPage();
-
-    $gad_score = 0;
-    $html = "<br><h1>GAD-7 Details</h1>";
-    foreach ($patient_gad as $item): 
-        $html.= "<p>".$item['question']." <b> ".$answers[$item['value']]."</b></p>";
-        $gad_score = $gad_score + $item['value'];
-    endforeach;
-    $html.= "<p> GAD-7 Score: <b>".$gad_score."/24</b></p>";
     $anx_ser = '';
     if($gad_score <= 5)
         $anx_ser = 'None';
@@ -355,8 +352,8 @@
         $anx_ser = 'Moderate ';
     else
         $anx_ser ='Sever anxiety';
-    $html.= "<p> Anxiety Severity: <b>".$anx_ser."</b></p>";
-    $pdf->writeHTML($html, true, 0, true, 0);
+
+    $pdf->MultiCell(185, 10, 'GAD-7 Score: '.$gad_score."/24"."\n Anxiety Severity: ".$anx_ser,1,'[RIGHT]',0,1,15, $pdf->getY());
 
     $pdf->AddPage();
     $html = "<br> <h1>Medical History</h1>";
