@@ -572,8 +572,79 @@
     $pdf->SetDrawColor(0, 0, 0);
     $pdf->SetFillColor(0, 0, 0);
 
-    $html= "<br> <h1>Vaccinations</h1>";
-    $html.="<table>";
+    $pdf->AddPage();
+
+    $pdf->SetFont('Helvetica', 'B', 20 ); 
+    $pdf->SetFillColor(41, 163, 41);
+    $pdf->SetTextColor(255, 255, 255);
+    $pdf->writeHTMLCell(50, 5, 10, $pdf->getY()+9, 'Vaccinations', 0, 0, 1, true, 'L', true);
+
+    $pdf->SetFont('Helvetica', '', 11 );
+    $pdf->SetTextColor(0, 0, 0);
+
+
+    $pdf->Text(10, $pdf->getY()+20, 'Mumps');
+    if($patient_medical_history_details['vaccine_mumps']==1)
+        $pdf->Circle(45,$pdf->getY()+4,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
+    else
+        $pdf->Circle(45,$pdf->getY()+4,2);
+    
+    $pdf->Text(55, $pdf->getY(), 'German Measles (Rubella)');
+    if($patient_medical_history_details['vaccine_rubella']==1)
+        $pdf->Circle(110,$pdf->getY()+4,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
+    else
+        $pdf->Circle(110,$pdf->getY()+4,2);
+
+    $pdf->Text(130, $pdf->getY(), 'Chicken Pox');
+    if($patient_medical_history_details['vaccine_chicken_pox']==1)
+        $pdf->Circle(160,$pdf->getY()+4,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
+    else
+        $pdf->Circle(160,$pdf->getY()+4,2);
+
+    $pdf->Text(10, $pdf->getY()+7, 'Tuberculosis (TB)');
+    if($patient_medical_history_details['vaccine_tb']==1)
+        $pdf->Circle(45,$pdf->getY()+4,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
+    else
+        $pdf->Circle(45,$pdf->getY()+4,2);
+    
+    $pdf->Text(55, $pdf->getY(), 'Tetanus');
+    if($patient_medical_history_details['vaccine_tetanus']==1)
+        $pdf->Circle(110,$pdf->getY()+4,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
+    else
+        $pdf->Circle(110,$pdf->getY()+4,2);
+
+    $pdf->Text(130, $pdf->getY(), 'Polio');
+    if($patient_medical_history_details['vaccine_polio']==1)
+        $pdf->Circle(160,$pdf->getY()+4,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
+    else
+        $pdf->Circle(160,$pdf->getY()+4,2);
+
+    $pdf->Text(10, $pdf->getY()+7, 'Hepatitis');
+    if($patient_medical_history_details['vaccine_hepatitis']==1)
+        $pdf->Circle(45,$pdf->getY()+4,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
+    else
+        $pdf->Circle(45,$pdf->getY()+4,2);
+    
+    $pdf->Text(55, $pdf->getY(), 'Diphtheria');
+    if($patient_medical_history_details['vaccine_diphtheria']==1)
+        $pdf->Circle(110,$pdf->getY()+4,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
+    else
+        $pdf->Circle(110,$pdf->getY()+4,2);
+
+    $pdf->Text(130, $pdf->getY(), 'Scarlet Fever');
+    if($patient_medical_history_details['vaccine_scarlet_fever']==1)
+        $pdf->Circle(160,$pdf->getY()+4,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
+    else
+        $pdf->Circle(160,$pdf->getY()+4,2);
+
+    $pdf->Text(10, $pdf->getY()+7, 'Yellow Fever');
+    if($patient_medical_history_details['vaccine_yellow_fever']==1)
+        $pdf->Circle(45,$pdf->getY()+4,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
+    else
+        $pdf->Circle(45,$pdf->getY()+4,2);
+
+    
+    $html="<table>";
     $html.="<tr><td>Mumps</td><td><b>".($patient_medical_history_details['vaccine_mumps']=='1' ? 'Yes' : 'No')."</b></td></tr>";
     $html.="<tr><td>German Measles (Rubella)</td><td><b>".($patient_medical_history_details['vaccine_rubella']=='1' ? 'Yes' : 'No')."</b></td></tr>";
     $html.="<tr><td>Chicken Pox</td><td><b>".($patient_medical_history_details['vaccine_tb']=='1' ? 'Yes' : 'No')."</b></td></tr>";
@@ -586,16 +657,7 @@
     $html.="<tr><td>Yellow Fever</td><td><b>".($patient_medical_history_details['vaccine_yellow_fever']=='1' ? 'Yes' : 'No')."</b></td></tr>";
     $html.="</table>";
 
-    $html.= "<br> <h1>Lifestyle</h1>";
-    $html.="<p> Smoking <b>".$patient_medical_history_details['smoking']."</b></p>";
-    $html.="<p> Sleep <b>".$patient_medical_history_details['sleep']."</b></p>";
-    $html.="<p> Sleep comments <b>".$patient_medical_history_details['sleep_comments']."</b></p>";
-    $html.="<p> Alcohol Consumption <b>".$patient_medical_history_details['alcohol_consumption']."</b></p>";
-    $html.="<p> Diet <b>".$patient_medical_history_details['diet']."</b></p>";
-    $html.="<p> Exercise <b>".$patient_medical_history_details['exercise']."</b></p>";
-    $html.="<p> Additional comments on exercise <b>".$patient_medical_history_details['exercise_comments']."</b></p>";
-
-    $html.= "<br> <h1>Examinations</h1>";
+    $html= "<br> <h1>Examinations</h1>";
     $html.="<p> Height <b>".$patient_medical_history_details['smoking']."</b></p>";
     $html.="<p> Weight <b>".$patient_medical_history_details['sleep']."</b></p>";
     $html.="<p> Body Mass Index <b>".$patient_medical_history_details['body_mass']."</b></p>";
