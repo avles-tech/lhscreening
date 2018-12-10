@@ -47,7 +47,8 @@
     // set color for text
     $pdf->SetTextColor(255, 255, 255);
     $pdf->SetFont('Helvetica', 'B', 20 );
-    $pdf->writeHTMLCell(297, 5, 0, 30, 'Health Assessment Report', 0, 0, 1, true, 'C', true);
+    $pdf->MultiCell(297, 5,'',0,'J',true,1,0,30);
+    $pdf->Text(50, 30, 'Health Assessment Report');
 
     $pdf->setImageScale('5');
     $pdf->Image('./assets/lyca/images/Health Assesment.jpg',15, $pdf->getY()+60);
@@ -86,10 +87,14 @@
     $diff=date_diff($date1,$date2);
 
     $pdf->SetFont('Helvetica', 'B', 20 ); 
-    $pdf->Text(5, 20, 'Patient Details');
+    //$pdf->Text(5, 20, 'Patient Details');
+    $pdf->SetFillColor(41, 163, 41);
+    $pdf->SetTextColor(255, 255, 255);
+    $pdf->MultiCell(297, 5,'',0,'J',true,1,0,20);
+    $pdf->Text(30, 20, 'Patient Details');
 
     $pdf->SetFont('Helvetica', '', 11 );
-
+    $pdf->SetTextColor(0, 0, 0);
     $pdf->Text(10, $pdf->getY()+12, 'First Name');
     $pdf->Text(50, $pdf->getY(), $patient_details['first_name']);
 
@@ -148,9 +153,14 @@
 
     $pdf->SetFont('Helvetica', 'B', 20 ); 
 
-    $pdf->Text(5, $pdf->getY()+9, 'Next of kin details:');
+    //$pdf->Text(5, $pdf->getY()+9, 'Next of kin details');
+    $pdf->SetFillColor(41, 163, 41);
+    $pdf->SetTextColor(255, 255, 255);
+    $pdf->writeHTMLCell(297, 5, 0, $pdf->getY()+9, 'Next of kin details', 0, 0, 1, true, 'C', true);
 
     $pdf->SetFont('Helvetica', '', 11 ); 
+    $pdf->SetTextColor(0, 0, 0);
+    $pdf->SetFillColor(0, 0, 0);
 
     $pdf->Text(10, $pdf->getY()+12, 'Name ');
     $pdf->Text(50, $pdf->getY(), $patient_details['next_of_kin_name']);
@@ -177,9 +187,14 @@
     //$pdf->AddPage();
 
     $pdf->SetFont('Helvetica', 'B', 20 ); 
-    $pdf->Text(5, $pdf->getY()+9, 'NHS / Alternative GP');
+    //$pdf->Text(5, $pdf->getY()+9, 'NHS / Alternative GP');
+    $pdf->SetFillColor(41, 163, 41);
+    $pdf->SetTextColor(255, 255, 255);
+    $pdf->writeHTMLCell(297, 5, 0, $pdf->getY()+9, 'NHS / Alternative GP', 0, 0, 1, true, 'C', true);
 
-    $pdf->SetFont('Helvetica', '', 11 );
+    $pdf->SetFont('Helvetica', '', 11 ); 
+    $pdf->SetTextColor(0, 0, 0);
+    $pdf->SetFillColor(0, 0, 0);
 
     $pdf->Text(10, $pdf->getY()+12, 'Name of NHS / Alternative GP');
     $pdf->Text(70, $pdf->getY(), $patient_details['alternative_gp']);
@@ -199,9 +214,15 @@
     $pdf->AddPage();
 
     $pdf->SetFont('Helvetica', 'B', 20 ); 
-    $pdf->Text(5, 20, 'Health');
+    //$pdf->Text(5, 20, 'Health');
+    $pdf->SetFillColor(41, 163, 41);
+    $pdf->SetTextColor(255, 255, 255);
+    $pdf->writeHTMLCell(297, 5, 0, $pdf->getY()+9, 'Health', 0, 0, 1, true, 'L', true);
 
-    $pdf->SetFont('Helvetica', '', 11 );
+    $pdf->SetFont('Helvetica', '', 11 ); 
+    $pdf->SetTextColor(0, 0, 0);
+    $pdf->SetFillColor(0, 0, 0);
+    
     
 
     $pdf->Text(10, $pdf->getY()+12, 'How is your health at present? Is there anything in particular you would like to discuss with the Doctor today?');
@@ -314,9 +335,14 @@
         $pdf->Circle(82,$pdf->getY()+2,2);
 
     $pdf->SetFont('Helvetica', 'B', 20 ); 
-    $pdf->Text(5, $pdf->getY()+9, 'CHAPERONE');
+    //$pdf->Text(5, $pdf->getY()+9, 'CHAPERONE');
+    $pdf->SetFillColor(41, 163, 41);
+    $pdf->SetTextColor(255, 255, 255);
+    $pdf->writeHTMLCell(297, 5, 0, $pdf->getY()+9, 'CHAPERONE', 0, 0, 1, true, 'L', true);
 
-    $pdf->SetFont('Helvetica', '', 11 );
+    $pdf->SetFont('Helvetica', '', 11 ); 
+    $pdf->SetTextColor(0, 0, 0);
+    $pdf->SetFillColor(0, 0, 0);
 
     $pdf->Text(10, $pdf->getY()+12, 'Do you require a chaperone before this consultation?');
     $pdf->Text(110, $pdf->getY(), 'Y');
@@ -332,7 +358,56 @@
         $pdf->Circle(127,$pdf->getY()+2,2);
 
     $pdf->AddPage();
+
+    $pdf->SetFont('Helvetica', 'B', 20 ); 
+    $pdf->SetFillColor(41, 163, 41);
+    $pdf->SetTextColor(255, 255, 255);
+    $pdf->MultiCell(297, 5,'',0,'J',true,1,0,20);
+    $pdf->Text(30, 20, 'CONSENT');
+
+    $pdf->SetFont('Helvetica', '', 11 );
+    $pdf->SetTextColor(0, 0, 0);
+
+    $pdf->SetFillColor(255, 255, 255);
+    $pdf->MultiCell(200, 5,'I consent to being contacted by un-encrypted email and/or telephone and /or WhatsApp messenger to discuss management plans, diagnosis and to disclose results. I accept the risk associated with receiving messages received by the above means',0,'L',true,1,10, $pdf->getY()+12);
+
+    $pdf->SetFillColor(0, 0, 0);
+
+    $x_cor = 15;
+    $pdf->Text(15, $pdf->getY()+5, 'Y');
+    $x_cor = $x_cor + 7; // 22
+    if($patient_details['consent_unencrypted']==1)
+        $pdf->Circle($x_cor ,$pdf->getY()+2,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
+    else
+        $pdf->Circle($x_cor,$pdf->getY()+2,2);
+    $x_cor = $x_cor + 7; // 35
+    $pdf->Text($x_cor, $pdf->getY(), 'N');
+    $x_cor = $x_cor + 7; // 42
+    if($patient_details['consent_unencrypted']==0)
+        $pdf->Circle($x_cor,$pdf->getY()+2,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
+    else
+        $pdf->Circle($x_cor,$pdf->getY()+2,2);
+
+    $pdf->SetFillColor(255, 255, 255);
+    $pdf->MultiCell(200, 5,'I consent to having messages left on my preferred telephone number',0,'L',true,1,10, $pdf->getY()+7);
     
+    $pdf->SetFillColor(0, 0, 0);
+
+    $x_cor = 15;
+    $pdf->Text(15, $pdf->getY()+5, 'Y');
+    $x_cor = $x_cor + 7; // 22
+    if($patient_details['consent_messages']==1)
+        $pdf->Circle($x_cor ,$pdf->getY()+2,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
+    else
+        $pdf->Circle($x_cor,$pdf->getY()+2,2);
+    $x_cor = $x_cor + 7; // 35
+    $pdf->Text($x_cor, $pdf->getY(), 'N');
+    $x_cor = $x_cor + 7; // 42
+    if($patient_details['consent_messages']==0)
+        $pdf->Circle($x_cor,$pdf->getY()+2,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
+    else
+        $pdf->Circle($x_cor,$pdf->getY()+2,2);
+
     $html= "<br><h1>CONSENT</h1>";
     $html.= "<p>I consent to being contacted by un-encrypted email and/or telephone and /or WhatsApp messenger to discuss management plans, diagnosis and to disclose results. I accept the risk associated with receiving messages received by the above means <b>".($patient_details['consent_unencrypted']=='1'?'Yes':'No')."</b> </p>";
     $html.= "<p>I consent to having messages left on my preferred telephone number <b>".($patient_details['consent_messages']=='1'?'Yes':'No')."</b> </p>";
@@ -362,9 +437,13 @@
     $pdf->AddPage();
 
     $pdf->SetFont('Helvetica', 'B', 20 ); 
-    $pdf->Text(5, 20, 'PHQ-9 Details');
+    $pdf->SetFillColor(41, 163, 41);
+    $pdf->SetTextColor(255, 255, 255);
+    $pdf->MultiCell(297, 5,'',0,'J',true,1,0,20);
+    $pdf->Text(30, 20, 'PHQ-9 Details');
 
     $pdf->SetFont('Helvetica', '', 11 );
+    $pdf->SetTextColor(0, 0, 0);
     
     $phq_score = 0;
     $pdf->setY(35);
@@ -391,9 +470,13 @@
     $pdf->AddPage();
 
     $pdf->SetFont('Helvetica', 'B', 20 ); 
-    $pdf->Text(5, 20, 'GAD-7 Details');
+    $pdf->SetFillColor(41, 163, 41);
+    $pdf->SetTextColor(255, 255, 255);
+    $pdf->MultiCell(297, 5,'',0,'J',true,1,0,20);
+    $pdf->Text(30, 20, 'GAD-7 Details');
 
     $pdf->SetFont('Helvetica', '', 11 );
+    $pdf->SetTextColor(0, 0, 0);
     
     $gad_score = 0;
     $pdf->setY(35);
