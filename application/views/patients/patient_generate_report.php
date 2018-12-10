@@ -744,32 +744,36 @@
     $pdf->SetDrawColor(0, 0, 0);
     $pdf->SetFillColor(0, 0, 0);
 
-    if(!empty($patient_reports['blood'])){
-        $str = explode('.', $patient_reports['blood']);
-        if($str[1]=='pdf'){
-            $pageCount = $pdf->setSourceFile('./uploads/'.$patient_reports['blood']);
-
-            for ($pageNo = 1; $pageNo <= $pageCount; $pageNo++) {
-                // import a page
-                $templateId = $pdf->importPage($pageNo);
-            
-                $pdf->AddPage();
-                // use the imported page and adjust the page size
-                $pdf->useTemplate($templateId, array('adjustPageSize' => true));
-            
-                $pdf->SetXY(5, 5);
-                $pdf->Write(8, 'Blood report');
+    if(array_key_exists('blood',$patient_reports)){
+        if(!empty($patient_reports['blood'])){
+            $str = explode('.', $patient_reports['blood']);
+            if($str[1]=='pdf'){
+                $pageCount = $pdf->setSourceFile('./uploads/'.$patient_reports['blood']);
+    
+                for ($pageNo = 1; $pageNo <= $pageCount; $pageNo++) {
+                    // import a page
+                    $templateId = $pdf->importPage($pageNo);
+                
+                    $pdf->AddPage();
+                    // use the imported page and adjust the page size
+                    $pdf->useTemplate($templateId, array('adjustPageSize' => true));
+                
+                    $pdf->SetXY(5, 5);
+                    $pdf->Write(8, 'Blood report');
+                }
             }
+            else{
+                $pdf->AddPage();
+                $html = "<br><h1>Patient Blood Report</h1><br>";
+                $pdf->writeHTML($html, true, 0, true, 0);
+                $pdf->setImageScale('1.5');
+                $pdf->Image('./uploads/'.$patient_reports['blood'],0,$pdf->GetY());
+            }
+            
         }
-        else{
-            $pdf->AddPage();
-            $html = "<br><h1>Patient Blood Report</h1><br>";
-            $pdf->writeHTML($html, true, 0, true, 0);
-            $pdf->setImageScale('1.5');
-            $pdf->Image('./uploads/'.$patient_reports['blood'],0,$pdf->GetY());
-        }
-        
     }
+
+    
 
     if(!empty($patient_reports['mri'])){
         $str = explode('.', $patient_reports['mri']);
