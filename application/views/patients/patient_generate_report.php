@@ -6,6 +6,7 @@
     $patient_reports = $this->patient_reports_model->get_patient_reports($patient_id);
     $patient_medical_history_details = $this->patient_medical_history_model->get($patient_id);
     $patient_gp_details = $this->patient_gp_model->get($patient_id);
+    $patient_travel_details = $this->patient_travel_model->get($patient_id);
 
     $categories = array();
     foreach ($patient_lab_test as $c) {
@@ -523,7 +524,56 @@
     $pdf->SetTextColor(0, 0, 0);
     $pdf->SetFillColor(255, 255, 255);
 
+    $y_set = $pdf->getY()+15;
+    $pdf->MultiCell(60, 18, '',1,'[RIGHT]',0,1,15, $y_set);
+    $pdf->MultiCell(60, 18, 'Maternal',1,'[CENTER]',0,1,75,$y_set);
+    $pdf->MultiCell(60, 18, 'Paternal',1,'[CENTER]',0,1,135, $y_set);
     
+    $y_set = $pdf->getY();
+    $pdf->MultiCell(60, 18, 'Great grandparents',1,'[RIGHT]',0,1,15, $y_set);
+    $pdf->MultiCell(60, 18, $patient_medical_history_details['great_grandparents_maternal'],1,'[CENTER]',0,1,75, $y_set);
+    $pdf->MultiCell(60, 18, $patient_medical_history_details['great_grandparents_maternal'],1,'[CENTER]',0,1,135, $y_set);
+
+    $y_set = $pdf->getY();
+    $pdf->MultiCell(60, 18, 'Grandfather',1,'[RIGHT]',0,1,15, $y_set);
+    $pdf->MultiCell(60, 18, $patient_medical_history_details['great_grandparents_maternal'],1,'[CENTER]',0,1,75, $y_set);
+    $pdf->MultiCell(60, 18, $patient_medical_history_details['great_grandparents_maternal'],1,'[CENTER]',0,1,135, $y_set);
+
+
+    $y_set = $pdf->getY();
+    $pdf->MultiCell(60, 18, 'Grandmother',1,'[RIGHT]',0,1,15, $y_set);
+    $pdf->MultiCell(60, 18, $patient_medical_history_details['great_grandparents_maternal'],1,'[CENTER]',0,1,75, $y_set);
+    $pdf->MultiCell(60, 18, $patient_medical_history_details['great_grandparents_maternal'],1,'[CENTER]',0,1,135, $y_set);
+
+
+    $y_set = $pdf->getY();
+    $pdf->MultiCell(60, 18, 'Aunts & Uncles',1,'[RIGHT]',0,1,15, $y_set);
+    $pdf->MultiCell(60, 18, $patient_medical_history_details['great_grandparents_maternal'],1,'[CENTER]',0,1,75, $y_set);
+    $pdf->MultiCell(60, 18, $patient_medical_history_details['great_grandparents_maternal'],1,'[CENTER]',0,1,135, $y_set);
+
+
+    $y_set = $pdf->getY();
+    $pdf->MultiCell(60, 18, 'Cousins',1,'[RIGHT]',0,1,15, $y_set);
+    $pdf->MultiCell(60, 18, $patient_medical_history_details['grandfather_maternal'],1,'[CENTER]',0,1,75, $y_set);
+    $pdf->MultiCell(60, 18, $patient_medical_history_details['grandfather_paternal'],1,'[CENTER]',0,1,135, $y_set);
+
+
+    $y_set = $pdf->getY();
+    $pdf->MultiCell(60, 18, 'Parents',1,'[RIGHT]',0,1,15, $y_set);
+    $pdf->MultiCell(60, 18, $patient_medical_history_details['grandmother_maternal'],1,'[CENTER]',0,1,75, $y_set);
+    $pdf->MultiCell(60, 18, $patient_medical_history_details['grandmother_paternal'],1,'[CENTER]',0,1,135, $y_set);
+
+
+    $y_set = $pdf->getY();
+    $pdf->MultiCell(60, 18, 'Siblings',1,'[RIGHT]',0,1,15, $y_set);
+    $pdf->MultiCell(60, 18, $patient_medical_history_details['aunt_uncle_maternal'],1,'[CENTER]',0,1,75, $y_set);
+    $pdf->MultiCell(60, 18, $patient_medical_history_details['aunt_uncle_paternal'],1,'[CENTER]',0,1,135, $y_set);
+
+
+    $y_set = $pdf->getY();
+    $pdf->MultiCell(60, 18, 'Offspring',1,'[RIGHT]',0,1,15, $y_set);
+    $pdf->MultiCell(60, 18, $patient_medical_history_details['cousins_maternal'],1,'[CENTER]',0,1,75, $y_set);
+    $pdf->MultiCell(60, 18, $patient_medical_history_details['cousins_maternal'],1,'[CENTER]',0,1,135, $y_set);
 
     $pdf->AddPage();
 
@@ -667,10 +717,64 @@
     $pdf->SetFillColor(0, 0, 0);
 
     $pdf->Text(10, $pdf->getY()+15, 'Smoking');
-    $pdf->Text(30, $pdf->getY(), $patient_medical_history_details['smoking']);
+    //$pdf->Text(30, $pdf->getY(), $patient_medical_history_details['smoking']);
+
+    $pdf->Text(28, $pdf->getY(), 'Non-smoker');
+    if($patient_medical_history_details['smoking']=='Non-smoker')
+        $pdf->Circle(55,$pdf->getY()+4,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
+    else
+        $pdf->Circle(55,$pdf->getY()+4,2);
+
+    $pdf->Text(58, $pdf->getY(), 'Social');
+    if($patient_medical_history_details['smoking']=='Social')
+        $pdf->Circle(75,$pdf->getY()+4,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
+    else
+        $pdf->Circle(75,$pdf->getY()+4,2);
+    
+    $pdf->Text(78, $pdf->getY(), 'Frequent');
+    if($patient_medical_history_details['smoking']=='Frequent')
+        $pdf->Circle(99,$pdf->getY()+4,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
+    else
+        $pdf->Circle(99,$pdf->getY()+4,2);
+
+    $pdf->Text(102, $pdf->getY(), 'Moderate');
+    if($patient_medical_history_details['smoking']=='Moderate')
+        $pdf->Circle(123,$pdf->getY()+4,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
+    else
+        $pdf->Circle(123,$pdf->getY()+4,2);
+
+    $pdf->Text(126, $pdf->getY(), 'Chronic');
+    if($patient_medical_history_details['smoking']=='Chronic')
+        $pdf->Circle(144,$pdf->getY()+4,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
+    else
+        $pdf->Circle(144,$pdf->getY()+4,2);
 
     $pdf->Text(10, $pdf->getY()+7, 'Sleep');
-    $pdf->Text(30, $pdf->getY(), $patient_medical_history_details['sleep']);
+    //$pdf->Text(30, $pdf->getY(), $patient_medical_history_details['sleep']);
+
+    $pdf->Text(28, $pdf->getY(), '4-5 Hours');
+    if($patient_medical_history_details['sleep']=='4-5 Hours')
+        $pdf->Circle(52,$pdf->getY()+4,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
+    else
+        $pdf->Circle(52,$pdf->getY()+4,2);
+
+    $pdf->Text(58, $pdf->getY(), '6-8 Hours');
+    if($patient_medical_history_details['sleep']=='6-8 Hours')
+        $pdf->Circle(80,$pdf->getY()+4,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
+    else
+        $pdf->Circle(80,$pdf->getY()+4,2);
+    
+    $pdf->Text(88, $pdf->getY(), '8-10 Hours');
+    if($patient_medical_history_details['sleep']=='8-10 Hours')
+        $pdf->Circle(115,$pdf->getY()+4,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
+    else
+        $pdf->Circle(115,$pdf->getY()+4,2);
+
+    $pdf->Text(118, $pdf->getY(), '>10 Hours');
+    if($patient_medical_history_details['sleep']=='>10 Hours')
+        $pdf->Circle(145,$pdf->getY()+4,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
+    else
+        $pdf->Circle(145,$pdf->getY()+4,2);
     
     $pdf->Text(10, $pdf->getY()+7, "Sleep comments");
 
@@ -715,6 +819,35 @@
 
     $pdf->SetDrawColor(0, 0, 0);
     $pdf->SetFillColor(0, 0, 0);
+
+    $pdf->AddPage();
+
+    $pdf->SetFont('Helvetica', 'B', 20 ); 
+    $pdf->SetFillColor(41, 163, 41);
+    $pdf->SetTextColor(255, 255, 255);
+    //$pdf->MultiCell(297, 5,'',0,'J',true,1,0,20);
+    //$pdf->Text(30, 20, 'PHQ-9 Details');
+    $pdf->writeHTMLCell(100, 5, 10, $pdf->getY()+9, 'Travel & Vaccination History', 0, 0, 1, true, 'L', true);
+
+    $pdf->SetFont('Helvetica', '', 11 );
+    $pdf->SetTextColor(0, 0, 0);
+    
+    $pdf->setCellPaddings(2, 2, 1, 1);
+
+    //$pdf->MultiCell(105, 18, $item['question'],1,'[RIGHT]',0,1,15, $y_test);
+    //$pdf->MultiCell(80, 18, $answers[$item['value']],1,'[CENTER]',0,1,120, $y_test);
+    
+    $phq_score = 0;
+    $pdf->setY($pdf->getY()+15);
+
+    $length = count($patient_travel_details);
+			for ($i=0; $i < $length; $i++) { 
+                //echo "travel_destination[".$i."].value = ".$patient_travel_details[$i]['travel_destination'];
+                $y_test = $pdf->getY();
+                $pdf->MultiCell(60, 18, $patient_travel_details[$i]['travel_destination'],1,'[RIGHT]',0,1,15, $y_test);
+                $pdf->MultiCell(60, 18, $patient_travel_details[$i]['travel_date'],1,'[CENTER]',0,1,75, $y_test);
+                $pdf->MultiCell(60, 18, $patient_travel_details[$i]['travel_duration'],1,'[CENTER]',0,1,135, $y_test);
+			}
 
     $pdf->AddPage();
 
