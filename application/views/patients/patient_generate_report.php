@@ -66,7 +66,7 @@
     $pdf->SetFont('Helvetica', '', 13 );
     $pdf->MultiCell(180, 30, 'Our LycaHealth Ultra Health Assessment comprises of confidential questionnaires that ask questions about your health habits, your medical history and any pre-existing medical conditions (if known).',0,'[LEFT]',true,1,15, $pdf->getY()+10);
 
-    $pdf->MultiCell(180, 30, 'From the analysis of this you will receive an easy-to-understand health report that you an overview of your current health status, as well as health risks and how to manage them.',0,'[LEFT]',true,1,15, $pdf->getY()+2);
+    $pdf->MultiCell(180, 30, 'From the analysis of this you will receive an easy-to-understand health report that give you an overview of your current health status, as well as health risks and how to manage them.',0,'[LEFT]',true,1,15, $pdf->getY()+2);
 
     $pdf->MultiCell(180, 30, 'Whether you are trying to get in shape, control an existing condition, or whether this is done as part of a work placed annual health check-up, you will find the help you need through the LycaHealth Ultra Health Assessment.',0,'[LEFT]',true,1,15, $pdf->getY()+2);
 
@@ -283,7 +283,7 @@
     else
         $pdf->Circle(60,$pdf->getY()+2,2);
     
-    $pdf->Text(15, $pdf->getY()+7, 'Tree nuts(walnuts/almonds/pecan)');
+    $pdf->Text(15, $pdf->getY()+7, 'Tree Nuts(Walnuts/Almonds/Pecan)');
     if($patient_details['allergy_treenuts']==1)
         $pdf->Circle(81,$pdf->getY()+2,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
     else
@@ -373,7 +373,7 @@
     $pdf->SetTextColor(0, 0, 0);
 
     $pdf->SetFillColor(255, 255, 255);
-    $pdf->MultiCell(200, 5,'I consent to being contacted by un-encrypted email and/or telephone and /or WhatsApp messenger to discuss management plans, diagnosis and to disclose results. I accept the risk associated with receiving messages received by the above means',0,'L',true,1,10, $pdf->getY()+12);
+    $pdf->MultiCell(200, 5,'I consent to being contacted by un-encrypted email and/or telephone to discuss management plans, diagnosis and to disclose results. I accept the risk associated with receiving messages received by the above means',0,'L',true,1,10, $pdf->getY()+12);
 
     $pdf->SetFillColor(0, 0, 0);
 
@@ -517,6 +517,19 @@
     $pdf->SetFont('Helvetica', 'B', 20 ); 
     $pdf->SetFillColor(41, 163, 41);
     $pdf->SetTextColor(255, 255, 255);
+    $pdf->writeHTMLCell(60, 5, 10, $pdf->getY()+9, 'Family History', 0, 0, 1, true, 'L', true);
+
+    $pdf->SetFont('Helvetica', '', 11 );
+    $pdf->SetTextColor(0, 0, 0);
+    $pdf->SetFillColor(255, 255, 255);
+
+    
+
+    $pdf->AddPage();
+
+    $pdf->SetFont('Helvetica', 'B', 20 ); 
+    $pdf->SetFillColor(41, 163, 41);
+    $pdf->SetTextColor(255, 255, 255);
     $pdf->writeHTMLCell(60, 5, 10, $pdf->getY()+9, 'Medical History', 0, 0, 1, true, 'L', true);
 
     $pdf->SetFont('Helvetica', '', 11 );
@@ -653,44 +666,44 @@
     $pdf->SetTextColor(0, 0, 0);
     $pdf->SetFillColor(0, 0, 0);
 
-    $pdf->Text(10, $pdf->getY()+12, 'Smoking');
+    $pdf->Text(10, $pdf->getY()+15, 'Smoking');
     $pdf->Text(30, $pdf->getY(), $patient_medical_history_details['smoking']);
 
-    $pdf->Text(10, $pdf->getY()+5, 'Sleep');
+    $pdf->Text(10, $pdf->getY()+7, 'Sleep');
     $pdf->Text(30, $pdf->getY(), $patient_medical_history_details['sleep']);
     
-    $pdf->Text(10, $pdf->getY()+5, "Sleep comments");
+    $pdf->Text(10, $pdf->getY()+7, "Sleep comments");
 
     $pdf->SetFillColor(255, 255, 255);
     $pdf->RoundedRect(10, $pdf->getY()+7, 190, 30, 3.50, '1111', 'DF',array('color' => array(51, 102, 255)));
 
-    $pdf->MultiCell(180, 30, $patient_medical_history_details['sleep_comments'],0,'L',true,1,15, $pdf->getY()+10);
+    $pdf->MultiCell(180, 30, $patient_medical_history_details['sleep_comments'],0,'L',true,1,15, $pdf->getY()+12);
 
     $pdf->SetDrawColor(0, 0, 0);
     $pdf->SetFillColor(0, 0, 0);
 
-    $pdf->Text(10, $pdf->getY()+5, "Alcohol Consumption");
+    $pdf->Text(10, $pdf->getY()+1, "Alcohol Consumption");
 
     $pdf->SetFillColor(255, 255, 255);
     $pdf->RoundedRect(10, $pdf->getY()+7, 190, 23, 3.50, '1111', 'DF',array('color' => array(51, 102, 255)));
 
-    $pdf->MultiCell(180, 30, $patient_medical_history_details['alcohol_consumption'],0,'L',true,1,15, $pdf->getY()+10);
+    $pdf->MultiCell(180, 30, $patient_medical_history_details['alcohol_consumption'],0,'L',true,1,15, $pdf->getY()+7);
 
     $pdf->SetDrawColor(0, 0, 0);
     $pdf->SetFillColor(0, 0, 0);
 
 
-    $pdf->Text(10, $pdf->getY(), "Diet");
+    $pdf->Text(10, $pdf->getY()-3, "Diet");
 
     $pdf->SetFillColor(255, 255, 255);
     $pdf->RoundedRect(10, $pdf->getY()+7, 190, 23, 3.50, '1111', 'DF',array('color' => array(51, 102, 255)));
 
-    $pdf->MultiCell(180, 30, $patient_medical_history_details['diet'],0,'L',true,1,15, $pdf->getY()+10);
+    $pdf->MultiCell(180, 30, $patient_medical_history_details['diet'],0,'L',true,1,15, $pdf->getY()+7);
 
     $pdf->SetDrawColor(0, 0, 0);
     $pdf->SetFillColor(0, 0, 0);
 
-    $pdf->Text(10, $pdf->getY(), 'Exercise');
+    $pdf->Text(10, $pdf->getY()-3, 'Exercise');
     $pdf->Text(30, $pdf->getY(), $patient_medical_history_details['exercise']);
 
     $pdf->Text(10, $pdf->getY()+5, "Additional comments on exercise");
