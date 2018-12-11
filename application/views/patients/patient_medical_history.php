@@ -102,73 +102,73 @@
 				<tr>
 					<td>Great grandparents</td>
 					<td>
-						<input class='form-control' name='great_grandparents_maternal' value="<?php echo array_key_exists('great_grandparents_maternal', $patient_medical_history_details) ? $patient_medical_history_details['great_grandparents_maternal']:'';?>" <?php echo $read_only ?>/>
+						<input class='form-control' name='great_grandparents_maternal' value="<?php echo !empty($patient_medical_history_details['great_grandparents_maternal']) ? $patient_medical_history_details['great_grandparents_maternal']:'';?>" <?php echo $read_only ?>/>
 					</td>
 					<td>
-						<input class='form-control' name='great_grand_parents_paternal' value="<?php echo array_key_exists('great_grand_parents_paternal', $patient_medical_history_details) ? $patient_medical_history_details['great_grand_parents_paternal']:'';?>" <?php echo $read_only ?>/>
+						<input class='form-control' name='great_grand_parents_paternal' value="<?php echo !empty($patient_medical_history_details['great_grand_parents_paternal']) ? $patient_medical_history_details['great_grand_parents_paternal']:'';?>" <?php echo $read_only ?>/>
 					</td>
 				</tr>
 				<tr>
 					<td>Grandfather</td>
 					<td>
-						<input class='form-control' name='grandfather_maternal' value="<?php echo array_key_exists('grandfather_maternal', $patient_medical_history_details) ? $patient_medical_history_details['grandfather_maternal']:'';?>" <?php echo $read_only ?>/>
+						<input class='form-control' name='grandfather_maternal' value="<?php echo !empty($patient_medical_history_details['grandfather_maternal']) ? $patient_medical_history_details['grandfather_maternal']:'';?>" <?php echo $read_only ?>/>
 					</td>
 					<td>
-						<input class='form-control' name='grandfather_paternal' value="<?php echo array_key_exists('grandfather_paternal', $patient_medical_history_details) ? $patient_medical_history_details['grandfather_paternal']:'';?>" <?php echo $read_only ?>/>
+						<input class='form-control' name='grandfather_paternal' value="<?php echo !empty($patient_medical_history_details['grandfather_paternal']) ? $patient_medical_history_details['grandfather_paternal']:'';?>" <?php echo $read_only ?>/>
 					</td>
 				</tr>
 				<tr>
 					<td>Grandmother</td>
 					<td>
-						<input class='form-control' name='grandmother_maternal' value="<?php echo array_key_exists('grandmother_maternal', $patient_medical_history_details) ? $patient_medical_history_details['grandmother_maternal']:'';?>" <?php echo $read_only ?>/>
+						<input class='form-control' name='grandmother_maternal' value="<?php echo !empty($patient_medical_history_details['grandmother_maternal']) ? $patient_medical_history_details['grandmother_maternal']:'';?>" <?php echo $read_only ?>/>
 					</td>
 					<td>
-						<input class='form-control' name='grandmother_paternal' value="<?php echo array_key_exists('grandmother_paternal', $patient_medical_history_details) ? $patient_medical_history_details['grandmother_paternal']:'';?>" <?php echo $read_only ?>/>
+						<input class='form-control' name='grandmother_paternal' value="<?php echo !empty($patient_medical_history_details['grandmother_paternal']) ? $patient_medical_history_details['grandmother_paternal']:'';?>" <?php echo $read_only ?>/>
 					</td>
 				</tr>
 				<tr>
 					<td>Aunts &amp; Uncles</td>
 					<td>
-						<input class='form-control' name='aunt_uncle_maternal' value="<?php echo array_key_exists('aunt_uncle_maternal', $patient_medical_history_details) ? $patient_medical_history_details['aunt_uncle_maternal']:'';?>" <?php echo $read_only ?>/>
+						<input class='form-control' name='aunt_uncle_maternal' value="<?php echo !empty($patient_medical_history_details['aunt_uncle_maternal']) ? $patient_medical_history_details['aunt_uncle_maternal']:'';?>" <?php echo $read_only ?>/>
 					</td>
 					<td>
-						<input class='form-control' name='aunt_uncle_paternal' value="<?php echo array_key_exists('aunt_uncle_paternal', $patient_medical_history_details) ? $patient_medical_history_details['aunt_uncle_paternal']:'';?>" <?php echo $read_only ?>/>
+						<input class='form-control' name='aunt_uncle_paternal' value="<?php echo !empty($patient_medical_history_details['aunt_uncle_paternal']) ? $patient_medical_history_details['aunt_uncle_paternal']:'';?>" <?php echo $read_only ?>/>
 					</td>
 				</tr>
 				<tr>
 					<td>Cousins</td>
 					<td>
-						<input class='form-control' name='cousins_maternal' value="<?php echo array_key_exists('cousins_maternal', $patient_medical_history_details) ? $patient_medical_history_details['cousins_maternal']:'';?>" <?php echo $read_only ?>/>
+						<input class='form-control' name='cousins_maternal' value="<?php echo !empty($patient_medical_history_details['cousins_maternal']) ? $patient_medical_history_details['cousins_maternal']:'';?>" <?php echo $read_only ?>/>
 					</td>
 					<td>
-						<input class='form-control' name='cousins_paternal' value="<?php echo array_key_exists('cousins_paternal', $patient_medical_history_details) ? $patient_medical_history_details['cousins_paternal']:'';?>" <?php echo $read_only ?>/>
+						<input class='form-control' name='cousins_paternal' value="<?php echo !empty($patient_medical_history_details['cousins_paternal']) ? $patient_medical_history_details['cousins_paternal']:'';?>" <?php echo $read_only ?>/>
 					</td>
 				</tr>
 				<tr>
 					<td>Parents</td>
 					<td>
-						<input class='form-control' name='parents_maternal' value="<?php echo array_key_exists('parents_maternal', $patient_medical_history_details) ? $patient_medical_history_details['parents_maternal']:'';?>" <?php echo $read_only ?>/>
+						<input class='form-control' name='parents_maternal' value="<?php echo !empty($patient_medical_history_details['parents_maternal']) ? $patient_medical_history_details['parents_maternal']:'';?>" <?php echo $read_only ?>/>
 					</td>
 					<td>
-						<input class='form-control' name='parents_paternal' value="<?php echo array_key_exists('parents_paternal', $patient_medical_history_details) ? $patient_medical_history_details['parents_paternal']:'';?>" <?php echo $read_only ?>/>
+						<input class='form-control' name='parents_paternal' value="<?php echo !empty($patient_medical_history_details['parents_paternal']) ? $patient_medical_history_details['parents_paternal']:'';?>" <?php echo $read_only ?>/>
 					</td>
 				</tr>
 				<tr>
 					<td>Siblings</td>
 					<td>
-						<input class='form-control' name='siblings_maternal' value="<?php echo array_key_exists('siblings_maternal', $patient_medical_history_details) ? $patient_medical_history_details['siblings_maternal']:'';?>" <?php echo $read_only ?>/>
+						<input class='form-control' name='siblings_maternal' value="<?php echo !empty($patient_medical_history_details['siblings_maternal']) ? $patient_medical_history_details['siblings_maternal']:'';?>" <?php echo $read_only ?>/>
 					</td>
 					<td>
-						<input class='form-control' name='siblings_paternal' value="<?php echo array_key_exists('siblings_paternal', $patient_medical_history_details) ? $patient_medical_history_details['siblings_paternal']:'';?>" <?php echo $read_only ?>/>
+						<input class='form-control' name='siblings_paternal' value="<?php echo !empty($patient_medical_history_details['siblings_paternal']) ? $patient_medical_history_details['siblings_paternal']:'';?>" <?php echo $read_only ?>/>
 					</td>
 				</tr>
 				<tr>
 					<td>Offspring</td>
 					<td>
-						<input class='form-control' name='offspring_maternal' value="<?php echo array_key_exists('offspring_maternal', $patient_medical_history_details) ? $patient_medical_history_details['offspring_maternal']:'';?>" <?php echo $read_only ?>/>
+						<input class='form-control' name='offspring_maternal' value="<?php echo !empty($patient_medical_history_details['offspring_maternal']) ? $patient_medical_history_details['offspring_maternal']:'';?>" <?php echo $read_only ?>/>
 					</td>
 					<td>
-						<input class='form-control' name='offspring_paternal' value="<?php echo array_key_exists('offspring_paternal', $patient_medical_history_details) ? $patient_medical_history_details['offspring_paternal']:'';?>" <?php echo $read_only ?>/>
+						<input class='form-control' name='offspring_paternal' value="<?php echo !empty($patient_medical_history_details['offspring_paternal']) ? $patient_medical_history_details['offspring_paternal']:'';?>" <?php echo $read_only ?>/>
 					</td>
 				</tr>
 			</tbody>
