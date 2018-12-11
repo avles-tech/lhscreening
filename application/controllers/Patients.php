@@ -13,6 +13,7 @@ class Patients extends CI_Controller {
                 $this->load->model('user_activity_model');
                 $this->load->model('patient_medical_history_model');
                 $this->load->model('patient_gp_model');
+                $this->load->model('patient_travel_model');
 
                 $this->load->model('gad_model');
                 $this->load->helper('url_helper');

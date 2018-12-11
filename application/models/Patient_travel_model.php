@@ -12,8 +12,4 @@ class Patient_travel_model extends CI_Model {
                 return $query->row_array();
         }
 
-        public function set($patient_id,$form_data)
-        {
-                $this->db->delete('patient_travel', array('patient_id' => $patient_id));
-        }
 }

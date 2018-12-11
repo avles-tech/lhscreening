@@ -2,6 +2,8 @@
 	<article class="card-body">
 		<?php
 			$patient_medical_history_details = $this->patient_medical_history_model->get($patient_id);
+
+			$patient_travel_details = $this->patient_travel_model->get($patient_id);
 			
             echo validation_errors();  
 			//echo form_open('patients/update_medical_history');
@@ -48,26 +50,26 @@
 					<tbody>
 						<tr class="hidden">
 							<td>
-								<input type="text" name="travel[travel_destination]" class="form-control" placeholder="Destination" data-parsley-id="47">
+								<input type="text" name="travel[travel_destination]" class="form-control" placeholder="Destination" data-parsley-id="1">
 							</td>
 							<td>
-								<input type="date" name="travel[travel_date]" class="form-control" placeholder="Date" data-parsley-id="49">
+								<input type="date" name="travel[travel_date]" class="form-control" placeholder="Date" data-parsley-id="1">
 							</td>
 							<td class="col-xs-3" style="padding-left:0">
 								<input type="number" name="travel[travel_duration]" class="form-control" placeholder="Duration in days"
-								 data-parsley-id="51">
+								 data-parsley-id="1">
 							</td>
 						</tr>
 						<tr>
 							<td>
-								<input type="text" name="travel[travel_destination]" class="form-control" placeholder="Destination" data-parsley-id="53">
+								<input type="text" name="travel[travel_destination]" class="form-control" placeholder="Destination" data-parsley-id="2">
 							</td>
 							<td>
-								<input type="date" name="travel[travel_date]" class="form-control" placeholder="Date" data-parsley-id="55">
+								<input type="date" name="travel[travel_date]" class="form-control" placeholder="Date" data-parsley-id="2">
 							</td>
 							<td class="col-xs-3" style="padding-left:0">
 								<input type="number" name="travel[travel_duration]" class="form-control" placeholder="Duration in days"
-								 data-parsley-id="57">
+								 data-parsley-id="2">
 							</td>
 						</tr>
 						<tr class="validate_this" style="display: table-row;">
@@ -427,4 +429,14 @@
 			});
 
 		});
+
+		var travel_destination = window.document.getElementsByName('travel[travel_destination]');
+
+		<?php 
+			$length = count($patient_travel_details);
+			for ($i=0; $i < $length; $i++) { 
+				//echo "travel_destination[".$i."].value = ".$patient_travel_details[$i]['travel_destination'];
+			}
+			
+		?>
 	</script>
