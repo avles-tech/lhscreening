@@ -66,7 +66,7 @@
     $pdf->SetFont('Helvetica', '', 13 );
     $pdf->MultiCell(180, 30, 'Our LycaHealth Ultra Health Assessment comprises of confidential questionnaires that ask questions about your health habits, your medical history and any pre-existing medical conditions (if known).',0,'[LEFT]',true,1,15, $pdf->getY()+10);
 
-    $pdf->MultiCell(180, 30, 'From the analysis of this you will receive an easy-to-understand health report that you an overview of your current health status, as well as health risks and how to manage them.',0,'[LEFT]',true,1,15, $pdf->getY()+2);
+    $pdf->MultiCell(180, 30, 'From the analysis of this you will receive an easy-to-understand health report that give you an overview of your current health status, as well as health risks and how to manage them.',0,'[LEFT]',true,1,15, $pdf->getY()+2);
 
     $pdf->MultiCell(180, 30, 'Whether you are trying to get in shape, control an existing condition, or whether this is done as part of a work placed annual health check-up, you will find the help you need through the LycaHealth Ultra Health Assessment.',0,'[LEFT]',true,1,15, $pdf->getY()+2);
 
@@ -283,7 +283,7 @@
     else
         $pdf->Circle(60,$pdf->getY()+2,2);
     
-    $pdf->Text(15, $pdf->getY()+7, 'Tree nuts(walnuts/almonds/pecan)');
+    $pdf->Text(15, $pdf->getY()+7, 'Tree Nuts(Walnuts/Almonds/Pecan)');
     if($patient_details['allergy_treenuts']==1)
         $pdf->Circle(81,$pdf->getY()+2,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
     else
@@ -373,7 +373,7 @@
     $pdf->SetTextColor(0, 0, 0);
 
     $pdf->SetFillColor(255, 255, 255);
-    $pdf->MultiCell(200, 5,'I consent to being contacted by un-encrypted email and/or telephone and /or WhatsApp messenger to discuss management plans, diagnosis and to disclose results. I accept the risk associated with receiving messages received by the above means',0,'L',true,1,10, $pdf->getY()+12);
+    $pdf->MultiCell(200, 5,'I consent to being contacted by un-encrypted email and/or telephone to discuss management plans, diagnosis and to disclose results. I accept the risk associated with receiving messages received by the above means',0,'L',true,1,10, $pdf->getY()+12);
 
     $pdf->SetFillColor(0, 0, 0);
 
