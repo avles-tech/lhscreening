@@ -517,6 +517,19 @@
     $pdf->SetFont('Helvetica', 'B', 20 ); 
     $pdf->SetFillColor(41, 163, 41);
     $pdf->SetTextColor(255, 255, 255);
+    $pdf->writeHTMLCell(60, 5, 10, $pdf->getY()+9, 'Family History', 0, 0, 1, true, 'L', true);
+
+    $pdf->SetFont('Helvetica', '', 11 );
+    $pdf->SetTextColor(0, 0, 0);
+    $pdf->SetFillColor(255, 255, 255);
+
+    
+
+    $pdf->AddPage();
+
+    $pdf->SetFont('Helvetica', 'B', 20 ); 
+    $pdf->SetFillColor(41, 163, 41);
+    $pdf->SetTextColor(255, 255, 255);
     $pdf->writeHTMLCell(60, 5, 10, $pdf->getY()+9, 'Medical History', 0, 0, 1, true, 'L', true);
 
     $pdf->SetFont('Helvetica', '', 11 );
@@ -653,44 +666,44 @@
     $pdf->SetTextColor(0, 0, 0);
     $pdf->SetFillColor(0, 0, 0);
 
-    $pdf->Text(10, $pdf->getY()+12, 'Smoking');
+    $pdf->Text(10, $pdf->getY()+15, 'Smoking');
     $pdf->Text(30, $pdf->getY(), $patient_medical_history_details['smoking']);
 
-    $pdf->Text(10, $pdf->getY()+5, 'Sleep');
+    $pdf->Text(10, $pdf->getY()+7, 'Sleep');
     $pdf->Text(30, $pdf->getY(), $patient_medical_history_details['sleep']);
     
-    $pdf->Text(10, $pdf->getY()+5, "Sleep comments");
+    $pdf->Text(10, $pdf->getY()+7, "Sleep comments");
 
     $pdf->SetFillColor(255, 255, 255);
     $pdf->RoundedRect(10, $pdf->getY()+7, 190, 30, 3.50, '1111', 'DF',array('color' => array(51, 102, 255)));
 
-    $pdf->MultiCell(180, 30, $patient_medical_history_details['sleep_comments'],0,'L',true,1,15, $pdf->getY()+10);
+    $pdf->MultiCell(180, 30, $patient_medical_history_details['sleep_comments'],0,'L',true,1,15, $pdf->getY()+12);
 
     $pdf->SetDrawColor(0, 0, 0);
     $pdf->SetFillColor(0, 0, 0);
 
-    $pdf->Text(10, $pdf->getY()+5, "Alcohol Consumption");
+    $pdf->Text(10, $pdf->getY()+1, "Alcohol Consumption");
 
     $pdf->SetFillColor(255, 255, 255);
     $pdf->RoundedRect(10, $pdf->getY()+7, 190, 23, 3.50, '1111', 'DF',array('color' => array(51, 102, 255)));
 
-    $pdf->MultiCell(180, 30, $patient_medical_history_details['alcohol_consumption'],0,'L',true,1,15, $pdf->getY()+10);
+    $pdf->MultiCell(180, 30, $patient_medical_history_details['alcohol_consumption'],0,'L',true,1,15, $pdf->getY()+7);
 
     $pdf->SetDrawColor(0, 0, 0);
     $pdf->SetFillColor(0, 0, 0);
 
 
-    $pdf->Text(10, $pdf->getY(), "Diet");
+    $pdf->Text(10, $pdf->getY()-3, "Diet");
 
     $pdf->SetFillColor(255, 255, 255);
     $pdf->RoundedRect(10, $pdf->getY()+7, 190, 23, 3.50, '1111', 'DF',array('color' => array(51, 102, 255)));
 
-    $pdf->MultiCell(180, 30, $patient_medical_history_details['diet'],0,'L',true,1,15, $pdf->getY()+10);
+    $pdf->MultiCell(180, 30, $patient_medical_history_details['diet'],0,'L',true,1,15, $pdf->getY()+7);
 
     $pdf->SetDrawColor(0, 0, 0);
     $pdf->SetFillColor(0, 0, 0);
 
-    $pdf->Text(10, $pdf->getY(), 'Exercise');
+    $pdf->Text(10, $pdf->getY()-3, 'Exercise');
     $pdf->Text(30, $pdf->getY(), $patient_medical_history_details['exercise']);
 
     $pdf->Text(10, $pdf->getY()+5, "Additional comments on exercise");
