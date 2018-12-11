@@ -37,7 +37,7 @@
 
     $pdf->AddPage();
     $pdf->setImageScale('1.5');
-    $pdf->Image('./assets/lyca/images/logo.png',15, 10);
+    $pdf->Image('./assets/lyca/images/logo.png',55, 10);
 
     $y = $pdf->getY();
 
@@ -54,7 +54,7 @@
     $pdf->Image('./assets/lyca/images/Health Assesment.jpg',15, $pdf->getY()+60);
 
     $pdf->SetTextColor(0, 0, 0);
-    $pdf->SetFont('Helvetica', 'B', 11 );
+    $pdf->SetFont('Helvetica', 'B', 15 );
 
     $pdf->Text(100, 250, $patient_details['title'].' '.$patient_details['first_name'].' '.$patient_details['last_name']);
 
