@@ -9,7 +9,7 @@ class Patient_travel_model extends CI_Model {
         public function get($patient_id)
         {
                 $query = $this->db->get_where('patient_travel', array('patient_id' => $patient_id));
-                return $query->row_array();
+                return $query->result_array();
         }
 
 }

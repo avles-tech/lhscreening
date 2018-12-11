@@ -6,6 +6,7 @@
     $patient_reports = $this->patient_reports_model->get_patient_reports($patient_id);
     $patient_medical_history_details = $this->patient_medical_history_model->get($patient_id);
     $patient_gp_details = $this->patient_gp_model->get($patient_id);
+    $patient_travel_details = $this->patient_travel_model->get($patient_id);
 
     $categories = array();
     foreach ($patient_lab_test as $c) {
@@ -35,555 +36,604 @@
     $pdf->setPrintHeader(false);
     $pdf->setPrintFooter(false);
 
-    // $pdf->AddPage();
-    // $pdf->setImageScale('1.5');
-    // $pdf->Image('./assets/lyca/images/logo.png',55, 10);
+    $pdf->AddPage();
+    $pdf->setImageScale('1.5');
+    $pdf->Image('./assets/lyca/images/logo.png',55, 10);
 
-    // $y = $pdf->getY();
+    $y = $pdf->getY();
 
-    // // set color for background
-    // $pdf->SetFillColor(51, 102, 255);
+    // set color for background
+    $pdf->SetFillColor(51, 102, 255);
 
-    // // set color for text
-    // $pdf->SetTextColor(255, 255, 255);
-    // $pdf->SetFont('Helvetica', 'B', 20 );
-    // $pdf->MultiCell(297, 5,'',0,'J',true,1,0,30);
-    // $pdf->Text(50, 30, 'Health Assessment Report');
+    // set color for text
+    $pdf->SetTextColor(255, 255, 255);
+    $pdf->SetFont('Helvetica', 'B', 20 );
+    $pdf->MultiCell(297, 5,'',0,'J',true,1,0,30);
+    $pdf->Text(50, 30, 'Health Assessment Report');
 
-    // $pdf->setImageScale('5');
-    // $pdf->Image('./assets/lyca/images/Health Assesment.jpg',15, $pdf->getY()+60);
+    $pdf->setImageScale('5');
+    $pdf->Image('./assets/lyca/images/Health Assesment.jpg',15, $pdf->getY()+60);
 
-    // $pdf->SetTextColor(0, 0, 0);
-    // $pdf->SetFont('Helvetica', 'B', 15 );
+    $pdf->SetTextColor(0, 0, 0);
+    $pdf->SetFont('Helvetica', 'B', 15 );
 
-    // $pdf->Text(100, 250, $patient_details['title'].' '.$patient_details['first_name'].' '.$patient_details['last_name']);
+    $pdf->Text(100, 250, $patient_details['title'].' '.$patient_details['first_name'].' '.$patient_details['last_name']);
 
-    // $pdf->setPrintHeader(true);
-    // $pdf->setPrintFooter(true);
+    $pdf->setPrintHeader(true);
+    $pdf->setPrintFooter(true);
     
-    // $pdf->AddPage();
-    // $pdf->SetFillColor(255, 255, 255);
-    // $pdf->SetFont('Helvetica', '', 13 );
-    // $pdf->MultiCell(180, 30, 'Our LycaHealth Ultra Health Assessment comprises of confidential questionnaires that ask questions about your health habits, your medical history and any pre-existing medical conditions (if known).',0,'[LEFT]',true,1,15, $pdf->getY()+10);
+    $pdf->AddPage();
+    $pdf->SetFillColor(255, 255, 255);
+    $pdf->SetFont('Helvetica', '', 13 );
+    $pdf->MultiCell(180, 30, 'Our LycaHealth Ultra Health Assessment comprises of confidential questionnaires that ask questions about your health habits, your medical history and any pre-existing medical conditions (if known).',0,'[LEFT]',true,1,15, $pdf->getY()+10);
 
-    // $pdf->MultiCell(180, 30, 'From the analysis of this you will receive an easy-to-understand health report that give you an overview of your current health status, as well as health risks and how to manage them.',0,'[LEFT]',true,1,15, $pdf->getY()+2);
+    $pdf->MultiCell(180, 30, 'From the analysis of this you will receive an easy-to-understand health report that give you an overview of your current health status, as well as health risks and how to manage them.',0,'[LEFT]',true,1,15, $pdf->getY()+2);
 
-    // $pdf->MultiCell(180, 30, 'Whether you are trying to get in shape, control an existing condition, or whether this is done as part of a work placed annual health check-up, you will find the help you need through the LycaHealth Ultra Health Assessment.',0,'[LEFT]',true,1,15, $pdf->getY()+2);
+    $pdf->MultiCell(180, 30, 'Whether you are trying to get in shape, control an existing condition, or whether this is done as part of a work placed annual health check-up, you will find the help you need through the LycaHealth Ultra Health Assessment.',0,'[LEFT]',true,1,15, $pdf->getY()+2);
 
-    // $pdf->AddPage();
+    $pdf->AddPage();
 
-    // $gender = $patient_details['gender'] == '1' ? 'Male' : 'Female';
+    $gender = $patient_details['gender'] == '1' ? 'Male' : 'Female';
 
-    // $answers = array(
-    //     '0'=>'Not at all'
-    //     ,'1'=>'Several days'
-    //     ,'2'=>'More than half the days'
-    //     ,'3'=>'Nearly every day'
-    // );
+    $answers = array(
+        '0'=>'Not at all'
+        ,'1'=>'Several days'
+        ,'2'=>'More than half the days'
+        ,'3'=>'Nearly every day'
+    );
 
-    // $date1=date_create($patient_details['dob']);
-    // $date2=new DateTime();
+    $date1=date_create($patient_details['dob']);
+    $date2=new DateTime();
 
-    // $diff=date_diff($date1,$date2);
+    $diff=date_diff($date1,$date2);
 
-    // $pdf->SetFont('Helvetica', 'B', 20 ); 
-    // //$pdf->Text(5, 20, 'Patient Details');
-    // $pdf->SetFillColor(41, 163, 41);
-    // $pdf->SetTextColor(255, 255, 255);
-    // //$pdf->MultiCell(70, 5,'',0,'C',true,1,50,20);
-    // //$pdf->Text(60, 20, 'Patient Details');
+    $pdf->SetFont('Helvetica', 'B', 20 ); 
+    //$pdf->Text(5, 20, 'Patient Details');
+    $pdf->SetFillColor(41, 163, 41);
+    $pdf->SetTextColor(255, 255, 255);
+    //$pdf->MultiCell(70, 5,'',0,'C',true,1,50,20);
+    //$pdf->Text(60, 20, 'Patient Details');
 
-    // $pdf->writeHTMLCell(70, 5, 10, 20, 'Patient Details', 0, 0, 1, true, 'L', true);
+    $pdf->writeHTMLCell(70, 5, 10, 20, 'Patient Details', 0, 0, 1, true, 'L', true);
 
-    // $pdf->SetFont('Helvetica', '', 11 );
-    // $pdf->SetTextColor(0, 0, 0);
-    // $pdf->Text(10, $pdf->getY()+12, 'First Name');
-    // $pdf->Text(50, $pdf->getY(), $patient_details['first_name']);
+    $pdf->SetFont('Helvetica', '', 11 );
+    $pdf->SetTextColor(0, 0, 0);
+    $pdf->Text(10, $pdf->getY()+12, 'First Name');
+    $pdf->Text(50, $pdf->getY(), $patient_details['first_name']);
 
-    // $pdf->Text(10,  $pdf->getY()+9, 'Last Name');
-    // $pdf->Text(50, $pdf->getY(), $patient_details['last_name']);
+    $pdf->Text(10,  $pdf->getY()+9, 'Last Name');
+    $pdf->Text(50, $pdf->getY(), $patient_details['last_name']);
 
-    // $pdf->Text(10,  $pdf->getY()+9, 'Gender');
-    // $pdf->Text(50, $pdf->getY(), $gender);
+    $pdf->Text(10,  $pdf->getY()+9, 'Gender');
+    $pdf->Text(50, $pdf->getY(), $gender);
 
-    // $pdf->Text(10,  $pdf->getY()+9, 'Date of birth');
-    // $pdf->Text(50, $pdf->getY(), nice_date($patient_details['dob'],'d-M-Y'));
+    $pdf->Text(10,  $pdf->getY()+9, 'Date of birth');
+    $pdf->Text(50, $pdf->getY(), nice_date($patient_details['dob'],'d-M-Y'));
 
-    // $pdf->Text(80,  $pdf->getY(), 'Age ');
-    // $pdf->Text(90, $pdf->getY(), $diff->format("%Y Years %m Months"));
+    $pdf->Text(80,  $pdf->getY(), 'Age ');
+    $pdf->Text(90, $pdf->getY(), $diff->format("%Y Years %m Months"));
 
-    // $pdf->Text(10,  $pdf->getY()+9, 'Blood Group ');
-    // $pdf->Text(50, $pdf->getY(), $patient_details['blood_group']);
+    $pdf->Text(10,  $pdf->getY()+9, 'Blood Group ');
+    $pdf->Text(50, $pdf->getY(), $patient_details['blood_group']);
 
-    // $pdf->Text(10,  $pdf->getY()+9, 'Occupation');
-    // $pdf->Text(50, $pdf->getY(), $patient_details['occupation']);
+    $pdf->Text(10,  $pdf->getY()+9, 'Occupation');
+    $pdf->Text(50, $pdf->getY(), $patient_details['occupation']);
 
-    // $pdf->Text(10,  $pdf->getY()+9, 'London Address');
-    // $pdf->Text(50, $pdf->getY(), $patient_details['address']);
+    $pdf->Text(10,  $pdf->getY()+9, 'London Address');
+    $pdf->Text(50, $pdf->getY(), $patient_details['address']);
 
-    // $pdf->Text(10,  $pdf->getY()+9, 'Postal Code');
-    // $pdf->Text(50, $pdf->getY(), $patient_details['postal_code']);
+    $pdf->Text(10,  $pdf->getY()+9, 'Postal Code');
+    $pdf->Text(50, $pdf->getY(), $patient_details['postal_code']);
 
-    // $pdf->SetFillColor(0, 0, 0);
+    $pdf->SetFillColor(0, 0, 0);
 
-    // $pdf->Text(10, $pdf->getY()+9, 'Home telephone');
-    // $pdf->Text(50, $pdf->getY(), $patient_details['phone_home']);
-    // if($patient_details['phone_home_prefer']==1)
-    //     $pdf->Circle(85,$pdf->getY()+2,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
-    // else
-    //     $pdf->Circle(85,$pdf->getY()+2,2);
-    // $pdf->Text(87, $pdf->getY(), 'Preferred');
+    $pdf->Text(10, $pdf->getY()+9, 'Home telephone');
+    $pdf->Text(50, $pdf->getY(), $patient_details['phone_home']);
+    if($patient_details['phone_home_prefer']==1)
+        $pdf->Circle(85,$pdf->getY()+2,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
+    else
+        $pdf->Circle(85,$pdf->getY()+2,2);
+    $pdf->Text(87, $pdf->getY(), 'Preferred');
 
-    // $pdf->Text(10, $pdf->getY()+9, 'Mobile telephone');
-    // $pdf->Text(50, $pdf->getY(), $patient_details['phone_mobile']);
-    // if($patient_details['phone_mobile_prefer']==1)
-    //     $pdf->Circle(85,$pdf->getY()+2,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
-    // else
-    //     $pdf->Circle(85,$pdf->getY()+2,2);
-    // $pdf->Text(87, $pdf->getY(), 'Preferred');
+    $pdf->Text(10, $pdf->getY()+9, 'Mobile telephone');
+    $pdf->Text(50, $pdf->getY(), $patient_details['phone_mobile']);
+    if($patient_details['phone_mobile_prefer']==1)
+        $pdf->Circle(85,$pdf->getY()+2,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
+    else
+        $pdf->Circle(85,$pdf->getY()+2,2);
+    $pdf->Text(87, $pdf->getY(), 'Preferred');
 
-    // $pdf->Text(10, $pdf->getY()+9, 'Work telephone');
-    // $pdf->Text(50, $pdf->getY(), $patient_details['phone_work']);
-    // if($patient_details['phone_work_prefer']==1)
-    //     $pdf->Circle(85,$pdf->getY()+2,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
-    // else
-    //     $pdf->Circle(85,$pdf->getY()+2,2);
-    // $pdf->Text(87, $pdf->getY(), 'Preferred');
+    $pdf->Text(10, $pdf->getY()+9, 'Work telephone');
+    $pdf->Text(50, $pdf->getY(), $patient_details['phone_work']);
+    if($patient_details['phone_work_prefer']==1)
+        $pdf->Circle(85,$pdf->getY()+2,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
+    else
+        $pdf->Circle(85,$pdf->getY()+2,2);
+    $pdf->Text(87, $pdf->getY(), 'Preferred');
 
-    // $pdf->Text(10, $pdf->getY()+9, 'Email');
-    // $pdf->Text(50, $pdf->getY(), $patient_details['email']);
+    $pdf->Text(10, $pdf->getY()+9, 'Email');
+    $pdf->Text(50, $pdf->getY(), $patient_details['email']);
 
-    // $pdf->SetFont('Helvetica', 'B', 20 ); 
+    $pdf->SetFont('Helvetica', 'B', 20 ); 
 
-    // //$pdf->Text(5, $pdf->getY()+9, 'Next of kin details');
-    // $pdf->SetFillColor(41, 163, 41);
-    // $pdf->SetTextColor(255, 255, 255);
-    // $pdf->writeHTMLCell(70, 5, 10, $pdf->getY()+9, 'Next of kin details', 0, 0, 1, true, 'L', true);
+    //$pdf->Text(5, $pdf->getY()+9, 'Next of kin details');
+    $pdf->SetFillColor(41, 163, 41);
+    $pdf->SetTextColor(255, 255, 255);
+    $pdf->writeHTMLCell(70, 5, 10, $pdf->getY()+9, 'Next of kin details', 0, 0, 1, true, 'L', true);
 
-    // //$pdf->MultiCell(70, 5,'',0,'C',true,1,50,20);
-    // //$pdf->Text(60, 20, 'Patient Details');
+    //$pdf->MultiCell(70, 5,'',0,'C',true,1,50,20);
+    //$pdf->Text(60, 20, 'Patient Details');
 
-    // $pdf->SetFont('Helvetica', '', 11 ); 
-    // $pdf->SetTextColor(0, 0, 0);
-    // $pdf->SetFillColor(0, 0, 0);
+    $pdf->SetFont('Helvetica', '', 11 ); 
+    $pdf->SetTextColor(0, 0, 0);
+    $pdf->SetFillColor(0, 0, 0);
 
-    // $pdf->Text(10, $pdf->getY()+12, 'Name ');
-    // $pdf->Text(50, $pdf->getY(), $patient_details['next_of_kin_name']);
+    $pdf->Text(10, $pdf->getY()+12, 'Name ');
+    $pdf->Text(50, $pdf->getY(), $patient_details['next_of_kin_name']);
 
-    // $pdf->Text(10, $pdf->getY()+9, 'Phone Number');
-    // $pdf->Text(50, $pdf->getY(), $patient_details['next_of_kin_phone']);
+    $pdf->Text(10, $pdf->getY()+9, 'Phone Number');
+    $pdf->Text(50, $pdf->getY(), $patient_details['next_of_kin_phone']);
 
-    // $pdf->Text(10, $pdf->getY()+9, 'Relationship');
-    // $pdf->Text(50, $pdf->getY(), $patient_details['next_of_kin_relationship']);
+    $pdf->Text(10, $pdf->getY()+9, 'Relationship');
+    $pdf->Text(50, $pdf->getY(), $patient_details['next_of_kin_relationship']);
 
-    // $pdf->Text(10, $pdf->getY()+9, 'In case of emergency if you are uncontactable, do you provide consent for your next of kin to be contacted ');
-    // $pdf->Text(10, $pdf->getY()+5, 'and for relevant clinical information to be divulged?');
-    // $pdf->Text(10, $pdf->getY()+9, 'Y');
-    // if($patient_details['next_of_kin_contact']==1)
-    //     $pdf->Circle(17,$pdf->getY()+2,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
-    // else
-    //     $pdf->Circle(17,$pdf->getY()+2,2);
-    // $pdf->Text(20, $pdf->getY(), 'N');
-    // if($patient_details['next_of_kin_contact']==0)
-    //     $pdf->Circle(27,$pdf->getY()+2,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
-    // else
-    //     $pdf->Circle(27,$pdf->getY()+2,2);
+    $pdf->Text(10, $pdf->getY()+9, 'In case of emergency if you are uncontactable, do you provide consent for your next of kin to be contacted ');
+    $pdf->Text(10, $pdf->getY()+5, 'and for relevant clinical information to be divulged?');
+    $pdf->Text(10, $pdf->getY()+9, 'Y');
+    if($patient_details['next_of_kin_contact']==1)
+        $pdf->Circle(17,$pdf->getY()+2,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
+    else
+        $pdf->Circle(17,$pdf->getY()+2,2);
+    $pdf->Text(20, $pdf->getY(), 'N');
+    if($patient_details['next_of_kin_contact']==0)
+        $pdf->Circle(27,$pdf->getY()+2,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
+    else
+        $pdf->Circle(27,$pdf->getY()+2,2);
 
-    // //$pdf->AddPage();
+    //$pdf->AddPage();
 
-    // $pdf->SetFont('Helvetica', 'B', 20 ); 
-    // //$pdf->Text(5, $pdf->getY()+9, 'NHS / Alternative GP');
-    // $pdf->SetFillColor(41, 163, 41);
-    // $pdf->SetTextColor(255, 255, 255);
-    // //$pdf->writeHTMLCell(297, 5, 0, $pdf->getY()+9, 'NHS / Alternative GP', 0, 0, 1, true, 'C', true);
-    // $pdf->writeHTMLCell(90, 5, 10, $pdf->getY()+9, 'NHS / Alternative GP', 0, 0, 1, true, 'L', true);
-    // $pdf->SetFont('Helvetica', '', 11 ); 
-    // $pdf->SetTextColor(0, 0, 0);
-    // $pdf->SetFillColor(0, 0, 0);
+    $pdf->SetFont('Helvetica', 'B', 20 ); 
+    //$pdf->Text(5, $pdf->getY()+9, 'NHS / Alternative GP');
+    $pdf->SetFillColor(41, 163, 41);
+    $pdf->SetTextColor(255, 255, 255);
+    //$pdf->writeHTMLCell(297, 5, 0, $pdf->getY()+9, 'NHS / Alternative GP', 0, 0, 1, true, 'C', true);
+    $pdf->writeHTMLCell(90, 5, 10, $pdf->getY()+9, 'NHS / Alternative GP', 0, 0, 1, true, 'L', true);
+    $pdf->SetFont('Helvetica', '', 11 ); 
+    $pdf->SetTextColor(0, 0, 0);
+    $pdf->SetFillColor(0, 0, 0);
 
-    // $pdf->Text(10, $pdf->getY()+12, 'Name of NHS / Alternative GP');
-    // $pdf->Text(70, $pdf->getY(), $patient_details['alternative_gp']);
+    $pdf->Text(10, $pdf->getY()+12, 'Name of NHS / Alternative GP');
+    $pdf->Text(70, $pdf->getY(), $patient_details['alternative_gp']);
 
-    // $pdf->Text(10, $pdf->getY()+9, 'I consent to my medical information being shared with my regular GP if I am not contactable. ');
-    // $pdf->Text(10, $pdf->getY()+9, 'Agree');
-    // if($patient_details['gp_contact_agree']==1)
-    //     $pdf->Circle(25,$pdf->getY()+2,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
-    // else
-    //     $pdf->Circle(25,$pdf->getY()+2,2);
-    // $pdf->Text(28, $pdf->getY(), 'Disagree');
-    // if($patient_details['gp_contact_agree']==0)
-    //     $pdf->Circle(48,$pdf->getY()+2,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
-    // else
-    //     $pdf->Circle(48,$pdf->getY()+2,2);
+    $pdf->Text(10, $pdf->getY()+9, 'I consent to my medical information being shared with my regular GP if I am not contactable. ');
+    $pdf->Text(10, $pdf->getY()+9, 'Agree');
+    if($patient_details['gp_contact_agree']==1)
+        $pdf->Circle(25,$pdf->getY()+2,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
+    else
+        $pdf->Circle(25,$pdf->getY()+2,2);
+    $pdf->Text(28, $pdf->getY(), 'Disagree');
+    if($patient_details['gp_contact_agree']==0)
+        $pdf->Circle(48,$pdf->getY()+2,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
+    else
+        $pdf->Circle(48,$pdf->getY()+2,2);
 
-    // $pdf->AddPage();
+    $pdf->AddPage();
 
-    // $pdf->SetFont('Helvetica', 'B', 20 ); 
-    // //$pdf->Text(5, 20, 'Health');
-    // $pdf->SetFillColor(41, 163, 41);
-    // $pdf->SetTextColor(255, 255, 255);
-    // $pdf->writeHTMLCell(30, 5, 10, $pdf->getY()+9, 'Health', 0, 0, 1, true, 'L', true);
+    $pdf->SetFont('Helvetica', 'B', 20 ); 
+    //$pdf->Text(5, 20, 'Health');
+    $pdf->SetFillColor(41, 163, 41);
+    $pdf->SetTextColor(255, 255, 255);
+    $pdf->writeHTMLCell(30, 5, 10, $pdf->getY()+9, 'Health', 0, 0, 1, true, 'L', true);
 
-    // $pdf->SetFont('Helvetica', '', 11 ); 
-    // $pdf->SetTextColor(0, 0, 0);
-    // $pdf->SetFillColor(0, 0, 0);
+    $pdf->SetFont('Helvetica', '', 11 ); 
+    $pdf->SetTextColor(0, 0, 0);
+    $pdf->SetFillColor(0, 0, 0);
     
-    // $pdf->Text(10, $pdf->getY()+12, 'How is your health at present? Is there anything in particular you would like to discuss with the Doctor today?');
+    $pdf->Text(10, $pdf->getY()+12, 'How is your health at present? Is there anything in particular you would like to discuss with the Doctor today?');
     
-    // $pdf->SetFillColor(255, 255, 255);
-    // $pdf->RoundedRect(10, $pdf->getY()+7, 190, 30, 3.50, '1111', 'DF',array('color' => array(51, 102, 255)));
+    $pdf->SetFillColor(255, 255, 255);
+    $pdf->RoundedRect(10, $pdf->getY()+7, 190, 30, 3.50, '1111', 'DF',array('color' => array(51, 102, 255)));
 
-    // $pdf->MultiCell(180, 30, $patient_details['health_at_present'],0,'J',true,1,15, $pdf->getY()+10);
+    $pdf->MultiCell(180, 30, $patient_details['health_at_present'],0,'J',true,1,15, $pdf->getY()+10);
 
-    // $pdf->Text(10, $pdf->getY()+2, 'Are you taking any medications at present Kindly list the medications as well as doses?');
+    $pdf->Text(10, $pdf->getY()+2, 'Are you taking any medications at present Kindly list the medications as well as doses?');
     
-    // $pdf->SetFillColor(255, 255, 255);
-    // $pdf->RoundedRect(10, $pdf->getY()+7, 190, 30, 3.50, '1111', 'DF',array('color' => array(51, 102, 255)));
+    $pdf->SetFillColor(255, 255, 255);
+    $pdf->RoundedRect(10, $pdf->getY()+7, 190, 30, 3.50, '1111', 'DF',array('color' => array(51, 102, 255)));
 
-    // $pdf->MultiCell(180, 30, $patient_details['current_medication'],0,'J',true,1,15, $pdf->getY()+10);
+    $pdf->MultiCell(180, 30, $patient_details['current_medication'],0,'J',true,1,15, $pdf->getY()+10);
 
-    // $pdf->SetDrawColor(0,0,0);
-    // $pdf->SetFillColor(0,0,0);
+    $pdf->SetDrawColor(0,0,0);
+    $pdf->SetFillColor(0,0,0);
 
-    // $pdf->Text(10, $pdf->getY()+3, 'Are you aware of any allergies to the following?');
+    $pdf->Text(10, $pdf->getY()+3, 'Are you aware of any allergies to the following?');
 
-    // $pdf->Text(15, $pdf->getY()+7, 'Milk');
-    // if($patient_details['allergy_milk']==1)
-    //     $pdf->Circle(35,$pdf->getY()+2,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
-    // else
-    //     $pdf->Circle(35,$pdf->getY()+2,2);
+    $pdf->Text(15, $pdf->getY()+7, 'Milk');
+    if($patient_details['allergy_milk']==1)
+        $pdf->Circle(35,$pdf->getY()+2,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
+    else
+        $pdf->Circle(35,$pdf->getY()+2,2);
     
-    // $pdf->Text(40, $pdf->getY(), 'Shellfish');
-    // if($patient_details['allergy_shellfish']==1)
-    //     $pdf->Circle(60,$pdf->getY()+2,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
-    // else
-    //     $pdf->Circle(60,$pdf->getY()+2,2);
+    $pdf->Text(40, $pdf->getY(), 'Shellfish');
+    if($patient_details['allergy_shellfish']==1)
+        $pdf->Circle(60,$pdf->getY()+2,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
+    else
+        $pdf->Circle(60,$pdf->getY()+2,2);
 
-    // $pdf->Text(15, $pdf->getY()+7, 'Eggs');
-    // if($patient_details['allergy_eggs']==1)
-    //     $pdf->Circle(35,$pdf->getY()+2,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
-    // else
-    //     $pdf->Circle(35,$pdf->getY()+2,2);
+    $pdf->Text(15, $pdf->getY()+7, 'Eggs');
+    if($patient_details['allergy_eggs']==1)
+        $pdf->Circle(35,$pdf->getY()+2,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
+    else
+        $pdf->Circle(35,$pdf->getY()+2,2);
 
-    // $pdf->Text(40, $pdf->getY(), 'Iodine');
-    // if($patient_details['allergy_iodine']==1)
-    //     $pdf->Circle(60,$pdf->getY()+2,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
-    // else
-    //     $pdf->Circle(60,$pdf->getY()+2,2);
+    $pdf->Text(40, $pdf->getY(), 'Iodine');
+    if($patient_details['allergy_iodine']==1)
+        $pdf->Circle(60,$pdf->getY()+2,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
+    else
+        $pdf->Circle(60,$pdf->getY()+2,2);
 
-    // $pdf->Text(15, $pdf->getY()+7, 'Peanuts');
-    // if($patient_details['allergy_peanuts']==1)
-    //     $pdf->Circle(35,$pdf->getY()+2,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
-    // else
-    //     $pdf->Circle(35,$pdf->getY()+2,2);
+    $pdf->Text(15, $pdf->getY()+7, 'Peanuts');
+    if($patient_details['allergy_peanuts']==1)
+        $pdf->Circle(35,$pdf->getY()+2,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
+    else
+        $pdf->Circle(35,$pdf->getY()+2,2);
 
-    // $pdf->Text(40, $pdf->getY(), 'Pencillin');
-    // if($patient_details['allergy_pencillin']==1)
-    //     $pdf->Circle(60,$pdf->getY()+2,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
-    // else
-    //     $pdf->Circle(60,$pdf->getY()+2,2);
+    $pdf->Text(40, $pdf->getY(), 'Pencillin');
+    if($patient_details['allergy_pencillin']==1)
+        $pdf->Circle(60,$pdf->getY()+2,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
+    else
+        $pdf->Circle(60,$pdf->getY()+2,2);
     
-    // $pdf->Text(15, $pdf->getY()+7, 'Tree Nuts(Walnuts/Almonds/Pecan)');
-    // if($patient_details['allergy_treenuts']==1)
-    //     $pdf->Circle(81,$pdf->getY()+2,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
-    // else
-    //     $pdf->Circle(81,$pdf->getY()+2,2);
+    $pdf->Text(15, $pdf->getY()+7, 'Tree Nuts(Walnuts/Almonds/Pecan)');
+    if($patient_details['allergy_treenuts']==1)
+        $pdf->Circle(81,$pdf->getY()+2,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
+    else
+        $pdf->Circle(81,$pdf->getY()+2,2);
 
-    // $pdf->Text(10, $pdf->getY()+12, 'Other Allergies');
-    // $pdf->Text(40, $pdf->getY(), 'Y');
-    // if($patient_details['allergy_others_details']==1)
-    //     $pdf->Circle(47,$pdf->getY()+2,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
-    // else
-    //     $pdf->Circle(47,$pdf->getY()+2,2);
-    // $pdf->Text(50, $pdf->getY(), 'N');
-    // if($patient_details['allergy_others_details']==0)
-    //     $pdf->Circle(57,$pdf->getY()+2,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
-    // else
-    //     $pdf->Circle(57,$pdf->getY()+2,2);
+    $pdf->Text(10, $pdf->getY()+12, 'Other Allergies');
+    $pdf->Text(40, $pdf->getY(), 'Y');
+    if($patient_details['allergy_others_details']==1)
+        $pdf->Circle(47,$pdf->getY()+2,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
+    else
+        $pdf->Circle(47,$pdf->getY()+2,2);
+    $pdf->Text(50, $pdf->getY(), 'N');
+    if($patient_details['allergy_others_details']==0)
+        $pdf->Circle(57,$pdf->getY()+2,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
+    else
+        $pdf->Circle(57,$pdf->getY()+2,2);
 
-    // $pdf->Text(10, $pdf->getY()+9, 'Other Allergies Details');
+    $pdf->Text(10, $pdf->getY()+9, 'Other Allergies Details');
 
-    // $pdf->SetFillColor(255, 255, 255);
-    // $pdf->RoundedRect(10, $pdf->getY()+7, 190, 30, 3.50, '1111', 'DF',array('color' => array(51, 102, 255)));
+    $pdf->SetFillColor(255, 255, 255);
+    $pdf->RoundedRect(10, $pdf->getY()+7, 190, 30, 3.50, '1111', 'DF',array('color' => array(51, 102, 255)));
 
-    // $pdf->MultiCell(180, 30, $patient_details['allergy_others_details'],0,'J',true,1,15, $pdf->getY()+10);
+    $pdf->MultiCell(180, 30, $patient_details['allergy_others_details'],0,'J',true,1,15, $pdf->getY()+10);
 
-    // $pdf->SetDrawColor(0, 0, 0);
-    // $pdf->SetFillColor(0, 0, 0);
+    $pdf->SetDrawColor(0, 0, 0);
+    $pdf->SetFillColor(0, 0, 0);
 
-    // $pdf->Text(10, $pdf->getY()+2, 'Do you suffer from Hayfever ?');
-    // $pdf->Text(65, $pdf->getY(), 'Y');
-    // if($patient_details['hay_fever']==1)
-    //     $pdf->Circle(72,$pdf->getY()+2,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
-    // else
-    //     $pdf->Circle(72,$pdf->getY()+2,2);
-    // $pdf->SetDrawColor(0, 0, 0);
-    // $pdf->Text(75, $pdf->getY(), 'N');
-    // if($patient_details['hay_fever']==0)
-    //     $pdf->Circle(82,$pdf->getY()+2,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
-    // else
-    //     $pdf->Circle(82,$pdf->getY()+2,2);
+    $pdf->Text(10, $pdf->getY()+2, 'Do you suffer from Hayfever ?');
+    $pdf->Text(65, $pdf->getY(), 'Y');
+    if($patient_details['hay_fever']==1)
+        $pdf->Circle(72,$pdf->getY()+2,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
+    else
+        $pdf->Circle(72,$pdf->getY()+2,2);
+    $pdf->SetDrawColor(0, 0, 0);
+    $pdf->Text(75, $pdf->getY(), 'N');
+    if($patient_details['hay_fever']==0)
+        $pdf->Circle(82,$pdf->getY()+2,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
+    else
+        $pdf->Circle(82,$pdf->getY()+2,2);
 
-    // $pdf->Text(10, $pdf->getY()+9, ' Do you have Asthma?');
-    // $pdf->Text(65, $pdf->getY(), 'Y');
-    // if($patient_details['asthma']==1)
-    //     $pdf->Circle(72,$pdf->getY()+2,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
-    // else
-    //     $pdf->Circle(72,$pdf->getY()+2,2);
-    // $pdf->SetDrawColor(0, 0, 0);
-    // $pdf->Text(75, $pdf->getY(), 'N');
-    // if($patient_details['asthma']==0)
-    //     $pdf->Circle(82,$pdf->getY()+2,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
-    // else
-    //     $pdf->Circle(82,$pdf->getY()+2,2);
+    $pdf->Text(10, $pdf->getY()+9, ' Do you have Asthma?');
+    $pdf->Text(65, $pdf->getY(), 'Y');
+    if($patient_details['asthma']==1)
+        $pdf->Circle(72,$pdf->getY()+2,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
+    else
+        $pdf->Circle(72,$pdf->getY()+2,2);
+    $pdf->SetDrawColor(0, 0, 0);
+    $pdf->Text(75, $pdf->getY(), 'N');
+    if($patient_details['asthma']==0)
+        $pdf->Circle(82,$pdf->getY()+2,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
+    else
+        $pdf->Circle(82,$pdf->getY()+2,2);
 
-    // $pdf->SetFont('Helvetica', 'B', 20 ); 
-    // //$pdf->Text(5, $pdf->getY()+9, 'CHAPERONE');
-    // $pdf->SetFillColor(41, 163, 41);
-    // $pdf->SetTextColor(255, 255, 255);
-    // $pdf->writeHTMLCell(50, 5, 10, $pdf->getY()+9, 'CHAPERONE', 0, 0, 1, true, 'L', true);
+    $pdf->SetFont('Helvetica', 'B', 20 ); 
+    //$pdf->Text(5, $pdf->getY()+9, 'CHAPERONE');
+    $pdf->SetFillColor(41, 163, 41);
+    $pdf->SetTextColor(255, 255, 255);
+    $pdf->writeHTMLCell(50, 5, 10, $pdf->getY()+9, 'CHAPERONE', 0, 0, 1, true, 'L', true);
 
-    // $pdf->SetFont('Helvetica', '', 11 ); 
-    // $pdf->SetTextColor(0, 0, 0);
-    // $pdf->SetFillColor(0, 0, 0);
+    $pdf->SetFont('Helvetica', '', 11 ); 
+    $pdf->SetTextColor(0, 0, 0);
+    $pdf->SetFillColor(0, 0, 0);
 
-    // $pdf->Text(10, $pdf->getY()+12, 'Do you require a chaperone before this consultation?');
-    // $pdf->Text(110, $pdf->getY(), 'Y');
-    // if($patient_details['chaperone_required']==1)
-    //     $pdf->Circle(117,$pdf->getY()+2,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
-    // else
-    //     $pdf->Circle(117,$pdf->getY()+2,2);
-    //  $pdf->SetDrawColor(0, 0, 0);
-    //  $pdf->Text(120, $pdf->getY(), 'N');
-    // if($patient_details['chaperone_required']==0)
-    //     $pdf->Circle(127,$pdf->getY()+2,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
-    // else
-    //     $pdf->Circle(127,$pdf->getY()+2,2);
+    $pdf->Text(10, $pdf->getY()+12, 'Do you require a chaperone before this consultation?');
+    $pdf->Text(110, $pdf->getY(), 'Y');
+    if($patient_details['chaperone_required']==1)
+        $pdf->Circle(117,$pdf->getY()+2,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
+    else
+        $pdf->Circle(117,$pdf->getY()+2,2);
+     $pdf->SetDrawColor(0, 0, 0);
+     $pdf->Text(120, $pdf->getY(), 'N');
+    if($patient_details['chaperone_required']==0)
+        $pdf->Circle(127,$pdf->getY()+2,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
+    else
+        $pdf->Circle(127,$pdf->getY()+2,2);
 
-    // $pdf->AddPage();
+    $pdf->AddPage();
 
-    // $pdf->SetFont('Helvetica', 'B', 20 ); 
-    // $pdf->SetFillColor(41, 163, 41);
-    // $pdf->SetTextColor(255, 255, 255);
-    // //$pdf->MultiCell(297, 5,'',0,'J',true,1,0,20);
-    // //$pdf->Text(30, 20, 'CONSENT');
-    // $pdf->writeHTMLCell(50, 5, 10, $pdf->getY()+9, 'CONSENT', 0, 0, 1, true, 'L', true);
+    $pdf->SetFont('Helvetica', 'B', 20 ); 
+    $pdf->SetFillColor(41, 163, 41);
+    $pdf->SetTextColor(255, 255, 255);
+    //$pdf->MultiCell(297, 5,'',0,'J',true,1,0,20);
+    //$pdf->Text(30, 20, 'CONSENT');
+    $pdf->writeHTMLCell(50, 5, 10, $pdf->getY()+9, 'CONSENT', 0, 0, 1, true, 'L', true);
 
-    // $pdf->SetFont('Helvetica', '', 11 );
-    // $pdf->SetTextColor(0, 0, 0);
+    $pdf->SetFont('Helvetica', '', 11 );
+    $pdf->SetTextColor(0, 0, 0);
 
-    // $pdf->SetFillColor(255, 255, 255);
-    // $pdf->MultiCell(200, 5,'I consent to being contacted by un-encrypted email and/or telephone to discuss management plans, diagnosis and to disclose results. I accept the risk associated with receiving messages received by the above means',0,'L',true,1,10, $pdf->getY()+12);
+    $pdf->SetFillColor(255, 255, 255);
+    $pdf->MultiCell(200, 5,'I consent to being contacted by un-encrypted email and/or telephone to discuss management plans, diagnosis and to disclose results. I accept the risk associated with receiving messages received by the above means',0,'L',true,1,10, $pdf->getY()+12);
 
-    // $pdf->SetFillColor(0, 0, 0);
+    $pdf->SetFillColor(0, 0, 0);
 
-    // $x_cor = 15;
-    // $pdf->Text(15, $pdf->getY()+5, 'Y');
-    // $x_cor = $x_cor + 7; // 22
-    // if($patient_details['consent_unencrypted']==1)
-    //     $pdf->Circle($x_cor ,$pdf->getY()+2,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
-    // else
-    //     $pdf->Circle($x_cor,$pdf->getY()+2,2);
-    // $x_cor = $x_cor + 7; // 35
-    // $pdf->Text($x_cor, $pdf->getY(), 'N');
-    // $x_cor = $x_cor + 7; // 42
-    // if($patient_details['consent_unencrypted']==0)
-    //     $pdf->Circle($x_cor,$pdf->getY()+2,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
-    // else
-    //     $pdf->Circle($x_cor,$pdf->getY()+2,2);
+    $x_cor = 15;
+    $pdf->Text(15, $pdf->getY()+5, 'Y');
+    $x_cor = $x_cor + 7; // 22
+    if($patient_details['consent_unencrypted']==1)
+        $pdf->Circle($x_cor ,$pdf->getY()+2,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
+    else
+        $pdf->Circle($x_cor,$pdf->getY()+2,2);
+    $x_cor = $x_cor + 7; // 35
+    $pdf->Text($x_cor, $pdf->getY(), 'N');
+    $x_cor = $x_cor + 7; // 42
+    if($patient_details['consent_unencrypted']==0)
+        $pdf->Circle($x_cor,$pdf->getY()+2,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
+    else
+        $pdf->Circle($x_cor,$pdf->getY()+2,2);
 
-    // $pdf->SetFillColor(255, 255, 255);
-    // $pdf->MultiCell(200, 5,'I consent to having messages left on my preferred telephone number',0,'L',true,1,10, $pdf->getY()+7);
+    $pdf->SetFillColor(255, 255, 255);
+    $pdf->MultiCell(200, 5,'I consent to having messages left on my preferred telephone number',0,'L',true,1,10, $pdf->getY()+7);
     
-    // $pdf->SetFillColor(0, 0, 0);
+    $pdf->SetFillColor(0, 0, 0);
 
-    // $x_cor = 15;
-    // $pdf->Text(15, $pdf->getY()+5, 'Y');
-    // $x_cor = $x_cor + 7; // 22
-    // if($patient_details['consent_messages']==1)
-    //     $pdf->Circle($x_cor ,$pdf->getY()+2,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
-    // else
-    //     $pdf->Circle($x_cor,$pdf->getY()+2,2);
-    // $x_cor = $x_cor + 7; // 35
-    // $pdf->Text($x_cor, $pdf->getY(), 'N');
-    // $x_cor = $x_cor + 7; // 42
-    // if($patient_details['consent_messages']==0)
-    //     $pdf->Circle($x_cor,$pdf->getY()+2,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
-    // else
-    //     $pdf->Circle($x_cor,$pdf->getY()+2,2);
+    $x_cor = 15;
+    $pdf->Text(15, $pdf->getY()+5, 'Y');
+    $x_cor = $x_cor + 7; // 22
+    if($patient_details['consent_messages']==1)
+        $pdf->Circle($x_cor ,$pdf->getY()+2,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
+    else
+        $pdf->Circle($x_cor,$pdf->getY()+2,2);
+    $x_cor = $x_cor + 7; // 35
+    $pdf->Text($x_cor, $pdf->getY(), 'N');
+    $x_cor = $x_cor + 7; // 42
+    if($patient_details['consent_messages']==0)
+        $pdf->Circle($x_cor,$pdf->getY()+2,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
+    else
+        $pdf->Circle($x_cor,$pdf->getY()+2,2);
 
-    // $pdf->SetFillColor(255, 255, 255);
-    // $pdf->MultiCell(200, 5,'I consent that my medical information being shared with my regular GP if I am not contactable',0,'L',true,1,10, $pdf->getY()+7);
+    $pdf->SetFillColor(255, 255, 255);
+    $pdf->MultiCell(200, 5,'I consent that my medical information being shared with my regular GP if I am not contactable',0,'L',true,1,10, $pdf->getY()+7);
     
-    // $pdf->SetFillColor(0, 0, 0);
+    $pdf->SetFillColor(0, 0, 0);
 
-    // $x_cor = 15;
-    // $pdf->Text(15, $pdf->getY()+5, 'Y');
-    // $x_cor = $x_cor + 7; // 22
-    // if($patient_details['consent_medical_information']==1)
-    //     $pdf->Circle($x_cor ,$pdf->getY()+2,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
-    // else
-    //     $pdf->Circle($x_cor,$pdf->getY()+2,2);
-    // $x_cor = $x_cor + 7; // 35
-    // $pdf->Text($x_cor, $pdf->getY(), 'N');
-    // $x_cor = $x_cor + 7; // 42
-    // if($patient_details['consent_medical_information']==0)
-    //     $pdf->Circle($x_cor,$pdf->getY()+2,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
-    // else
-    //     $pdf->Circle($x_cor,$pdf->getY()+2,2);
+    $x_cor = 15;
+    $pdf->Text(15, $pdf->getY()+5, 'Y');
+    $x_cor = $x_cor + 7; // 22
+    if($patient_details['consent_medical_information']==1)
+        $pdf->Circle($x_cor ,$pdf->getY()+2,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
+    else
+        $pdf->Circle($x_cor,$pdf->getY()+2,2);
+    $x_cor = $x_cor + 7; // 35
+    $pdf->Text($x_cor, $pdf->getY(), 'N');
+    $x_cor = $x_cor + 7; // 42
+    if($patient_details['consent_medical_information']==0)
+        $pdf->Circle($x_cor,$pdf->getY()+2,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
+    else
+        $pdf->Circle($x_cor,$pdf->getY()+2,2);
 
-    // if(!empty($patient_details['signature'])){
-    //     $img_base64_encoded = $patient_details['signature'];
-    //     $imageContent = file_get_contents($img_base64_encoded);
-    //     $path = tempnam('./uploads/', 'prefix');
+    if(!empty($patient_details['signature'])){
+        $img_base64_encoded = $patient_details['signature'];
+        $imageContent = file_get_contents($img_base64_encoded);
+        $path = tempnam('./uploads/', 'prefix');
         
-    //     file_put_contents ($path, $imageContent);
+        file_put_contents ($path, $imageContent);
 
-    //     $pdf->setImageScale('3');
-    //     $pdf->Image($path,15, $pdf->getY()+10);
-    // }
+        $pdf->setImageScale('3');
+        $pdf->Image($path,15, $pdf->getY()+10);
+    }
 
-    // $pdf->Text(20, $pdf->getY()+33, 'Signature');
+    $pdf->Text(20, $pdf->getY()+33, 'Signature');
     
-    // $pdf->AddPage();
+    $pdf->AddPage();
 
-    // $pdf->SetFont('Helvetica', 'B', 20 ); 
-    // $pdf->SetFillColor(41, 163, 41);
-    // $pdf->SetTextColor(255, 255, 255);
-    // //$pdf->MultiCell(297, 5,'',0,'J',true,1,0,20);
-    // //$pdf->Text(30, 20, 'PHQ-9 Details');
-    // $pdf->writeHTMLCell(60, 5, 10, $pdf->getY()+9, 'PHQ-9 Details', 0, 0, 1, true, 'L', true);
+    $pdf->SetFont('Helvetica', 'B', 20 ); 
+    $pdf->SetFillColor(41, 163, 41);
+    $pdf->SetTextColor(255, 255, 255);
+    //$pdf->MultiCell(297, 5,'',0,'J',true,1,0,20);
+    //$pdf->Text(30, 20, 'PHQ-9 Details');
+    $pdf->writeHTMLCell(60, 5, 10, $pdf->getY()+9, 'PHQ-9 Details', 0, 0, 1, true, 'L', true);
 
-    // $pdf->SetFont('Helvetica', '', 11 );
-    // $pdf->SetTextColor(0, 0, 0);
+    $pdf->SetFont('Helvetica', '', 11 );
+    $pdf->SetTextColor(0, 0, 0);
     
-    // $phq_score = 0;
-    // $pdf->setY($pdf->getY()+15);
-    // $pdf->setCellPaddings(2, 2, 1, 1);
-    // foreach ($patient_phq as $item):
-    //     $y_test = $pdf->getY();
-    //     $pdf->MultiCell(105, 18, $item['question'],1,'[RIGHT]',0,1,15, $y_test);
-    //     $pdf->MultiCell(80, 18, $answers[$item['value']],1,'[CENTER]',0,1,120, $y_test);
-    //     $phq_score = $phq_score + $item['value'];
-    // endforeach;
+    $phq_score = 0;
+    $pdf->setY($pdf->getY()+15);
+    $pdf->setCellPaddings(2, 2, 1, 1);
+    foreach ($patient_phq as $item):
+        $y_test = $pdf->getY();
+        $pdf->MultiCell(105, 18, $item['question'],1,'[RIGHT]',0,1,15, $y_test);
+        $pdf->MultiCell(80, 18, $answers[$item['value']],1,'[CENTER]',0,1,120, $y_test);
+        $phq_score = $phq_score + $item['value'];
+    endforeach;
     
-    // $dep_ser = '';
-    // if($phq_score <= 5)
-    //     $dep_ser = 'None';
-    // else if($phq_score <= 10)
-    //     $dep_ser = 'Mild';
-    // else if($phq_score <= 15)
-    //     $dep_ser = 'Moderate ';
-    // else
-    //     $dep_ser ='Sever anxiety';
+    $dep_ser = '';
+    if($phq_score <= 5)
+        $dep_ser = 'None';
+    else if($phq_score <= 10)
+        $dep_ser = 'Mild';
+    else if($phq_score <= 15)
+        $dep_ser = 'Moderate ';
+    else
+        $dep_ser ='Sever anxiety';
 
-    // $pdf->MultiCell(185, 10, 'PHQ-9 Score: '.$phq_score."/27"."\nDepression Severity: ".$dep_ser,1,'[RIGHT]',0,1,15, $pdf->getY());
+    $pdf->MultiCell(185, 10, 'PHQ-9 Score: '.$phq_score."/27"."\nDepression Severity: ".$dep_ser,1,'[RIGHT]',0,1,15, $pdf->getY());
 
-    // $pdf->AddPage();
+    $pdf->AddPage();
 
-    // $pdf->SetFont('Helvetica', 'B', 20 ); 
-    // $pdf->SetFillColor(41, 163, 41);
-    // $pdf->SetTextColor(255, 255, 255);
-    // //$pdf->MultiCell(297, 5,'',0,'J',true,1,0,20);
-    // //$pdf->Text(30, 20, 'GAD-7 Details');
-    // $pdf->writeHTMLCell(60, 5, 10, $pdf->getY()+9, 'GAD-7 Details', 0, 0, 1, true, 'L', true);
+    $pdf->SetFont('Helvetica', 'B', 20 ); 
+    $pdf->SetFillColor(41, 163, 41);
+    $pdf->SetTextColor(255, 255, 255);
+    //$pdf->MultiCell(297, 5,'',0,'J',true,1,0,20);
+    //$pdf->Text(30, 20, 'GAD-7 Details');
+    $pdf->writeHTMLCell(60, 5, 10, $pdf->getY()+9, 'GAD-7 Details', 0, 0, 1, true, 'L', true);
 
-    // $pdf->SetFont('Helvetica', '', 11 );
-    // $pdf->SetTextColor(0, 0, 0);
+    $pdf->SetFont('Helvetica', '', 11 );
+    $pdf->SetTextColor(0, 0, 0);
     
-    // $gad_score = 0;
-    // $pdf->setY( $pdf->getY()+15);
-    // foreach ($patient_gad as $item):
-    //     $y_test = $pdf->getY();
-    //     $pdf->MultiCell(105, 13, $item['question'],1,'[RIGHT]',0,1,15, $y_test);
-    //     $pdf->MultiCell(80, 13, $answers[$item['value']],1,'[RIGHT]',0,1,120, $y_test);
-    //     $gad_score = $gad_score + $item['value'];
-    // endforeach;
+    $gad_score = 0;
+    $pdf->setY( $pdf->getY()+15);
+    foreach ($patient_gad as $item):
+        $y_test = $pdf->getY();
+        $pdf->MultiCell(105, 13, $item['question'],1,'[RIGHT]',0,1,15, $y_test);
+        $pdf->MultiCell(80, 13, $answers[$item['value']],1,'[RIGHT]',0,1,120, $y_test);
+        $gad_score = $gad_score + $item['value'];
+    endforeach;
     
-    // $anx_ser = '';
-    // if($gad_score <= 5)
-    //     $anx_ser = 'None';
-    // else if($gad_score <= 10)
-    //     $anx_ser = 'Mild';
-    // else if($gad_score <= 15)
-    //     $anx_ser = 'Moderate ';
-    // else
-    //     $anx_ser ='Sever anxiety';
+    $anx_ser = '';
+    if($gad_score <= 5)
+        $anx_ser = 'None';
+    else if($gad_score <= 10)
+        $anx_ser = 'Mild';
+    else if($gad_score <= 15)
+        $anx_ser = 'Moderate ';
+    else
+        $anx_ser ='Sever anxiety';
 
-    // $pdf->MultiCell(185, 10, 'GAD-7 Score: '.$gad_score."/24"."\n Anxiety Severity: ".$anx_ser,1,'[RIGHT]',0,1,15, $pdf->getY());
+    $pdf->MultiCell(185, 10, 'GAD-7 Score: '.$gad_score."/24"."\n Anxiety Severity: ".$anx_ser,1,'[RIGHT]',0,1,15, $pdf->getY());
 
-    // $pdf->AddPage();
+    $pdf->AddPage();
 
-    // $pdf->SetFont('Helvetica', 'B', 20 ); 
-    // $pdf->SetFillColor(41, 163, 41);
-    // $pdf->SetTextColor(255, 255, 255);
-    // $pdf->writeHTMLCell(60, 5, 10, $pdf->getY()+9, 'Family History', 0, 0, 1, true, 'L', true);
+    $pdf->SetFont('Helvetica', 'B', 20 ); 
+    $pdf->SetFillColor(41, 163, 41);
+    $pdf->SetTextColor(255, 255, 255);
+    $pdf->writeHTMLCell(60, 5, 10, $pdf->getY()+9, 'Family History', 0, 0, 1, true, 'L', true);
 
-    // $pdf->SetFont('Helvetica', '', 11 );
-    // $pdf->SetTextColor(0, 0, 0);
-    // $pdf->SetFillColor(255, 255, 255);
+    $pdf->SetFont('Helvetica', '', 11 );
+    $pdf->SetTextColor(0, 0, 0);
+    $pdf->SetFillColor(255, 255, 255);
 
+    $y_set = $pdf->getY()+15;
+    $pdf->MultiCell(60, 18, '',1,'[RIGHT]',0,1,15, $y_set);
+    $pdf->MultiCell(60, 18, 'Maternal',1,'[CENTER]',0,1,75,$y_set);
+    $pdf->MultiCell(60, 18, 'Paternal',1,'[CENTER]',0,1,135, $y_set);
     
+    $y_set = $pdf->getY();
+    $pdf->MultiCell(60, 18, 'Great grandparents',1,'[RIGHT]',0,1,15, $y_set);
+    $pdf->MultiCell(60, 18, $patient_medical_history_details['great_grandparents_maternal'],1,'[CENTER]',0,1,75, $y_set);
+    $pdf->MultiCell(60, 18, $patient_medical_history_details['great_grandparents_maternal'],1,'[CENTER]',0,1,135, $y_set);
 
-    // $pdf->AddPage();
+    $y_set = $pdf->getY();
+    $pdf->MultiCell(60, 18, 'Grandfather',1,'[RIGHT]',0,1,15, $y_set);
+    $pdf->MultiCell(60, 18, $patient_medical_history_details['great_grandparents_maternal'],1,'[CENTER]',0,1,75, $y_set);
+    $pdf->MultiCell(60, 18, $patient_medical_history_details['great_grandparents_maternal'],1,'[CENTER]',0,1,135, $y_set);
 
-    // $pdf->SetFont('Helvetica', 'B', 20 ); 
-    // $pdf->SetFillColor(41, 163, 41);
-    // $pdf->SetTextColor(255, 255, 255);
-    // $pdf->writeHTMLCell(60, 5, 10, $pdf->getY()+9, 'Medical History', 0, 0, 1, true, 'L', true);
 
-    // $pdf->SetFont('Helvetica', '', 11 );
-    // $pdf->SetTextColor(0, 0, 0);
+    $y_set = $pdf->getY();
+    $pdf->MultiCell(60, 18, 'Grandmother',1,'[RIGHT]',0,1,15, $y_set);
+    $pdf->MultiCell(60, 18, $patient_medical_history_details['great_grandparents_maternal'],1,'[CENTER]',0,1,75, $y_set);
+    $pdf->MultiCell(60, 18, $patient_medical_history_details['great_grandparents_maternal'],1,'[CENTER]',0,1,135, $y_set);
 
-    // $pdf->Text(10, $pdf->getY()+12, 'Present Symptoms');
 
-    // $pdf->SetFillColor(255, 255, 255);
-    // $pdf->RoundedRect(10, $pdf->getY()+7, 190, 30, 3.50, '1111', 'DF',array('color' => array(51, 102, 255)));
+    $y_set = $pdf->getY();
+    $pdf->MultiCell(60, 18, 'Aunts & Uncles',1,'[RIGHT]',0,1,15, $y_set);
+    $pdf->MultiCell(60, 18, $patient_medical_history_details['great_grandparents_maternal'],1,'[CENTER]',0,1,75, $y_set);
+    $pdf->MultiCell(60, 18, $patient_medical_history_details['great_grandparents_maternal'],1,'[CENTER]',0,1,135, $y_set);
 
-    // $pdf->MultiCell(180, 30, $patient_medical_history_details['present_symptoms'],0,'J',true,1,15, $pdf->getY()+10);
 
-    // $pdf->SetDrawColor(0, 0, 0);
-    // $pdf->SetFillColor(0, 0, 0);
+    $y_set = $pdf->getY();
+    $pdf->MultiCell(60, 18, 'Cousins',1,'[RIGHT]',0,1,15, $y_set);
+    $pdf->MultiCell(60, 18, $patient_medical_history_details['grandfather_maternal'],1,'[CENTER]',0,1,75, $y_set);
+    $pdf->MultiCell(60, 18, $patient_medical_history_details['grandfather_paternal'],1,'[CENTER]',0,1,135, $y_set);
 
-    // $pdf->Text(10, $pdf->getY()+5, 'Past Medical History');
 
-    // $pdf->SetFillColor(255, 255, 255);
-    // $pdf->RoundedRect(10, $pdf->getY()+7, 190, 30, 3.50, '1111', 'DF',array('color' => array(51, 102, 255)));
+    $y_set = $pdf->getY();
+    $pdf->MultiCell(60, 18, 'Parents',1,'[RIGHT]',0,1,15, $y_set);
+    $pdf->MultiCell(60, 18, $patient_medical_history_details['grandmother_maternal'],1,'[CENTER]',0,1,75, $y_set);
+    $pdf->MultiCell(60, 18, $patient_medical_history_details['grandmother_paternal'],1,'[CENTER]',0,1,135, $y_set);
 
-    // $pdf->MultiCell(180, 30, $patient_medical_history_details['past_medical_history'],0,'J',true,1,15, $pdf->getY()+10);
 
-    // $pdf->SetDrawColor(0, 0, 0);
-    // $pdf->SetFillColor(0, 0, 0);
+    $y_set = $pdf->getY();
+    $pdf->MultiCell(60, 18, 'Siblings',1,'[RIGHT]',0,1,15, $y_set);
+    $pdf->MultiCell(60, 18, $patient_medical_history_details['aunt_uncle_maternal'],1,'[CENTER]',0,1,75, $y_set);
+    $pdf->MultiCell(60, 18, $patient_medical_history_details['aunt_uncle_paternal'],1,'[CENTER]',0,1,135, $y_set);
 
-    // $pdf->Text(10, $pdf->getY()+5, 'Current Treatment');
 
-    // $pdf->SetFillColor(255, 255, 255);
-    // $pdf->RoundedRect(10, $pdf->getY()+7, 190, 30, 3.50, '1111', 'DF',array('color' => array(51, 102, 255)));
+    $y_set = $pdf->getY();
+    $pdf->MultiCell(60, 18, 'Offspring',1,'[RIGHT]',0,1,15, $y_set);
+    $pdf->MultiCell(60, 18, $patient_medical_history_details['cousins_maternal'],1,'[CENTER]',0,1,75, $y_set);
+    $pdf->MultiCell(60, 18, $patient_medical_history_details['cousins_maternal'],1,'[CENTER]',0,1,135, $y_set);
 
-    // $pdf->MultiCell(180, 30, $patient_medical_history_details['current_treatment'],0,'J',true,1,15, $pdf->getY()+10);
+    $pdf->AddPage();
 
-    // $pdf->SetDrawColor(0, 0, 0);
-    // $pdf->SetFillColor(0, 0, 0);
+    $pdf->SetFont('Helvetica', 'B', 20 ); 
+    $pdf->SetFillColor(41, 163, 41);
+    $pdf->SetTextColor(255, 255, 255);
+    $pdf->writeHTMLCell(60, 5, 10, $pdf->getY()+9, 'Medical History', 0, 0, 1, true, 'L', true);
 
-    // $pdf->Text(10, $pdf->getY()+5, "Men's / Women's Health");
+    $pdf->SetFont('Helvetica', '', 11 );
+    $pdf->SetTextColor(0, 0, 0);
 
-    // $pdf->SetFillColor(255, 255, 255);
-    // $pdf->RoundedRect(10, $pdf->getY()+7, 190, 30, 3.50, '1111', 'DF',array('color' => array(51, 102, 255)));
+    $pdf->Text(10, $pdf->getY()+12, 'Present Symptoms');
 
-    // $pdf->MultiCell(180, 30, $patient_medical_history_details['health'],0,'J',true,1,15, $pdf->getY()+10);
+    $pdf->SetFillColor(255, 255, 255);
+    $pdf->RoundedRect(10, $pdf->getY()+7, 190, 30, 3.50, '1111', 'DF',array('color' => array(51, 102, 255)));
 
-    // $pdf->SetDrawColor(0, 0, 0);
-    // $pdf->SetFillColor(0, 0, 0);
+    $pdf->MultiCell(180, 30, $patient_medical_history_details['present_symptoms'],0,'J',true,1,15, $pdf->getY()+10);
 
-    // $pdf->Text(10, $pdf->getY()+5, "Family History");
+    $pdf->SetDrawColor(0, 0, 0);
+    $pdf->SetFillColor(0, 0, 0);
 
-    // $pdf->SetFillColor(255, 255, 255);
-    // $pdf->RoundedRect(10, $pdf->getY()+7, 190, 30, 3.50, '1111', 'DF',array('color' => array(51, 102, 255)));
+    $pdf->Text(10, $pdf->getY()+5, 'Past Medical History');
 
-    // $pdf->MultiCell(180, 30, $patient_medical_history_details['family_history'],0,'J',true,1,15, $pdf->getY()+10);
+    $pdf->SetFillColor(255, 255, 255);
+    $pdf->RoundedRect(10, $pdf->getY()+7, 190, 30, 3.50, '1111', 'DF',array('color' => array(51, 102, 255)));
 
-    // $pdf->SetDrawColor(0, 0, 0);
-    // $pdf->SetFillColor(0, 0, 0);
+    $pdf->MultiCell(180, 30, $patient_medical_history_details['past_medical_history'],0,'J',true,1,15, $pdf->getY()+10);
+
+    $pdf->SetDrawColor(0, 0, 0);
+    $pdf->SetFillColor(0, 0, 0);
+
+    $pdf->Text(10, $pdf->getY()+5, 'Current Treatment');
+
+    $pdf->SetFillColor(255, 255, 255);
+    $pdf->RoundedRect(10, $pdf->getY()+7, 190, 30, 3.50, '1111', 'DF',array('color' => array(51, 102, 255)));
+
+    $pdf->MultiCell(180, 30, $patient_medical_history_details['current_treatment'],0,'J',true,1,15, $pdf->getY()+10);
+
+    $pdf->SetDrawColor(0, 0, 0);
+    $pdf->SetFillColor(0, 0, 0);
+
+    $pdf->Text(10, $pdf->getY()+5, "Men's / Women's Health");
+
+    $pdf->SetFillColor(255, 255, 255);
+    $pdf->RoundedRect(10, $pdf->getY()+7, 190, 30, 3.50, '1111', 'DF',array('color' => array(51, 102, 255)));
+
+    $pdf->MultiCell(180, 30, $patient_medical_history_details['health'],0,'J',true,1,15, $pdf->getY()+10);
+
+    $pdf->SetDrawColor(0, 0, 0);
+    $pdf->SetFillColor(0, 0, 0);
+
+    $pdf->Text(10, $pdf->getY()+5, "Family History");
+
+    $pdf->SetFillColor(255, 255, 255);
+    $pdf->RoundedRect(10, $pdf->getY()+7, 190, 30, 3.50, '1111', 'DF',array('color' => array(51, 102, 255)));
+
+    $pdf->MultiCell(180, 30, $patient_medical_history_details['family_history'],0,'J',true,1,15, $pdf->getY()+10);
+
+    $pdf->SetDrawColor(0, 0, 0);
+    $pdf->SetFillColor(0, 0, 0);
 
     $pdf->AddPage();
 
@@ -769,6 +819,35 @@
 
     $pdf->SetDrawColor(0, 0, 0);
     $pdf->SetFillColor(0, 0, 0);
+
+    $pdf->AddPage();
+
+    $pdf->SetFont('Helvetica', 'B', 20 ); 
+    $pdf->SetFillColor(41, 163, 41);
+    $pdf->SetTextColor(255, 255, 255);
+    //$pdf->MultiCell(297, 5,'',0,'J',true,1,0,20);
+    //$pdf->Text(30, 20, 'PHQ-9 Details');
+    $pdf->writeHTMLCell(100, 5, 10, $pdf->getY()+9, 'Travel & Vaccination History', 0, 0, 1, true, 'L', true);
+
+    $pdf->SetFont('Helvetica', '', 11 );
+    $pdf->SetTextColor(0, 0, 0);
+    
+    $pdf->setCellPaddings(2, 2, 1, 1);
+
+    //$pdf->MultiCell(105, 18, $item['question'],1,'[RIGHT]',0,1,15, $y_test);
+    //$pdf->MultiCell(80, 18, $answers[$item['value']],1,'[CENTER]',0,1,120, $y_test);
+    
+    $phq_score = 0;
+    $pdf->setY($pdf->getY()+15);
+
+    $length = count($patient_travel_details);
+			for ($i=0; $i < $length; $i++) { 
+                //echo "travel_destination[".$i."].value = ".$patient_travel_details[$i]['travel_destination'];
+                $y_test = $pdf->getY();
+                $pdf->MultiCell(60, 18, $patient_travel_details[$i]['travel_destination'],1,'[RIGHT]',0,1,15, $y_test);
+                $pdf->MultiCell(60, 18, $patient_travel_details[$i]['travel_date'],1,'[CENTER]',0,1,75, $y_test);
+                $pdf->MultiCell(60, 18, $patient_travel_details[$i]['travel_duration'],1,'[CENTER]',0,1,135, $y_test);
+			}
 
     $pdf->AddPage();
 

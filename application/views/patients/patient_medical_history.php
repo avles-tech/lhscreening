@@ -435,6 +435,7 @@
 		<?php 
 			$length = count($patient_travel_details);
 			for ($i=0; $i < $length; $i++) { 
+				echo "console.log('".$patient_travel_details[$i]['travel_destination']."');";
 				//echo "travel_destination[".$i."].value = ".$patient_travel_details[$i]['travel_destination'];
 			}
 			
