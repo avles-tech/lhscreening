@@ -89,7 +89,7 @@
 
     $pdf->SetFont('Helvetica', 'B', 20 ); 
     //$pdf->Text(5, 20, 'Patient Details');
-    $pdf->SetFillColor(41, 163, 41);
+    $pdf->SetFillColor(0, 178, 72);
     $pdf->SetTextColor(255, 255, 255);
     //$pdf->MultiCell(70, 5,'',0,'C',true,1,50,20);
     //$pdf->Text(60, 20, 'Patient Details');
@@ -157,7 +157,7 @@
     $pdf->SetFont('Helvetica', 'B', 20 ); 
 
     //$pdf->Text(5, $pdf->getY()+9, 'Next of kin details');
-    $pdf->SetFillColor(41, 163, 41);
+    $pdf->SetFillColor(0, 178, 72);
     $pdf->SetTextColor(255, 255, 255);
     $pdf->writeHTMLCell(70, 5, 10, $pdf->getY()+9, 'Next of kin details', 0, 0, 1, true, 'L', true);
 
@@ -194,7 +194,7 @@
 
     $pdf->SetFont('Helvetica', 'B', 20 ); 
     //$pdf->Text(5, $pdf->getY()+9, 'NHS / Alternative GP');
-    $pdf->SetFillColor(41, 163, 41);
+    $pdf->SetFillColor(0, 178, 72);
     $pdf->SetTextColor(255, 255, 255);
     //$pdf->writeHTMLCell(297, 5, 0, $pdf->getY()+9, 'NHS / Alternative GP', 0, 0, 1, true, 'C', true);
     $pdf->writeHTMLCell(90, 5, 10, $pdf->getY()+9, 'NHS / Alternative GP', 0, 0, 1, true, 'L', true);
@@ -221,7 +221,7 @@
 
     $pdf->SetFont('Helvetica', 'B', 20 ); 
     //$pdf->Text(5, 20, 'Health');
-    $pdf->SetFillColor(41, 163, 41);
+    $pdf->SetFillColor(0, 178, 72);
     $pdf->SetTextColor(255, 255, 255);
     $pdf->writeHTMLCell(30, 5, 10, $pdf->getY()+9, 'Health', 0, 0, 1, true, 'L', true);
 
@@ -340,7 +340,7 @@
 
     $pdf->SetFont('Helvetica', 'B', 20 ); 
     //$pdf->Text(5, $pdf->getY()+9, 'CHAPERONE');
-    $pdf->SetFillColor(41, 163, 41);
+    $pdf->SetFillColor(0, 178, 72);
     $pdf->SetTextColor(255, 255, 255);
     $pdf->writeHTMLCell(50, 5, 10, $pdf->getY()+9, 'CHAPERONE', 0, 0, 1, true, 'L', true);
 
@@ -364,7 +364,7 @@
     $pdf->AddPage();
 
     $pdf->SetFont('Helvetica', 'B', 20 ); 
-    $pdf->SetFillColor(41, 163, 41);
+    $pdf->SetFillColor(0, 178, 72);
     $pdf->SetTextColor(255, 255, 255);
     //$pdf->MultiCell(297, 5,'',0,'L',true,1,0,20);
     //$pdf->Text(30, 20, 'CONSENT');
@@ -449,7 +449,7 @@
     $pdf->AddPage();
 
     $pdf->SetFont('Helvetica', 'B', 20 ); 
-    $pdf->SetFillColor(41, 163, 41);
+    $pdf->SetFillColor(0, 178, 72);
     $pdf->SetTextColor(255, 255, 255);
     //$pdf->MultiCell(297, 5,'',0,'L',true,1,0,20);
     //$pdf->Text(30, 20, 'PHQ-9 Details');
@@ -463,8 +463,8 @@
     $pdf->setCellPaddings(2, 2, 1, 1);
     foreach ($patient_phq as $item):
         $y_test = $pdf->getY();
-        $pdf->MultiCell(105, 18, $item['question'],1,'[RIGHT]',0,1,15, $y_test);
-        $pdf->MultiCell(80, 18, $answers[$item['value']],1,'[CENTER]',0,1,120, $y_test);
+        $pdf->MultiCell(105, 18, $item['question'],1,'[L]',0,1,15, $y_test);
+        $pdf->MultiCell(80, 18, $answers[$item['value']],1,'[L]',0,1,120, $y_test);
         $phq_score = $phq_score + $item['value'];
     endforeach;
     
@@ -478,12 +478,12 @@
     else
         $dep_ser ='Sever anxiety';
 
-    $pdf->MultiCell(185, 10, 'PHQ-9 Score: '.$phq_score."/27"."\nDepression Severity: ".$dep_ser,1,'[RIGHT]',0,1,15, $pdf->getY());
+    $pdf->MultiCell(185, 10, 'PHQ-9 Score: '.$phq_score."/27"."\nDepression Severity: ".$dep_ser,1,'[L]',0,1,15, $pdf->getY());
 
     $pdf->AddPage();
 
     $pdf->SetFont('Helvetica', 'B', 20 ); 
-    $pdf->SetFillColor(41, 163, 41);
+    $pdf->SetFillColor(0, 178, 72);
     $pdf->SetTextColor(255, 255, 255);
     //$pdf->MultiCell(297, 5,'',0,'L',true,1,0,20);
     //$pdf->Text(30, 20, 'GAD-7 Details');
@@ -496,8 +496,8 @@
     $pdf->setY( $pdf->getY()+15);
     foreach ($patient_gad as $item):
         $y_test = $pdf->getY();
-        $pdf->MultiCell(105, 13, $item['question'],1,'[RIGHT]',0,1,15, $y_test);
-        $pdf->MultiCell(80, 13, $answers[$item['value']],1,'[RIGHT]',0,1,120, $y_test);
+        $pdf->MultiCell(105, 13, $item['question'],1,'[L]',0,1,15, $y_test);
+        $pdf->MultiCell(80, 13, $answers[$item['value']],1,'[L]',0,1,120, $y_test);
         $gad_score = $gad_score + $item['value'];
     endforeach;
     
@@ -511,12 +511,12 @@
     else
         $anx_ser ='Sever anxiety';
 
-    $pdf->MultiCell(185, 10, 'GAD-7 Score: '.$gad_score."/24"."\n Anxiety Severity: ".$anx_ser,1,'[RIGHT]',0,1,15, $pdf->getY());
+    $pdf->MultiCell(185, 10, 'GAD-7 Score: '.$gad_score."/24"."\n Anxiety Severity: ".$anx_ser,1,'[L]',0,1,15, $pdf->getY());
 
     $pdf->AddPage();
 
     $pdf->SetFont('Helvetica', 'B', 20 ); 
-    $pdf->SetFillColor(41, 163, 41);
+    $pdf->SetFillColor(0, 178, 72);
     $pdf->SetTextColor(255, 255, 255);
     $pdf->writeHTMLCell(60, 5, 10, $pdf->getY()+9, 'Medical History', 0, 0, 1, true, 'L', true);
 
@@ -576,7 +576,7 @@
     $pdf->AddPage();
 
     $pdf->SetFont('Helvetica', 'B', 20 ); 
-    $pdf->SetFillColor(41, 163, 41);
+    $pdf->SetFillColor(0, 178, 72);
     $pdf->SetTextColor(255, 255, 255);
     $pdf->writeHTMLCell(60, 5, 10, $pdf->getY()+9, 'Family History', 0, 0, 1, true, 'L', true);
 
@@ -585,60 +585,60 @@
     $pdf->SetFillColor(255, 255, 255);
 
     $y_set = $pdf->getY()+15;
-    $pdf->MultiCell(60, 18, '',1,'[RIGHT]',0,1,15, $y_set);
-    $pdf->MultiCell(60, 18, 'Maternal',1,'[CENTER]',0,1,75,$y_set);
-    $pdf->MultiCell(60, 18, 'Paternal',1,'[CENTER]',0,1,135, $y_set);
+    $pdf->MultiCell(60, 18, '',1,'[L]',0,1,15, $y_set);
+    $pdf->MultiCell(60, 18, 'Maternal',1,'[L]',0,1,75,$y_set);
+    $pdf->MultiCell(60, 18, 'Paternal',1,'[L]',0,1,135, $y_set);
     
     $y_set = $pdf->getY();
-    $pdf->MultiCell(60, 18, 'Great grandparents',1,'[RIGHT]',0,1,15, $y_set);
-    $pdf->MultiCell(60, 18, $patient_medical_history_details['great_grandparents_maternal'],1,'[CENTER]',0,1,75, $y_set);
-    $pdf->MultiCell(60, 18, $patient_medical_history_details['great_grandparents_maternal'],1,'[CENTER]',0,1,135, $y_set);
+    $pdf->MultiCell(60, 18, 'Great grandparents',1,'[L]',0,1,15, $y_set);
+    $pdf->MultiCell(60, 18, $patient_medical_history_details['great_grandparents_maternal'],1,'[L]',0,1,75, $y_set);
+    $pdf->MultiCell(60, 18, $patient_medical_history_details['great_grandparents_maternal'],1,'[L]',0,1,135, $y_set);
 
     $y_set = $pdf->getY();
-    $pdf->MultiCell(60, 18, 'Grandfather',1,'[RIGHT]',0,1,15, $y_set);
-    $pdf->MultiCell(60, 18, $patient_medical_history_details['great_grandparents_maternal'],1,'[CENTER]',0,1,75, $y_set);
-    $pdf->MultiCell(60, 18, $patient_medical_history_details['great_grandparents_maternal'],1,'[CENTER]',0,1,135, $y_set);
-
-
-    $y_set = $pdf->getY();
-    $pdf->MultiCell(60, 18, 'Grandmother',1,'[RIGHT]',0,1,15, $y_set);
-    $pdf->MultiCell(60, 18, $patient_medical_history_details['great_grandparents_maternal'],1,'[CENTER]',0,1,75, $y_set);
-    $pdf->MultiCell(60, 18, $patient_medical_history_details['great_grandparents_maternal'],1,'[CENTER]',0,1,135, $y_set);
+    $pdf->MultiCell(60, 18, 'Grandfather',1,'[L]',0,1,15, $y_set);
+    $pdf->MultiCell(60, 18, $patient_medical_history_details['great_grandparents_maternal'],1,'[L]',0,1,75, $y_set);
+    $pdf->MultiCell(60, 18, $patient_medical_history_details['great_grandparents_maternal'],1,'[L]',0,1,135, $y_set);
 
 
     $y_set = $pdf->getY();
-    $pdf->MultiCell(60, 18, 'Aunts & Uncles',1,'[RIGHT]',0,1,15, $y_set);
-    $pdf->MultiCell(60, 18, $patient_medical_history_details['great_grandparents_maternal'],1,'[CENTER]',0,1,75, $y_set);
-    $pdf->MultiCell(60, 18, $patient_medical_history_details['great_grandparents_maternal'],1,'[CENTER]',0,1,135, $y_set);
+    $pdf->MultiCell(60, 18, 'Grandmother',1,'[L]',0,1,15, $y_set);
+    $pdf->MultiCell(60, 18, $patient_medical_history_details['great_grandparents_maternal'],1,'[L]',0,1,75, $y_set);
+    $pdf->MultiCell(60, 18, $patient_medical_history_details['great_grandparents_maternal'],1,'[L]',0,1,135, $y_set);
 
 
     $y_set = $pdf->getY();
-    $pdf->MultiCell(60, 18, 'Cousins',1,'[RIGHT]',0,1,15, $y_set);
-    $pdf->MultiCell(60, 18, $patient_medical_history_details['grandfather_maternal'],1,'[CENTER]',0,1,75, $y_set);
-    $pdf->MultiCell(60, 18, $patient_medical_history_details['grandfather_paternal'],1,'[CENTER]',0,1,135, $y_set);
+    $pdf->MultiCell(60, 18, 'Aunts & Uncles',1,'[L]',0,1,15, $y_set);
+    $pdf->MultiCell(60, 18, $patient_medical_history_details['great_grandparents_maternal'],1,'[L]',0,1,75, $y_set);
+    $pdf->MultiCell(60, 18, $patient_medical_history_details['great_grandparents_maternal'],1,'[L]',0,1,135, $y_set);
 
 
     $y_set = $pdf->getY();
-    $pdf->MultiCell(60, 18, 'Parents',1,'[RIGHT]',0,1,15, $y_set);
-    $pdf->MultiCell(60, 18, $patient_medical_history_details['grandmother_maternal'],1,'[CENTER]',0,1,75, $y_set);
-    $pdf->MultiCell(60, 18, $patient_medical_history_details['grandmother_paternal'],1,'[CENTER]',0,1,135, $y_set);
+    $pdf->MultiCell(60, 18, 'Cousins',1,'[L]',0,1,15, $y_set);
+    $pdf->MultiCell(60, 18, $patient_medical_history_details['grandfather_maternal'],1,'[L]',0,1,75, $y_set);
+    $pdf->MultiCell(60, 18, $patient_medical_history_details['grandfather_paternal'],1,'[L]',0,1,135, $y_set);
 
 
     $y_set = $pdf->getY();
-    $pdf->MultiCell(60, 18, 'Siblings',1,'[RIGHT]',0,1,15, $y_set);
-    $pdf->MultiCell(60, 18, $patient_medical_history_details['aunt_uncle_maternal'],1,'[CENTER]',0,1,75, $y_set);
-    $pdf->MultiCell(60, 18, $patient_medical_history_details['aunt_uncle_paternal'],1,'[CENTER]',0,1,135, $y_set);
+    $pdf->MultiCell(60, 18, 'Parents',1,'[L]',0,1,15, $y_set);
+    $pdf->MultiCell(60, 18, $patient_medical_history_details['grandmother_maternal'],1,'[L]',0,1,75, $y_set);
+    $pdf->MultiCell(60, 18, $patient_medical_history_details['grandmother_paternal'],1,'[L]',0,1,135, $y_set);
 
 
     $y_set = $pdf->getY();
-    $pdf->MultiCell(60, 18, 'Offspring',1,'[RIGHT]',0,1,15, $y_set);
-    $pdf->MultiCell(60, 18, $patient_medical_history_details['cousins_maternal'],1,'[CENTER]',0,1,75, $y_set);
-    $pdf->MultiCell(60, 18, $patient_medical_history_details['cousins_maternal'],1,'[CENTER]',0,1,135, $y_set);
+    $pdf->MultiCell(60, 18, 'Siblings',1,'[L]',0,1,15, $y_set);
+    $pdf->MultiCell(60, 18, $patient_medical_history_details['aunt_uncle_maternal'],1,'[L]',0,1,75, $y_set);
+    $pdf->MultiCell(60, 18, $patient_medical_history_details['aunt_uncle_paternal'],1,'[L]',0,1,135, $y_set);
+
+
+    $y_set = $pdf->getY();
+    $pdf->MultiCell(60, 18, 'Offspring',1,'[L]',0,1,15, $y_set);
+    $pdf->MultiCell(60, 18, $patient_medical_history_details['cousins_maternal'],1,'[L]',0,1,75, $y_set);
+    $pdf->MultiCell(60, 18, $patient_medical_history_details['cousins_maternal'],1,'[L]',0,1,135, $y_set);
 
     $pdf->AddPage();
 
     $pdf->SetFont('Helvetica', 'B', 20 ); 
-    $pdf->SetFillColor(41, 163, 41);
+    $pdf->SetFillColor(0, 178, 72);
     $pdf->SetTextColor(255, 255, 255);
     //$pdf->MultiCell(297, 5,'',0,'L',true,1,0,20);
     //$pdf->Text(30, 20, 'PHQ-9 Details');
@@ -649,25 +649,33 @@
     
     $pdf->setCellPaddings(2, 2, 1, 1);
 
-    //$pdf->MultiCell(105, 18, $item['question'],1,'[RIGHT]',0,1,15, $y_test);
-    //$pdf->MultiCell(80, 18, $answers[$item['value']],1,'[CENTER]',0,1,120, $y_test);
+    //$pdf->MultiCell(105, 18, $item['question'],1,'[L]',0,1,15, $y_test);
+    //$pdf->MultiCell(80, 18, $answers[$item['value']],1,'[L]',0,1,120, $y_test);
+
+   
     
     $phq_score = 0;
     $pdf->setY($pdf->getY()+15);
+
+    $y_test = $pdf->getY();
+
+    $pdf->MultiCell(40, 10, 'Destination',1,'[J]',0,1,15, $y_test);
+    $pdf->MultiCell(40, 10, 'Date',1,'[J]',0,1,55, $y_test);
+    $pdf->MultiCell(40, 10, 'Duration in days',1,'[J]',0,1,95, $y_test);
 
     $length = count($patient_travel_details);
 			for ($i=0; $i < $length; $i++) { 
                 //echo "travel_destination[".$i."].value = ".$patient_travel_details[$i]['travel_destination'];
                 $y_test = $pdf->getY();
-                $pdf->MultiCell(60, 18, $patient_travel_details[$i]['travel_destination'],1,'[RIGHT]',0,1,15, $y_test);
-                $pdf->MultiCell(60, 18, $patient_travel_details[$i]['travel_date'],1,'[CENTER]',0,1,75, $y_test);
-                $pdf->MultiCell(60, 18, $patient_travel_details[$i]['travel_duration'],1,'[CENTER]',0,1,135, $y_test);
+                $pdf->MultiCell(40, 10, $patient_travel_details[$i]['travel_destination'],1,'[L]',0,1,15, $y_test);
+                $pdf->MultiCell(40, 10, $patient_travel_details[$i]['travel_date'],1,'[L]',0,1,55, $y_test);
+                $pdf->MultiCell(40, 10, $patient_travel_details[$i]['travel_duration'],1,'[L]',0,1,95, $y_test);
 			}
     
     $pdf->AddPage();
 
     $pdf->SetFont('Helvetica', 'B', 20 ); 
-    $pdf->SetFillColor(41, 163, 41);
+    $pdf->SetFillColor(0, 178, 72);
     $pdf->SetTextColor(255, 255, 255);
     $pdf->writeHTMLCell(50, 5, 10, $pdf->getY()+9, 'Vaccinations', 0, 0, 1, true, 'L', true);
 
@@ -737,7 +745,7 @@
         $pdf->Circle(45,$pdf->getY()+4,2);
 
     $pdf->SetFont('Helvetica', 'B', 20 ); 
-    $pdf->SetFillColor(41, 163, 41);
+    $pdf->SetFillColor(0, 178, 72);
     $pdf->SetTextColor(255, 255, 255);
     $pdf->writeHTMLCell(50, 5, 10, $pdf->getY()+12, 'Lifestyle', 0, 0, 1, true, 'L', true);
 
@@ -881,7 +889,7 @@
     $pdf->AddPage();
 
     $pdf->SetFont('Helvetica', 'B', 20 ); 
-    $pdf->SetFillColor(41, 163, 41);
+    $pdf->SetFillColor(0, 178, 72);
     $pdf->SetTextColor(255, 255, 255);
     $pdf->writeHTMLCell(50, 5, 10, $pdf->getY()+12, 'Examinations', 0, 0, 1, true, 'L', true);
 
@@ -898,7 +906,7 @@
     $pdf->writeHTML($html, true, 0, true, 0);
 
     $pdf->SetFont('Helvetica', 'B', 20 ); 
-    $pdf->SetFillColor(41, 163, 41);
+    $pdf->SetFillColor(0, 178, 72);
     $pdf->SetTextColor(255, 255, 255);
     $pdf->writeHTMLCell(130, 5, 10, $pdf->getY()+12, 'Extraordinary Physical Findings', 0, 0, 1, true, 'L', true);
 
@@ -916,7 +924,7 @@
     $pdf->AddPage();
 
     $pdf->SetFont('Helvetica', 'B', 20 ); 
-    $pdf->SetFillColor(41, 163, 41);
+    $pdf->SetFillColor(0, 178, 72);
     $pdf->SetTextColor(255, 255, 255);
     $pdf->writeHTMLCell(65, 5, 10, $pdf->getY()+12, 'Laboratory Test', 0, 0, 1, true, 'L', true);
 
@@ -940,7 +948,7 @@
     $pdf->AddPage();
 
     $pdf->SetFont('Helvetica', 'B', 20 ); 
-    $pdf->SetFillColor(41, 163, 41);
+    $pdf->SetFillColor(0, 178, 72);
     $pdf->SetTextColor(255, 255, 255);
     $pdf->writeHTMLCell(130, 5, 10, $pdf->getY()+9, 'GP Summary & Recommendation', 0, 0, 1, true, 'L', true);
 
