@@ -915,15 +915,6 @@
     $pdf->Text(10, $pdf->getY()+9, 'Body Fat');
     $pdf->Text(50, $pdf->getY(),$patient_medical_history_details['body_fat']);
 
-    $html= "<br>";
-    $html.="<p> Height <b>".$patient_medical_history_details['height']."</b></p>";
-    $html.="<p> Weight <b>".$patient_medical_history_details['weight']."</b></p>";
-    $html.="<p> Body Mass Index <b>".$patient_medical_history_details['body_mass']."</b></p>";
-    $html.="<p> Body Fat <b>".$patient_medical_history_details['body_fat']."</b></p>";
-    //$html.="<p> Extraordinary Physical Findings <b>".$patient_medical_history_details['extra_ordinary_physical']."</b></p>";
-    
-    //$pdf->writeHTML($html, true, 0, true, 0);
-
     $pdf->SetFont('Helvetica', 'B', 20 ); 
     $pdf->SetFillColor(0, 178, 72);
     $pdf->SetTextColor(255, 255, 255);
@@ -939,30 +930,33 @@
 
     $pdf->SetDrawColor(0, 0, 0);
 
-
     $pdf->AddPage();
 
     $pdf->SetFont('Helvetica', 'B', 20 ); 
     $pdf->SetFillColor(0, 178, 72);
     $pdf->SetTextColor(255, 255, 255);
-    $pdf->writeHTMLCell(65, 5, 10, $pdf->getY()+12, 'Laboratory Test', 0, 0, 1, true, 'L', true);
+    $pdf->writeHTMLCell(65, 5, 10, $pdf->getY(), 'Laboratory Test', 0, 0, 1, true, 'L', true);
+
+    $pdf->setCellPaddings(1, 1, 1, 1);
 
     $pdf->SetFont('Helvetica', '', 11 );
     $pdf->SetTextColor(0, 0, 0);
+    
+    $pdf->setY($pdf->getY()+5);
 
-    $html = "<br>";
     foreach ($uniqueCategories as $cat):
-        $html.='<h3>'.$cat.'</h3>';
-        $html.='<table> ';
+        $pdf->SetFont('Helvetica', 'B', 15 );
+        $pdf->Text(10, $pdf->getY()+9, $cat);
+        $pdf->SetFont('Helvetica', '', 11 );
+
         foreach ($patient_lab_test as $item):
             if($item['category']==$cat):
-                
-                $html.= "<tr>  <td> ".$item['test_name']." </td> <td><b>".$item['value']."</b> ".$item['unit']."</td></tr>";
+                $pdf->Text(15, $pdf->getY()+9, $item['test_name']);
+                $pdf->Text(65, $pdf->getY(),$item['value']." ".$item['unit']);
             endif;
         endforeach;
-        $html.='</table> ';
     endforeach;
-    $pdf->writeHTML($html, true, 0, true, 0);
+
 
     $pdf->AddPage();
 
