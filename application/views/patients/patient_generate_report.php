@@ -905,10 +905,30 @@
     $pdf->Text(10, $pdf->getY()+9, 'Body Fat');
     $pdf->Text(50, $pdf->getY(),$patient_medical_history_details['body_fat']);
 
+    $bim_int = 'Interpretation: 
+    What your BMI means:
+    
+    BMI 18.5 - 24.9
+    Experts generally consider a BMI below 20 to be underweight
+    
+    BMI 25.0 – 29.9
+    Experts generally consider a BMI of 20 to 25 to be healthy.
+    
+    BMI 30.0 – 34.9
+    Experts generally consider a BMI of 25 to 30 to be considered overweight
+    
+    BMI 35+
+    Experts generally consider a BMI over 30 as very overweight (obese)';
+
+    $pdf->SetFont('Helvetica', 'B', 11 ); 
+
+    $pdf->writeHTMLCell(180, 30, 15, $pdf->getY()+9, $bim_int, 0, 0, 0, true, 'L', true);
+
+
     $pdf->SetFont('Helvetica', 'B', 20 ); 
     $pdf->SetFillColor(0, 178, 72);
     $pdf->SetTextColor(255, 255, 255);
-    $pdf->writeHTMLCell(112, 5, 10, $pdf->getY()+12, 'Extraordinary Physical Findings', 0, 0, 1, true, 'L', true);
+    $pdf->writeHTMLCell(112, 5, 10, $pdf->getY()+30, 'Extraordinary Physical Findings', 0, 0, 1, true, 'L', true);
 
     $pdf->SetFont('Helvetica', '', 11 );
     $pdf->SetTextColor(0, 0, 0);
