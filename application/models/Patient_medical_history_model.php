@@ -32,11 +32,11 @@ class Patient_medical_history_model extends CI_Model {
                         $this->db->delete('patient_travel', array('patient_id' => $patient_id));
                         foreach ($travel as $value):
                                 //$value['patient_id'] = $patient_id;
-                                //echo $travel['travel_destination'];
+                                ///echo $value;
                                 $data = array(
-                                        'travel_destination' => $travel['travel_destination']
-                                        ,'travel_date' => $travel['travel_date']
-                                        ,'travel_duration' => $travel['travel_duration']
+                                        'travel_destination' => $value['travel_destination']
+                                        ,'travel_date' => $value['travel_date']
+                                        ,'travel_duration' => $value['travel_duration']
                                         ,'patient_id' => $patient_id
                                 );
                                 $this->db->insert('patient_travel', $data);

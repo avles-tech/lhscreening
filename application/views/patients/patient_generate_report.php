@@ -518,6 +518,66 @@
     $pdf->SetFont('Helvetica', 'B', 20 ); 
     $pdf->SetFillColor(41, 163, 41);
     $pdf->SetTextColor(255, 255, 255);
+    $pdf->writeHTMLCell(60, 5, 10, $pdf->getY()+9, 'Medical History', 0, 0, 1, true, 'L', true);
+
+    $pdf->SetFont('Helvetica', '', 11 );
+    $pdf->SetTextColor(0, 0, 0);
+
+    $pdf->Text(10, $pdf->getY()+12, 'Present Symptoms');
+
+    $pdf->SetFillColor(255, 255, 255);
+    $pdf->RoundedRect(10, $pdf->getY()+7, 190, 30, 3.50, '1111', 'DF',array('color' => array(51, 102, 255)));
+
+    $pdf->MultiCell(180, 30, $patient_medical_history_details['present_symptoms'],0,'J',true,1,15, $pdf->getY()+10);
+
+    $pdf->SetDrawColor(0, 0, 0);
+    $pdf->SetFillColor(0, 0, 0);
+
+    $pdf->Text(10, $pdf->getY()+5, 'Past Medical History');
+
+    $pdf->SetFillColor(255, 255, 255);
+    $pdf->RoundedRect(10, $pdf->getY()+7, 190, 30, 3.50, '1111', 'DF',array('color' => array(51, 102, 255)));
+
+    $pdf->MultiCell(180, 30, $patient_medical_history_details['past_medical_history'],0,'J',true,1,15, $pdf->getY()+10);
+
+    $pdf->SetDrawColor(0, 0, 0);
+    $pdf->SetFillColor(0, 0, 0);
+
+    $pdf->Text(10, $pdf->getY()+5, 'Current Treatment');
+
+    $pdf->SetFillColor(255, 255, 255);
+    $pdf->RoundedRect(10, $pdf->getY()+7, 190, 30, 3.50, '1111', 'DF',array('color' => array(51, 102, 255)));
+
+    $pdf->MultiCell(180, 30, $patient_medical_history_details['current_treatment'],0,'J',true,1,15, $pdf->getY()+10);
+
+    $pdf->SetDrawColor(0, 0, 0);
+    $pdf->SetFillColor(0, 0, 0);
+
+    $pdf->Text(10, $pdf->getY()+5, "Men's / Women's Health");
+
+    $pdf->SetFillColor(255, 255, 255);
+    $pdf->RoundedRect(10, $pdf->getY()+7, 190, 30, 3.50, '1111', 'DF',array('color' => array(51, 102, 255)));
+
+    $pdf->MultiCell(180, 30, $patient_medical_history_details['health'],0,'J',true,1,15, $pdf->getY()+10);
+
+    $pdf->SetDrawColor(0, 0, 0);
+    $pdf->SetFillColor(0, 0, 0);
+
+    $pdf->Text(10, $pdf->getY()+5, "Family History");
+
+    $pdf->SetFillColor(255, 255, 255);
+    $pdf->RoundedRect(10, $pdf->getY()+7, 190, 30, 3.50, '1111', 'DF',array('color' => array(51, 102, 255)));
+
+    $pdf->MultiCell(180, 30, $patient_medical_history_details['family_history'],0,'J',true,1,15, $pdf->getY()+10);
+
+    $pdf->SetDrawColor(0, 0, 0);
+    $pdf->SetFillColor(0, 0, 0);
+    
+    $pdf->AddPage();
+
+    $pdf->SetFont('Helvetica', 'B', 20 ); 
+    $pdf->SetFillColor(41, 163, 41);
+    $pdf->SetTextColor(255, 255, 255);
     $pdf->writeHTMLCell(60, 5, 10, $pdf->getY()+9, 'Family History', 0, 0, 1, true, 'L', true);
 
     $pdf->SetFont('Helvetica', '', 11 );
@@ -574,66 +634,6 @@
     $pdf->MultiCell(60, 18, 'Offspring',1,'[RIGHT]',0,1,15, $y_set);
     $pdf->MultiCell(60, 18, $patient_medical_history_details['cousins_maternal'],1,'[CENTER]',0,1,75, $y_set);
     $pdf->MultiCell(60, 18, $patient_medical_history_details['cousins_maternal'],1,'[CENTER]',0,1,135, $y_set);
-
-    $pdf->AddPage();
-
-    $pdf->SetFont('Helvetica', 'B', 20 ); 
-    $pdf->SetFillColor(41, 163, 41);
-    $pdf->SetTextColor(255, 255, 255);
-    $pdf->writeHTMLCell(60, 5, 10, $pdf->getY()+9, 'Medical History', 0, 0, 1, true, 'L', true);
-
-    $pdf->SetFont('Helvetica', '', 11 );
-    $pdf->SetTextColor(0, 0, 0);
-
-    $pdf->Text(10, $pdf->getY()+12, 'Present Symptoms');
-
-    $pdf->SetFillColor(255, 255, 255);
-    $pdf->RoundedRect(10, $pdf->getY()+7, 190, 30, 3.50, '1111', 'DF',array('color' => array(51, 102, 255)));
-
-    $pdf->MultiCell(180, 30, $patient_medical_history_details['present_symptoms'],0,'J',true,1,15, $pdf->getY()+10);
-
-    $pdf->SetDrawColor(0, 0, 0);
-    $pdf->SetFillColor(0, 0, 0);
-
-    $pdf->Text(10, $pdf->getY()+5, 'Past Medical History');
-
-    $pdf->SetFillColor(255, 255, 255);
-    $pdf->RoundedRect(10, $pdf->getY()+7, 190, 30, 3.50, '1111', 'DF',array('color' => array(51, 102, 255)));
-
-    $pdf->MultiCell(180, 30, $patient_medical_history_details['past_medical_history'],0,'J',true,1,15, $pdf->getY()+10);
-
-    $pdf->SetDrawColor(0, 0, 0);
-    $pdf->SetFillColor(0, 0, 0);
-
-    $pdf->Text(10, $pdf->getY()+5, 'Current Treatment');
-
-    $pdf->SetFillColor(255, 255, 255);
-    $pdf->RoundedRect(10, $pdf->getY()+7, 190, 30, 3.50, '1111', 'DF',array('color' => array(51, 102, 255)));
-
-    $pdf->MultiCell(180, 30, $patient_medical_history_details['current_treatment'],0,'J',true,1,15, $pdf->getY()+10);
-
-    $pdf->SetDrawColor(0, 0, 0);
-    $pdf->SetFillColor(0, 0, 0);
-
-    $pdf->Text(10, $pdf->getY()+5, "Men's / Women's Health");
-
-    $pdf->SetFillColor(255, 255, 255);
-    $pdf->RoundedRect(10, $pdf->getY()+7, 190, 30, 3.50, '1111', 'DF',array('color' => array(51, 102, 255)));
-
-    $pdf->MultiCell(180, 30, $patient_medical_history_details['health'],0,'J',true,1,15, $pdf->getY()+10);
-
-    $pdf->SetDrawColor(0, 0, 0);
-    $pdf->SetFillColor(0, 0, 0);
-
-    $pdf->Text(10, $pdf->getY()+5, "Family History");
-
-    $pdf->SetFillColor(255, 255, 255);
-    $pdf->RoundedRect(10, $pdf->getY()+7, 190, 30, 3.50, '1111', 'DF',array('color' => array(51, 102, 255)));
-
-    $pdf->MultiCell(180, 30, $patient_medical_history_details['family_history'],0,'J',true,1,15, $pdf->getY()+10);
-
-    $pdf->SetDrawColor(0, 0, 0);
-    $pdf->SetFillColor(0, 0, 0);
 
     $pdf->AddPage();
 
