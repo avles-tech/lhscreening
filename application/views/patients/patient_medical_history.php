@@ -430,13 +430,17 @@
 
 		});
 
-		var travel_destination = window.document.getElementsByName('travel[travel_destination]');
+		var travel_destination = window.document.getElementsByName('travel_destination[]');
+		var travel_date = window.document.getElementsByName('travel_date[]');
+		var travel_duration = window.document.getElementsByName('travel_duration[]');
 
 		<?php 
 			$length = count($patient_travel_details);
 			for ($i=0; $i < $length; $i++) { 
-				echo "console.log('".$patient_travel_details[$i]['travel_destination']."');";
-				//echo "travel_destination[".$i."].value = ".$patient_travel_details[$i]['travel_destination'];
+				//echo "console.log('".$patient_travel_details[$i]['travel_destination']."');";
+				echo "travel_destination[".$i."].value = '".$patient_travel_details[$i]['travel_destination']."';";
+				echo "travel_date[".$i."].value = '".$patient_travel_details[$i]['travel_date']."';";
+				echo "travel_duration[".$i."].value = '".$patient_travel_details[$i]['travel_duration']."';";
 			}
 			
 		?>
