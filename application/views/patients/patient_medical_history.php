@@ -356,10 +356,10 @@
 		<div class="form-row">
 			<!-- form-group end.// -->
 			<div class="form-group btn-group mr-2">
-				<button type="submit" class="btn btn-primary btn-block" <?php echo $read_only ?>> Save </button>
+				<a href='#' role='button' id='mc_save' class="btn btn-primary btn-block" <?php echo $read_only ?>> Save </a>
 			</div> <!-- form-group// -->
 			<div class="form-group btn-group mr-2">
-						<button id='save_exit' class="btn btn-primary " <?php echo $read_only ?>>Save & Exit</button>
+						<a href='#' role='button' id='mc_save_exit' class="btn btn-primary " <?php echo $read_only ?>>Save & Exit</a>
 					</div> <!-- form-group// -->
 			<div class="form-group btn-group mr-2">
 				<a href="<?php echo base_url().'patients'?>" class="btn btn-danger" role='button'>Cancel</a>
@@ -401,31 +401,61 @@
 		});
 	}
 
-</script>
-
-<script>
-		$('form#medical_history_form').submit(function (e) {
-
-			var form = $(this);
-
+		$('#mc_save_exit').click(function (e) {
 			e.preventDefault();
+			updateMedicalHistory(true);
+			
+		});
+
+		$('#mc_save').click(function (e) {
+			e.preventDefault();
+			updateMedicalHistory(false);
+			
+		});
+
+		function updateMedicalHistory(save_exit){
+
+			var phq_form_form = $('#medical_history_form');
 
 			$.ajax({
-				type: "POST",
-				url: "<?php echo site_url('patients/update_medical_history'); ?>",
-				data: form.serialize(), // <--- THIS IS THE CHANGE
-				dataType: "html",
-				success: function (data) {
-					//$('#feed-container').prepend(data);
-					alertify.set('notifier','position', 'top-right');
-					alertify.notify('Patient details updated', 'success', 5, function(){  console.log('dismissed'); });
-				},
-				error: function () {
-					alert("Error posting feed.");
-				}
+			type: "POST",
+			url: "<?php echo site_url('patients/update_medical_history'); ?>",
+			data: phq_form_form.serialize(),
+			success: function (data) {
+				alertify.set('notifier', 'position', 'top-right');
+				alertify.notify('Patient details updated', 'success', 5);
+				if(save_exit)
+					location.href = "<?php echo base_url().'patients'?>";
+			},
+			error: function () {
+				alert("Error posting feed.");
+			}
 			});
+			}
 
-		});
+
+		// $('form#medical_history_form').submit(function (e) {
+
+		// 	var form = $(this);
+
+		// 	e.preventDefault();
+
+		// 	$.ajax({
+		// 		type: "POST",
+		// 		url: "<?php echo site_url('patients/update_medical_history'); ?>",
+		// 		data: form.serialize(), // <--- THIS IS THE CHANGE
+		// 		dataType: "html",
+		// 		success: function (data) {
+		// 			//$('#feed-container').prepend(data);
+		// 			alertify.set('notifier','position', 'top-right');
+		// 			alertify.notify('Patient details updated', 'success', 5, function(){  console.log('dismissed'); });
+		// 		},
+		// 		error: function () {
+		// 			alert("Error posting feed.");
+		// 		}
+		// 	});
+
+		// });
 
 		var travel_destination = window.document.getElementsByName('travel_destination[]');
 		var travel_date = window.document.getElementsByName('travel_date[]');
