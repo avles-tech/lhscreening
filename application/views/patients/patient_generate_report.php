@@ -48,7 +48,7 @@
     // set color for text
     $pdf->SetTextColor(255, 255, 255);
     $pdf->SetFont('Helvetica', 'B', 20 );
-    $pdf->MultiCell(297, 5,'',0,'J',true,1,0,30);
+    $pdf->MultiCell(297, 5,'',0,'L',true,1,0,30);
     $pdf->Text(50, 30, 'Health Assessment Report');
 
     $pdf->setImageScale('5');
@@ -234,14 +234,14 @@
     $pdf->SetFillColor(255, 255, 255);
     $pdf->RoundedRect(10, $pdf->getY()+7, 190, 30, 3.50, '1111', 'DF',array('color' => array(51, 102, 255)));
 
-    $pdf->MultiCell(180, 30, $patient_details['health_at_present'],0,'J',true,1,15, $pdf->getY()+10);
+    $pdf->MultiCell(180, 30, $patient_details['health_at_present'],0,'L',true,1,15, $pdf->getY()+10);
 
     $pdf->Text(10, $pdf->getY()+2, 'Are you taking any medications at present Kindly list the medications as well as doses?');
     
     $pdf->SetFillColor(255, 255, 255);
     $pdf->RoundedRect(10, $pdf->getY()+7, 190, 30, 3.50, '1111', 'DF',array('color' => array(51, 102, 255)));
 
-    $pdf->MultiCell(180, 30, $patient_details['current_medication'],0,'J',true,1,15, $pdf->getY()+10);
+    $pdf->MultiCell(180, 30, $patient_details['current_medication'],0,'L',true,1,15, $pdf->getY()+10);
 
     $pdf->SetDrawColor(0,0,0);
     $pdf->SetFillColor(0,0,0);
@@ -307,7 +307,7 @@
     $pdf->SetFillColor(255, 255, 255);
     $pdf->RoundedRect(10, $pdf->getY()+7, 190, 30, 3.50, '1111', 'DF',array('color' => array(51, 102, 255)));
 
-    $pdf->MultiCell(180, 30, $patient_details['allergy_others_details'],0,'J',true,1,15, $pdf->getY()+10);
+    $pdf->MultiCell(180, 30, $patient_details['allergy_others_details'],0,'L',true,1,15, $pdf->getY()+10);
 
     $pdf->SetDrawColor(0, 0, 0);
     $pdf->SetFillColor(0, 0, 0);
@@ -366,7 +366,7 @@
     $pdf->SetFont('Helvetica', 'B', 20 ); 
     $pdf->SetFillColor(41, 163, 41);
     $pdf->SetTextColor(255, 255, 255);
-    //$pdf->MultiCell(297, 5,'',0,'J',true,1,0,20);
+    //$pdf->MultiCell(297, 5,'',0,'L',true,1,0,20);
     //$pdf->Text(30, 20, 'CONSENT');
     $pdf->writeHTMLCell(50, 5, 10, $pdf->getY()+9, 'CONSENT', 0, 0, 1, true, 'L', true);
 
@@ -451,7 +451,7 @@
     $pdf->SetFont('Helvetica', 'B', 20 ); 
     $pdf->SetFillColor(41, 163, 41);
     $pdf->SetTextColor(255, 255, 255);
-    //$pdf->MultiCell(297, 5,'',0,'J',true,1,0,20);
+    //$pdf->MultiCell(297, 5,'',0,'L',true,1,0,20);
     //$pdf->Text(30, 20, 'PHQ-9 Details');
     $pdf->writeHTMLCell(60, 5, 10, $pdf->getY()+9, 'PHQ-9 Details', 0, 0, 1, true, 'L', true);
 
@@ -485,7 +485,7 @@
     $pdf->SetFont('Helvetica', 'B', 20 ); 
     $pdf->SetFillColor(41, 163, 41);
     $pdf->SetTextColor(255, 255, 255);
-    //$pdf->MultiCell(297, 5,'',0,'J',true,1,0,20);
+    //$pdf->MultiCell(297, 5,'',0,'L',true,1,0,20);
     //$pdf->Text(30, 20, 'GAD-7 Details');
     $pdf->writeHTMLCell(60, 5, 10, $pdf->getY()+9, 'GAD-7 Details', 0, 0, 1, true, 'L', true);
 
@@ -528,7 +528,7 @@
     $pdf->SetFillColor(255, 255, 255);
     $pdf->RoundedRect(10, $pdf->getY()+7, 190, 30, 3.50, '1111', 'DF',array('color' => array(51, 102, 255)));
 
-    $pdf->MultiCell(180, 30, $patient_medical_history_details['present_symptoms'],0,'J',true,1,15, $pdf->getY()+10);
+    $pdf->MultiCell(180, 30, $patient_medical_history_details['present_symptoms'],0,'L',true,1,15, $pdf->getY()+10);
 
     $pdf->SetDrawColor(0, 0, 0);
     $pdf->SetFillColor(0, 0, 0);
@@ -538,7 +538,7 @@
     $pdf->SetFillColor(255, 255, 255);
     $pdf->RoundedRect(10, $pdf->getY()+7, 190, 30, 3.50, '1111', 'DF',array('color' => array(51, 102, 255)));
 
-    $pdf->MultiCell(180, 30, $patient_medical_history_details['past_medical_history'],0,'J',true,1,15, $pdf->getY()+10);
+    $pdf->MultiCell(180, 30, $patient_medical_history_details['past_medical_history'],0,'L',true,1,15, $pdf->getY()+10);
 
     $pdf->SetDrawColor(0, 0, 0);
     $pdf->SetFillColor(0, 0, 0);
@@ -548,7 +548,7 @@
     $pdf->SetFillColor(255, 255, 255);
     $pdf->RoundedRect(10, $pdf->getY()+7, 190, 30, 3.50, '1111', 'DF',array('color' => array(51, 102, 255)));
 
-    $pdf->MultiCell(180, 30, $patient_medical_history_details['current_treatment'],0,'J',true,1,15, $pdf->getY()+10);
+    $pdf->MultiCell(180, 30, $patient_medical_history_details['current_treatment'],0,'L',true,1,15, $pdf->getY()+10);
 
     $pdf->SetDrawColor(0, 0, 0);
     $pdf->SetFillColor(0, 0, 0);
@@ -558,7 +558,7 @@
     $pdf->SetFillColor(255, 255, 255);
     $pdf->RoundedRect(10, $pdf->getY()+7, 190, 30, 3.50, '1111', 'DF',array('color' => array(51, 102, 255)));
 
-    $pdf->MultiCell(180, 30, $patient_medical_history_details['health'],0,'J',true,1,15, $pdf->getY()+10);
+    $pdf->MultiCell(180, 30, $patient_medical_history_details['health'],0,'L',true,1,15, $pdf->getY()+10);
 
     $pdf->SetDrawColor(0, 0, 0);
     $pdf->SetFillColor(0, 0, 0);
@@ -568,7 +568,7 @@
     $pdf->SetFillColor(255, 255, 255);
     $pdf->RoundedRect(10, $pdf->getY()+7, 190, 30, 3.50, '1111', 'DF',array('color' => array(51, 102, 255)));
 
-    $pdf->MultiCell(180, 30, $patient_medical_history_details['family_history'],0,'J',true,1,15, $pdf->getY()+10);
+    $pdf->MultiCell(180, 30, $patient_medical_history_details['family_history'],0,'L',true,1,15, $pdf->getY()+10);
 
     $pdf->SetDrawColor(0, 0, 0);
     $pdf->SetFillColor(0, 0, 0);
@@ -640,7 +640,7 @@
     $pdf->SetFont('Helvetica', 'B', 20 ); 
     $pdf->SetFillColor(41, 163, 41);
     $pdf->SetTextColor(255, 255, 255);
-    //$pdf->MultiCell(297, 5,'',0,'J',true,1,0,20);
+    //$pdf->MultiCell(297, 5,'',0,'L',true,1,0,20);
     //$pdf->Text(30, 20, 'PHQ-9 Details');
     $pdf->writeHTMLCell(100, 5, 10, $pdf->getY()+9, 'Travel & Vaccination History', 0, 0, 1, true, 'L', true);
 
@@ -836,10 +836,37 @@
     $pdf->SetDrawColor(0, 0, 0);
     $pdf->SetFillColor(0, 0, 0);
 
-    $pdf->Text(10, $pdf->getY()-3, 'Exercise');
-    $pdf->Text(30, $pdf->getY(), $patient_medical_history_details['exercise']);
+    //$pdf->Text(10, $pdf->getY()-3, 'Exercise');
+    //$pdf->Text(30, $pdf->getY(), $patient_medical_history_details['exercise']);
 
-    $pdf->Text(10, $pdf->getY()+5, "Additional comments on exercise");
+    $pdf->Text(10, $pdf->getY()-3, 'Exercise');
+    //$pdf->Text(30, $pdf->getY(), $patient_medical_history_details['sleep']);
+
+    $pdf->Text(28, $pdf->getY(), 'None');
+    if($patient_medical_history_details['exercise']=='None')
+        $pdf->Circle(43,$pdf->getY()+4,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
+    else
+        $pdf->Circle(43,$pdf->getY()+4,2);
+
+    $pdf->Text(58, $pdf->getY(), 'Low');
+    if($patient_medical_history_details['exercise']=='Low')
+        $pdf->Circle(70,$pdf->getY()+4,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
+    else
+        $pdf->Circle(70,$pdf->getY()+4,2);
+    
+    $pdf->Text(88, $pdf->getY(), 'Moderate');
+    if($patient_medical_history_details['exercise']=='Moderate')
+        $pdf->Circle(110,$pdf->getY()+4,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
+    else
+        $pdf->Circle(110,$pdf->getY()+4,2);
+
+    $pdf->Text(118, $pdf->getY(), '>10 Hours');
+    if($patient_medical_history_details['exercise']=='>10 Hours')
+        $pdf->Circle(142,$pdf->getY()+4,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
+    else
+        $pdf->Circle(142,$pdf->getY()+4,2);
+
+    $pdf->Text(10, $pdf->getY()+9, "Additional comments on exercise");
 
     $pdf->SetFillColor(255, 255, 255);
     $pdf->RoundedRect(10, $pdf->getY()+7, 190, 23, 3.50, '1111', 'DF',array('color' => array(51, 102, 255)));
@@ -866,9 +893,25 @@
     $html.="<p> Weight <b>".$patient_medical_history_details['weight']."</b></p>";
     $html.="<p> Body Mass Index <b>".$patient_medical_history_details['body_mass']."</b></p>";
     $html.="<p> Body Fat <b>".$patient_medical_history_details['body_fat']."</b></p>";
-    $html.="<p> Extraordinary Physical Findings <b>".$patient_medical_history_details['extra_ordinary_physical']."</b></p>";
+    //$html.="<p> Extraordinary Physical Findings <b>".$patient_medical_history_details['extra_ordinary_physical']."</b></p>";
     
     $pdf->writeHTML($html, true, 0, true, 0);
+
+    $pdf->SetFont('Helvetica', 'B', 20 ); 
+    $pdf->SetFillColor(41, 163, 41);
+    $pdf->SetTextColor(255, 255, 255);
+    $pdf->writeHTMLCell(130, 5, 10, $pdf->getY()+12, 'Extraordinary Physical Findings', 0, 0, 1, true, 'L', true);
+
+    $pdf->SetFont('Helvetica', '', 11 );
+    $pdf->SetTextColor(0, 0, 0);
+    $pdf->SetFillColor(255, 255, 255);
+
+    $pdf->RoundedRect(10, $pdf->getY()+18, 190, 30, 3.50, '1111', 'DF',array('color' => array(51, 102, 255)));
+
+    $pdf->MultiCell(180, 30, $patient_medical_history_details['extra_ordinary_physical'],0,'L',true,1,15, $pdf->getY()+17);
+
+    $pdf->SetDrawColor(0, 0, 0);
+
 
     $pdf->AddPage();
 
@@ -909,7 +952,7 @@
     $pdf->SetFillColor(255, 255, 255);
     $pdf->RoundedRect(10, $pdf->getY()+7, 190, 30, 3.50, '1111', 'DF',array('color' => array(51, 102, 255)));
 
-    $pdf->MultiCell(180, 30, $patient_gp_details['blood_results'],0,'J',true,1,15, $pdf->getY()+10);
+    $pdf->MultiCell(180, 30, $patient_gp_details['blood_results'],0,'L',true,1,15, $pdf->getY()+10);
 
     $pdf->SetDrawColor(0, 0, 0);
     $pdf->SetFillColor(0, 0, 0);
@@ -919,7 +962,7 @@
     $pdf->SetFillColor(255, 255, 255);
     $pdf->RoundedRect(10, $pdf->getY()+7, 190, 30, 3.50, '1111', 'DF',array('color' => array(51, 102, 255)));
 
-    $pdf->MultiCell(180, 30, $patient_gp_details['ultra_sound'],0,'J',true,1,15, $pdf->getY()+10);
+    $pdf->MultiCell(180, 30, $patient_gp_details['ultra_sound'],0,'L',true,1,15, $pdf->getY()+10);
 
     $pdf->SetDrawColor(0, 0, 0);
     $pdf->SetFillColor(0, 0, 0);
@@ -929,7 +972,7 @@
     $pdf->SetFillColor(255, 255, 255);
     $pdf->RoundedRect(10, $pdf->getY()+7, 190, 30, 3.50, '1111', 'DF',array('color' => array(51, 102, 255)));
 
-    $pdf->MultiCell(180, 30, $patient_gp_details['mri_results'],0,'J',true,1,15, $pdf->getY()+10);
+    $pdf->MultiCell(180, 30, $patient_gp_details['mri_results'],0,'L',true,1,15, $pdf->getY()+10);
 
     $pdf->SetDrawColor(0, 0, 0);
     $pdf->SetFillColor(0, 0, 0);
@@ -939,7 +982,7 @@
     $pdf->SetFillColor(255, 255, 255);
     $pdf->RoundedRect(10, $pdf->getY()+7, 190, 30, 3.50, '1111', 'DF',array('color' => array(51, 102, 255)));
 
-    $pdf->MultiCell(180, 30, $patient_gp_details['overall_lifestyle'],0,'J',true,1,15, $pdf->getY()+10);
+    $pdf->MultiCell(180, 30, $patient_gp_details['overall_lifestyle'],0,'L',true,1,15, $pdf->getY()+10);
 
     $pdf->SetDrawColor(0, 0, 0);
     $pdf->SetFillColor(0, 0, 0);
@@ -949,7 +992,7 @@
     $pdf->SetFillColor(255, 255, 255);
     $pdf->RoundedRect(10, $pdf->getY()+7, 190, 30, 3.50, '1111', 'DF',array('color' => array(51, 102, 255)));
 
-    $pdf->MultiCell(180, 30, $patient_gp_details['additional_comments'],0,'J',true,1,15, $pdf->getY()+10);
+    $pdf->MultiCell(180, 30, $patient_gp_details['additional_comments'],0,'L',true,1,15, $pdf->getY()+10);
 
     $pdf->SetDrawColor(0, 0, 0);
     $pdf->SetFillColor(0, 0, 0);
