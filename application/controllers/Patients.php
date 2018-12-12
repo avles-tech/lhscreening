@@ -13,6 +13,7 @@ class Patients extends CI_Controller {
                 $this->load->model('user_activity_model');
                 $this->load->model('patient_medical_history_model');
                 $this->load->model('patient_gp_model');
+                $this->load->model('patient_travel_model');
 
                 $this->load->model('gad_model');
                 $this->load->helper('url_helper');
@@ -142,7 +143,7 @@ class Patients extends CI_Controller {
                 $this->load->view('patients/view',$data);
                 $this->load->view('templates/footer');
 
-                $this->output->cache(60);
+                //$this->output->cache(60);
         }
         public function create()
         {
@@ -252,7 +253,8 @@ class Patients extends CI_Controller {
 
         public function patient_generate_report($patient_id)
 	{
-                $this->load->view('patients/patient_generate_report',array('patient_id'=>$patient_id));
+                 $this->load->view('patients/patient_generate_report',array('patient_id'=>$patient_id));
+                //$this->load->view('patients/test',array('patient_id'=>$patient_id));
         }
 
         public function get_patients()

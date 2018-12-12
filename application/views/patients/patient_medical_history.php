@@ -2,6 +2,8 @@
 	<article class="card-body">
 		<?php
 			$patient_medical_history_details = $this->patient_medical_history_model->get($patient_id);
+
+			$patient_travel_details = $this->patient_travel_model->get($patient_id);
 			
             echo validation_errors();  
 			//echo form_open('patients/update_medical_history');
@@ -30,7 +32,7 @@
 			<textarea <?php echo $read_only ?> class="form-control" name='family_history'><?php echo !empty($patient_medical_history_details) ? $patient_medical_history_details['family_history'] : '';?> </textarea>
 		</div>
 		<!-- form-group end.// -->
-		<!-- <h3>Travel & Vaccination History</h3>
+		<h3>Travel & Vaccination History</h3>
 		<div class="form-group">
 			<div class="col-md-1 col-sm-1 col-xs-12">
 				<a id="travel-add" class="btn btn-success" type="button">Add <span class="fa fa-plus"></span></a>
@@ -48,26 +50,26 @@
 					<tbody>
 						<tr class="hidden">
 							<td>
-								<input type="text" name="travel_destination[]" class="form-control" placeholder="Destination" data-parsley-id="47">
+								<input type="text" name="travel_destination[]" class="form-control" placeholder="Destination" data-parsley-id="1">
 							</td>
 							<td>
-								<input type="date" name="travel_date[]" class="form-control" placeholder="Date" data-parsley-id="49">
+								<input type="date" name="travel_date[]" class="form-control" placeholder="Date" data-parsley-id="1">
 							</td>
 							<td class="col-xs-3" style="padding-left:0">
 								<input type="number" name="travel_duration[]" class="form-control" placeholder="Duration in days"
-								 data-parsley-id="51">
+								 data-parsley-id="1">
 							</td>
 						</tr>
 						<tr>
 							<td>
-								<input type="text" name="travel_destination[]" class="form-control" placeholder="Destination" data-parsley-id="53">
+								<input type="text" name="travel_destination[]" class="form-control" placeholder="Destination" data-parsley-id="2">
 							</td>
 							<td>
-								<input type="date" name="travel_date[]" class="form-control" placeholder="Date" data-parsley-id="55">
+								<input type="date" name="travel_date[]" class="form-control" placeholder="Date" data-parsley-id="2">
 							</td>
 							<td class="col-xs-3" style="padding-left:0">
 								<input type="number" name="travel_duration[]" class="form-control" placeholder="Duration in days"
-								 data-parsley-id="57">
+								 data-parsley-id="2">
 							</td>
 						</tr>
 						<tr class="validate_this" style="display: table-row;">
@@ -87,8 +89,95 @@
 				<br>
 				<blockquote>Travel date is important, if accurate date is unknown please select rough date.</blockquote>
 			</div>
-
-		</div> -->
+		</div>
+		<h3>Family History</h3>
+		<p>
+		List any genetic or hereditary or other known major medical conditions </br>
+		For example: Breast Cancer | Prostate Cancer| Diabetes | High Blood Pressure | Sickle Cell anaemia | Obesity| Down Syndrome | Arthritis | other?
+		</p>
+		<table class='table  table-responsive'>
+			<thead>
+				<tr>
+					<td scope="col"></td>
+					<td scope="col" class='text-center'>Maternal</td>
+					<td scope="col" class='text-center'> Paternal</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Great grandparents</td>
+					<td>
+						<input class='form-control' name='great_grandparents_maternal' value="<?php echo !empty($patient_medical_history_details['great_grandparents_maternal']) ? $patient_medical_history_details['great_grandparents_maternal']:'';?>" <?php echo $read_only ?>/>
+					</td>
+					<td>
+						<input class='form-control' name='great_grand_parents_paternal' value="<?php echo !empty($patient_medical_history_details['great_grand_parents_paternal']) ? $patient_medical_history_details['great_grand_parents_paternal']:'';?>" <?php echo $read_only ?>/>
+					</td>
+				</tr>
+				<tr>
+					<td>Grandfather</td>
+					<td>
+						<input class='form-control' name='grandfather_maternal' value="<?php echo !empty($patient_medical_history_details['grandfather_maternal']) ? $patient_medical_history_details['grandfather_maternal']:'';?>" <?php echo $read_only ?>/>
+					</td>
+					<td>
+						<input class='form-control' name='grandfather_paternal' value="<?php echo !empty($patient_medical_history_details['grandfather_paternal']) ? $patient_medical_history_details['grandfather_paternal']:'';?>" <?php echo $read_only ?>/>
+					</td>
+				</tr>
+				<tr>
+					<td>Grandmother</td>
+					<td>
+						<input class='form-control' name='grandmother_maternal' value="<?php echo !empty($patient_medical_history_details['grandmother_maternal']) ? $patient_medical_history_details['grandmother_maternal']:'';?>" <?php echo $read_only ?>/>
+					</td>
+					<td>
+						<input class='form-control' name='grandmother_paternal' value="<?php echo !empty($patient_medical_history_details['grandmother_paternal']) ? $patient_medical_history_details['grandmother_paternal']:'';?>" <?php echo $read_only ?>/>
+					</td>
+				</tr>
+				<tr>
+					<td>Aunts &amp; Uncles</td>
+					<td>
+						<input class='form-control' name='aunt_uncle_maternal' value="<?php echo !empty($patient_medical_history_details['aunt_uncle_maternal']) ? $patient_medical_history_details['aunt_uncle_maternal']:'';?>" <?php echo $read_only ?>/>
+					</td>
+					<td>
+						<input class='form-control' name='aunt_uncle_paternal' value="<?php echo !empty($patient_medical_history_details['aunt_uncle_paternal']) ? $patient_medical_history_details['aunt_uncle_paternal']:'';?>" <?php echo $read_only ?>/>
+					</td>
+				</tr>
+				<tr>
+					<td>Cousins</td>
+					<td>
+						<input class='form-control' name='cousins_maternal' value="<?php echo !empty($patient_medical_history_details['cousins_maternal']) ? $patient_medical_history_details['cousins_maternal']:'';?>" <?php echo $read_only ?>/>
+					</td>
+					<td>
+						<input class='form-control' name='cousins_paternal' value="<?php echo !empty($patient_medical_history_details['cousins_paternal']) ? $patient_medical_history_details['cousins_paternal']:'';?>" <?php echo $read_only ?>/>
+					</td>
+				</tr>
+				<tr>
+					<td>Parents</td>
+					<td>
+						<input class='form-control' name='parents_maternal' value="<?php echo !empty($patient_medical_history_details['parents_maternal']) ? $patient_medical_history_details['parents_maternal']:'';?>" <?php echo $read_only ?>/>
+					</td>
+					<td>
+						<input class='form-control' name='parents_paternal' value="<?php echo !empty($patient_medical_history_details['parents_paternal']) ? $patient_medical_history_details['parents_paternal']:'';?>" <?php echo $read_only ?>/>
+					</td>
+				</tr>
+				<tr>
+					<td>Siblings</td>
+					<td>
+						<input class='form-control' name='siblings_maternal' value="<?php echo !empty($patient_medical_history_details['siblings_maternal']) ? $patient_medical_history_details['siblings_maternal']:'';?>" <?php echo $read_only ?>/>
+					</td>
+					<td>
+						<input class='form-control' name='siblings_paternal' value="<?php echo !empty($patient_medical_history_details['siblings_paternal']) ? $patient_medical_history_details['siblings_paternal']:'';?>" <?php echo $read_only ?>/>
+					</td>
+				</tr>
+				<tr>
+					<td>Offspring</td>
+					<td>
+						<input class='form-control' name='offspring_maternal' value="<?php echo !empty($patient_medical_history_details['offspring_maternal']) ? $patient_medical_history_details['offspring_maternal']:'';?>" <?php echo $read_only ?>/>
+					</td>
+					<td>
+						<input class='form-control' name='offspring_paternal' value="<?php echo !empty($patient_medical_history_details['offspring_paternal']) ? $patient_medical_history_details['offspring_paternal']:'';?>" <?php echo $read_only ?>/>
+					</td>
+				</tr>
+			</tbody>
+		</table>
 		<h3>Vaccinations</h3>
 		<div class="form-group">
 			<div class="form-check form-check-inline">
@@ -340,4 +429,19 @@
 			});
 
 		});
+
+		var travel_destination = window.document.getElementsByName('travel_destination[]');
+		var travel_date = window.document.getElementsByName('travel_date[]');
+		var travel_duration = window.document.getElementsByName('travel_duration[]');
+
+		<?php 
+			$length = count($patient_travel_details);
+			for ($i=0; $i < $length; $i++) { 
+				//echo "console.log('".$patient_travel_details[$i]['travel_destination']."');";
+				echo "travel_destination[".$i."].value = '".$patient_travel_details[$i]['travel_destination']."';";
+				echo "travel_date[".$i."].value = '".$patient_travel_details[$i]['travel_date']."';";
+				echo "travel_duration[".$i."].value = '".$patient_travel_details[$i]['travel_duration']."';";
+			}
+			
+		?>
 	</script>

@@ -1,5 +1,9 @@
 <br>
-
+<style>
+body {
+   background-image:  url("<?php echo base_url(); ?>assets/lyca/images/Lyca-Westferry.jpg");
+}
+</style>>
 <div class="row justify-content-center">
 	<div class="col-md-6">
 		<div class="card">

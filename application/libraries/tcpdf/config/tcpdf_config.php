@@ -74,7 +74,7 @@ define ('PDF_HEADER_LOGO', 'logo.png');
 /**
  * Header logo image width in user units.
  */
-define ('PDF_HEADER_LOGO_WIDTH', 50);
+define ('PDF_HEADER_LOGO_WIDTH', 60);
 
 /**
  * Cache directory for temporary files (full path).
@@ -104,12 +104,12 @@ define ('PDF_CREATOR', 'TCPDF');
 /**
  * Document author.
  */
-define ('PDF_AUTHOR', 'TCPDF');
+define ('PDF_AUTHOR', 'lhcreening');
 
 /**
  * Header title.
  */
-define ('PDF_HEADER_TITLE', 'TCPDF Example');
+define ('PDF_HEADER_TITLE', 'Lyca');
 
 /**
  * Header description string.
@@ -210,7 +210,7 @@ define('K_THAI_TOPCHARS', true);
  * If true allows to call TCPDF methods using HTML syntax
  * IMPORTANT: For security reason, disable this feature if you are printing user HTML content.
  */
-define('K_TCPDF_CALLS_IN_HTML', false);
+define('K_TCPDF_CALLS_IN_HTML', true);
 
 /**
  * If true and PHP version is greater than 5, then the Error() method throw new exception instead of terminating the execution.
