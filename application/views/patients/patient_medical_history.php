@@ -27,69 +27,8 @@
 			<label>Men's / Women's Health</label>
 			<textarea <?php echo $read_only ?> <?php echo $read_only ?> class="form-control" name='health'><?php echo !empty($patient_medical_history_details) ? $patient_medical_history_details['health'] : '';?> </textarea>
 		</div>
-		<div class="col form-group">
-			<label>Family History</label>
-			<textarea <?php echo $read_only ?> class="form-control" name='family_history'><?php echo !empty($patient_medical_history_details) ? $patient_medical_history_details['family_history'] : '';?> </textarea>
-		</div>
 		<!-- form-group end.// -->
-		<h3>Travel & Vaccination History</h3>
-		<div class="form-group">
-			<div class="col-md-1 col-sm-1 col-xs-12">
-				<a id="travel-add" class="btn btn-success" type="button">Add <span class="fa fa-plus"></span></a>
-			</div>
-			<br>
-			<div class="col-md-6 col-sm-6 col-xs-12" id="travel-history-block">
-				<table class="table table-striped">
-					<thead>
-						<tr>
-							<th>Destination</th>
-							<th>Date</th>
-							<th>Duration in days</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr class="hidden">
-							<td>
-								<input type="text" name="travel_destination[]" class="form-control" placeholder="Destination" data-parsley-id="1">
-							</td>
-							<td>
-								<input type="date" name="travel_date[]" class="form-control" placeholder="Date" data-parsley-id="1">
-							</td>
-							<td class="col-xs-3" style="padding-left:0">
-								<input type="number" name="travel_duration[]" class="form-control" placeholder="Duration in days"
-								 data-parsley-id="1">
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<input type="text" name="travel_destination[]" class="form-control" placeholder="Destination" data-parsley-id="2">
-							</td>
-							<td>
-								<input type="date" name="travel_date[]" class="form-control" placeholder="Date" data-parsley-id="2">
-							</td>
-							<td class="col-xs-3" style="padding-left:0">
-								<input type="number" name="travel_duration[]" class="form-control" placeholder="Duration in days"
-								 data-parsley-id="2">
-							</td>
-						</tr>
-						<tr class="validate_this" style="display: table-row;">
-							<td>
-								<input type="text" name="travel_destination[]" class="form-control" placeholder="Destination" data-parsley-id="47">
-							</td>
-							<td>
-								<input type="date" name="travel_date[]" class="form-control" placeholder="Date" data-parsley-id="49">
-							</td>
-							<td class="col-xs-3" style="padding-left:0">
-								<input type="number" name="travel_duration[]" class="form-control" placeholder="Duration in days"
-								 data-parsley-id="51">
-							</td>
-						</tr>
-					</tbody>
-				</table>
-				<br>
-				<blockquote>Travel date is important, if accurate date is unknown please select rough date.</blockquote>
-			</div>
-		</div>
+		
 		<h3>Family History</h3>
 		<p>
 		List any genetic or hereditary or other known major medical conditions </br>
@@ -178,6 +117,64 @@
 				</tr>
 			</tbody>
 		</table>
+		<h3>Travel & Vaccination History</h3>
+		<div class="form-group">
+			<div class="col-md-1 col-sm-1 col-xs-12">
+				<a id="travel-add" class="btn btn-success" type="button">Add <span class="fa fa-plus"></span></a>
+			</div>
+			<br>
+			<div class="col-md-6 col-sm-6 col-xs-12" id="travel-history-block">
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th>Destination</th>
+							<th>Date</th>
+							<th>Duration in days</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class="hidden">
+							<td>
+								<input type="text" name="travel_destination[]" class="form-control" placeholder="Destination" data-parsley-id="1">
+							</td>
+							<td>
+								<input type="date" name="travel_date[]" class="form-control" placeholder="Date" data-parsley-id="1">
+							</td>
+							<td class="col-xs-3" style="padding-left:0">
+								<input type="number" name="travel_duration[]" class="form-control" placeholder="Duration in days"
+								 data-parsley-id="1">
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<input type="text" name="travel_destination[]" class="form-control" placeholder="Destination" data-parsley-id="2">
+							</td>
+							<td>
+								<input type="date" name="travel_date[]" class="form-control" placeholder="Date" data-parsley-id="2">
+							</td>
+							<td class="col-xs-3" style="padding-left:0">
+								<input type="number" name="travel_duration[]" class="form-control" placeholder="Duration in days"
+								 data-parsley-id="2">
+							</td>
+						</tr>
+						<tr class="validate_this" style="display: table-row;">
+							<td>
+								<input type="text" name="travel_destination[]" class="form-control" placeholder="Destination" data-parsley-id="47">
+							</td>
+							<td>
+								<input type="date" name="travel_date[]" class="form-control" placeholder="Date" data-parsley-id="49">
+							</td>
+							<td class="col-xs-3" style="padding-left:0">
+								<input type="number" name="travel_duration[]" class="form-control" placeholder="Duration in days"
+								 data-parsley-id="51">
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<br>
+				<blockquote>Travel date is important, if accurate date is unknown please select rough date.</blockquote>
+			</div>
+		</div>
 		<h3>Vaccinations</h3>
 		<div class="form-group">
 			<div class="form-check form-check-inline">
