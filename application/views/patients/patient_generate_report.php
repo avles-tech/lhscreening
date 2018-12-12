@@ -659,9 +659,15 @@
 
     $y_test = $pdf->getY();
 
-    $pdf->MultiCell(40, 10, 'Destination',1,'[J]',0,1,15, $y_test);
-    $pdf->MultiCell(40, 10, 'Date',1,'[J]',0,1,55, $y_test);
-    $pdf->MultiCell(40, 10, 'Duration in days',1,'[J]',0,1,95, $y_test);
+    $pdf->SetFillColor(0,178,161);
+    $pdf->SetTextColor(255, 255, 255);
+    
+    $pdf->MultiCell(40, 10, 'Destination',1,'[CENTER]',1,1,15, $y_test);
+    $pdf->MultiCell(40, 10, 'Date',1,'[CENTER]',1,1,55, $y_test);
+    $pdf->MultiCell(40, 10, 'Duration in days',1,'[CENTER]',1,1,95, $y_test);
+
+    $pdf->SetTextColor(0, 0, 0);
+    $pdf->SetFillColor(0, 178, 72);
 
     $length = count($patient_travel_details);
 			for ($i=0; $i < $length; $i++) { 
