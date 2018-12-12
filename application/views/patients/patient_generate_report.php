@@ -581,13 +581,16 @@
     $pdf->writeHTMLCell(60, 5, 10, $pdf->getY()+9, 'Family History', 0, 0, 1, true, 'L', true);
 
     $pdf->SetFont('Helvetica', '', 11 );
-    $pdf->SetTextColor(0, 0, 0);
-    $pdf->SetFillColor(255, 255, 255);
+
+    $pdf->SetFillColor(0,178,161);
 
     $y_set = $pdf->getY()+15;
     $pdf->MultiCell(60, 18, '',1,'[L]',0,1,15, $y_set);
-    $pdf->MultiCell(60, 18, 'Maternal',1,'[L]',0,1,75,$y_set);
-    $pdf->MultiCell(60, 18, 'Paternal',1,'[L]',0,1,135, $y_set);
+    $pdf->MultiCell(60, 18, 'Maternal',1,'[L]',1,1,75,$y_set);
+    $pdf->MultiCell(60, 18, 'Paternal',1,'[L]',1,1,135, $y_set);
+
+    $pdf->SetTextColor(0, 0, 0);
+    $pdf->SetFillColor(0, 178, 72);
     
     $y_set = $pdf->getY();
     $pdf->MultiCell(60, 18, 'Great grandparents',1,'[L]',0,1,15, $y_set);
@@ -890,8 +893,6 @@
     $pdf->SetDrawColor(0, 0, 0);
     $pdf->SetFillColor(0, 0, 0);
 
-    
-
     $pdf->AddPage();
 
     $pdf->SetFont('Helvetica', 'B', 20 ); 
@@ -902,6 +903,18 @@
     $pdf->SetFont('Helvetica', '', 11 );
     $pdf->SetTextColor(0, 0, 0);
 
+    $pdf->Text(10, $pdf->getY()+12, 'Height');
+    $pdf->Text(50, $pdf->getY(),$patient_medical_history_details['height']);
+
+    $pdf->Text(10, $pdf->getY()+9, 'Weight');
+    $pdf->Text(50, $pdf->getY(),$patient_medical_history_details['weight']);
+
+    $pdf->Text(10, $pdf->getY()+9, 'Body Mass Index');
+    $pdf->Text(50, $pdf->getY(),$patient_medical_history_details['body_mass']);
+
+    $pdf->Text(10, $pdf->getY()+9, 'Body Fat');
+    $pdf->Text(50, $pdf->getY(),$patient_medical_history_details['body_fat']);
+
     $html= "<br>";
     $html.="<p> Height <b>".$patient_medical_history_details['height']."</b></p>";
     $html.="<p> Weight <b>".$patient_medical_history_details['weight']."</b></p>";
@@ -909,12 +922,12 @@
     $html.="<p> Body Fat <b>".$patient_medical_history_details['body_fat']."</b></p>";
     //$html.="<p> Extraordinary Physical Findings <b>".$patient_medical_history_details['extra_ordinary_physical']."</b></p>";
     
-    $pdf->writeHTML($html, true, 0, true, 0);
+    //$pdf->writeHTML($html, true, 0, true, 0);
 
     $pdf->SetFont('Helvetica', 'B', 20 ); 
     $pdf->SetFillColor(0, 178, 72);
     $pdf->SetTextColor(255, 255, 255);
-    $pdf->writeHTMLCell(130, 5, 10, $pdf->getY()+12, 'Extraordinary Physical Findings', 0, 0, 1, true, 'L', true);
+    $pdf->writeHTMLCell(112, 5, 10, $pdf->getY()+12, 'Extraordinary Physical Findings', 0, 0, 1, true, 'L', true);
 
     $pdf->SetFont('Helvetica', '', 11 );
     $pdf->SetTextColor(0, 0, 0);
