@@ -27,10 +27,6 @@
 			<label>Men's / Women's Health</label>
 			<textarea <?php echo $read_only ?> <?php echo $read_only ?> class="form-control" name='health'><?php echo !empty($patient_medical_history_details) ? $patient_medical_history_details['health'] : '';?> </textarea>
 		</div>
-		<div class="col form-group">
-			<label>Family History</label>
-			<textarea <?php echo $read_only ?> class="form-control" name='family_history'><?php echo !empty($patient_medical_history_details) ? $patient_medical_history_details['family_history'] : '';?> </textarea>
-		</div>
 		<!-- form-group end.// -->
 		
 		<h3>Family History</h3>
