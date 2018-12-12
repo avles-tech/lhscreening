@@ -572,7 +572,7 @@
 
     $pdf->SetDrawColor(0, 0, 0);
     $pdf->SetFillColor(0, 0, 0);
-    
+
     $pdf->AddPage();
 
     $pdf->SetFont('Helvetica', 'B', 20 ); 
@@ -635,6 +635,35 @@
     $pdf->MultiCell(60, 18, $patient_medical_history_details['cousins_maternal'],1,'[CENTER]',0,1,75, $y_set);
     $pdf->MultiCell(60, 18, $patient_medical_history_details['cousins_maternal'],1,'[CENTER]',0,1,135, $y_set);
 
+    $pdf->AddPage();
+
+    $pdf->SetFont('Helvetica', 'B', 20 ); 
+    $pdf->SetFillColor(41, 163, 41);
+    $pdf->SetTextColor(255, 255, 255);
+    //$pdf->MultiCell(297, 5,'',0,'J',true,1,0,20);
+    //$pdf->Text(30, 20, 'PHQ-9 Details');
+    $pdf->writeHTMLCell(100, 5, 10, $pdf->getY()+9, 'Travel & Vaccination History', 0, 0, 1, true, 'L', true);
+
+    $pdf->SetFont('Helvetica', '', 11 );
+    $pdf->SetTextColor(0, 0, 0);
+    
+    $pdf->setCellPaddings(2, 2, 1, 1);
+
+    //$pdf->MultiCell(105, 18, $item['question'],1,'[RIGHT]',0,1,15, $y_test);
+    //$pdf->MultiCell(80, 18, $answers[$item['value']],1,'[CENTER]',0,1,120, $y_test);
+    
+    $phq_score = 0;
+    $pdf->setY($pdf->getY()+15);
+
+    $length = count($patient_travel_details);
+			for ($i=0; $i < $length; $i++) { 
+                //echo "travel_destination[".$i."].value = ".$patient_travel_details[$i]['travel_destination'];
+                $y_test = $pdf->getY();
+                $pdf->MultiCell(60, 18, $patient_travel_details[$i]['travel_destination'],1,'[RIGHT]',0,1,15, $y_test);
+                $pdf->MultiCell(60, 18, $patient_travel_details[$i]['travel_date'],1,'[CENTER]',0,1,75, $y_test);
+                $pdf->MultiCell(60, 18, $patient_travel_details[$i]['travel_duration'],1,'[CENTER]',0,1,135, $y_test);
+			}
+    
     $pdf->AddPage();
 
     $pdf->SetFont('Helvetica', 'B', 20 ); 
@@ -820,34 +849,7 @@
     $pdf->SetDrawColor(0, 0, 0);
     $pdf->SetFillColor(0, 0, 0);
 
-    $pdf->AddPage();
-
-    $pdf->SetFont('Helvetica', 'B', 20 ); 
-    $pdf->SetFillColor(41, 163, 41);
-    $pdf->SetTextColor(255, 255, 255);
-    //$pdf->MultiCell(297, 5,'',0,'J',true,1,0,20);
-    //$pdf->Text(30, 20, 'PHQ-9 Details');
-    $pdf->writeHTMLCell(100, 5, 10, $pdf->getY()+9, 'Travel & Vaccination History', 0, 0, 1, true, 'L', true);
-
-    $pdf->SetFont('Helvetica', '', 11 );
-    $pdf->SetTextColor(0, 0, 0);
     
-    $pdf->setCellPaddings(2, 2, 1, 1);
-
-    //$pdf->MultiCell(105, 18, $item['question'],1,'[RIGHT]',0,1,15, $y_test);
-    //$pdf->MultiCell(80, 18, $answers[$item['value']],1,'[CENTER]',0,1,120, $y_test);
-    
-    $phq_score = 0;
-    $pdf->setY($pdf->getY()+15);
-
-    $length = count($patient_travel_details);
-			for ($i=0; $i < $length; $i++) { 
-                //echo "travel_destination[".$i."].value = ".$patient_travel_details[$i]['travel_destination'];
-                $y_test = $pdf->getY();
-                $pdf->MultiCell(60, 18, $patient_travel_details[$i]['travel_destination'],1,'[RIGHT]',0,1,15, $y_test);
-                $pdf->MultiCell(60, 18, $patient_travel_details[$i]['travel_date'],1,'[CENTER]',0,1,75, $y_test);
-                $pdf->MultiCell(60, 18, $patient_travel_details[$i]['travel_duration'],1,'[CENTER]',0,1,135, $y_test);
-			}
 
     $pdf->AddPage();
 
