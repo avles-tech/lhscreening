@@ -50,37 +50,37 @@
 					<tbody>
 						<tr class="hidden">
 							<td>
-								<input type="text" name="travel[travel_destination]" class="form-control" placeholder="Destination" data-parsley-id="1">
+								<input type="text" name="travel_destination[]" class="form-control" placeholder="Destination" data-parsley-id="1">
 							</td>
 							<td>
-								<input type="date" name="travel[travel_date]" class="form-control" placeholder="Date" data-parsley-id="1">
+								<input type="date" name="travel_date[]" class="form-control" placeholder="Date" data-parsley-id="1">
 							</td>
 							<td class="col-xs-3" style="padding-left:0">
-								<input type="number" name="travel[travel_duration]" class="form-control" placeholder="Duration in days"
+								<input type="number" name="travel_duration[]" class="form-control" placeholder="Duration in days"
 								 data-parsley-id="1">
 							</td>
 						</tr>
 						<tr>
 							<td>
-								<input type="text" name="travel[travel_destination]" class="form-control" placeholder="Destination" data-parsley-id="2">
+								<input type="text" name="travel_destination[]" class="form-control" placeholder="Destination" data-parsley-id="2">
 							</td>
 							<td>
-								<input type="date" name="travel[travel_date]" class="form-control" placeholder="Date" data-parsley-id="2">
+								<input type="date" name="travel_date[]" class="form-control" placeholder="Date" data-parsley-id="2">
 							</td>
 							<td class="col-xs-3" style="padding-left:0">
-								<input type="number" name="travel[travel_duration]" class="form-control" placeholder="Duration in days"
+								<input type="number" name="travel_duration[]" class="form-control" placeholder="Duration in days"
 								 data-parsley-id="2">
 							</td>
 						</tr>
 						<tr class="validate_this" style="display: table-row;">
 							<td>
-								<input type="text" name="travel[travel_destination]" class="form-control" placeholder="Destination" data-parsley-id="47">
+								<input type="text" name="travel_destination[]" class="form-control" placeholder="Destination" data-parsley-id="47">
 							</td>
 							<td>
-								<input type="date" name="travel[travel_date]" class="form-control" placeholder="Date" data-parsley-id="49">
+								<input type="date" name="travel_date[]" class="form-control" placeholder="Date" data-parsley-id="49">
 							</td>
 							<td class="col-xs-3" style="padding-left:0">
-								<input type="number" name="travel[travel_duration]" class="form-control" placeholder="Duration in days"
+								<input type="number" name="travel_duration[]" class="form-control" placeholder="Duration in days"
 								 data-parsley-id="51">
 							</td>
 						</tr>

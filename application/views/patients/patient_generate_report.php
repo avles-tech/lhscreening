@@ -325,7 +325,7 @@
     else
         $pdf->Circle(82,$pdf->getY()+2,2);
 
-    $pdf->Text(10, $pdf->getY()+9, ' Do you have Asthma?');
+    $pdf->Text(10, $pdf->getY()+9, 'Do you have Asthma?');
     $pdf->Text(65, $pdf->getY(), 'Y');
     if($patient_details['asthma']==1)
         $pdf->Circle(72,$pdf->getY()+2,2,360, 359, 'F',array( 'color' => array(255, 0,0)));
