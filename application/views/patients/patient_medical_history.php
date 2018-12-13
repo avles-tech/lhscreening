@@ -120,7 +120,7 @@
 		<h3>Travel & Vaccination History</h3>
 		<div class="form-group">
 			<div class="col-md-1 col-sm-1 col-xs-12">
-				<a id="travel-add" class="btn btn-success" type="button">Add <span class="fa fa-plus"></span></a>
+				<a id="travel-add" class="btn btn-success" type="button" <?php echo $read_only ?>>Add <span class="fa fa-plus"></span></a>
 			</div>
 			<br>
 			<div class="col-md-6 col-sm-6 col-xs-12" id="travel-history-block">
@@ -135,38 +135,38 @@
 					<tbody>
 						<tr class="hidden">
 							<td>
-								<input type="text" name="travel_destination[]" class="form-control" placeholder="Destination" data-parsley-id="1">
+								<input type="text" name="travel_destination[]" class="form-control" placeholder="Destination" data-parsley-id="1" <?php echo $read_only ?>>
 							</td>
 							<td>
-								<input type="date" name="travel_date[]" class="form-control" placeholder="Date" data-parsley-id="1">
+								<input type="date" name="travel_date[]" class="form-control" placeholder="Date" data-parsley-id="1" <?php echo $read_only ?>>
 							</td>
 							<td class="col-xs-3" style="padding-left:0">
 								<input type="number" name="travel_duration[]" class="form-control" placeholder="Duration in days"
-								 data-parsley-id="1">
+								 data-parsley-id="1" <?php echo $read_only ?>>
 							</td>
 						</tr>
 						<tr>
 							<td>
-								<input type="text" name="travel_destination[]" class="form-control" placeholder="Destination" data-parsley-id="2">
+								<input type="text" name="travel_destination[]" class="form-control" placeholder="Destination" data-parsley-id="2" <?php echo $read_only ?>>
 							</td>
 							<td>
-								<input type="date" name="travel_date[]" class="form-control" placeholder="Date" data-parsley-id="2">
+								<input type="date" name="travel_date[]" class="form-control" placeholder="Date" data-parsley-id="2" <?php echo $read_only ?>>
 							</td>
 							<td class="col-xs-3" style="padding-left:0">
 								<input type="number" name="travel_duration[]" class="form-control" placeholder="Duration in days"
-								 data-parsley-id="2">
+								 data-parsley-id="2" <?php echo $read_only ?>>
 							</td>
 						</tr>
 						<tr class="validate_this" style="display: table-row;">
 							<td>
-								<input type="text" name="travel_destination[]" class="form-control" placeholder="Destination" data-parsley-id="47">
+								<input type="text" name="travel_destination[]" class="form-control" placeholder="Destination" data-parsley-id="47" <?php echo $read_only ?>>
 							</td>
 							<td>
-								<input type="date" name="travel_date[]" class="form-control" placeholder="Date" data-parsley-id="49">
+								<input type="date" name="travel_date[]" class="form-control" placeholder="Date" data-parsley-id="49" <?php echo $read_only ?>>
 							</td>
 							<td class="col-xs-3" style="padding-left:0">
 								<input type="number" name="travel_duration[]" class="form-control" placeholder="Duration in days"
-								 data-parsley-id="51">
+								 data-parsley-id="51" <?php echo $read_only ?>>
 							</td>
 						</tr>
 					</tbody>
