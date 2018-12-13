@@ -38,7 +38,7 @@
 
     $pdf->AddPage();
     $pdf->setImageScale('1');
-    $pdf->Image('./assets/lyca/images/logo.png',65, 10);
+    $pdf->Image('./assets/lyca/images/logo.png',55, 10);
 
     $y = $pdf->getY();
 
@@ -585,48 +585,48 @@
     $y_set = $pdf->getY();
     $pdf->MultiCell(60, 7, 'Great grandparents',1,'[L]',0,1,15, $y_set);
     $pdf->MultiCell(60, 7, $patient_medical_history_details['great_grandparents_maternal'],1,'[L]',0,1,75, $y_set);
-    $pdf->MultiCell(60, 7, $patient_medical_history_details['great_grandparents_maternal'],1,'[L]',0,1,135, $y_set);
+    $pdf->MultiCell(60, 7, $patient_medical_history_details['great_grand_parents_paternal'],1,'[L]',0,1,135, $y_set);
 
     $y_set = $pdf->getY();
     $pdf->MultiCell(60, 7, 'Grandfather',1,'[L]',0,1,15, $y_set);
-    $pdf->MultiCell(60, 7, $patient_medical_history_details['great_grandparents_maternal'],1,'[L]',0,1,75, $y_set);
-    $pdf->MultiCell(60, 7, $patient_medical_history_details['great_grandparents_maternal'],1,'[L]',0,1,135, $y_set);
-
-
-    $y_set = $pdf->getY();
-    $pdf->MultiCell(60, 7, 'Grandmother',1,'[L]',0,1,15, $y_set);
-    $pdf->MultiCell(60, 7, $patient_medical_history_details['great_grandparents_maternal'],1,'[L]',0,1,75, $y_set);
-    $pdf->MultiCell(60, 7, $patient_medical_history_details['great_grandparents_maternal'],1,'[L]',0,1,135, $y_set);
-
-
-    $y_set = $pdf->getY();
-    $pdf->MultiCell(60, 7, 'Aunts & Uncles',1,'[L]',0,1,15, $y_set);
-    $pdf->MultiCell(60, 7, $patient_medical_history_details['great_grandparents_maternal'],1,'[L]',0,1,75, $y_set);
-    $pdf->MultiCell(60, 7, $patient_medical_history_details['great_grandparents_maternal'],1,'[L]',0,1,135, $y_set);
-
-
-    $y_set = $pdf->getY();
-    $pdf->MultiCell(60, 7, 'Cousins',1,'[L]',0,1,15, $y_set);
     $pdf->MultiCell(60, 7, $patient_medical_history_details['grandfather_maternal'],1,'[L]',0,1,75, $y_set);
     $pdf->MultiCell(60, 7, $patient_medical_history_details['grandfather_paternal'],1,'[L]',0,1,135, $y_set);
 
 
     $y_set = $pdf->getY();
-    $pdf->MultiCell(60, 7, 'Parents',1,'[L]',0,1,15, $y_set);
+    $pdf->MultiCell(60, 7, 'Grandmother',1,'[L]',0,1,15, $y_set);
     $pdf->MultiCell(60, 7, $patient_medical_history_details['grandmother_maternal'],1,'[L]',0,1,75, $y_set);
     $pdf->MultiCell(60, 7, $patient_medical_history_details['grandmother_paternal'],1,'[L]',0,1,135, $y_set);
 
 
     $y_set = $pdf->getY();
-    $pdf->MultiCell(60, 7, 'Siblings',1,'[L]',0,1,15, $y_set);
+    $pdf->MultiCell(60, 7, 'Aunts & Uncles',1,'[L]',0,1,15, $y_set);
     $pdf->MultiCell(60, 7, $patient_medical_history_details['aunt_uncle_maternal'],1,'[L]',0,1,75, $y_set);
     $pdf->MultiCell(60, 7, $patient_medical_history_details['aunt_uncle_paternal'],1,'[L]',0,1,135, $y_set);
 
 
     $y_set = $pdf->getY();
-    $pdf->MultiCell(60, 7, 'Offspring',1,'[L]',0,1,15, $y_set);
+    $pdf->MultiCell(60, 7, 'Cousins',1,'[L]',0,1,15, $y_set);
     $pdf->MultiCell(60, 7, $patient_medical_history_details['cousins_maternal'],1,'[L]',0,1,75, $y_set);
-    $pdf->MultiCell(60, 7, $patient_medical_history_details['cousins_maternal'],1,'[L]',0,1,135, $y_set);
+    $pdf->MultiCell(60, 7, $patient_medical_history_details['cousins_paternal'],1,'[L]',0,1,135, $y_set);
+
+
+    $y_set = $pdf->getY();
+    $pdf->MultiCell(60, 7, 'Parents',1,'[L]',0,1,15, $y_set);
+    $pdf->MultiCell(60, 7, $patient_medical_history_details['parents_maternal'],1,'[L]',0,1,75, $y_set);
+    $pdf->MultiCell(60, 7, $patient_medical_history_details['parents_paternal'],1,'[L]',0,1,135, $y_set);
+
+
+    $y_set = $pdf->getY();
+    $pdf->MultiCell(60, 7, 'Siblings',1,'[L]',0,1,15, $y_set);
+    $pdf->MultiCell(60, 7, $patient_medical_history_details['siblings_maternal'],1,'[L]',0,1,75, $y_set);
+    $pdf->MultiCell(60, 7, $patient_medical_history_details['siblings_paternal'],1,'[L]',0,1,135, $y_set);
+
+
+    $y_set = $pdf->getY();
+    $pdf->MultiCell(60, 7, 'Offspring',1,'[L]',0,1,15, $y_set);
+    $pdf->MultiCell(60, 7, $patient_medical_history_details['offspring_maternal'],1,'[L]',0,1,75, $y_set);
+    $pdf->MultiCell(60, 7, $patient_medical_history_details['offspring_paternal'],1,'[L]',0,1,135, $y_set);
 
     //$pdf->AddPage();
 
@@ -832,7 +832,6 @@
     $pdf->SetDrawColor(0, 0, 0);
     $pdf->SetFillColor(0, 0, 0);
 
-
     $pdf->Text(10, $pdf->getY()-3, "Diet");
 
     $pdf->SetFillColor(255, 255, 255);
@@ -892,43 +891,52 @@
 
     $pdf->SetFont('Helvetica', '', 11 );
     $pdf->SetTextColor(0, 0, 0);
+    $pdf->SetFillColor(255, 255, 255);
 
-    $pdf->Text(10, $pdf->getY()+12, 'Height');
-    $pdf->Text(50, $pdf->getY(),$patient_medical_history_details['height']);
+    $pdf->writeHTMLCell(65, 5, 15, $pdf->getY()+15, 'Height', 1, 0, 1, true, 'L', true);
+    $pdf->writeHTMLCell(65, 5, 80, $pdf->getY(), $patient_medical_history_details['height'], 1, 0, 1, true, 'L', true);
 
-    $pdf->Text(10, $pdf->getY()+9, 'Weight');
-    $pdf->Text(50, $pdf->getY(),$patient_medical_history_details['weight']);
+    // $pdf->Text(10, $pdf->getY()+15, 'Height',false,false,true,1);
+    // $pdf->Text(50, $pdf->getY(),$patient_medical_history_details['height'],false,false,true,1);
 
-    $pdf->Text(10, $pdf->getY()+9, 'Body Mass Index');
-    $pdf->Text(50, $pdf->getY(),$patient_medical_history_details['body_mass']);
+    $pdf->writeHTMLCell(65, 5, 15, $pdf->getY()+7, 'Weight', 1, 0, 1, true, 'L', true);
+    $pdf->writeHTMLCell(65, 5, 80, $pdf->getY(), $patient_medical_history_details['weight'], 1, 0, 1, true, 'L', true);
 
-    $pdf->Text(10, $pdf->getY()+9, 'Body Fat');
-    $pdf->Text(50, $pdf->getY(),$patient_medical_history_details['body_fat']);
+    // $pdf->Text(10, $pdf->getY()+8, 'Weight',false,false,true,1);
+    // $pdf->Text(50, $pdf->getY(),$patient_medical_history_details['weight'],false,false,true,1);
 
-    $bim_int = 'Interpretation: 
-    What your BMI means:
-    
-    BMI 18.5 - 24.9
-    Experts generally consider a BMI below 20 to be underweight
-    
-    BMI 25.0 – 29.9
-    Experts generally consider a BMI of 20 to 25 to be healthy.
-    
-    BMI 30.0 – 34.9
-    Experts generally consider a BMI of 25 to 30 to be considered overweight
-    
-    BMI 35+
-    Experts generally consider a BMI over 30 as very overweight (obese)';
+    $pdf->writeHTMLCell(65, 5, 15, $pdf->getY()+7, 'Body Mass Index', 1, 0, 1, true, 'L', true);
+    $pdf->writeHTMLCell(65, 5, 80, $pdf->getY(), $patient_medical_history_details['body_mass'], 1, 0, 1, true, 'L', true);
+
+    // $pdf->Text(10, $pdf->getY()+8, 'Body Mass Index',false,false,true,1);
+    // $pdf->Text(50, $pdf->getY(),$patient_medical_history_details['body_mass'],false,false,true,1);
+
+    $pdf->writeHTMLCell(65, 5, 15, $pdf->getY()+7, 'Body Fat', 1, 0, 1, true, 'L', true);
+    $pdf->writeHTMLCell(65, 5, 80, $pdf->getY(), $patient_medical_history_details['body_fat'], 1, 0, 1, true, 'L', true);
+
+    // $pdf->Text(10, $pdf->getY()+8, 'Body Fat',false,false,true,1);
+    // $pdf->Text(50, $pdf->getY(),$patient_medical_history_details['body_fat'],false,false,true,1);
+
+    $bim_int = "Interpretation: <br> <br>
+    What your BMI means: <br>
+    BMI 18.5 - 24.9 <br> <br>
+    Experts generally consider a BMI below 20 to be underweight <br>
+    BMI 25.0 – 29.9 <br> <br>
+    Experts generally consider a BMI of 20 to 25 to be healthy. <br>
+    BMI 30.0 – 34.9 <br> <br>
+    Experts generally consider a BMI of 25 to 30 to be considered overweight <br>
+    BMI 35+ <br> <br>
+    Experts generally consider a BMI over 30 as very overweight (obese)";
 
     $pdf->SetFont('Helvetica', 'B', 11 ); 
 
-    $pdf->writeHTMLCell(180, 30, 15, $pdf->getY()+9, $bim_int, 0, 0, 0, true, 'L', true);
+    $pdf->writeHTMLCell(180, 55, 15, $pdf->getY()+9, $bim_int, 0, 0, 0, true, 'L', true);
 
 
     $pdf->SetFont('Helvetica', 'B', 20 ); 
     $pdf->SetFillColor(0, 178, 72);
     $pdf->SetTextColor(255, 255, 255);
-    $pdf->writeHTMLCell(112, 5, 10, $pdf->getY()+30, 'Extraordinary Physical Findings', 0, 0, 1, true, 'L', true);
+    $pdf->writeHTMLCell(112, 5, 10, $pdf->getY()+80, 'Extraordinary Physical Findings', 0, 0, 1, true, 'L', true);
 
     $pdf->SetFont('Helvetica', '', 11 );
     $pdf->SetTextColor(0, 0, 0);
@@ -1043,6 +1051,8 @@
     if(!empty($patient_reports['blood'])){
         $str = explode('.', $patient_reports['blood']);
         if($str[1]=='pdf'){
+            $pdf->setPrintHeader(false);
+
             $pageCount = $pdf->setSourceFile('./uploads/'.$patient_reports['blood']);
 
             for ($pageNo = 1; $pageNo <= $pageCount; $pageNo++) {
@@ -1055,7 +1065,10 @@
             
                 $pdf->SetXY(5, 5);
                 $pdf->Write(8, 'Blood report');
+
             }
+
+            $pdf->setPrintHeader(true);
         }
         else{
             $pdf->AddPage();
@@ -1073,6 +1086,9 @@
     if(!empty($patient_reports['mri'])){
         $str = explode('.', $patient_reports['mri']);
         if($str[1]=='pdf'){
+
+            $pdf->setPrintHeader(false);
+
             $pageCount = $pdf->setSourceFile('./uploads/'.$patient_reports['mri']);
 
             for ($pageNo = 1; $pageNo <= $pageCount; $pageNo++) {
@@ -1087,6 +1103,7 @@
                 $pdf->SetXY(5, 5);
                 $pdf->Write(8, 'MRI report');
             }
+            $pdf->setPrintHeader(true);
         }
         else{
             $pdf->AddPage();
@@ -1100,6 +1117,9 @@
     if(!empty($patient_reports['xray'])){
         $str = explode('.', $patient_reports['xray']);
         if($str[1]=='pdf'){
+
+            $pdf->setPrintHeader(false);
+
             $pageCount = $pdf->setSourceFile('./uploads/'.$patient_reports['xray']);
 
             for ($pageNo = 1; $pageNo <= $pageCount; $pageNo++) {
@@ -1113,6 +1133,8 @@
                 $pdf->SetXY(5, 5);
                 $pdf->Write(8, 'Xray report');
             }
+
+            $pdf->setPrintHeader(true);
         }
         else{
             $pdf->AddPage();
