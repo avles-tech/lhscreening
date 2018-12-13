@@ -11,11 +11,11 @@
 		?>
 	<div class="input-group col-md-6 mb-3">
 		<div class="custom-file">
-			<input type="file" class="custom-file-input" name="userfile" id='userfile'>
+			<input type="file" class="custom-file-input" name="userfile" id='userfile' <?php echo $read_only ?>>
 			<label class="custom-file-label" for="userfile">Choose file</label>
 		</div>
 		<div class="input-group-append">
-			<button class="btn btn-outline-secondary" type="submit" value="upload">Upload</button>
+			<button class="btn btn-outline-secondary" type="submit" value="upload" <?php echo $read_only ?>>Upload</button>
 		</div>
 	</div>
 	<div id='file_div' data-report='blood'>
@@ -35,11 +35,11 @@
 		?>
 	<div class="input-group col-md-6 mb-3">
 		<div class="custom-file">
-			<input type="file" class="custom-file-input" name="userfile" id='userfile'>
+			<input type="file" class="custom-file-input" name="userfile" id='userfile' <?php echo $read_only ?>>
 			<label class="custom-file-label" for="userfile">Choose file</label>
 		</div>
 		<div class="input-group-append">
-			<button class="btn btn-outline-secondary" type="submit" value="upload">Upload</button>
+			<button class="btn btn-outline-secondary" type="submit" value="upload" <?php echo $read_only ?>>Upload</button>
 		</div>
 	</div>
 	<div id='file_div' data-report='mri'>
@@ -60,11 +60,11 @@
 		?>
 	<div class="input-group col-md-6 mb-3">
 		<div class="custom-file">
-			<input type="file" class="custom-file-input" name="userfile" id='userfile'>
+			<input type="file" class="custom-file-input" name="userfile" id='userfile' <?php echo $read_only ?>>
 			<label class="custom-file-label" for="userfile">Choose file</label>
 		</div>
 		<div class="input-group-append">
-			<button class="btn btn-outline-secondary" type="submit" value="upload">Upload</button>
+			<button class="btn btn-outline-secondary" type="submit" value="upload" <?php echo $read_only ?>>Upload</button>
 		</div>
 	</div>
 	<div id='file_div' data-report='xray'>
