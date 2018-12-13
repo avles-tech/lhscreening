@@ -947,22 +947,33 @@
     $pdf->SetTextColor(255, 255, 255);
     $pdf->writeHTMLCell(65, 5, 10, $pdf->getY(), 'Laboratory Test', 0, 0, 1, true, 'L', true);
 
-    $pdf->setCellPaddings(1, 1, 1, 1);
+    $pdf->setCellPaddings(1, 0, 0, 0);
 
     $pdf->SetFont('Helvetica', '', 11 );
     $pdf->SetTextColor(0, 0, 0);
     
     $pdf->setY($pdf->getY()+5);
 
+    $pdf->SetFillColor(255, 255, 255);
+
     foreach ($uniqueCategories as $cat):
         $pdf->SetFont('Helvetica', 'B', 15 );
+
+        if($cat=='Neck'):
+            $pdf->AddPage();
+        endif;
+
         $pdf->Text(10, $pdf->getY()+9, $cat);
         $pdf->SetFont('Helvetica', '', 11 );
+        
+        $pdf->setY($pdf->getY()+5);
 
         foreach ($patient_lab_test as $item):
             if($item['category']==$cat):
-                $pdf->Text(15, $pdf->getY()+9, $item['test_name']);
-                $pdf->Text(65, $pdf->getY(),$item['value']." ".$item['unit']);
+                //$pdf->Text(15, $pdf->getY()+5, $item['test_name'],false,false,true,1,1,'L');
+                $pdf->writeHTMLCell(65, 5, 15, $pdf->getY()+5, $item['test_name'], 1, 0, 1, true, 'L', true);
+                //$pdf->Text(65, $pdf->getY(),$item['value']." ".$item['unit'],false,false,true,1);
+                $pdf->writeHTMLCell(65, 5, 80, $pdf->getY(), $item['value']." ".$item['unit'], 1, 0, 1, true, 'L', true);
             endif;
         endforeach;
     endforeach;
