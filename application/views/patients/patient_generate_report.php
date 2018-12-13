@@ -575,60 +575,60 @@
     $pdf->SetFillColor(0,178,161);
 
     $y_set = $pdf->getY()+15;
-    $pdf->MultiCell(60, 18, '',1,'[L]',0,1,15, $y_set);
-    $pdf->MultiCell(60, 18, 'Maternal',1,'[L]',1,1,75,$y_set);
-    $pdf->MultiCell(60, 18, 'Paternal',1,'[L]',1,1,135, $y_set);
+    $pdf->MultiCell(60, 7, '',1,'[L]',0,1,15, $y_set);
+    $pdf->MultiCell(60, 7, 'Maternal',1,'[L]',1,1,75,$y_set);
+    $pdf->MultiCell(60, 7, 'Paternal',1,'[L]',1,1,135, $y_set);
 
     $pdf->SetTextColor(0, 0, 0);
     $pdf->SetFillColor(0, 178, 72);
     
     $y_set = $pdf->getY();
-    $pdf->MultiCell(60, 18, 'Great grandparents',1,'[L]',0,1,15, $y_set);
-    $pdf->MultiCell(60, 18, $patient_medical_history_details['great_grandparents_maternal'],1,'[L]',0,1,75, $y_set);
-    $pdf->MultiCell(60, 18, $patient_medical_history_details['great_grandparents_maternal'],1,'[L]',0,1,135, $y_set);
+    $pdf->MultiCell(60, 7, 'Great grandparents',1,'[L]',0,1,15, $y_set);
+    $pdf->MultiCell(60, 7, $patient_medical_history_details['great_grandparents_maternal'],1,'[L]',0,1,75, $y_set);
+    $pdf->MultiCell(60, 7, $patient_medical_history_details['great_grandparents_maternal'],1,'[L]',0,1,135, $y_set);
 
     $y_set = $pdf->getY();
-    $pdf->MultiCell(60, 18, 'Grandfather',1,'[L]',0,1,15, $y_set);
-    $pdf->MultiCell(60, 18, $patient_medical_history_details['great_grandparents_maternal'],1,'[L]',0,1,75, $y_set);
-    $pdf->MultiCell(60, 18, $patient_medical_history_details['great_grandparents_maternal'],1,'[L]',0,1,135, $y_set);
-
-
-    $y_set = $pdf->getY();
-    $pdf->MultiCell(60, 18, 'Grandmother',1,'[L]',0,1,15, $y_set);
-    $pdf->MultiCell(60, 18, $patient_medical_history_details['great_grandparents_maternal'],1,'[L]',0,1,75, $y_set);
-    $pdf->MultiCell(60, 18, $patient_medical_history_details['great_grandparents_maternal'],1,'[L]',0,1,135, $y_set);
+    $pdf->MultiCell(60, 7, 'Grandfather',1,'[L]',0,1,15, $y_set);
+    $pdf->MultiCell(60, 7, $patient_medical_history_details['great_grandparents_maternal'],1,'[L]',0,1,75, $y_set);
+    $pdf->MultiCell(60, 7, $patient_medical_history_details['great_grandparents_maternal'],1,'[L]',0,1,135, $y_set);
 
 
     $y_set = $pdf->getY();
-    $pdf->MultiCell(60, 18, 'Aunts & Uncles',1,'[L]',0,1,15, $y_set);
-    $pdf->MultiCell(60, 18, $patient_medical_history_details['great_grandparents_maternal'],1,'[L]',0,1,75, $y_set);
-    $pdf->MultiCell(60, 18, $patient_medical_history_details['great_grandparents_maternal'],1,'[L]',0,1,135, $y_set);
+    $pdf->MultiCell(60, 7, 'Grandmother',1,'[L]',0,1,15, $y_set);
+    $pdf->MultiCell(60, 7, $patient_medical_history_details['great_grandparents_maternal'],1,'[L]',0,1,75, $y_set);
+    $pdf->MultiCell(60, 7, $patient_medical_history_details['great_grandparents_maternal'],1,'[L]',0,1,135, $y_set);
 
 
     $y_set = $pdf->getY();
-    $pdf->MultiCell(60, 18, 'Cousins',1,'[L]',0,1,15, $y_set);
-    $pdf->MultiCell(60, 18, $patient_medical_history_details['grandfather_maternal'],1,'[L]',0,1,75, $y_set);
-    $pdf->MultiCell(60, 18, $patient_medical_history_details['grandfather_paternal'],1,'[L]',0,1,135, $y_set);
+    $pdf->MultiCell(60, 7, 'Aunts & Uncles',1,'[L]',0,1,15, $y_set);
+    $pdf->MultiCell(60, 7, $patient_medical_history_details['great_grandparents_maternal'],1,'[L]',0,1,75, $y_set);
+    $pdf->MultiCell(60, 7, $patient_medical_history_details['great_grandparents_maternal'],1,'[L]',0,1,135, $y_set);
 
 
     $y_set = $pdf->getY();
-    $pdf->MultiCell(60, 18, 'Parents',1,'[L]',0,1,15, $y_set);
-    $pdf->MultiCell(60, 18, $patient_medical_history_details['grandmother_maternal'],1,'[L]',0,1,75, $y_set);
-    $pdf->MultiCell(60, 18, $patient_medical_history_details['grandmother_paternal'],1,'[L]',0,1,135, $y_set);
+    $pdf->MultiCell(60, 7, 'Cousins',1,'[L]',0,1,15, $y_set);
+    $pdf->MultiCell(60, 7, $patient_medical_history_details['grandfather_maternal'],1,'[L]',0,1,75, $y_set);
+    $pdf->MultiCell(60, 7, $patient_medical_history_details['grandfather_paternal'],1,'[L]',0,1,135, $y_set);
 
 
     $y_set = $pdf->getY();
-    $pdf->MultiCell(60, 18, 'Siblings',1,'[L]',0,1,15, $y_set);
-    $pdf->MultiCell(60, 18, $patient_medical_history_details['aunt_uncle_maternal'],1,'[L]',0,1,75, $y_set);
-    $pdf->MultiCell(60, 18, $patient_medical_history_details['aunt_uncle_paternal'],1,'[L]',0,1,135, $y_set);
+    $pdf->MultiCell(60, 7, 'Parents',1,'[L]',0,1,15, $y_set);
+    $pdf->MultiCell(60, 7, $patient_medical_history_details['grandmother_maternal'],1,'[L]',0,1,75, $y_set);
+    $pdf->MultiCell(60, 7, $patient_medical_history_details['grandmother_paternal'],1,'[L]',0,1,135, $y_set);
 
 
     $y_set = $pdf->getY();
-    $pdf->MultiCell(60, 18, 'Offspring',1,'[L]',0,1,15, $y_set);
-    $pdf->MultiCell(60, 18, $patient_medical_history_details['cousins_maternal'],1,'[L]',0,1,75, $y_set);
-    $pdf->MultiCell(60, 18, $patient_medical_history_details['cousins_maternal'],1,'[L]',0,1,135, $y_set);
+    $pdf->MultiCell(60, 7, 'Siblings',1,'[L]',0,1,15, $y_set);
+    $pdf->MultiCell(60, 7, $patient_medical_history_details['aunt_uncle_maternal'],1,'[L]',0,1,75, $y_set);
+    $pdf->MultiCell(60, 7, $patient_medical_history_details['aunt_uncle_paternal'],1,'[L]',0,1,135, $y_set);
 
-    $pdf->AddPage();
+
+    $y_set = $pdf->getY();
+    $pdf->MultiCell(60, 7, 'Offspring',1,'[L]',0,1,15, $y_set);
+    $pdf->MultiCell(60, 7, $patient_medical_history_details['cousins_maternal'],1,'[L]',0,1,75, $y_set);
+    $pdf->MultiCell(60, 7, $patient_medical_history_details['cousins_maternal'],1,'[L]',0,1,135, $y_set);
+
+    //$pdf->AddPage();
 
     $pdf->SetFont('Helvetica', 'B', 20 ); 
     $pdf->SetFillColor(0, 178, 72);
@@ -655,9 +655,9 @@
     $pdf->SetFillColor(0,178,161);
     $pdf->SetTextColor(255, 255, 255);
     
-    $pdf->MultiCell(40, 10, 'Destination',1,'[CENTER]',1,1,15, $y_test);
-    $pdf->MultiCell(40, 10, 'Date',1,'[CENTER]',1,1,55, $y_test);
-    $pdf->MultiCell(40, 10, 'Duration in days',1,'[CENTER]',1,1,95, $y_test);
+    $pdf->MultiCell(40, 7, 'Destination',1,'[CENTER]',1,1,15, $y_test);
+    $pdf->MultiCell(40, 7, 'Date',1,'[CENTER]',1,1,55, $y_test);
+    $pdf->MultiCell(40, 7, 'Duration in days',1,'[CENTER]',1,1,95, $y_test);
 
     $pdf->SetTextColor(0, 0, 0);
     $pdf->SetFillColor(0, 178, 72);
@@ -666,9 +666,9 @@
 			for ($i=0; $i < $length; $i++) { 
                 //echo "travel_destination[".$i."].value = ".$patient_travel_details[$i]['travel_destination'];
                 $y_test = $pdf->getY();
-                $pdf->MultiCell(40, 10, $patient_travel_details[$i]['travel_destination'],1,'[L]',0,1,15, $y_test);
-                $pdf->MultiCell(40, 10, $patient_travel_details[$i]['travel_date'],1,'[L]',0,1,55, $y_test);
-                $pdf->MultiCell(40, 10, $patient_travel_details[$i]['travel_duration'],1,'[L]',0,1,95, $y_test);
+                $pdf->MultiCell(40, 7, $patient_travel_details[$i]['travel_destination'],1,'[L]',0,1,15, $y_test);
+                $pdf->MultiCell(40, 7, $patient_travel_details[$i]['travel_date'],1,'[L]',0,1,55, $y_test);
+                $pdf->MultiCell(40, 7, $patient_travel_details[$i]['travel_duration'],1,'[L]',0,1,95, $y_test);
 			}
     
     $pdf->AddPage();
