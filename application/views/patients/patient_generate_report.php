@@ -14,7 +14,7 @@
     }
     $uniqueCategories = array_unique($categories);
 
-    $pdf = new Tcpdflib();
+    $pdf = new Fpdilib();
 
     //$pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, PDF_HEADER_TITLE, PDF_HEADER_STRING);
 
@@ -37,8 +37,8 @@
     $pdf->setPrintFooter(false);
 
     $pdf->AddPage();
-    $pdf->setImageScale('1.5');
-    $pdf->Image('./assets/lyca/images/logo.png',55, 10);
+    $pdf->setImageScale('1');
+    $pdf->Image('./assets/lyca/images/logo.png',65, 10);
 
     $y = $pdf->getY();
 
@@ -47,7 +47,7 @@
 
     // set color for text
     $pdf->SetTextColor(255, 255, 255);
-    $pdf->SetFont('Helvetica', 'B', 20 );
+    $pdf->SetFont('Helvetica', 'B', 25 );
     $pdf->MultiCell(297, 5,'',0,'L',true,1,0,30);
     $pdf->Text(50, 30, 'Health Assessment Report');
 
