@@ -159,7 +159,7 @@
     //$pdf->Text(5, $pdf->getY()+9, 'Next of kin details');
     $pdf->SetFillColor(0, 178, 72);
     $pdf->SetTextColor(255, 255, 255);
-    $pdf->writeHTMLCell(70, 5, 10, $pdf->getY()+9, 'Next of kin details', 0, 0, 1, true, 'L', true);
+    $pdf->writeHTMLCell(189, 5, 10, $pdf->getY()+9, 'Next of kin details', 0, 0, 1, true, 'L', true);
 
     //$pdf->MultiCell(70, 5,'',0,'C',true,1,50,20);
     //$pdf->Text(60, 20, 'Patient Details');
@@ -197,7 +197,7 @@
     $pdf->SetFillColor(0, 178, 72);
     $pdf->SetTextColor(255, 255, 255);
     //$pdf->writeHTMLCell(297, 5, 0, $pdf->getY()+9, 'NHS / Alternative GP', 0, 0, 1, true, 'C', true);
-    $pdf->writeHTMLCell(90, 5, 10, $pdf->getY()+9, 'NHS / Alternative GP', 0, 0, 1, true, 'L', true);
+    $pdf->writeHTMLCell(189, 5, 10, $pdf->getY()+9, 'NHS / Alternative GP', 0, 0, 1, true, 'L', true);
     $pdf->SetFont('Helvetica', '', 11 ); 
     $pdf->SetTextColor(0, 0, 0);
     $pdf->SetFillColor(0, 0, 0);
@@ -223,7 +223,7 @@
     //$pdf->Text(5, 20, 'Health');
     $pdf->SetFillColor(0, 178, 72);
     $pdf->SetTextColor(255, 255, 255);
-    $pdf->writeHTMLCell(30, 5, 10, $pdf->getY()+9, 'Health', 0, 0, 1, true, 'L', true);
+    $pdf->writeHTMLCell(189, 5, 10, $pdf->getY()+9, 'Health', 0, 0, 1, true, 'L', true);
 
     $pdf->SetFont('Helvetica', '', 11 ); 
     $pdf->SetTextColor(0, 0, 0);
@@ -342,7 +342,7 @@
     //$pdf->Text(5, $pdf->getY()+9, 'CHAPERONE');
     $pdf->SetFillColor(0, 178, 72);
     $pdf->SetTextColor(255, 255, 255);
-    $pdf->writeHTMLCell(50, 5, 10, $pdf->getY()+9, 'CHAPERONE', 0, 0, 1, true, 'L', true);
+    $pdf->writeHTMLCell(189, 5, 10, $pdf->getY()+9, 'CHAPERONE', 0, 0, 1, true, 'L', true);
 
     $pdf->SetFont('Helvetica', '', 11 ); 
     $pdf->SetTextColor(0, 0, 0);
@@ -368,7 +368,7 @@
     $pdf->SetTextColor(255, 255, 255);
     //$pdf->MultiCell(297, 5,'',0,'L',true,1,0,20);
     //$pdf->Text(30, 20, 'CONSENT');
-    $pdf->writeHTMLCell(50, 5, 10, $pdf->getY()+9, 'CONSENT', 0, 0, 1, true, 'L', true);
+    $pdf->writeHTMLCell(189, 5, 10, $pdf->getY()+9, 'CONSENT', 0, 0, 1, true, 'L', true);
 
     $pdf->SetFont('Helvetica', '', 11 );
     $pdf->SetTextColor(0, 0, 0);
@@ -453,7 +453,7 @@
     $pdf->SetTextColor(255, 255, 255);
     //$pdf->MultiCell(297, 5,'',0,'L',true,1,0,20);
     //$pdf->Text(30, 20, 'PHQ-9 Details');
-    $pdf->writeHTMLCell(60, 5, 10, $pdf->getY()+9, 'PHQ-9 Details', 0, 0, 1, true, 'L', true);
+    $pdf->writeHTMLCell(189, 5, 10, $pdf->getY()+9, 'PHQ-9 Details', 0, 0, 1, true, 'L', true);
 
     $pdf->SetFont('Helvetica', '', 11 );
     $pdf->SetTextColor(0, 0, 0);
@@ -487,7 +487,7 @@
     $pdf->SetTextColor(255, 255, 255);
     //$pdf->MultiCell(297, 5,'',0,'L',true,1,0,20);
     //$pdf->Text(30, 20, 'GAD-7 Details');
-    $pdf->writeHTMLCell(60, 5, 10, $pdf->getY()+9, 'GAD-7 Details', 0, 0, 1, true, 'L', true);
+    $pdf->writeHTMLCell(189, 5, 10, $pdf->getY()+9, 'GAD-7 Details', 0, 0, 1, true, 'L', true);
 
     $pdf->SetFont('Helvetica', '', 11 );
     $pdf->SetTextColor(0, 0, 0);
@@ -518,7 +518,7 @@
     $pdf->SetFont('Helvetica', 'B', 20 ); 
     $pdf->SetFillColor(0, 178, 72);
     $pdf->SetTextColor(255, 255, 255);
-    $pdf->writeHTMLCell(60, 5, 10, $pdf->getY()+9, 'Medical History', 0, 0, 1, true, 'L', true);
+    $pdf->writeHTMLCell(189, 5, 10, $pdf->getY()+9, 'Medical History', 0, 0, 1, true, 'L', true);
 
     $pdf->SetFont('Helvetica', '', 11 );
     $pdf->SetTextColor(0, 0, 0);
@@ -568,7 +568,7 @@
     $pdf->SetFont('Helvetica', 'B', 20 ); 
     $pdf->SetFillColor(0, 178, 72);
     $pdf->SetTextColor(255, 255, 255);
-    $pdf->writeHTMLCell(60, 5, 10, $pdf->getY()+9, 'Family History', 0, 0, 1, true, 'L', true);
+    $pdf->writeHTMLCell(189, 5, 10, $pdf->getY()+9, 'Family History', 0, 0, 1, true, 'L', true);
 
     $pdf->SetFont('Helvetica', '', 11 );
     $pdf->SetTextColor(0, 0, 0);
@@ -631,11 +631,11 @@
     //$pdf->AddPage();
 
     $pdf->SetFont('Helvetica', 'B', 20 ); 
-    //$pdf->SetFillColor(0, 178, 72);
+    $pdf->SetFillColor(0, 178, 72);
     $pdf->SetTextColor(255, 255, 255);
     //$pdf->MultiCell(297, 5,'',0,'L',true,1,0,20);
     //$pdf->Text(30, 20, 'PHQ-9 Details');
-    $pdf->writeHTMLCell(100, 5, 10, $pdf->getY()+9, 'Travel & Vaccination History', 0, 0, 1, true, 'L', true);
+    $pdf->writeHTMLCell(189, 5, 10, $pdf->getY()+9, 'Travel & Vaccination History', 0, 0, 1, true, 'L', true);
 
     $pdf->SetFont('Helvetica', '', 11 );
     $pdf->SetTextColor(0, 0, 0);
@@ -676,7 +676,7 @@
     $pdf->SetFont('Helvetica', 'B', 20 ); 
     $pdf->SetFillColor(0, 178, 72);
     $pdf->SetTextColor(255, 255, 255);
-    $pdf->writeHTMLCell(50, 5, 10, $pdf->getY()+9, 'Vaccinations', 0, 0, 1, true, 'L', true);
+    $pdf->writeHTMLCell(189, 5, 10, $pdf->getY()+9, 'Vaccinations', 0, 0, 1, true, 'L', true);
 
     $pdf->SetFont('Helvetica', '', 11 );
     $pdf->SetTextColor(0, 0, 0);
@@ -746,7 +746,7 @@
     $pdf->SetFont('Helvetica', 'B', 20 ); 
     $pdf->SetFillColor(0, 178, 72);
     $pdf->SetTextColor(255, 255, 255);
-    $pdf->writeHTMLCell(50, 5, 10, $pdf->getY()+12, 'Lifestyle', 0, 0, 1, true, 'L', true);
+    $pdf->writeHTMLCell(189, 5, 10, $pdf->getY()+12, 'Lifestyle', 0, 0, 1, true, 'L', true);
 
     $pdf->SetFont('Helvetica', '', 11 );
     $pdf->SetTextColor(0, 0, 0);
@@ -887,7 +887,7 @@
     $pdf->SetFont('Helvetica', 'B', 20 ); 
     $pdf->SetFillColor(0, 178, 72);
     $pdf->SetTextColor(255, 255, 255);
-    $pdf->writeHTMLCell(50, 5, 10, $pdf->getY()+12, 'Examinations', 0, 0, 1, true, 'L', true);
+    $pdf->writeHTMLCell(189, 5, 10, $pdf->getY()+12, 'Examinations', 0, 0, 1, true, 'L', true);
 
     $pdf->SetFont('Helvetica', '', 11 );
     $pdf->SetTextColor(0, 0, 0);
@@ -932,7 +932,7 @@
     $pdf->SetFont('Helvetica', 'B', 20 ); 
     $pdf->SetFillColor(0, 178, 72);
     $pdf->SetTextColor(255, 255, 255);
-    $pdf->writeHTMLCell(112, 5, 10, $pdf->getY()+80, 'Extraordinary Physical Findings', 0, 0, 1, true, 'L', true);
+    $pdf->writeHTMLCell(189, 5, 10, $pdf->getY()+80, 'Extraordinary Physical Findings', 0, 0, 1, true, 'L', true);
 
     $pdf->SetFont('Helvetica', '', 11 );
     $pdf->SetTextColor(0, 0, 0);
@@ -949,7 +949,7 @@
     $pdf->SetFont('Helvetica', 'B', 20 ); 
     $pdf->SetFillColor(0, 178, 72);
     $pdf->SetTextColor(255, 255, 255);
-    $pdf->writeHTMLCell(65, 5, 10, $pdf->getY(), 'Laboratory Test', 0, 0, 1, true, 'L', true);
+    $pdf->writeHTMLCell(189, 5, 10, $pdf->getY(), 'Laboratory Test', 0, 0, 1, true, 'L', true);
 
     $pdf->setCellPaddings(1, 0, 0, 0);
 
@@ -988,7 +988,7 @@
     $pdf->SetFont('Helvetica', 'B', 20 ); 
     $pdf->SetFillColor(0, 178, 72);
     $pdf->SetTextColor(255, 255, 255);
-    $pdf->writeHTMLCell(130, 5, 10, $pdf->getY()+9, 'GP Summary & Recommendation', 0, 0, 1, true, 'L', true);
+    $pdf->writeHTMLCell(189, 5, 10, $pdf->getY()+9, 'GP Summary & Recommendation', 0, 0, 1, true, 'L', true);
 
     $pdf->SetFont('Helvetica', '', 11 );
     $pdf->SetTextColor(0, 0, 0);
