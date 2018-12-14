@@ -94,7 +94,7 @@
     //$pdf->MultiCell(70, 5,'',0,'C',true,1,50,20);
     //$pdf->Text(60, 20, 'Patient Details');
 
-    $pdf->writeHTMLCell(70, 5, 10, 20, 'Patient Details', 0, 0, 1, true, 'L', true);
+    $pdf->writeHTMLCell(189, 5, 10, 20, 'Patient Details', 0, 0, 1, true, 'L', true);
 
     $pdf->SetFont('Helvetica', '', 11 );
     $pdf->SetTextColor(0, 0, 0);
@@ -478,7 +478,7 @@
     else
         $dep_ser ='Sever Depression';
 
-    $pdf->MultiCell(185, 10, 'PHQ-9 Score: '.$phq_score."/27"."\nDepression Severity: ".$dep_ser,1,'[L]',0,1,15, $pdf->getY());
+    $pdf->MultiCell(185, 20, 'PHQ-9 Score: '.$phq_score."/27"."\nDepression Severity: ".$dep_ser,1,'[L]',0,1,15, $pdf->getY());
 
     $pdf->AddPage();
 
@@ -511,7 +511,7 @@
     else
         $anx_ser ='Sever anxiety';
 
-    $pdf->MultiCell(185, 10, 'GAD-7 Score: '.$gad_score."/24"."\n Anxiety Severity: ".$anx_ser,1,'[L]',0,1,15, $pdf->getY());
+    $pdf->MultiCell(185, 20, 'GAD-7 Score: '.$gad_score."/24"."\nAnxiety Severity: ".$anx_ser,1,'[L]',0,1,15, $pdf->getY());
 
     $pdf->AddPage();
 
@@ -571,8 +571,8 @@
     $pdf->writeHTMLCell(60, 5, 10, $pdf->getY()+9, 'Family History', 0, 0, 1, true, 'L', true);
 
     $pdf->SetFont('Helvetica', '', 11 );
-
-    $pdf->SetFillColor(0,178,161);
+    $pdf->SetTextColor(0, 0, 0);
+    $pdf->SetFillColor(255,255,255);
 
     $y_set = $pdf->getY()+15;
     $pdf->MultiCell(60, 7, '',1,'[L]',0,1,15, $y_set);
@@ -580,7 +580,7 @@
     $pdf->MultiCell(60, 7, 'Paternal',1,'[L]',1,1,135, $y_set);
 
     $pdf->SetTextColor(0, 0, 0);
-    $pdf->SetFillColor(0, 178, 72);
+    //$pdf->SetFillColor(0, 178, 72);
     
     $y_set = $pdf->getY();
     $pdf->MultiCell(60, 7, 'Great grandparents',1,'[L]',0,1,15, $y_set);
@@ -631,7 +631,7 @@
     //$pdf->AddPage();
 
     $pdf->SetFont('Helvetica', 'B', 20 ); 
-    $pdf->SetFillColor(0, 178, 72);
+    //$pdf->SetFillColor(0, 178, 72);
     $pdf->SetTextColor(255, 255, 255);
     //$pdf->MultiCell(297, 5,'',0,'L',true,1,0,20);
     //$pdf->Text(30, 20, 'PHQ-9 Details');
@@ -652,8 +652,8 @@
 
     $y_test = $pdf->getY();
 
-    $pdf->SetFillColor(0,178,161);
-    $pdf->SetTextColor(255, 255, 255);
+    $pdf->SetTextColor(0, 0, 0);
+    $pdf->SetFillColor(255,255,255);
     
     $pdf->MultiCell(40, 7, 'Destination',1,'[CENTER]',1,1,15, $y_test);
     $pdf->MultiCell(40, 7, 'Date',1,'[CENTER]',1,1,55, $y_test);
@@ -918,15 +918,11 @@
     // $pdf->Text(50, $pdf->getY(),$patient_medical_history_details['body_fat'],false,false,true,1);
 
     $bim_int = "Interpretation: <br> <br>
-    What your BMI means: <br>
-    BMI 18.5 - 24.9 <br> <br>
-    Experts generally consider a BMI below 20 to be underweight <br>
-    BMI 25.0 – 29.9 <br> <br>
-    Experts generally consider a BMI of 20 to 25 to be healthy. <br>
-    BMI 30.0 – 34.9 <br> <br>
-    Experts generally consider a BMI of 25 to 30 to be considered overweight <br>
-    BMI 35+ <br> <br>
-    Experts generally consider a BMI over 30 as very overweight (obese)";
+    What your BMI means: <br> <br>
+    BMI below 18.5 : Experts generally consider a BMI below 18.5 to be underweight. <br> <br>
+    BMI 18.5 – 24.9 : Experts generally consider a BMI of 18.5 to 25 to be healthy. <br> <br>
+    BMI 25.0 – 29.9 : Experts generally consider a BMI of 25 to 30 to be considered overweight. <br> <br>
+    BMI 30.0 – 39.9 : Experts generally consider a BMI over 30 as very overweight (obese).";
 
     $pdf->SetFont('Helvetica', 'B', 11 ); 
 
