@@ -7,6 +7,9 @@
     $patient_medical_history_details = $this->patient_medical_history_model->get($patient_id);
     $patient_gp_details = $this->patient_gp_model->get($patient_id);
     $patient_travel_details = $this->patient_travel_model->get($patient_id);
+    $completed_user = $this->ion_auth->user($patient_details['save_exist_user_id'])->row(); // get users from group with id of '1'
+
+    //echo $completed_user->first_name;
 
     $categories = array();
     foreach ($patient_lab_test as $c) {
@@ -1076,9 +1079,6 @@
         
     }
 
-
-    
-
     if(!empty($patient_reports['mri'])){
         $str = explode('.', $patient_reports['mri']);
         if($str[1]=='pdf'){
@@ -1141,7 +1141,21 @@
         }
     }
 
-    $pdf->Output($patient_details['first_name'].'_Report.pdf', 'I');
+    if(!empty($completed_user)){
+        $pdf->AddPage();
 
+        $pdf->Text(10, 40, 'Yours Sincerely');
+
+        $path = './uploads/'.$completed_user->id.'_signature.jpeg';
+        
+        $pdf->setImageScale('3');
+        $pdf->Image($path,15, 50);
+
+        $pdf->Text(10, 70, 'Dr '.$completed_user->first_name.' '.$completed_user->last_name);
+        $pdf->Text(10, 75, $completed_user->qualification);
+        $pdf->Text(10, 80, $completed_user->designation);
+        
+    }
     
+    $pdf->Output($patient_details['first_name'].'_Report.pdf', 'I');
 ?>

@@ -32,6 +32,17 @@
       </p>
 
       <p>
+            <label> Qualification : </label><br />
+            <?php echo form_input($qualification);?>
+      </p>
+
+      <p>
+            <label> Designation : </label><br />
+            <?php echo form_input($designation);?>
+      </p>
+
+
+      <p>
             <?php echo lang('create_user_email_label', 'email');?> <br />
             <?php echo form_input($email);?>
       </p>

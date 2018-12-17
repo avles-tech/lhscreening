@@ -508,6 +508,8 @@ class Auth extends CI_Controller
 				'last_name' => $this->input->post('last_name'),
 				'company' => $this->input->post('company'),
 				'phone' => $this->input->post('phone'),
+				'qualification' => $this->input->post('qualification'),
+				'designation' => $this->input->post('designation'),
 			);
 		}
 		if ($this->form_validation->run() === TRUE && $this->ion_auth->register($identity, $password, $email, $additional_data))
@@ -570,6 +572,18 @@ class Auth extends CI_Controller
 				'id' => 'password_confirm',
 				'type' => 'password',
 				'value' => $this->form_validation->set_value('password_confirm'),
+			);
+			$this->data['qualification'] = array(
+				'name' => 'qualification',
+				'id' => 'qualification',
+				'type' => 'text',
+				'value' => $this->form_validation->set_value('qualification'),
+			);
+			$this->data['designation'] = array(
+				'name' => 'designation',
+				'id' => 'designation',
+				'type' => 'text',
+				'value' => $this->form_validation->set_value('designation'),
 			);
 
 			//$this->_render_page('auth' . DIRECTORY_SEPARATOR . 'create_user', $this->data);
@@ -634,6 +648,8 @@ class Auth extends CI_Controller
 					'last_name' => $this->input->post('last_name'),
 					'company' => $this->input->post('company'),
 					'phone' => $this->input->post('phone'),
+					'qualification' => $this->input->post('qualification'),
+					'designation' => $this->input->post('designation'),
 				);
 
 				// update the password if it was posted
@@ -724,6 +740,18 @@ class Auth extends CI_Controller
 			'name' => 'password_confirm',
 			'id'   => 'password_confirm',
 			'type' => 'password'
+		);
+		$this->data['qualification'] = array(
+			'name' => 'qualification',
+			'id'   => 'qualification',
+			'type' => 'text',
+			'value' => $this->form_validation->set_value('qualification', $user->qualification),
+		);
+		$this->data['designation'] = array(
+			'name' => 'designation',
+			'id'   => 'designation',
+			'type' => 'text',
+			'value' => $this->form_validation->set_value('designation', $user->designation),
 		);
 
 		//$this->_render_page('auth' . DIRECTORY_SEPARATOR . 'edit_user', $this->data);

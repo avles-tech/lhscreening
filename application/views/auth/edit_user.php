@@ -35,6 +35,17 @@
             <?php echo form_input($password_confirm);?>
       </p>
 
+      <p>
+            <label> Qualification : </label><br />
+            <?php echo form_input($qualification);?>
+      </p>
+
+      <p>
+            <label> Designation : </label><br />
+            <?php echo form_input($designation);?>
+      </p>
+
+
       <?php if ($this->ion_auth->is_admin()): ?>
 
           <h3><?php echo lang('edit_user_groups_heading');?></h3>
