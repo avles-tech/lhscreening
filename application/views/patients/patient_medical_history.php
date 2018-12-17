@@ -120,7 +120,7 @@
 		<h3>Travel & Vaccination History</h3>
 		<div class="form-group">
 			<div class="col-md-1 col-sm-1 col-xs-12">
-				<a id="travel-add" class="btn btn-success" type="button">Add <span class="fa fa-plus"></span></a>
+				<a id="travel-add" class="btn btn-success" type="button" <?php echo $read_only ?>>Add <span class="fa fa-plus"></span></a>
 			</div>
 			<br>
 			<div class="col-md-6 col-sm-6 col-xs-12" id="travel-history-block">
@@ -135,38 +135,38 @@
 					<tbody>
 						<tr class="hidden">
 							<td>
-								<input type="text" name="travel_destination[]" class="form-control" placeholder="Destination" data-parsley-id="1">
+								<input type="text" name="travel_destination[]" class="form-control" placeholder="Destination" data-parsley-id="1" <?php echo $read_only ?>>
 							</td>
 							<td>
-								<input type="date" name="travel_date[]" class="form-control" placeholder="Date" data-parsley-id="1">
+								<input type="date" name="travel_date[]" class="form-control" placeholder="Date" data-parsley-id="1" <?php echo $read_only ?>>
 							</td>
 							<td class="col-xs-3" style="padding-left:0">
 								<input type="number" name="travel_duration[]" class="form-control" placeholder="Duration in days"
-								 data-parsley-id="1">
+								 data-parsley-id="1" <?php echo $read_only ?>>
 							</td>
 						</tr>
 						<tr>
 							<td>
-								<input type="text" name="travel_destination[]" class="form-control" placeholder="Destination" data-parsley-id="2">
+								<input type="text" name="travel_destination[]" class="form-control" placeholder="Destination" data-parsley-id="2" <?php echo $read_only ?>>
 							</td>
 							<td>
-								<input type="date" name="travel_date[]" class="form-control" placeholder="Date" data-parsley-id="2">
+								<input type="date" name="travel_date[]" class="form-control" placeholder="Date" data-parsley-id="2" <?php echo $read_only ?>>
 							</td>
 							<td class="col-xs-3" style="padding-left:0">
 								<input type="number" name="travel_duration[]" class="form-control" placeholder="Duration in days"
-								 data-parsley-id="2">
+								 data-parsley-id="2" <?php echo $read_only ?>>
 							</td>
 						</tr>
 						<tr class="validate_this" style="display: table-row;">
 							<td>
-								<input type="text" name="travel_destination[]" class="form-control" placeholder="Destination" data-parsley-id="47">
+								<input type="text" name="travel_destination[]" class="form-control" placeholder="Destination" data-parsley-id="47" <?php echo $read_only ?>>
 							</td>
 							<td>
-								<input type="date" name="travel_date[]" class="form-control" placeholder="Date" data-parsley-id="49">
+								<input type="date" name="travel_date[]" class="form-control" placeholder="Date" data-parsley-id="49" <?php echo $read_only ?>>
 							</td>
 							<td class="col-xs-3" style="padding-left:0">
 								<input type="number" name="travel_duration[]" class="form-control" placeholder="Duration in days"
-								 data-parsley-id="51">
+								 data-parsley-id="51" <?php echo $read_only ?>>
 							</td>
 						</tr>
 					</tbody>
@@ -356,10 +356,10 @@
 		<div class="form-row">
 			<!-- form-group end.// -->
 			<div class="form-group btn-group mr-2">
-				<button type="submit" class="btn btn-primary btn-block" <?php echo $read_only ?>> Save </button>
+				<a href='#' role='button' id='mc_save' class="btn btn-primary btn-block" <?php echo $read_only ?>> Save </a>
 			</div> <!-- form-group// -->
 			<div class="form-group btn-group mr-2">
-						<button id='save_exit' class="btn btn-primary " <?php echo $read_only ?>>Save & Exit</button>
+						<a href='#' role='button' id='mc_save_exit' class="btn btn-primary " <?php echo $read_only ?>>Save & Exit</a>
 					</div> <!-- form-group// -->
 			<div class="form-group btn-group mr-2">
 				<a href="<?php echo base_url().'patients'?>" class="btn btn-danger" role='button'>Cancel</a>
@@ -401,31 +401,61 @@
 		});
 	}
 
-</script>
-
-<script>
-		$('form#medical_history_form').submit(function (e) {
-
-			var form = $(this);
-
+		$('#mc_save_exit').click(function (e) {
 			e.preventDefault();
+			updateMedicalHistory(true);
+			
+		});
+
+		$('#mc_save').click(function (e) {
+			e.preventDefault();
+			updateMedicalHistory(false);
+			
+		});
+
+		function updateMedicalHistory(save_exit){
+
+			var phq_form_form = $('#medical_history_form');
 
 			$.ajax({
-				type: "POST",
-				url: "<?php echo site_url('patients/update_medical_history'); ?>",
-				data: form.serialize(), // <--- THIS IS THE CHANGE
-				dataType: "html",
-				success: function (data) {
-					//$('#feed-container').prepend(data);
-					alertify.set('notifier','position', 'top-right');
-					alertify.notify('Patient details updated', 'success', 5, function(){  console.log('dismissed'); });
-				},
-				error: function () {
-					alert("Error posting feed.");
-				}
+			type: "POST",
+			url: "<?php echo site_url('patients/update_medical_history'); ?>",
+			data: phq_form_form.serialize(),
+			success: function (data) {
+				alertify.set('notifier', 'position', 'top-right');
+				alertify.notify('Patient details updated', 'success', 5);
+				if(save_exit)
+					location.href = "<?php echo base_url().'patients'?>";
+			},
+			error: function () {
+				alert("Error posting feed.");
+			}
 			});
+			}
 
-		});
+
+		// $('form#medical_history_form').submit(function (e) {
+
+		// 	var form = $(this);
+
+		// 	e.preventDefault();
+
+		// 	$.ajax({
+		// 		type: "POST",
+		// 		url: "<?php echo site_url('patients/update_medical_history'); ?>",
+		// 		data: form.serialize(), // <--- THIS IS THE CHANGE
+		// 		dataType: "html",
+		// 		success: function (data) {
+		// 			//$('#feed-container').prepend(data);
+		// 			alertify.set('notifier','position', 'top-right');
+		// 			alertify.notify('Patient details updated', 'success', 5, function(){  console.log('dismissed'); });
+		// 		},
+		// 		error: function () {
+		// 			alert("Error posting feed.");
+		// 		}
+		// 	});
+
+		// });
 
 		var travel_destination = window.document.getElementsByName('travel_destination[]');
 		var travel_date = window.document.getElementsByName('travel_date[]');

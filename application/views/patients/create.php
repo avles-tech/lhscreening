@@ -5,7 +5,7 @@ body {
 }
 </style>>
 <div class="row justify-content-center">
-	<div class="col-md-6">
+	<div class="col-md-9">
 		<div class="card">
 			<header class="card-header">
 				<h4 class="card-title mt-2">
